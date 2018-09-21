@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tundras Conundrum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="TC_CSS.css"> 
+</head>
+<body>
+
+<div id="loginDiv">
+	<label for="userEmail">Email Address</label>
+	<input type="email" name="userEmail" placeholder="Enter Email Address" id="emailField" />
+	<label for="userPwd">Password</label>
+	<input type="password" name="userPwd" placeholder="Enter Password" id="pwdField" />
+	<button onclick="login()" style="width:auto;">Login</button>
+	<button onclick="document.getElementById('signUpWindow').style.display='block'" style="width:auto;">Sign Up</button>
+
+	<div id="signUpWindow" class="modal">
+  
+		<div class="modal-content animate">
+    
+	    	<div class="container">
+	      		<span onclick="document.getElementById('signUpWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+	      		<label for="email"><b>Email</b></label>
+	      		<input type="email" placeholder="Enter Email" name="email" id="newEmailField" required>
+
+	      		<label for="password"><b>Password</b></label>
+	      		<input type="password" placeholder="Enter Password" name="password" id="newPwdField" required>
+        
+	      		<button type="submit" onclick="signUp()">Sign Up</button>
+	    	</div>
+
+	    	<div class="container" style="background-color:#f1f1f1">
+	      		<button type="button" onclick="document.getElementById('signUpWindow').style.display='none'" class="cancelbtn">Cancel</button>
+	    	</div>
+	  	</div>
+	</div>
+</div>
+
+<div id="loggedInDiv">
+	<h3 id="greeting"></h3>
+	<button onclick="logout()">Logout</button>
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBDiHhZOipWqNrCmCqaWE41sVIoLLlrl9c",
+    authDomain: "tundrasconundrum.firebaseapp.com",
+    databaseURL: "https://tundrasconundrum.firebaseio.com",
+    projectId: "tundrasconundrum",
+    storageBucket: "",
+    messagingSenderId: "590920285521"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="TC_JS.js"></script>
+</body>
+</html>
