@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tundras Conundrum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/home.css"> 
+	<script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyBDiHhZOipWqNrCmCqaWE41sVIoLLlrl9c",
+	    authDomain: "tundrasconundrum.firebaseapp.com",
+	    databaseURL: "https://tundrasconundrum.firebaseio.com",
+	    projectId: "tundrasconundrum",
+	    storageBucket: "",
+	    messagingSenderId: "590920285521"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+	<script src="../js/home2.js"></script>
+</head>
+
+<body>
+	<h3 id="greeting"></h3>
+	<button onclick="logout()" style="width:auto;">Logout</button>
+</body>
+</html>

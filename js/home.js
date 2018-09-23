@@ -1,19 +1,10 @@
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
 		// User is signed in.
-		document.getElementById("loggedInDiv").style.display = "initial";
-		document.getElementById("loginDiv").style.display = "none";
-		
-		var user = firebase.auth().currentUser;
-		
-		if (user != null) {
-			var email_id = user.email;
-			document.getElementById("greeting").innerHTML = "Welcome " + email_id;
-		}
+		window.location.href = "../html/home2.html";
 	} else {
-		// No user is signed in.
-		document.getElementById("loggedInDiv").style.display = "none";
-		document.getElementById("loginDiv").style.display = "initial";
+		// No user signed in.
+		
 	}
 });
 
@@ -21,19 +12,13 @@ function login() {
 	var userEmail = document.getElementById("emailField").value;
 	var userPass = document.getElementById("pwdField").value;
 	
-	firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-	  // Handle Errors here.
+	firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function() {
+		// Sign-in successful.
+		window.location.href = "../html/home2.html";
+	}).catch(function(error) {
+	  // An error happened.
 	  
 	  window.alert(error);
-	  // ...
-	});
-}
-
-function logout() {
-	firebase.auth().signOut().then(function() {
-		// Sign-out successful.
-	}).catch(function(error) {
-		// An error happened.
 	});
 }
 
