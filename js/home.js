@@ -1,7 +1,7 @@
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
 		// User is signed in.
-		window.location.href = "../html/home2.html";
+		window.location.href = "../html/mainMenu.html";
 	} else {
 		// No user signed in.
 		
@@ -14,7 +14,7 @@ function login() {
 	
 	firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function() {
 		// Sign-in successful.
-		window.location.href = "../html/home2.html";
+		window.location.href = "../html/mainMenu.html";
 	}).catch(function(error) {
 	  // An error happened.
 	  
