@@ -40,8 +40,9 @@ function createRoom() {
 	if (validInput()) {
 		const database = firebase.database();
 		var currUser = firebase.auth().currentUser;
-		database.ref('users/test').set({rooms: 'asdf'});
-		// window.location.href = "../html/room.html";
+		database.ref('users/test').push({rooms: 'asdf'}).then(
+			user => {window.location.href = "../html/room.html"
+		});
 	}
 }
 
