@@ -17,11 +17,27 @@
 	  };
 	  firebase.initializeApp(config);
 	</script>
-	<script src="../js/home2.js"></script>
 </head>
-
 <body>
+	<button onclick="document.getElementById('createRoomWindow').style.display='block'" style="width:auto;">Create Room</button>
+	<button style="width:auto;">View All Challenges</button>
 	<h3 id="greeting"></h3>
 	<button onclick="logout()" style="width:auto;">Logout</button>
+	<div id="createRoomWindow" class="modal">
+  
+		<div class="modal-content animate">
+    
+	    	<div class="container">
+	      		<span onclick="document.getElementById('createRoomWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+	      		<label for="text"><b>Room Name</b></label>
+	      		<input type="text" id="roomName" placeholder="Enter Room Name" name="text">
+	    	</div>
+
+	    	<div class="container" style="background-color:#f1f1f1">
+	      		<button type="submit" onclick="createRoom()">Create Room</button>
+	    	</div>
+	  	</div>
+	</div>
+<script src="../js/home2.js"></script>
 </body>
 </html>
