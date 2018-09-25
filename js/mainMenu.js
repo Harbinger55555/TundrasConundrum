@@ -28,7 +28,8 @@ function validInput() {
 		return false;
 	}
 	// Prevent empty name field. Using attribute "required" requires a form, 
-	// which somehow does not update the firebase database.
+	// which somehow does not update the firebase database. Also, a form immediately submits
+	// if the submit button is clicked without the regex check.
 	if (roomName == "") {
 		alert('Room name cannot be empty!');
 		return false;
@@ -38,9 +39,19 @@ function validInput() {
 
 function createRoom() {
 	if (validInput()) {
-		const database = firebase.database();
-		var currUser = firebase.auth().currentUser;
-		database.ref('users/test').push({rooms: 'asdf'}).then(
+		// To prevent multiple submissions to firebase.
+		document.getElementById("createRoomButton").disabled = true;
+		
+		var roomName = document.getElementById('roomName').value;
+		// Get the currently logged in user.
+		var currUser = firebase.auth().currentUser.uid;
+		
+		// Get a key for a new Room.
+		var newRoomKey = firebase.database().ref().child('users/' + currUser + "/rooms").push().key;
+		var updates = {};
+		updates['users/' + currUser + "/" + "rooms/" + newRoomKey] = roomName;
+		updates['rooms/' + newRoomKey] = "Empty Room";
+		firebase.database().ref().update(updates).then(
 			user => {window.location.href = "../html/room.html"
 		});
 	}

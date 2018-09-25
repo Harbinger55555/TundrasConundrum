@@ -17,7 +17,6 @@ function login() {
 		window.location.href = "../html/mainMenu.html";
 	}).catch(function(error) {
 	  // An error happened.
-	  
 	  window.alert(error);
 	});
 }
@@ -25,11 +24,14 @@ function login() {
 function signUp() {
 	var email = document.getElementById("newEmailField").value;
 	var password = document.getElementById("newPwdField").value;
+	// Prevent multiple submissions to firebase.
+	document.getElementById("signUpButton").disabled = true;
 	
 	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  // Handle Errors here.
 		window.alert(error);
-	  // ...
+	  // If an error occurred, allow user to sign up again.
+		document.getElementById("signUpButton").disabled = false;
 	});
 }
 
