@@ -49,14 +49,14 @@ function createRoom() {
 		var currUser = firebase.auth().currentUser.uid;
 		
 		// Get a key for a new Room.
-		var newRoomKey = firebase.database().ref().child('users/' + currUser + "/rooms").push().key;
-		var updates = {};
-		updates['users/' + currUser + "/" + "rooms/" + newRoomKey] = roomName;
+		var newRoom = firebase.database().ref().child('users/' + currUser + '/rooms').push();
 		
 		// Prepare data of room to send to room.html
 		localStorage.setItem('roomName', roomName);
-		localStorage.setItem('roomKey', newRoomKey);
-		firebase.database().ref().update(updates).then(
+		localStorage.setItem('roomKey', newRoom.key);
+		newRoom.set({
+			name: roomName
+		}).then(
 			user => {window.location.href = "../html/room.html"
 		});
 	}
