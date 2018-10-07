@@ -21,17 +21,19 @@ function logout() {
 
 function validInput() {
 	var regex = /[^a-z0-9]/gi;
-	var roomName = document.getElementById('roomName').value;
-	if (regex.test(roomName)) {
+	var roomNameEle = document.getElementById('roomName');
+	if (regex.test(roomNameEle.value)) {
 		alert('Room name cannot have special characters!');
-		document.getElementById('roomName').value = null;
+		roomNameEle.value = null;
+		roomNameEle.focus();
 		return false;
 	}
 	// Prevent empty name field. Using attribute "required" requires a form, 
 	// which somehow does not update the firebase database. Also, a form immediately submits
 	// if the submit button is clicked without the regex check.
-	if (roomName == "") {
+	if (roomNameEle.value == "") {
 		alert('Room name cannot be empty!');
+		roomNameEle.focus();
 		return false;
 	}
 	return true;
@@ -50,7 +52,10 @@ function createRoom() {
 		var newRoomKey = firebase.database().ref().child('users/' + currUser + "/rooms").push().key;
 		var updates = {};
 		updates['users/' + currUser + "/" + "rooms/" + newRoomKey] = roomName;
-		updates['rooms/' + newRoomKey] = "Empty Room";
+		
+		// Prepare data of room to send to room.html
+		localStorage.setItem('roomName', roomName);
+		localStorage.setItem('roomKey', newRoomKey);
 		firebase.database().ref().update(updates).then(
 			user => {window.location.href = "../html/room.html"
 		});
