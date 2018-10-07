@@ -3,35 +3,36 @@
 <head>
     <title>Tundras Conundrum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/home.css"> 
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
 
 <div id="loginDiv">
-	<label for="userEmail">Email Address</label>
-	<input type="email" name="userEmail" placeholder="Enter Email Address" id="emailField" />
-	<label for="userPwd">Password</label>
-	<input type="password" name="userPwd" placeholder="Enter Password" id="pwdField" />
+  <body style = "margin:0">
+  <label for="titleText" id="titleText"> Ice To See You <br/> Log-In <br/><label>
+	<label for="userEmail" id= "loginEmail"><span> Email Address </span</label><br/>
+	<input type="email" name="userEmail" placeholder="Enter Email Address" id="emailField" /><br/>
+	<label for="userPwd">Password</label><br/>
+	<input type="password" name="userPwd" placeholder="Enter Password" id="pwdField" /><br/>
 	<button onclick="login()" style="width:auto;">Login</button>
 	<button onclick="document.getElementById('signUpWindow').style.display='block'" style="width:auto;">Sign Up</button>
 
 	<div id="signUpWindow" class="modal">
-  
+
 		<div class="modal-content animate">
-    
+
 	    	<div class="container">
 	      		<span onclick="document.getElementById('signUpWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
-	      		<label for="email"><b>Email</b></label>
-	      		<input type="email" placeholder="Enter Email" name="email" id="newEmailField" required>
+            <label for="titleText" id="titleSignUp"> Ice To See You <br/> Sign Up <br/> <label>
+            <label for="email" id="siginInEmail"><b>Email</b></label><br/>
+	      		<input type="email" placeholder="Enter Email" name="email" id="newEmailField" required><br/>
 
-	      		<label for="password"><b>Password</b></label>
-	      		<input type="password" placeholder="Enter Password" name="password" id="newPwdField" required>
-        
-	      		<button type="submit" id="signUpButton" onclick="signUp()">Sign Up</button>
-	    	</div>
+	      		<label for="password"id="siginInPassword"><b>Password</b></label><br/>
+	      		<input type="password" placeholder="Enter Password" name="password" id="newPwdField" required><br/>
 
-	    	<div class="container" style="background-color:#f1f1f1">
-	      		<button type="button" onclick="document.getElementById('signUpWindow').style.display='none'" class="cancelbtn">Cancel</button>
+	      		<button type="submit" id="signUpButton" onclick="signUp()">Sign Up</button> <br/>
+            <button type="button" onclick="document.getElementById('signUpWindow').style.display='none'" class="cancelbtn">Cancel</button>
+
 	    	</div>
 	  	</div>
 	</div>
