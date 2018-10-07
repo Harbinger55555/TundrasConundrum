@@ -1,4 +1,9 @@
-
+@font-face {
+    font-family: 'IceFont';
+    src: url('images/CFGrandNord-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 /* Full-width input fields */
 input[type=email], input[type=password], input[type=text] {
     width: 50%;
@@ -89,20 +94,21 @@ button:hover {
 
 #userEmail {
   padding-bottom: 10px;
+  font-family: fantasy;
+  font-size: 20px;
   color: White;
-}
-
-#signInTitle{
-  font-size: 30px;
-  color:Black;
 }
 
 #siginInEmail{
   color:Blue;
+  font-family: fantasy;
+  font-size: 30px;
 }
 
 #siginInPassword{
   color:Blue;
+  font-family: fantasy;
+  font-size: 30px;
 }
 
 #signUpButton{
@@ -112,6 +118,18 @@ button:hover {
 #titleImage {
   width: 1000px;
   height: 100px;
+}
+
+#titleText{
+  font-family: IceFont;
+  font-size: 60px;
+  color: White;
+}
+
+#titleSignUp {
+  font-family: IceFont;
+  font-size: 50px;
+  color: Blue;
 }
 
 /* Add Zoom Animation */
