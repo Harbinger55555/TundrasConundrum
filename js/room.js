@@ -33,8 +33,7 @@ function createPuzzle() {
 		
 		// Get the currently logged in user.
 		var currUser = firebase.auth().currentUser.uid;
-		var roomKey = localStorage['roomKey'];
-		localStorage.removeItem('roomKey'); // Clear roomKey from localStorage
+		
 		// Checks if room belongs to the current User.
 		var currRoomInUser = firebase.database().ref().child('users/' + currUser + '/rooms/' + roomKey);
 		currRoomInUser.once('value', function(snapshot) {
@@ -44,6 +43,7 @@ function createPuzzle() {
 					correctAnswer: document.getElementById('correctAnswer').value,
 					wrongAnswer1: document.getElementById('wrongAnswer1').value
 				});
+				document.getElementById('createPuzzleWindow').style.display = "none";
 			}
 			else {
 				alert("Room does not belong to current User.");
@@ -51,6 +51,28 @@ function createPuzzle() {
 		});
 	}
 }
+
+function openPuzzleWindow() {
+	document.getElementById('createPuzzleWindow').style.display = 'block';
+	
+	resetInputs('puzzleContainer');
+	
+	// Button was disabled by previous puzzle creation, thus reenabling.
+	document.getElementById("createPuzzleButton").disabled = false;
+}
+
+function resetInputs(fieldid) {
+    var container = document.getElementById(fieldid);
+    var inputs = container.getElementsByTagName('input');
+    for (var index = 0; index < inputs.length; ++index) {
+        inputs[index].value = '';
+    }
+}
+
+// Get the unique key of the current room
+var roomKey = localStorage['roomKey'];
+// TODO: should relocate removing the key to a later action, since currently when a room is refreshed, the key is lost.
+localStorage.removeItem('roomKey'); // Clear roomKey from localStorage
 
 // Get the createPuzzleWindow
 var createPuzzleWindow = document.getElementById('createPuzzleWindow');
