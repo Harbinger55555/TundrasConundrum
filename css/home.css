@@ -96,6 +96,13 @@ button:hover {
   color: White;
 }
 
+#loginPwd {
+  padding-bottom: 10px;
+  font-family: fantasy;
+  font-size: 20px;
+  color: White;
+}
+
 #siginInEmail{
   color:Blue;
   font-family: fantasy;

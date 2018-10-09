@@ -9,10 +9,10 @@
 
 <div id="loginDiv">
   <body style = "margin:0">
-  <label for="titleText" id="titleText"> Ice To See You <br/> Log-In <br/><label>
-	<label for="userEmail" id= "loginEmail"><span> Email Address </span></label><br/>
+  <label for="titleText" id="titleText"> Tundra's Conundrum <br/> Log-In <br/><label>
+	<label for="userEmail" id= "loginEmail">Email Address </label><br/>
 	<input type="email" name="userEmail" placeholder="Enter Email Address" id="emailField" /><br/>
-	<label for="userPwd">Password</label><br/>
+	<label for="userPwd" id= "loginPwd">Password</label><br/>
 	<input type="password" name="userPwd" placeholder="Enter Password" id="pwdField" /><br/>
 	<button onclick="login()" style="width:auto;">Login</button>
 	<button onclick="document.getElementById('signUpWindow').style.display='block'" style="width:auto;">Sign Up</button>
@@ -23,7 +23,7 @@
 
 	    	<div class="container">
 	      		<span onclick="document.getElementById('signUpWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
-            	<label for="titleText" id="titleSignUp"> Ice To See You <br/> Sign Up <br/> <label>
+            	<label for="titleText" id="titleSignUp"> Tundra's Conundrum <br/> Sign Up <br/> <label>
             	<label for="email" id="siginInEmail"><b>Email</b></label><br/>
 	      		<input type="email" placeholder="Enter Email" name="email" id="newEmailField" required><br/>
 
