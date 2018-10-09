@@ -8,7 +8,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 			// Get the room data from menu room creation or room selection.
 			var roomName = localStorage['roomName'];
 			localStorage.removeItem('roomName'); // Clear roomName from localStorage
-			document.getElementById("roomName").innerHTML = "Room " + roomName;
+			document.getElementById("roomName").innerHTML = roomName;
 		}
 	}
 });
