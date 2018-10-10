@@ -35,11 +35,10 @@ function signUp() {
 	});
 }
 
-// Get the signUpWindow
-var signUpWindow = document.getElementById('signUpWindow');
-
 // When the user clicks anywhere outside of the signUpWindow, close it
 window.onclick = function(event) {
+	// Get the signUpWindow
+	let signUpWindow = document.getElementById('signUpWindow');
     if (event.target == signUpWindow) {
         signUpWindow.style.display = "none";
     }
