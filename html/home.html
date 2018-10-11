@@ -4,51 +4,65 @@
     <title>Tundras Conundrum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/home.css">
+	<script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 </head>
 <body>
 
 <div id="loginDiv">
-  <body style = "margin:0">
-  <label for="titleText" id="titleText"> Tundra's Conundrum <br/> Log-In <br/><label>
-	<label for="userEmail" id= "loginEmail">Email Address </label><br/>
-	<input type="email" name="userEmail" placeholder="Enter Email Address" id="emailField" /><br/>
-	<label for="userPwd" id= "loginPwd">Password</label><br/>
-	<input type="password" name="userPwd" placeholder="Enter Password" id="pwdField" /><br/>
-	<button onclick="login()" style="width:auto;">Login</button>
-	<button onclick="document.getElementById('signUpWindow').style.display='block'" style="width:auto;">Sign Up</button>
+    <div style = "margin:0">
+        <label id="titleText"> Tundra's Conundrum <br/> Log-In <br/></label>
+    </div>
+    <div class="labelDiv">
+        <label for="userEmail" id= "loginEmail">Email Address </label>
+    </div>
+    <input type="email" name="userEmail" placeholder="Enter Email Address" id="emailField" /><br/>
+    <div class="labelDiv">
+        <label for="userPwd" id= "loginPwd">Password</label><br/>
+    </div>
+    <input type="password" name="userPwd" placeholder="Enter Password" id="pwdField" /><br/>
+    <button onclick="login()" style="width:auto;">Login</button>
+    <button onclick="document.getElementById('signUpWindow').style.display='block'" style="width:auto;">Sign Up</button>
 
-	<div id="signUpWindow" class="modal">
+    <div id="signUpWindow" class="modal">
 
-		<div class="modal-content animate">
+        <div class="modal-content animate">
 
-	    	<div class="container">
-	      		<span onclick="document.getElementById('signUpWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
-            	<label for="titleText" id="titleSignUp"> Tundra's Conundrum <br/> Sign Up <br/> <label>
-            	<label for="email" id="siginInEmail"><b>Email</b></label><br/>
-	      		<input type="email" placeholder="Enter Email" name="email" id="newEmailField" required><br/>
+            <div class="container">
+                <span onclick="document.getElementById('signUpWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <label id="titleSignUp"> Tundra's Conundrum <br/> Sign Up <br/></label>
+                <label for="email" id="signInEmail"><b>Email</b></label><br/>
+                <input type="email" placeholder="Enter Email" name="email" id="newEmailField" required><br/>
 
-	      		<label for="password"id="siginInPassword"><b>Password</b></label><br/>
-	      		<input type="password" placeholder="Enter Password" name="password" id="newPwdField" required><br/>
+                <label for="password"id="signInPassword"><b>Password</b></label><br/>
+                <input type="password" placeholder="Enter Password" name="password" id="newPwdField" required><br/>
 
-	      		<button type="submit" id="signUpButton" onclick="signUp()">Sign Up</button> <br/>
-            	<button type="button" onclick="document.getElementById('signUpWindow').style.display='none'" class="cancelbtn">Cancel</button>
-	    	</div>
-	  	</div>
-	</div>
+                <button type="submit" id="signUpButton" onclick="signUp()">Sign Up</button> <br/>
+                <button type="button" onclick="document.getElementById('signUpWindow').style.display='none'" class="cancelbtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- The surrounding HTML is left untouched by FirebaseUI.
+     Your app may use that space for branding, controls and other customizations.-->
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
 <script>
-  // Initialize Firebase
-  var config = {
+    // Initialize Firebase
+    var config = {
     apiKey: "AIzaSyBJhwiYbWIz5OEVp59TvKqFpImqK2sDW8U",
     authDomain: "tundrasconundrum-31ea5.firebaseapp.com",
     databaseURL: "https://tundrasconundrum-31ea5.firebaseio.com",
     projectId: "tundrasconundrum-31ea5",
     storageBucket: "",
     messagingSenderId: "690386417705"
-  };
-  firebase.initializeApp(config);
+    };
+    firebase.initializeApp(config);
 </script>
 <script src="../js/home.js"></script>
 
