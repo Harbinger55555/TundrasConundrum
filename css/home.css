@@ -10,6 +10,12 @@ body {
     background-image: url(images/IceCave.jpg);
 }
 
+p {
+    font-family: fantasy;
+    font-size: 17px;
+    color: #e1e1ea;
+}
+
 /* Full-width input fields */
 input[type=email], input[type=password] {
 	vertical-align: middle;   
@@ -117,6 +123,19 @@ button:hover {
     top: 40%;
 }
 
+.forgetPwd {
+    position:absolute;
+    bottom:0;
+    right:2%;
+    margin: 0;
+}
+
+.forgetPwd:hover {
+    text-decoration-line: underline;
+    text-underline-color: #e1e1ea;
+    cursor: pointer;
+}
+
 #signInEmail{
     color:Blue;
     font-family: fantasy;
@@ -130,6 +149,16 @@ button:hover {
 }
 
 #signUpButton{
+    width: auto;
+}
+
+#forgetPwdEmail {
+    color:Blue;
+    font-family: fantasy;
+    font-size: 30px;
+}
+
+#forgetPwdSubmitButton {
     width: auto;
 }
 

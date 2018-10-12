@@ -18,15 +18,16 @@
     </div>
     <input type="email" name="userEmail" placeholder="Enter Email Address" id="emailField" /><br/>
     <div class="labelDiv">
-        <label for="userPwd" id= "loginPwd">Password</label><br/>
+        <label for="userPwd" id= "loginPwd">Password</label>
+        <p class="forgetPwd" onclick="forgetPwd()">Forget Password?</p>
     </div>
     <input type="password" name="userPwd" placeholder="Enter Password" id="pwdField" /><br/>
     <button onclick="login()" style="width:auto;">Login</button>
-    <button onclick="document.getElementById('signUpWindow').style.display='block'" style="width:auto;">Sign Up</button>
+    <button onclick="signUp()" style="width:auto;">Sign Up</button>
 
     <div id="signUpWindow" class="modal">
 
-        <div class="modal-content animate">
+        <div class="modal-content animate" style="background-image: url(../css/images/placeholder.jpg);">
 
             <div class="container">
                 <span onclick="document.getElementById('signUpWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -34,11 +35,26 @@
                 <label for="email" id="signInEmail"><b>Email</b></label><br/>
                 <input type="email" placeholder="Enter Email" name="email" id="newEmailField" required><br/>
 
-                <label for="password"id="signInPassword"><b>Password</b></label><br/>
+                <label for="password" id="signInPassword"><b>Password</b></label><br/>
                 <input type="password" placeholder="Enter Password" name="password" id="newPwdField" required><br/>
 
-                <button type="submit" id="signUpButton" onclick="signUp()">Sign Up</button> <br/>
+                <button type="submit" id="signUpButton" onclick="signUpSubmit()">Sign Up</button> <br/>
                 <button type="button" onclick="document.getElementById('signUpWindow').style.display='none'" class="cancelbtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="forgetPwdWindow" class="modal">
+
+        <div class="modal-content animate" style="background-image: url(../css/images/placeholder.jpg);">
+
+            <div class="container">
+                <span onclick="document.getElementById('forgetPwdWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <label for="emailForget" id="forgetPwdEmail"><b>Password Reset Email</b></label><br/>
+                <input type="email" placeholder="Enter Email" name="emailForget" id="forgetPwdEmailField" required><br/>
+
+                <button type="submit" id="forgetPwdSubmitButton" onclick="forgetPwdSubmit()">Submit</button> <br/>
+                <button type="button" onclick="document.getElementById('forgetPwdWindow').style.display='none'" class="cancelbtn">Cancel</button>
             </div>
         </div>
     </div>

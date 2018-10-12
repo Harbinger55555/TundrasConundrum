@@ -21,7 +21,20 @@ function login() {
 	});
 }
 
+function resetInputs(fieldid) {
+    var container = document.getElementById(fieldid);
+    var inputs = container.getElementsByTagName('input');
+    for (var index = 0; index < inputs.length; ++index) {
+        inputs[index].value = '';
+    }
+}
+
 function signUp() {
+    resetInputs('signUpWindow');
+    document.getElementById('signUpWindow').style.display='block';
+}
+
+function signUpSubmit() {
 	var email = document.getElementById("newEmailField").value;
 	var password = document.getElementById("newPwdField").value;
 	// Prevent multiple submissions to firebase.
@@ -35,12 +48,40 @@ function signUp() {
 	});
 }
 
-// When the user clicks anywhere outside of the signUpWindow, close it
+function forgetPwd() {
+    resetInputs('forgetPwdWindow');
+    document.getElementById('forgetPwdWindow').style.display='block';
+}
+
+function forgetPwdSubmit() {
+    var currUserEmail = document.getElementById('forgetPwdEmailField').value;
+    // Prevent multiple submissions to firebase.
+    var forgetPwdSubmitButton = document.getElementById("forgetPwdSubmitButton");
+    forgetPwdSubmitButton.disabled = true;
+
+    firebase.auth().sendPasswordResetEmail(currUserEmail).then(function() {
+        // Email sent.
+        window.alert('Password reset link sent!');
+        document.getElementById('forgetPwdWindow').style.display = "none";
+        // Reenable forgetPwdSubmitButton for next time the window is opened.
+        forgetPwdSubmitButton.disabled = false;
+
+    }).catch(function(error) {
+        // An error happened.
+        window.alert('Reset email sending error! Please enter a valid email or try again later');
+        forgetPwdSubmitButton.disabled = false;
+    });
+}
+
+// When the user clicks anywhere outside of the signUpWindow or forgetPwdWindow, close it
 window.onclick = function(event) {
 	// Get the signUpWindow
 	let signUpWindow = document.getElementById('signUpWindow');
-    if (event.target == signUpWindow) {
+	// Get the forgetPwdWindow
+	let forgetPwdWindow = document.getElementById('forgetPwdWindow');
+    if (event.target == signUpWindow || event.target == forgetPwdWindow) {
         signUpWindow.style.display = "none";
+        forgetPwdWindow.style.display = "none";
     }
 }
 

@@ -70,9 +70,8 @@ function createPuzzle() {
 }
 
 function openPuzzleWindow() {
+    resetInputs('puzzleContainer');
 	document.getElementById('createPuzzleWindow').style.display = 'block';
-	
-	resetInputs('puzzleContainer');
 	
 	// Button was disabled by previous puzzle creation, thus reenabling.
 	document.getElementById("createPuzzleButton").disabled = false;
