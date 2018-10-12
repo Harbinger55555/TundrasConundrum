@@ -14,11 +14,11 @@
         <label id="titleText"> Tundra's Conundrum <br/> Log-In <br/></label>
     </div>
     <div class="labelDiv">
-        <label for="userEmail" id= "loginEmail">Email Address </label>
+        <label id= "loginEmail">Email Address </label>
     </div>
     <input type="email" name="userEmail" placeholder="Enter Email Address" id="emailField" /><br/>
     <div class="labelDiv">
-        <label for="userPwd" id= "loginPwd">Password</label>
+        <label id= "loginPwd">Password</label>
         <p class="forgetPwd" onclick="forgetPwd()">Forget Password?</p>
     </div>
     <input type="password" name="userPwd" placeholder="Enter Password" id="pwdField" /><br/>
@@ -32,10 +32,10 @@
             <div class="container">
                 <span onclick="document.getElementById('signUpWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <label id="titleSignUp"> Tundra's Conundrum <br/> Sign Up <br/></label>
-                <label for="email" id="signInEmail"><b>Email</b></label><br/>
+                <label id="signInEmail"><b>Email</b></label><br/>
                 <input type="email" placeholder="Enter Email" name="email" id="newEmailField" required><br/>
 
-                <label for="password" id="signInPassword"><b>Password</b></label><br/>
+                <label id="signInPassword"><b>Password</b></label><br/>
                 <input type="password" placeholder="Enter Password" name="password" id="newPwdField" required><br/>
 
                 <button type="submit" id="signUpButton" onclick="signUpSubmit()">Sign Up</button> <br/>
@@ -50,7 +50,7 @@
 
             <div class="container">
                 <span onclick="document.getElementById('forgetPwdWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <label for="emailForget" id="forgetPwdEmail"><b>Password Reset Email</b></label><br/>
+                <label id="forgetPwdEmail"><b>Password Reset Email</b></label><br/>
                 <input type="email" placeholder="Enter Email" name="emailForget" id="forgetPwdEmailField" required><br/>
 
                 <button type="submit" id="forgetPwdSubmitButton" onclick="forgetPwdSubmit()">Submit</button> <br/>

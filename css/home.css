@@ -13,7 +13,7 @@ body {
 p {
     font-family: fantasy;
     font-size: 17px;
-    color: #e1e1ea;
+    color: #d1d1e0;
 }
 
 /* Full-width input fields */
@@ -132,7 +132,7 @@ button:hover {
 
 .forgetPwd:hover {
     text-decoration-line: underline;
-    text-underline-color: #e1e1ea;
+    text-underline-color: #d1d1e0;
     cursor: pointer;
 }
 
@@ -191,8 +191,13 @@ button:hover {
 }
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 900px) {
     .cancelbtn {
         width: 100%;
     }
+    .forgetPwd {
+        right: 0;
+        left: 0;
+    }
+
 }
