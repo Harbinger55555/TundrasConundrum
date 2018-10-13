@@ -10,12 +10,6 @@ body {
     background-image: url(images/IceCave.jpg);
 }
 
-p {
-    font-family: fantasy;
-    font-size: 17px;
-    color: #d1d1e0;
-}
-
 /* Full-width input fields */
 input[type=email], input[type=password] {
 	vertical-align: middle;   
@@ -128,6 +122,9 @@ button:hover {
     bottom:0;
     right:2%;
     margin: 0;
+    font-family: fantasy;
+    font-size: 17px;
+    color: #d1d1e0;
 }
 
 .forgetPwd:hover {
@@ -199,5 +196,4 @@ button:hover {
         right: 0;
         left: 0;
     }
-
 }

@@ -19,47 +19,47 @@ function logout() {
 	});
 }
 
-function validInput() {
-	var regex = /[^a-z0-9]/gi;
-	var roomNameEle = document.getElementById('roomName');
-	if (regex.test(roomNameEle.value)) {
-		alert('Room name cannot have special characters!');
-		roomNameEle.value = null;
-		roomNameEle.focus();
-		return false;
-	}
-	// Prevent empty name field. Using attribute "required" requires a form, 
-	// which somehow does not update the firebase database. Also, a form immediately submits
-	// if the submit button is clicked without the regex check.
-	if (roomNameEle.value == "") {
-		alert('Room name cannot be empty!');
-		roomNameEle.focus();
-		return false;
-	}
-	return true;
+function validInput(inputString) {
+    // Not alphanumeric characters.
+    var regex = /[^a-z0-9]/gi;
+    if (regex.test(inputString)) {
+        return false;
+    }
+    if (inputString == '') {
+        return false;
+    }
+    return true;
 }
 
 function createRoom() {
-	if (validInput()) {
-		// To prevent multiple submissions to firebase.
-		document.getElementById("createRoomButton").disabled = true;
-		
-		var roomName = document.getElementById('roomName').value;
-		// Get the currently logged in user.
-		var currUser = firebase.auth().currentUser.uid;
-		
-		// Get a key for a new Room.
-		var newRoom = firebase.database().ref().child('users/' + currUser + '/rooms').push();
-		
-		// Prepare data of room to send to room.html
-		localStorage.setItem('roomName', roomName);
-		localStorage.setItem('roomKey', newRoom.key);
-		newRoom.set({
-			name: roomName
-		}).then(
-			user => {window.location.href = "../html/room.html"
-		});
-	}
+    var roomNameEle = document.getElementById('roomName');
+    var roomName = roomNameEle.value;
+
+    if (!validInput(roomName)) {
+        alert('Room name cannot be empty nor have special characters!');
+        roomNameEle.value = '';
+        roomNameEle.focus();
+        return false;
+    }
+    // To prevent multiple submissions to firebase.
+    document.getElementById("createRoomButton").disabled = true;
+
+
+    // Get the currently logged in user.
+    var currUser = firebase.auth().currentUser.uid;
+
+    // Get a key for a new Room.
+    var newRoom = firebase.database().ref().child('users/' + currUser + '/rooms').push();
+
+    // Prepare data of room to send to room.html
+    localStorage.setItem('roomName', roomName);
+    localStorage.setItem('roomKey', newRoom.key);
+    newRoom.set({
+        name: roomName
+    }).then(
+        user => {window.location.href = "../html/room.html"
+    });
+    return true;
 }
 
 // Get the createRoomWindow

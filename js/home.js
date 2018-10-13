@@ -37,15 +37,32 @@ function signUp() {
 function signUpSubmit() {
 	var email = document.getElementById("newEmailField").value;
 	var password = document.getElementById("newPwdField").value;
+	var signUpButton = document.getElementById("signUpButton");
 	// Prevent multiple submissions to firebase.
-	document.getElementById("signUpButton").disabled = true;
+	signUpButton.disabled = true;
+
+	if (!validInput(password)) {
+        alert('Password must have at least one uppercase, one lowercase, one number, and minimum 6 characters!');
+        signUpButton.disabled = false;
+        return false;
+    }
 	
 	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  // Handle Errors here.
 		window.alert(error);
 	  // If an error occurred, allow user to sign up again.
-		document.getElementById("signUpButton").disabled = false;
+        signUpButton.disabled = false;
 	});
+}
+
+function validInput(inputString) {
+    // Minimum six characters, at least one uppercase letter, one lowercase letter and one number.
+    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!$%@#£^€*?&()]{6,}$/;
+    console.log(inputString);
+    if (regex.test(inputString)) {
+        return true;
+    }
+    return false;
 }
 
 function forgetPwd() {
