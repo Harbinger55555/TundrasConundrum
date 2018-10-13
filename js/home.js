@@ -58,7 +58,6 @@ function signUpSubmit() {
 function validInput(inputString) {
     // Minimum six characters, at least one uppercase letter, one lowercase letter and one number.
     var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!$%@#£^€*?&()]{6,}$/;
-    console.log(inputString);
     if (regex.test(inputString)) {
         return true;
     }
