@@ -39,12 +39,20 @@ function createPuzzle() {
 		currRoomInUser.once('value', function(snapshot) {
 			if (snapshot.exists()){
 				let newPuzzleKey = currRoomInUser.child('puzzles').push().key;
-				currRoomInUser.child('puzzles/' + newPuzzleKey).set({
+
+                // Set question for puzzleId in 'rooms' database.
+                firebase.database().ref().child('rooms/' + roomKey + '/puzzles/' + newPuzzleKey).set({
 					question: document.getElementById('question').value
 				});
-				let puzzleAnswers = currRoomInUser.child('puzzles/' + newPuzzleKey + '/answers');
+
+				// Set question for puzzleId in 'puzzles' database.
+                firebase.database().ref().child('puzzles/' + newPuzzleKey).set({
+                    question: document.getElementById('question').value
+                });
+
+				let puzzleAnswers = firebase.database().ref().child('puzzles/' + newPuzzleKey + '/answers');
 				puzzleAnswers.set({
-					correct: document.getElementById('correctAnswer').value,
+					correct: document.getElementById('correctAnswer').value,x
 					wrong1: document.getElementById('wrongAnswer1').value
 				});
 				// If optional fields are filled, update firebase RTDB.
@@ -52,7 +60,7 @@ function createPuzzle() {
 				if (wrong2 != "") puzzleAnswers.update({wrong2: wrong2});
 				let wrong3 = document.getElementById('wrongAnswer3').value
 				if (wrong3 != "") puzzleAnswers.update({wrong3: wrong3});
-				var puzzleHints = currRoomInUser.child('puzzles/' + newPuzzleKey + '/hints');
+				var puzzleHints = firebase.database().ref().child('puzzles/' + newPuzzleKey + '/hints');
 				let hint1 = document.getElementById('hint1').value
 				if (hint1 != "") puzzleHints.update({hint1: hint1});
 				let hint2 = document.getElementById('hint2').value
