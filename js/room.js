@@ -52,7 +52,7 @@ function createPuzzle() {
 
 				let puzzleAnswers = firebase.database().ref().child('puzzles/' + newPuzzleKey + '/answers');
 				puzzleAnswers.set({
-					correct: document.getElementById('correctAnswer').value,x
+					correct: document.getElementById('correctAnswer').value,
 					wrong1: document.getElementById('wrongAnswer1').value
 				});
 				// If optional fields are filled, update firebase RTDB.
