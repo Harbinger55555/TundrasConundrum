@@ -20,15 +20,12 @@ function logout() {
 }
 
 function validInput(inputString) {
-    // Not alphanumeric characters.
-    var regex = /[^a-z0-9]/gi;
+    // Range one to fifty characters, at least one uppercase letter, one lowercase letter or one number.
+    var regex = /^(?=.*[a-zA-Z\d])[a-zA-Z\d\s!$%@#£^€*?&()]{1,50}$/;
     if (regex.test(inputString)) {
-        return false;
+        return true;
     }
-    if (inputString == '') {
-        return false;
-    }
-    return true;
+    return false;
 }
 
 function createRoom() {
@@ -36,7 +33,7 @@ function createRoom() {
     var roomName = roomNameEle.value;
 
     if (!validInput(roomName)) {
-        alert('Room name cannot be empty nor have special characters!');
+        alert('Room name must have at least a letter or a number, and have at most 50 characters!');
         roomNameEle.value = '';
         roomNameEle.focus();
         return false;
