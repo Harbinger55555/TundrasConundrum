@@ -29,6 +29,33 @@ button:hover {
     opacity: 0.8;
 }
 
+#puzzleDivList {
+    overflow-y: scroll;
+    position: relative;
+    height: 300px;
+    width: 40%;
+    margin: auto;
+    border: 3px solid black;
+    padding: auto 10px;
+}
+
+.roomTitle {
+    text-align: center;
+}
+
+.puzzleDiv {
+    background-color: silver;
+    overflow-y: scroll;
+    height: 40px;
+    width: 90%;
+    cursor: pointer;
+    border-radius: 7px;
+    margin: auto;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    padding: 10px;
+}
+
 /* Extra styles for the cancel button */
 .cancelbtn {
     width: auto;

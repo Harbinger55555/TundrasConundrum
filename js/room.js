@@ -2,12 +2,18 @@ firebase.auth().onAuthStateChanged(function(user) {
 	if (!user) {
 		// No user is signed in.
 		window.location.href = "../html/home.html";
+
+		// Clean up localStorage if user is no longer signed in.
+        // TODO: May have to deal with this for other users who are not owners.
+        localStorage.removeItem('roomName'); // Clear roomName from localStorage
+        localStorage.removeItem('roomKey'); // Clear roomKey from localStorage
+
 	} else {
 		// User still signed in.
 		if (user) {
 			// Get the room data from menu room creation or room selection.
 			var roomName = localStorage['roomName'];
-			localStorage.removeItem('roomName'); // Clear roomName from localStorage
+
 			document.getElementById("roomName").innerHTML = roomName;
 		}
 	}
@@ -36,13 +42,16 @@ function createPuzzle() {
 
 		// Checks if room belongs to the current User.
 		var currRoomInUser = firebase.database().ref().child('users/' + currUser + '/rooms/' + roomKey);
+
+		// If the unique roomKey exists as a child under the current user, the user is the owner.
 		currRoomInUser.once('value', function(snapshot) {
 			if (snapshot.exists()){
 				let newPuzzleKey = currRoomInUser.child('puzzles').push().key;
+				let puzzleQuestion = document.getElementById('question').value;
 
                 // Set question for puzzleId in 'rooms' database.
                 firebase.database().ref().child('rooms/' + roomKey + '/puzzles/' + newPuzzleKey).set({
-					question: document.getElementById('question').value
+					question: puzzleQuestion
 				});
 
 				// Set question for puzzleId in 'puzzles' database.
@@ -69,6 +78,9 @@ function createPuzzle() {
 				if (hint3 != "") puzzleHints.update({hint3: hint3});
 
 				document.getElementById('createPuzzleWindow').style.display = "none";
+
+				// Append the new Puzzle as a puzzleDiv into puzzleDivList.
+                appendPuzzle(puzzleQuestion);
 			}
 			else {
 				alert("Room does not belong to current User.");
@@ -93,17 +105,43 @@ function resetInputs(fieldid) {
     }
 }
 
+// Appends the puzzle as a puzzleDiv into puzzleDivList.
+function appendPuzzle(puzzleQuestion) {
+    let newPuzzleDiv = document.createElement('div');
+    newPuzzleDiv.setAttribute("class", "puzzleDiv");
+    let puzzleDivText = document.createTextNode(puzzleQuestion);
+    newPuzzleDiv.appendChild(puzzleDivText);
+
+    let puzzleDivList = document.getElementById('puzzleDivList');
+    puzzleDivList.appendChild(newPuzzleDiv);
+}
+
+// TODO: Delete this function along with related stuff in html and css.
+function tempAppendPuzzle() {
+    appendPuzzle("Blank");
+}
+
 // Get the unique key of the current room
 var roomKey = localStorage['roomKey'];
-// TODO: should relocate removing the key to a later action, since currently when a room is refreshed, the key is lost.
-localStorage.removeItem('roomKey'); // Clear roomKey from localStorage
-
-// Get the createPuzzleWindow
-var createPuzzleWindow = document.getElementById('createPuzzleWindow');
 
 // When the user clicks anywhere outside of the createRoomWindow, close it
 window.onclick = function(event) {
+    var createPuzzleWindow = document.getElementById('createPuzzleWindow');
     if (event.target == createPuzzleWindow) {
         createPuzzleWindow.style.display = "none";
     }
+}
+
+// TODO: Implement dynamic data load of 10 per overflow scroll.
+window.onload = function() {
+    let currRoomPuzzles = firebase.database().ref().child('rooms/' + roomKey + '/puzzles');
+
+    // TODO: Dynamically keep puzzleDivList up to date with firebase RTDB changes (Could use .on() then remove and refill puzzleDivList).
+	// TODO: Show loader while data is loading.
+    currRoomPuzzles.once('value', function(snapshot){
+        snapshot.forEach(function(puzzleSnapshot) {
+            let puzzleQuestion = puzzleSnapshot.child('question').val();
+            appendPuzzle(puzzleQuestion);
+        })
+    });
 }
