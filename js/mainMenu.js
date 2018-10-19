@@ -67,11 +67,13 @@ function createRoom() {
     return true;
 }
 
-// Get the createRoomWindow
-var createRoomWindow = document.getElementById('createRoomWindow');
+function viewAllChallenges() {
+    window.location.href = "../html/browse.html"
+}
 
 // When the user clicks anywhere outside of the createRoomWindow, close it
 window.onclick = function(event) {
+    var createRoomWindow = document.getElementById('createRoomWindow');
     if (event.target == createRoomWindow) {
         createRoomWindow.style.display = "none";
     }

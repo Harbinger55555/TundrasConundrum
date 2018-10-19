@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'IceFont';
+    src: url('images/CFGrandNord-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #2BABFF;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+
+.title {
+    background-color: #42ebf4;
+    text-align: center;
+    margin: auto;
+}
+
+.navbar {
+    background-color: #00ffa1;
+    text-align: center;
+    margin: auto;
+}
+
+#roomDivList {
+    overflow-y: scroll;
+    position: relative;
+    height: 500px;
+    width: 70%;
+    margin: auto;
+    border: 3px solid black;
+}
+
+.roomDiv {
+    height: 45%;
+    padding: 20px 40px;
+}
+
+.roomImgDiv {
+    height: 200px;
+    width: 200px;
+    display: inline-block;
+    float: left;
+    cursor: pointer;
+    margin-right: 100px;
+}
+
+.roomImg {
+    height: 100%;
+    width: 100%;
+}
+
+.roomDescDiv {
+    height: 160px;
+    width: 600px;
+    font-size: 20px;
+    padding: 20px;
+    display: inline-block;
+    overflow-y: scroll;
+}
+
+.roomNameDiv {
+    text-align: center;
+    height: auto;
+    width: 200px;
+    font-size: 17px;
+}
+
+.puzzleDiv {
+    background-color: silver;
+    overflow-y: scroll;
+    height: 40px;
+    width: 90%;
+    cursor: pointer;
+    border-radius: 7px;
+    margin: auto;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    padding: 10px;
+}
+

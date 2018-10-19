@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tundras Conundrum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/browse.css">
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBJhwiYbWIz5OEVp59TvKqFpImqK2sDW8U",
+            authDomain: "tundrasconundrum-31ea5.firebaseapp.com",
+            databaseURL: "https://tundrasconundrum-31ea5.firebaseio.com",
+            projectId: "tundrasconundrum-31ea5",
+            storageBucket: "",
+            messagingSenderId: "690386417705"
+        };
+        firebase.initializeApp(config);
+    </script>
+</head>
+<body>
+    <div class="title">
+        <h1>Tundra's Conundrum</h1>
+    </div>
+    <div class="navbar">
+        <h3>The NavBar</h3>
+        <button onclick="tempAppendRoom()" style="width: auto">Append Blank Room</button>
+    </div>
+
+    <div id="roomDivList"></div>
+
+<script src="../js/browse.js"></script>
+</body>
+</html>
