@@ -21,13 +21,13 @@ function appendRoom(roomImgUrl, roomDesc, roomName) {
     roomImgDiv.setAttribute("class", "roomImgDiv");
     let roomImg = document.createElement('img');
     roomImg.setAttribute("class", "roomImg");
-    roomImg.setAttribute("src", roomImgUrl);
+    roomImg.setAttribute("src", (roomImgUrl || "./images/huh.png"));
     roomImgDiv.appendChild(roomImg);
 
     // Creates a div for the room description.
     let roomDescDiv = document.createElement('div');
     roomDescDiv.setAttribute("class", "roomDescDiv");
-    let roomDescText = document.createTextNode(roomDesc);
+    let roomDescText = document.createTextNode(roomDesc || "No Description... Bask in the mystery!");
     roomDescDiv.appendChild(roomDescText);
 
     // Creates a div for the room name.
@@ -48,4 +48,20 @@ function appendRoom(roomImgUrl, roomDesc, roomName) {
 // TODO: Delete this function along with related stuff in html and css.
 function tempAppendRoom() {
     appendRoom("./images/huh.png", "This is a room. What more does ye need to know?", "Blank Name");
+}
+
+// TODO: Implement dynamic data load of 10 per overflow scroll.
+window.onload = function() {
+    let allRooms = firebase.database().ref().child('rooms');
+
+    // TODO: Dynamically keep roomDivList up to date with firebase RTDB changes (Could use .on() then remove and refill roomDivList).
+    // TODO: Show loader while data is loading.
+    allRooms.once('value', function(snapshot){
+        snapshot.forEach(function(roomSnapshot) {
+            let roomImgUrl = roomSnapshot.child('imgUrl').val();
+            let roomDesc = roomSnapshot.child('description').val();
+            let roomName = roomSnapshot.child('name').val();
+            appendRoom(roomImgUrl, roomDesc, roomName);
+        })
+    });
 }
