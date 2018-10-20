@@ -13,15 +13,14 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: auto;
 }
 
 button:hover {
     opacity: 0.8;
 }
 
-
-.title {
+.title, .subTitle {
     background-color: #42ebf4;
     text-align: center;
     margin: auto;
@@ -33,46 +32,31 @@ button:hover {
     margin: auto;
 }
 
-#roomDivList {
+#createdRoomDivList {
     overflow-y: scroll;
     position: relative;
-    height: 500px;
-    width: 70%;
+    height: 300px;
+    width: 100%;
     margin: auto;
     border: 3px solid black;
+    padding: auto 10px;
 }
 
-.roomDiv {
-    height: 45%;
-    padding: 20px 40px;
-}
-
-.roomImgDiv {
-    height: 200px;
-    width: 200px;
-    display: inline-block;
-    float: left;
-    cursor: pointer;
-    margin-right: 100px;
-}
-
-.roomImg {
-    height: 100%;
-    width: 100%;
-}
-
-.roomDescDiv {
-    height: 160px;
-    width: 600px;
-    font-size: 20px;
-    padding: 20px;
-    display: inline-block;
+.createdRoomDiv {
+    background-color: #52adce;
     overflow-y: scroll;
+    height: 30px;
+    width: 90%;
+    cursor: pointer;
+    border-radius: 7px;
+    margin: auto;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    padding: 10px;
 }
 
-.roomNameDiv {
-    text-align: center;
+.containerDiv {
+    margin: auto;
     height: auto;
-    width: 200px;
-    font-size: 20px;
+    width: 40%;
 }

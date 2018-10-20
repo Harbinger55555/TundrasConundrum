@@ -137,11 +137,12 @@ window.onload = function() {
     let currRoomPuzzles = firebase.database().ref().child('rooms/' + roomKey + '/puzzles');
 
     // TODO: Dynamically keep puzzleDivList up to date with firebase RTDB changes (Could use .on() then remove and refill puzzleDivList).
-	// TODO: Show loader while data is loading.
     currRoomPuzzles.once('value', function(snapshot){
         snapshot.forEach(function(puzzleSnapshot) {
             let puzzleQuestion = puzzleSnapshot.child('question').val();
             appendPuzzle(puzzleQuestion);
         })
+        // Hide the loader.
+        document.getElementById('loader').style.display = 'none';
     });
 }

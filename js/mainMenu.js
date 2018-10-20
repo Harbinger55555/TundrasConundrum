@@ -71,6 +71,10 @@ function viewAllChallenges() {
     window.location.href = "../html/browse.html"
 }
 
+function viewCreatedChallenges() {
+    window.location.href = "../html/createdRooms.html"
+}
+
 // When the user clicks anywhere outside of the createRoomWindow, close it
 window.onclick = function(event) {
     var createRoomWindow = document.getElementById('createRoomWindow');

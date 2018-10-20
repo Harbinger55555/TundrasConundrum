@@ -22,11 +22,15 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: auto;
 }
 
 button:hover {
     opacity: 0.8;
+}
+
+#createRoomButton {
+    width: 100%;
 }
 
 /* Extra styles for the cancel button */

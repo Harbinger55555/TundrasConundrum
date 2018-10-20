@@ -5,7 +5,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     } else {
         // User still signed in.
         if (user) {
-
+            // Only load rooms if a user is logged in.
+            loadAllRooms();
         }
     }
 });
@@ -51,11 +52,10 @@ function tempAppendRoom() {
 }
 
 // TODO: Implement dynamic data load of 10 per overflow scroll.
-window.onload = function() {
+function loadAllRooms() {
     let allRooms = firebase.database().ref().child('rooms');
 
     // TODO: Dynamically keep roomDivList up to date with firebase RTDB changes (Could use .on() then remove and refill roomDivList).
-    // TODO: Show loader while data is loading.
     allRooms.once('value', function(snapshot){
         snapshot.forEach(function(roomSnapshot) {
             let roomImgUrl = roomSnapshot.child('imgUrl').val();
@@ -63,5 +63,7 @@ window.onload = function() {
             let roomName = roomSnapshot.child('name').val();
             appendRoom(roomImgUrl, roomDesc, roomName);
         })
+        // Hide the loader.
+        document.getElementById('loader').style.display = 'none';
     });
 }

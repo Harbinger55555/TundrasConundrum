@@ -3,7 +3,7 @@
 <head>
     <title>Tundras Conundrum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/browse.css">
+    <link rel="stylesheet" href="../css/createdRooms.css">
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
     <script>
         // Initialize Firebase
@@ -20,15 +20,16 @@
 </head>
 <body>
     <div class="title"><h1>Tundra's Conundrum</h1></div>
-    <div class="navbar">
-        <h3>The NavBar</h3>
-        <button onclick="tempAppendRoom()" style="width: auto">Append Blank Room</button>
+    <div class="navbar"><h3>The NavBar</h3></div>
+    <div class="subTitle"><h2>My Conundrums</h2></div>
+
+    <div class="containerDiv">
+        <button onclick="tempAppendRoom()">Append Blank Room</button>
+        <div id="createdRoomDivList">
+            <div id="loader">Loading...</div>
+        </div>
     </div>
 
-    <div id="roomDivList">
-        <div id="loader">Loading...</div>
-    </div>
-
-<script src="../js/browse.js"></script>
+<script src="../js/createdRooms.js"></script>
 </body>
 </html>
