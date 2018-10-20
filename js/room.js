@@ -13,8 +13,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			// Get the room data from menu room creation or room selection.
 			var roomName = localStorage['roomName'];
-
 			document.getElementById("roomName").innerHTML = roomName;
+			loadPuzzles();
 		}
 	}
 });
@@ -133,7 +133,7 @@ window.onclick = function(event) {
 }
 
 // TODO: Implement dynamic data load of 10 per overflow scroll.
-window.onload = function() {
+function loadPuzzles() {
     let currRoomPuzzles = firebase.database().ref().child('rooms/' + roomKey + '/puzzles');
 
     // TODO: Dynamically keep puzzleDivList up to date with firebase RTDB changes (Could use .on() then remove and refill puzzleDivList).
