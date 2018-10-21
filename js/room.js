@@ -3,16 +3,16 @@ firebase.auth().onAuthStateChanged(function(user) {
 		// No user is signed in.
 		window.location.href = "../html/home.html";
 
-		// Clean up localStorage if user is no longer signed in.
+		// Clean up sessionStorage if user is no longer signed in.
         // TODO: May have to deal with this for other users who are not owners.
-        localStorage.removeItem('roomName'); // Clear roomName from localStorage
-        localStorage.removeItem('roomKey'); // Clear roomKey from localStorage
+        sessionStorage.removeItem('roomName'); // Clear roomName from sessionStorage
+        sessionStorage.removeItem('roomKey'); // Clear roomKey from sessionStorage
 
 	} else {
 		// User still signed in.
 		if (user) {
 			// Get the room data from menu room creation or room selection.
-			var roomName = localStorage['roomName'];
+			var roomName = sessionStorage['roomName'];
 			document.getElementById("roomName").innerHTML = roomName;
 			loadPuzzles();
 		}
@@ -86,7 +86,7 @@ function createPuzzle() {
                 let currPuzzleDivIndex = document.getElementById('puzzleDivList').childElementCount - 2;
 
                 // A map of puzzleDivs to their respective puzzle keys.
-                localStorage.setItem('puzzleKey' + currPuzzleDivIndex, newPuzzleKey);
+                sessionStorage.setItem('puzzleKey' + currPuzzleDivIndex, newPuzzleKey);
 			}
 			else {
 				alert("Room does not belong to current User.");
@@ -147,19 +147,19 @@ function openDelConfirmWindow() {
     for (var puzzleDivIndex=0; (currDiv=currDiv.previousSibling); puzzleDivIndex++);
     puzzleDivIndex -= 3;
 
-    localStorage.setItem('delClickPuzzle', puzzleDivIndex);
+    sessionStorage.setItem('delClickPuzzle', puzzleDivIndex);
 }
 
 // Delete the puzzle from the room, and from puzzles.
 function delYesClicked() {
     // No need to remove delClickPuzzle from storage since it will be overwritten with new del clicks or removed when a
     // user goes to another page.
-    let delClickPuzzle = localStorage['delClickPuzzle'];
-    let puzzleKey = localStorage['puzzleKey' + delClickPuzzle];
+    let delClickPuzzle = sessionStorage['delClickPuzzle'];
+    let puzzleKey = sessionStorage['puzzleKey' + delClickPuzzle];
 
-    // Delete puzzleKey from localStorage for the case when if the deleted puzzle is the last puzzle, then the puzzleKey will
+    // Delete puzzleKey from sessionStorage for the case when if the deleted puzzle is the last puzzle, then the puzzleKey will
     // still persist (not overwritten by page refresh).
-    localStorage.removeItem('puzzleKey' + delClickPuzzle);
+    sessionStorage.removeItem('puzzleKey' + delClickPuzzle);
 
     var updates = {};
 
@@ -169,14 +169,14 @@ function delYesClicked() {
     // Delete the puzzle from puzzles.
     updates['/puzzles/' + puzzleKey] = null;
 
-    // Update the firebase RTDB and refresh the page to update the changes in the localStorage as well.
+    // Update the firebase RTDB and refresh the page to update the changes in the sessionStorage as well.
     firebase.database().ref().update(updates).then(
         () => {document.location.reload(true)}
     );
 }
 
 // Get the unique key of the current room
-var roomKey = localStorage['roomKey'];
+var roomKey = sessionStorage['roomKey'];
 
 // When the user clicks anywhere outside of the createRoomWindow, close it
 window.onclick = function(event) {
@@ -203,7 +203,7 @@ function loadPuzzles() {
             let currPuzzleDivIndex = document.getElementById('puzzleDivList').childElementCount - 2;
 
             // A map of puzzleDivs to their respective puzzle keys.
-            localStorage.setItem('puzzleKey' + currPuzzleDivIndex, puzzleId);
+            sessionStorage.setItem('puzzleKey' + currPuzzleDivIndex, puzzleId);
         })
         // Hide the loader.
         document.getElementById('loader').style.display = 'none';

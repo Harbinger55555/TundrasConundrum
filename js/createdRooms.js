@@ -51,8 +51,8 @@ function loadCreatedRooms(userId) {
                 let currRoomDivIndex = document.getElementById('createdRoomDivList').childElementCount - 2;
 
                 // A map of createdRoomDivs to their respective room names and keys.
-                localStorage.setItem('roomDiv' + currRoomDivIndex, snapshot.val());
-                localStorage.setItem('roomKey' + currRoomDivIndex, roomId);
+                sessionStorage.setItem('roomDiv' + currRoomDivIndex, snapshot.val());
+                sessionStorage.setItem('roomKey' + currRoomDivIndex, roomId);
             });
         })
         // Hide the loader.
@@ -71,15 +71,15 @@ function createdRoomDivOnClick() {
 
     // TODO: can roomName be obtained with this.innerHTML or this.textContent?
     // Prepare data of room to send to room.html
-    let roomName = localStorage['roomDiv' + createdRoomDivIndex];
-    let roomKey = localStorage['roomKey' + createdRoomDivIndex];
+    let roomName = sessionStorage['roomDiv' + createdRoomDivIndex];
+    let roomKey = sessionStorage['roomKey' + createdRoomDivIndex];
 
-    // Clear all temporary roomDiv and roomKey data from localStorage before passing room data to room.html.
-    // localStorage.clear();
+    // Clear all temporary roomDiv and roomKey data from sessionStorage before passing room data to room.html.
+    // sessionStorage.clear();
 
     // Prepare data of room to send to room.html
-    localStorage.setItem('roomName', roomName);
-    localStorage.setItem('roomKey', roomKey);
+    sessionStorage.setItem('roomName', roomName);
+    sessionStorage.setItem('roomKey', roomKey);
 
     window.location.href = "../html/room.html";
 }
@@ -97,19 +97,19 @@ function openDelConfirmWindow() {
     for (var createdRoomDivIndex=0; (currDiv=currDiv.previousSibling); createdRoomDivIndex++);
     createdRoomDivIndex -= 3;
 
-    localStorage.setItem('delClickRoom', createdRoomDivIndex);
+    sessionStorage.setItem('delClickRoom', createdRoomDivIndex);
 }
 
 // Delete all puzzles under the room, and all instances of the room in rooms and users.
 function delYesClicked() {
     // No need to remove delClickRoom from storage since it will be overwritten with new del clicks or removed when a
     // user goes to another page.
-    let delClickRoom = localStorage['delClickRoom'];
-    let roomKey = localStorage['roomKey' + delClickRoom];
+    let delClickRoom = sessionStorage['delClickRoom'];
+    let roomKey = sessionStorage['roomKey' + delClickRoom];
 
-    // Delete roomKey from localStorage for the case when if the deleted room is the last room, then the roomKey will
+    // Delete roomKey from sessionStorage for the case when if the deleted room is the last room, then the roomKey will
     // still persist (not overwritten by page refresh).
-    localStorage.removeItem('roomKey' + delClickRoom);
+    sessionStorage.removeItem('roomKey' + delClickRoom);
 
     var updates = {};
     // Get the currently logged in user.
@@ -130,7 +130,7 @@ function delYesClicked() {
             // Delete the room under room database.
             updates['/rooms/' + roomKey] = null
 
-            // Update the firebase RTDB and refresh the page to update the changes in the localStorage as well.
+            // Update the firebase RTDB and refresh the page to update the changes in the sessionStorage as well.
             firebase.database().ref().update(updates).then(
                 () => {document.location.reload(true)
                 });
@@ -168,8 +168,8 @@ function createRoom() {
     var roomKey = newRoom.key;
 
     // Prepare data of room to send to room.html
-    localStorage.setItem('roomName', roomName);
-    localStorage.setItem('roomKey', roomKey);
+    sessionStorage.setItem('roomName', roomName);
+    sessionStorage.setItem('roomKey', roomKey);
 
     // Set roomName for roomId in 'users' database.
     newRoom.set({

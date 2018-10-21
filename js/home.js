@@ -1,18 +1,18 @@
-firebase.auth().onAuthStateChanged(function(user) {
-	if (user) {
-		// User is signed in.
+firebase.auth().onAuthStateChanged(function(sessionStorage) {
+	if (sessionStorage) {
+		// sessionStorage is signed in.
 		window.location.href = "../html/mainMenu.html";
 	} else {
-		// No user signed in.
+		// No sessionStorage signed in.
 		
 	}
 });
 
 function login() {
-	var userEmail = document.getElementById("emailField").value;
-	var userPass = document.getElementById("pwdField").value;
+	var sessionStorageEmail = document.getElementById("emailField").value;
+	var sessionStoragePass = document.getElementById("pwdField").value;
 	
-	firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(function() {
+	firebase.auth().signInWithEmailAndPassword(sessionStorageEmail, sessionStoragePass).then(function() {
 		// Sign-in successful.
 		window.location.href = "../html/mainMenu.html";
 	}).catch(function(error) {
@@ -47,10 +47,10 @@ function signUpSubmit() {
         return false;
     }
 	
-	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+	firebase.auth().createsessionStorageWithEmailAndPassword(email, password).catch(function(error) {
 	  // Handle Errors here.
 		window.alert(error);
-	  // If an error occurred, allow user to sign up again.
+	  // If an error occurred, allow sessionStorage to sign up again.
         signUpButton.disabled = false;
 	});
 }
@@ -70,12 +70,12 @@ function forgetPwd() {
 }
 
 function forgetPwdSubmit() {
-    var currUserEmail = document.getElementById('forgetPwdEmailField').value;
+    var currsessionStorageEmail = document.getElementById('forgetPwdEmailField').value;
     // Prevent multiple submissions to firebase.
     var forgetPwdSubmitButton = document.getElementById("forgetPwdSubmitButton");
     forgetPwdSubmitButton.disabled = true;
 
-    firebase.auth().sendPasswordResetEmail(currUserEmail).then(function() {
+    firebase.auth().sendPasswordResetEmail(currsessionStorageEmail).then(function() {
         // Email sent.
         window.alert('Password reset link sent!');
         document.getElementById('forgetPwdWindow').style.display = "none";
@@ -89,7 +89,7 @@ function forgetPwdSubmit() {
     });
 }
 
-// When the user clicks anywhere outside of the signUpWindow or forgetPwdWindow, close it
+// When the sessionStorage clicks anywhere outside of the signUpWindow or forgetPwdWindow, close it
 window.onclick = function(event) {
 	// Get the signUpWindow
 	let signUpWindow = document.getElementById('signUpWindow');
@@ -107,7 +107,7 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var uiConfig = {
 	callbacks: {
 	signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-	  // User successfully signed in.
+	  // sessionStorage successfully signed in.
 	  // Return type determines whether we continue the redirect automatically
 	  // or whether we leave that to developer to handle.
 	  return true;
@@ -122,7 +122,7 @@ var uiConfig = {
 	signInFlow: 'popup',
 	signInSuccessUrl: '<url-to-redirect-to-on-success>',
 	signInOptions: [
-	// Leave the lines as is for the providers you want to offer your users.
+	// Leave the lines as is for the providers you want to offer your sessionStorages.
 	firebase.auth.GoogleAuthProvider.PROVIDER_ID,
 	firebase.auth.FacebookAuthProvider.PROVIDER_ID,
 	],
