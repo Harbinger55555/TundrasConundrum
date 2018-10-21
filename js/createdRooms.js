@@ -61,7 +61,6 @@ function loadCreatedRooms(userId) {
 }
 
 function createdRoomDivOnClick() {
-    console.log("createdRoomDivOnClick() was called!");
     let currDiv = event.target;
 
     // At the end of the loop, createdRoomDivIndex will contain the index.
@@ -78,8 +77,8 @@ function createdRoomDivOnClick() {
     // sessionStorage.clear();
 
     // Prepare data of room to send to room.html
-    sessionStorage.setItem('roomName', roomName);
-    sessionStorage.setItem('roomKey', roomKey);
+    localStorage.setItem('roomName', roomName);
+    localStorage.setItem('roomKey', roomKey);
 
     window.location.href = "../html/room.html";
 }
@@ -102,16 +101,13 @@ function openDelConfirmWindow() {
 
 // Delete all puzzles under the room, and all instances of the room in rooms and users.
 function delYesClicked() {
-    // No need to remove delClickRoom from storage since it will be overwritten with new del clicks or removed when a
-    // user goes to another page.
+    // No need to remove delClickRoom from storage since it will be overwritten with new del clicks. Also, user won't
+    // be able to access the 'overflowed' indexes anyways so no need for extra processing to just remove the other keys.
     let delClickRoom = sessionStorage['delClickRoom'];
     let roomKey = sessionStorage['roomKey' + delClickRoom];
 
-    // Delete roomKey from sessionStorage for the case when if the deleted room is the last room, then the roomKey will
-    // still persist (not overwritten by page refresh).
-    sessionStorage.removeItem('roomKey' + delClickRoom);
-
     var updates = {};
+
     // Get the currently logged in user.
     var currUser = firebase.auth().currentUser.uid;
 
@@ -168,8 +164,8 @@ function createRoom() {
     var roomKey = newRoom.key;
 
     // Prepare data of room to send to room.html
-    sessionStorage.setItem('roomName', roomName);
-    sessionStorage.setItem('roomKey', roomKey);
+    localStorage.setItem('roomName', roomName);
+    localStorage.setItem('roomKey', roomKey);
 
     // Set roomName for roomId in 'users' database.
     newRoom.set({

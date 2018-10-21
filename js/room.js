@@ -5,14 +5,14 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 		// Clean up sessionStorage if user is no longer signed in.
         // TODO: May have to deal with this for other users who are not owners.
-        sessionStorage.removeItem('roomName'); // Clear roomName from sessionStorage
-        sessionStorage.removeItem('roomKey'); // Clear roomKey from sessionStorage
+        localStorage.removeItem('roomName'); // Clear roomName from sessionStorage
+        localStorage.removeItem('roomKey'); // Clear roomKey from sessionStorage
 
 	} else {
 		// User still signed in.
 		if (user) {
 			// Get the room data from menu room creation or room selection.
-			var roomName = sessionStorage['roomName'];
+			var roomName = localStorage['roomName'];
 			document.getElementById("roomName").innerHTML = roomName;
 			loadPuzzles();
 		}
@@ -96,6 +96,10 @@ function createPuzzle() {
 }
 
 function openPuzzleWindow() {
+    if (userInDiffRoom()) {
+        return false;
+    }
+
     resetInputs('puzzleContainer');
 	document.getElementById('createPuzzleWindow').style.display = 'block';
 	
@@ -138,6 +142,10 @@ function openDelConfirmWindow() {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
 
+    if (userInDiffRoom()) {
+        return false;
+    }
+
     document.getElementById('delConfirmWindow').style.display = 'block';
     let delIconOfCurrDiv  = event.target;
     let currDiv = delIconOfCurrDiv.parentElement;
@@ -152,14 +160,10 @@ function openDelConfirmWindow() {
 
 // Delete the puzzle from the room, and from puzzles.
 function delYesClicked() {
-    // No need to remove delClickPuzzle from storage since it will be overwritten with new del clicks or removed when a
-    // user goes to another page.
+    // No need to remove delClickPuzzle from storage since it will be overwritten with new del clicks. Also, user won't
+    // be able to access the 'overflowed' indexes anyways so no need for extra processing to just remove the other keys.
     let delClickPuzzle = sessionStorage['delClickPuzzle'];
     let puzzleKey = sessionStorage['puzzleKey' + delClickPuzzle];
-
-    // Delete puzzleKey from sessionStorage for the case when if the deleted puzzle is the last puzzle, then the puzzleKey will
-    // still persist (not overwritten by page refresh).
-    sessionStorage.removeItem('puzzleKey' + delClickPuzzle);
 
     var updates = {};
 
@@ -175,8 +179,19 @@ function delYesClicked() {
     );
 }
 
+function userInDiffRoom() {
+    // Case when the user is in another room in another tab. This is to prevent inconsistency of data between tabs.
+    // sessionStorage supposedly takes care of that but in the case when a user directly opens the page, the room data
+    // does not persist for the new session.
+    if (roomKey != localStorage['roomKey']) {
+        alert('Currently in room (' + localStorage['roomName'] + ')! Please refresh the page.');
+        return true;
+    }
+    return false;
+}
+
 // Get the unique key of the current room
-var roomKey = sessionStorage['roomKey'];
+var roomKey = localStorage['roomKey'];
 
 // When the user clicks anywhere outside of the createRoomWindow, close it
 window.onclick = function(event) {
