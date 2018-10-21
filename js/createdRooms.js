@@ -19,6 +19,13 @@ function appendRoom(roomName) {
     let roomDivText = document.createTextNode(roomName);
     newRoomDiv.appendChild(roomDivText);
 
+    // TODO: Add alt.
+    let roomDivDelIcon = document.createElement('img');
+    roomDivDelIcon.setAttribute("class", "delIcon");
+    roomDivDelIcon.setAttribute("src", "./images/trash.png");
+    roomDivDelIcon.setAttribute("onclick", "openDelConfirmWindow()");
+    newRoomDiv.appendChild(roomDivDelIcon);
+
     let createdRoomDivList = document.getElementById('createdRoomDivList');
     createdRoomDivList.appendChild(newRoomDiv);
 }
@@ -30,7 +37,6 @@ function tempAppendRoom() {
 
 // TODO: Implement dynamic data load of 10 per overflow scroll.
 function loadCreatedRooms(userId) {
-    // Get the currently logged in user.
     let allCreatedRooms = firebase.database().ref().child('users/' + userId + '/rooms');
 
     // TODO: Dynamically keep roomDivList up to date with firebase RTDB changes (Could use .on() then remove and refill roomDivList).
@@ -55,6 +61,7 @@ function loadCreatedRooms(userId) {
 }
 
 function createdRoomDivOnClick() {
+    console.log("createdRoomDivOnClick() was called!");
     let currDiv = event.target;
 
     // At the end of the loop, createdRoomDivIndex will contain the index.
@@ -75,6 +82,59 @@ function createdRoomDivOnClick() {
     localStorage.setItem('roomKey', roomKey);
 
     window.location.href = "../html/room.html";
+}
+
+function openDelConfirmWindow() {
+    // To prevent click event from bubbling to parent and triggering its onclick as well.
+    event.stopPropagation();
+
+    document.getElementById('delConfirmWindow').style.display = 'block';
+    let delIconOfCurrDiv  = event.target;
+    let currDiv = delIconOfCurrDiv.parentElement;
+
+    // At the end of the loop, createdRoomDivIndex will contain the index.
+    // The first roomDiv has index of 3 thus the -3 to make it zero-based.
+    for (var createdRoomDivIndex=0; (currDiv=currDiv.previousSibling); createdRoomDivIndex++);
+    createdRoomDivIndex -= 3;
+
+    localStorage.setItem('delClickRoom', createdRoomDivIndex);
+}
+
+// Delete all puzzles under the room, and all instances of the room in rooms and users.
+function delYesClicked() {
+    // No need to remove delClickRoom from storage since it will be overwritten with new del clicks or removed when a
+    // user goes to another page.
+    let delClickRoom = localStorage['delClickRoom'];
+    let roomKey = localStorage['roomKey' + delClickRoom];
+
+    // Delete roomKey from localStorage for the case when if the deleted room is the last room, then the roomKey will
+    // still persist (not overwritten by page refresh).
+    // localStorage.removeItem('roomKey' + delClickRoom);
+
+    var updates = {};
+    // Get the currently logged in user.
+    var currUser = firebase.auth().currentUser.uid;
+
+    // Delete room data under user database.
+    updates['/users/' + currUser + '/rooms/' + roomKey] = null;
+
+    // Delete all puzzles relating to the room from the firebase RTDB.
+    let delClickRoomPuzzleData = firebase.database().ref().child('rooms/' + roomKey + '/puzzles');
+    delClickRoomPuzzleData.once('value', function(snapshot) {
+        snapshot.forEach(function (puzzleSnapshot) {
+            let puzzleId = puzzleSnapshot.key;
+            updates['/puzzles/' + puzzleId] = null;
+        })
+    }).then(
+        () => {
+            // Delete the room under room database.
+            updates['/rooms/' + roomKey] = null
+
+            // Update the firebase RTDB and refresh the page to update the changes in the localStorage as well.
+            firebase.database().ref().update(updates).then(
+                () => {document.location.reload(true)
+                });
+        });
 }
 
 function validInput(inputString) {
@@ -129,9 +189,11 @@ function createRoom() {
 
 // When the user clicks anywhere outside of the createRoomWindow, close it
 window.onclick = function(event) {
-    var createRoomWindow = document.getElementById('createRoomWindow');
-    if (event.target == createRoomWindow) {
+    let createRoomWindow = document.getElementById('createRoomWindow');
+    let delConfirmWindow = document.getElementById('delConfirmWindow');
+    if (event.target == createRoomWindow || event.target == delConfirmWindow) {
         createRoomWindow.style.display = "none";
+        delConfirmWindow.style.display = "none";
     }
 }
 

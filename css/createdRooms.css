@@ -35,6 +35,22 @@ button:hover {
     width: 100%;
 }
 
+#delText {
+    line-height: 100px;
+    height: 100px;
+}
+
+#delYes {
+    float: left;
+    background-color: lightgreen;
+    border-bottom-left-radius: 5px;
+}
+
+#delNo {
+    background-color: #fc8982;
+    border-bottom-right-radius: 5px;
+}
+
 .title, .subTitle {
     background-color: #42ebf4;
     text-align: center;
@@ -68,6 +84,8 @@ button:hover {
     margin-top: 7px;
     margin-bottom: 7px;
     padding: 10px;
+    line-height: 30px;
+    display: flex;
 }
 
 .containerDiv {
@@ -79,6 +97,35 @@ button:hover {
 .container {
     position: relative;
     padding: 16px;
+}
+
+.delContainer {
+    position: relative;
+    text-align: center;
+}
+
+.delModalContent {
+    background-color: white;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    width: 23%;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+.delConfirmChoices {
+    width: 50%;
+    height: 50px;
+    line-height: 50px; /* To center align the text vertically */
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+}
+
+.delIcon {
+    margin-left: auto;
+    align-self: center;
+    width: 20px;
+    height: 20px;
 }
 
 /* The Modal (background) */
@@ -101,7 +148,7 @@ button:hover {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 40%; /* Could be more or less, depending on screen size */
+    width: 30%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */
@@ -110,7 +157,7 @@ button:hover {
     top: 0;
     right: 10px;
     color: #000;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: bold;
 }
 
