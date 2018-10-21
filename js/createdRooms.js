@@ -109,7 +109,7 @@ function delYesClicked() {
 
     // Delete roomKey from localStorage for the case when if the deleted room is the last room, then the roomKey will
     // still persist (not overwritten by page refresh).
-    // localStorage.removeItem('roomKey' + delClickRoom);
+    localStorage.removeItem('roomKey' + delClickRoom);
 
     var updates = {};
     // Get the currently logged in user.

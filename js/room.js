@@ -81,6 +81,12 @@ function createPuzzle() {
 
 				// Append the new Puzzle as a puzzleDiv into puzzleDivList.
                 appendPuzzle(puzzleQuestion);
+
+                // The first puzzleDiv creation appends two children to the puzzleDivList.
+                let currPuzzleDivIndex = document.getElementById('puzzleDivList').childElementCount - 2;
+
+                // A map of puzzleDivs to their respective puzzle keys.
+                localStorage.setItem('puzzleKey' + currPuzzleDivIndex, newPuzzleKey);
 			}
 			else {
 				alert("Room does not belong to current User.");
@@ -112,6 +118,13 @@ function appendPuzzle(puzzleQuestion) {
     let puzzleDivText = document.createTextNode(puzzleQuestion);
     newPuzzleDiv.appendChild(puzzleDivText);
 
+    // TODO: Add alt.
+    let puzzleDivDelIcon = document.createElement('img');
+    puzzleDivDelIcon.setAttribute("class", "delIcon");
+    puzzleDivDelIcon.setAttribute("src", "./images/trash.png");
+    puzzleDivDelIcon.setAttribute("onclick", "openDelConfirmWindow()");
+    newPuzzleDiv.appendChild(puzzleDivDelIcon);
+
     let puzzleDivList = document.getElementById('puzzleDivList');
     puzzleDivList.appendChild(newPuzzleDiv);
 }
@@ -121,14 +134,57 @@ function tempAppendPuzzle() {
     appendPuzzle("Blank");
 }
 
+function openDelConfirmWindow() {
+    // To prevent click event from bubbling to parent and triggering its onclick as well.
+    event.stopPropagation();
+
+    document.getElementById('delConfirmWindow').style.display = 'block';
+    let delIconOfCurrDiv  = event.target;
+    let currDiv = delIconOfCurrDiv.parentElement;
+
+    // At the end of the loop, puzzleDivIndex will contain the index.
+    // The first puzzleDiv has index of 3 thus the -3 to make it zero-based.
+    for (var puzzleDivIndex=0; (currDiv=currDiv.previousSibling); puzzleDivIndex++);
+    puzzleDivIndex -= 3;
+
+    localStorage.setItem('delClickPuzzle', puzzleDivIndex);
+}
+
+// Delete the puzzle from the room, and from puzzles.
+function delYesClicked() {
+    // No need to remove delClickPuzzle from storage since it will be overwritten with new del clicks or removed when a
+    // user goes to another page.
+    let delClickPuzzle = localStorage['delClickPuzzle'];
+    let puzzleKey = localStorage['puzzleKey' + delClickPuzzle];
+
+    // Delete puzzleKey from localStorage for the case when if the deleted puzzle is the last puzzle, then the puzzleKey will
+    // still persist (not overwritten by page refresh).
+    localStorage.removeItem('puzzleKey' + delClickPuzzle);
+
+    var updates = {};
+
+    // Delete the puzzle from the room.
+    updates['/rooms/' + roomKey + '/puzzles/' + puzzleKey] = null;
+
+    // Delete the puzzle from puzzles.
+    updates['/puzzles/' + puzzleKey] = null;
+
+    // Update the firebase RTDB and refresh the page to update the changes in the localStorage as well.
+    firebase.database().ref().update(updates).then(
+        () => {document.location.reload(true)}
+    );
+}
+
 // Get the unique key of the current room
 var roomKey = localStorage['roomKey'];
 
 // When the user clicks anywhere outside of the createRoomWindow, close it
 window.onclick = function(event) {
     var createPuzzleWindow = document.getElementById('createPuzzleWindow');
-    if (event.target == createPuzzleWindow) {
+    let delConfirmWindow = document.getElementById('delConfirmWindow');
+    if (event.target == createPuzzleWindow || event.target == delConfirmWindow) {
         createPuzzleWindow.style.display = "none";
+        delConfirmWindow.style.display = "none";
     }
 }
 
@@ -139,8 +195,15 @@ function loadPuzzles() {
     // TODO: Dynamically keep puzzleDivList up to date with firebase RTDB changes (Could use .on() then remove and refill puzzleDivList).
     currRoomPuzzles.once('value', function(snapshot){
         snapshot.forEach(function(puzzleSnapshot) {
+            let puzzleId = puzzleSnapshot.key;
             let puzzleQuestion = puzzleSnapshot.child('question').val();
             appendPuzzle(puzzleQuestion);
+
+            // The first puzzleDiv creation appends two children to the puzzleDivList.
+            let currPuzzleDivIndex = document.getElementById('puzzleDivList').childElementCount - 2;
+
+            // A map of puzzleDivs to their respective puzzle keys.
+            localStorage.setItem('puzzleKey' + currPuzzleDivIndex, puzzleId);
         })
         // Hide the loader.
         document.getElementById('loader').style.display = 'none';
