@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tundras Conundrum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/createdRooms.css">
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBJhwiYbWIz5OEVp59TvKqFpImqK2sDW8U",
+            authDomain: "tundrasconundrum-31ea5.firebaseapp.com",
+            databaseURL: "https://tundrasconundrum-31ea5.firebaseio.com",
+            projectId: "tundrasconundrum-31ea5",
+            storageBucket: "",
+            messagingSenderId: "690386417705"
+        };
+        firebase.initializeApp(config);
+    </script>
+</head>
+<body>
+    <div class="title"><h1>Tundra's Conundrum</h1></div>
+    <div class="navbar"><h3>The NavBar</h3></div>
+    <div class="subTitle"><h2>My Conundrums</h2></div>
+
+    <div class="containerDiv">
+        <button onclick="document.getElementById('createRoomWindow').style.display='block'">Create Room</button>
+        <button onclick="tempAppendRoom()">Append Blank Room</button>
+        <div id="createdRoomDivList">
+            <div id="loader">Loading...</div>
+        </div>
+    </div>
+
+    <div id="createRoomWindow" class="modal">
+
+        <div class="modal-content animate">
+
+            <div class="container">
+                <span onclick="document.getElementById('createRoomWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <label for="roomName"><b>Room Name</b></label>
+                <input type="text" id="roomName" placeholder="Enter Room Name" name="roomName">
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button id="createRoomButton" type="submit" onclick="createRoom()">Create Room</button>
+            </div>
+        </div>
+    </div>
+
+<script src="../js/createdRooms.js"></script>
+</body>
+</html>
