@@ -122,26 +122,33 @@ function appendPuzzle(puzzleQuestion) {
     let puzzleDivText = document.createTextNode(puzzleQuestion);
     newPuzzleDiv.appendChild(puzzleDivText);
 
-    // TODO: Add alt.
-    let puzzleDivLeftIcon = document.createElement('img');
-    puzzleDivLeftIcon.setAttribute("class", "delIcon");
-    puzzleDivLeftIcon.setAttribute("src", "./images/arrow_left.png");
-    puzzleDivLeftIcon.setAttribute("onclick", "openDelConfirmWindow()");
-    newPuzzleDiv.appendChild(puzzleDivLeftIcon);
+    // Create a div to hold the icons.
+    let puzzleIconsDiv = document.createElement('div');
+    puzzleIconsDiv.setAttribute("class", "puzzleIconsDiv");
+    newPuzzleDiv.appendChild(puzzleIconsDiv);
 
     // TODO: Add alt.
+    // Left transition is also used as the "wrong answer" transition.
+    let puzzleDivLeftIcon = document.createElement('img');
+    puzzleDivLeftIcon.setAttribute("class", "puzzleDivIcons");
+    puzzleDivLeftIcon.setAttribute("src", "./images/arrow_left_default.png");
+    puzzleDivLeftIcon.setAttribute("onclick", "toggleLeftTransitionMode()");
+    puzzleIconsDiv.appendChild(puzzleDivLeftIcon);
+
+    // TODO: Add alt.
+    // Right transition is also used as the "right answer" transition.
     let puzzleDivRightIcon = document.createElement('img');
-    puzzleDivRightIcon.setAttribute("class", "delIcon");
-    puzzleDivRightIcon.setAttribute("src", "./images/arrow_right.png");
-    puzzleDivRightIcon.setAttribute("onclick", "openDelConfirmWindow()");
-    newPuzzleDiv.appendChild(puzzleDivRightIcon);
+    puzzleDivRightIcon.setAttribute("class", "puzzleDivIcons");
+    puzzleDivRightIcon.setAttribute("src", "./images/arrow_right_default.png");
+    puzzleDivRightIcon.setAttribute("onclick", "toggleRightTransitionMode()");
+    puzzleIconsDiv.appendChild(puzzleDivRightIcon);
 
     // TODO: Add alt.
     let puzzleDivDelIcon = document.createElement('img');
-    puzzleDivDelIcon.setAttribute("class", "delIcon");
+    puzzleDivDelIcon.setAttribute("class", "puzzleDivIcons");
     puzzleDivDelIcon.setAttribute("src", "./images/trash.png");
     puzzleDivDelIcon.setAttribute("onclick", "openDelConfirmWindow()");
-    newPuzzleDiv.appendChild(puzzleDivDelIcon);
+    puzzleIconsDiv.appendChild(puzzleDivDelIcon);
 
     let puzzleDivList = document.getElementById('puzzleDivList');
     puzzleDivList.appendChild(newPuzzleDiv);
@@ -162,7 +169,8 @@ function openDelConfirmWindow() {
 
     document.getElementById('delConfirmWindow').style.display = 'block';
     let delIconOfCurrDiv  = event.target;
-    let currDiv = delIconOfCurrDiv.parentElement;
+    let puzzleIconsDiv = delIconOfCurrDiv.parentElement;
+    let currDiv = puzzleIconsDiv.parentElement;
 
     // At the end of the loop, puzzleDivIndex will contain the index.
     // The first puzzleDiv has index of 3 thus the -3 to make it zero-based.
@@ -193,6 +201,59 @@ function delYesClicked() {
     );
 }
 
+// TODO: Make buttons of other puzzleDivs unclickable when a transitionMode is toggled on.
+// TODO: (Can make it by checking if leftTransitionModeToggled and comparing current div id with the one in storage.)
+function toggleLeftTransitionMode() {
+    // To prevent click event from bubbling to parent and triggering its onclick as well.
+    event.stopPropagation();
+
+    if (userInDiffRoom()) {
+        return false;
+    }
+
+    // Ask user to toggle off right transition mode if on.
+    if (rightTransitionModeToggled) {
+        window.alert("Please turn off the 'right transition mode' first.");
+        return false;
+    }
+
+    // Change the icon to toggled img.
+    let leftIconOfCurrDiv  = event.target;
+    leftTransitionModeToggled = !leftTransitionModeToggled;
+    leftIconOfCurrDiv.setAttribute("src", (leftTransitionModeToggled ? "./images/arrow_left_toggled.png" : "./images/arrow_left_default.png"));
+
+    let puzzleIconsDiv = leftIconOfCurrDiv.parentElement;
+
+    // The puzzle whose left transition edit mode is toggled on.
+    let currDiv = puzzleIconsDiv.parentElement;
+
+}
+
+function toggleRightTransitionMode() {
+    // To prevent click event from bubbling to parent and triggering its onclick as well.
+    event.stopPropagation();
+
+    if (userInDiffRoom()) {
+        return false;
+    }
+
+    // Ask user to toggle off left transition mode if on.
+    if (leftTransitionModeToggled) {
+        window.alert("Please turn off the 'left transition mode' first.");
+        return false;
+    }
+
+    // Change the icon to toggled img.
+    let rightIconOfCurrDiv  = event.target;
+    rightTransitionModeToggled = !rightTransitionModeToggled;
+    rightIconOfCurrDiv.setAttribute("src", (rightTransitionModeToggled ? "./images/arrow_right_toggled.png" : "./images/arrow_right_default.png"));
+
+    let puzzleIconsDiv = rightIconOfCurrDiv.parentElement;
+
+    // The puzzle whose right transition edit mode is toggled on.
+    let currDiv = puzzleIconsDiv.parentElement;
+}
+
 function userInDiffRoom() {
     // Case when the user is in another room in another tab. This is to prevent inconsistency of data between tabs.
     // sessionStorage supposedly takes care of that but in the case when a user directly opens the page, the room data
@@ -206,6 +267,10 @@ function userInDiffRoom() {
 
 // Get the unique key of the current room
 var roomKey = localStorage['roomKey'];
+
+// Default transition modes set to false
+var leftTransitionModeToggled = false;
+var rightTransitionModeToggled = false;
 
 // When the user clicks anywhere outside of the createRoomWindow, close it
 window.onclick = function(event) {

@@ -74,6 +74,22 @@ button:hover {
     display: flex;
 }
 
+/* Style for the div holding the icons */
+.puzzleIconsDiv {
+    margin-left: auto;
+    align-self: center;
+    height: 80%;
+    display: flex;
+}
+
+/* Style for the icons */
+.puzzleDivIcons {
+    align-self: center;
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+}
+
 /* Extra styles for the cancel button */
 .cancelbtn {
     width: auto;
@@ -106,13 +122,6 @@ button:hover {
     display: inline-block;
     cursor: pointer;
     color: white;
-}
-
-.delIcon {
-    margin-left: auto;
-    align-self: center;
-    width: 20px;
-    height: 20px;
 }
 
 /* The Modal (background) */
