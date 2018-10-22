@@ -4,6 +4,7 @@
     <title>Tundras Conundrum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/mainMenu.css"> 
+    <link rel="stylesheet" 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 			crossorigin="anonymous">
 	<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
 	<script>
 	  // Initialize Firebase
@@ -19,9 +20,27 @@
 	</script>
 </head>
 <body>
-	<button onclick="viewAllChallenges()">View All Challenges</button>
-	<button onclick="viewCreatedChallenges()">View Created Challenges</button>
+	<div class="title"><h1>Tundra's Conundrum</h1></div>
+    <div class="container-fluid">
+      <div class="row">
+        <a class="col-sm headerButton" href="mainMenu.html">Home</a>
+        <a class="col-sm headerButton" onclick="viewCreatedChallenges()">My Conundrums</a>
+        <a class="col-sm headerButton" href="Create.html">Create</a>
+        <a class="col-sm headerButton" onclick="viewAllChallenges()">Browse</a>
+      </div>
+    </div>
+	<!-- <button onclick="viewAllChallenges()">View All Challenges</button>
+	<button onclick="viewCreatedChallenges()">View Created Challenges</button> -->
 	<h3 id="greeting"></h3>
+    <h1> Welcome to Tundra's Condundrum! </h1>
+    <h2> Most Popular Rooms: </h2>
+    <div class="container">
+      <div class="row">
+        <p class="col-sm topThree" > First </p>
+        <p class="col-sm topThree" > Second </p>
+        <p class="col-sm topThree" > Third </p>
+      </div>
+    </div>
 	<button onclick="logout()" style="width:auto;">Logout</button>
 
 <script src="../js/mainMenu.js"></script>
