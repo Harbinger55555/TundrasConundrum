@@ -123,6 +123,20 @@ function appendPuzzle(puzzleQuestion) {
     newPuzzleDiv.appendChild(puzzleDivText);
 
     // TODO: Add alt.
+    let puzzleDivLeftIcon = document.createElement('img');
+    puzzleDivLeftIcon.setAttribute("class", "delIcon");
+    puzzleDivLeftIcon.setAttribute("src", "./images/arrow_left.png");
+    puzzleDivLeftIcon.setAttribute("onclick", "openDelConfirmWindow()");
+    newPuzzleDiv.appendChild(puzzleDivLeftIcon);
+
+    // TODO: Add alt.
+    let puzzleDivRightIcon = document.createElement('img');
+    puzzleDivRightIcon.setAttribute("class", "delIcon");
+    puzzleDivRightIcon.setAttribute("src", "./images/arrow_right.png");
+    puzzleDivRightIcon.setAttribute("onclick", "openDelConfirmWindow()");
+    newPuzzleDiv.appendChild(puzzleDivRightIcon);
+
+    // TODO: Add alt.
     let puzzleDivDelIcon = document.createElement('img');
     puzzleDivDelIcon.setAttribute("class", "delIcon");
     puzzleDivDelIcon.setAttribute("src", "./images/trash.png");
