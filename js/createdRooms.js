@@ -60,6 +60,7 @@ function loadCreatedRooms(userId) {
     });
 }
 
+// TODO: switch storing roomDiv and roomKey from sessionStorage to global variables in a namespace.
 function createdRoomDivOnClick() {
     let currDiv = event.target;
 

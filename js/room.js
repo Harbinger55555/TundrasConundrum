@@ -177,6 +177,7 @@ function openDelConfirmWindow() {
     for (var puzzleDivIndex=0; (currDiv=currDiv.previousSibling); puzzleDivIndex++);
     puzzleDivIndex -= 3;
 
+    // TODO: Change the delClickPuzzle from sessionStorage to global variable.
     sessionStorage.setItem('delClickPuzzle', puzzleDivIndex);
 }
 
@@ -207,7 +208,27 @@ function toggleLeftTransitionMode() {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
 
-    if (userInDiffRoom()) {
+    // Check for following conditions:
+    // 1). User is not in a different room.
+    // 2). Other puzzleDiv objects are not toggled on.
+    // 3). The counterpart button is not toggled on.
+    if (userInDiffRoom()) return false;
+
+    // Get the clicked leftIcon object and its parent puzzleDiv.
+    let leftIconOfCurrDiv  = event.target;
+    let puzzleIconsDiv = leftIconOfCurrDiv.parentElement;
+    let currDiv = puzzleIconsDiv.parentElement;
+
+    // At the end of the loop, puzzleDivIndex will contain the index.
+    // The first puzzleDiv has index of 3 thus the -3 to make it zero-based.
+    for (var puzzleDivIndex=0; (currDiv=currDiv.previousSibling); puzzleDivIndex++);
+    puzzleDivIndex -= 3;
+    console.log("left clicked puzzle = " + puzzleDivIndex);
+
+    // If transitionToggledPuzzle exists in the Storage, check if it's the same one as being clicked on currently.
+    let toggledPuzzleInStorage = sessionStorage.getItem('transitionToggledPuzzle');
+    if (toggledPuzzleInStorage && puzzleDivIndex != toggledPuzzleInStorage) {
+        window.alert("Currently editing another puzzle's transition... Please turn it off first.");
         return false;
     }
 
@@ -217,23 +238,44 @@ function toggleLeftTransitionMode() {
         return false;
     }
 
-    // Change the icon to toggled img.
-    let leftIconOfCurrDiv  = event.target;
     leftTransitionModeToggled = !leftTransitionModeToggled;
-    leftIconOfCurrDiv.setAttribute("src", (leftTransitionModeToggled ? "./images/arrow_left_toggled.png" : "./images/arrow_left_default.png"));
 
-    let puzzleIconsDiv = leftIconOfCurrDiv.parentElement;
-
-    // The puzzle whose left transition edit mode is toggled on.
-    let currDiv = puzzleIconsDiv.parentElement;
-
+    // Change the icon to toggled img and update transitionToggledPuzzle.
+    if (leftTransitionModeToggled) {
+        leftIconOfCurrDiv.setAttribute("src", "./images/arrow_left_toggled.png");
+        // TODO: Change the transitionToggledPuzzle from sessionStorage to global variable.
+        sessionStorage.setItem('transitionToggledPuzzle', puzzleDivIndex);
+    } else {
+        leftIconOfCurrDiv.setAttribute("src", "./images/arrow_left_default.png");
+        sessionStorage.removeItem('transitionToggledPuzzle');
+    }
 }
 
 function toggleRightTransitionMode() {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
 
-    if (userInDiffRoom()) {
+    // Check for following conditions:
+    // 1). User is not in a different room.
+    // 2). Other puzzleDiv objects are not toggled on.
+    // 3). The counterpart button is not toggled on.
+    if (userInDiffRoom()) return false;
+
+    // Get the clicked rightIcon object and its parent puzzleDiv.
+    let rightIconOfCurrDiv  = event.target;
+    let puzzleIconsDiv = rightIconOfCurrDiv.parentElement;
+    let currDiv = puzzleIconsDiv.parentElement;
+
+    // At the end of the loop, puzzleDivIndex will contain the index.
+    // The first puzzleDiv has index of 3 thus the -3 to make it zero-based.
+    for (var puzzleDivIndex=0; (currDiv=currDiv.previousSibling); puzzleDivIndex++);
+    puzzleDivIndex -= 3;
+    console.log("right clicked puzzle = " + puzzleDivIndex);
+
+    // If transitionToggledPuzzle exists in the Storage, check if it's the same one as being clicked on currently.
+    let toggledPuzzleInStorage = sessionStorage.getItem('transitionToggledPuzzle');
+    if (toggledPuzzleInStorage && puzzleDivIndex != toggledPuzzleInStorage) {
+        window.alert("Currently editing another puzzle's transition... Please turn it off first.");
         return false;
     }
 
@@ -243,15 +285,17 @@ function toggleRightTransitionMode() {
         return false;
     }
 
-    // Change the icon to toggled img.
-    let rightIconOfCurrDiv  = event.target;
     rightTransitionModeToggled = !rightTransitionModeToggled;
-    rightIconOfCurrDiv.setAttribute("src", (rightTransitionModeToggled ? "./images/arrow_right_toggled.png" : "./images/arrow_right_default.png"));
 
-    let puzzleIconsDiv = rightIconOfCurrDiv.parentElement;
-
-    // The puzzle whose right transition edit mode is toggled on.
-    let currDiv = puzzleIconsDiv.parentElement;
+    // Change the icon to toggled img and update transitionToggledPuzzle.
+    if (rightTransitionModeToggled) {
+        rightIconOfCurrDiv.setAttribute("src", "./images/arrow_right_toggled.png");
+        // TODO: Change the transitionToggledPuzzle from sessionStorage to global variable.
+        sessionStorage.setItem('transitionToggledPuzzle', puzzleDivIndex);
+    } else {
+        rightIconOfCurrDiv.setAttribute("src", "./images/arrow_right_default.png");
+        sessionStorage.removeItem('transitionToggledPuzzle');
+    }
 }
 
 function userInDiffRoom() {
