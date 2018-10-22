@@ -19,6 +19,13 @@ function appendRoom(roomName) {
     let roomDivText = document.createTextNode(roomName);
     newRoomDiv.appendChild(roomDivText);
 
+    // TODO: Add alt.
+    let roomDivDelIcon = document.createElement('img');
+    roomDivDelIcon.setAttribute("class", "delIcon");
+    roomDivDelIcon.setAttribute("src", "./images/trash.png");
+    roomDivDelIcon.setAttribute("onclick", "openDelConfirmWindow()");
+    newRoomDiv.appendChild(roomDivDelIcon);
+
     let createdRoomDivList = document.getElementById('createdRoomDivList');
     createdRoomDivList.appendChild(newRoomDiv);
 }
@@ -30,7 +37,6 @@ function tempAppendRoom() {
 
 // TODO: Implement dynamic data load of 10 per overflow scroll.
 function loadCreatedRooms(userId) {
-    // Get the currently logged in user.
     let allCreatedRooms = firebase.database().ref().child('users/' + userId + '/rooms');
 
     // TODO: Dynamically keep roomDivList up to date with firebase RTDB changes (Could use .on() then remove and refill roomDivList).
@@ -45,8 +51,8 @@ function loadCreatedRooms(userId) {
                 let currRoomDivIndex = document.getElementById('createdRoomDivList').childElementCount - 2;
 
                 // A map of createdRoomDivs to their respective room names and keys.
-                localStorage.setItem('roomDiv' + currRoomDivIndex, snapshot.val());
-                localStorage.setItem('roomKey' + currRoomDivIndex, roomId);
+                sessionStorage.setItem('roomDiv' + currRoomDivIndex, snapshot.val());
+                sessionStorage.setItem('roomKey' + currRoomDivIndex, roomId);
             });
         })
         // Hide the loader.
@@ -64,17 +70,67 @@ function createdRoomDivOnClick() {
 
     // TODO: can roomName be obtained with this.innerHTML or this.textContent?
     // Prepare data of room to send to room.html
-    let roomName = localStorage['roomDiv' + createdRoomDivIndex];
-    let roomKey = localStorage['roomKey' + createdRoomDivIndex];
+    let roomName = sessionStorage['roomDiv' + createdRoomDivIndex];
+    let roomKey = sessionStorage['roomKey' + createdRoomDivIndex];
 
-    // Clear all temporary roomDiv and roomKey data from localStorage before passing room data to room.html.
-    // localStorage.clear();
+    // Clear all temporary roomDiv and roomKey data from sessionStorage before passing room data to room.html.
+    // sessionStorage.clear();
 
     // Prepare data of room to send to room.html
     localStorage.setItem('roomName', roomName);
     localStorage.setItem('roomKey', roomKey);
 
     window.location.href = "../html/room.html";
+}
+
+function openDelConfirmWindow() {
+    // To prevent click event from bubbling to parent and triggering its onclick as well.
+    event.stopPropagation();
+
+    document.getElementById('delConfirmWindow').style.display = 'block';
+    let delIconOfCurrDiv  = event.target;
+    let currDiv = delIconOfCurrDiv.parentElement;
+
+    // At the end of the loop, createdRoomDivIndex will contain the index.
+    // The first roomDiv has index of 3 thus the -3 to make it zero-based.
+    for (var createdRoomDivIndex=0; (currDiv=currDiv.previousSibling); createdRoomDivIndex++);
+    createdRoomDivIndex -= 3;
+
+    sessionStorage.setItem('delClickRoom', createdRoomDivIndex);
+}
+
+// Delete all puzzles under the room, and all instances of the room in rooms and users.
+function delYesClicked() {
+    // No need to remove delClickRoom from storage since it will be overwritten with new del clicks. Also, user won't
+    // be able to access the 'overflowed' indexes anyways so no need for extra processing to just remove the other keys.
+    let delClickRoom = sessionStorage['delClickRoom'];
+    let roomKey = sessionStorage['roomKey' + delClickRoom];
+
+    var updates = {};
+
+    // Get the currently logged in user.
+    var currUser = firebase.auth().currentUser.uid;
+
+    // Delete room data under user database.
+    updates['/users/' + currUser + '/rooms/' + roomKey] = null;
+
+    // Delete all puzzles relating to the room from the firebase RTDB.
+    let delClickRoomPuzzleData = firebase.database().ref().child('rooms/' + roomKey + '/puzzles');
+    delClickRoomPuzzleData.once('value', function(snapshot) {
+        snapshot.forEach(function (puzzleSnapshot) {
+            let puzzleId = puzzleSnapshot.key;
+            updates['/puzzles/' + puzzleId] = null;
+        })
+    }).then(
+        () => {
+            // Delete the room under room database.
+            updates['/rooms/' + roomKey] = null
+
+            // Update the firebase RTDB and refresh the page to update the changes in the sessionStorage as well.
+            firebase.database().ref().update(updates).then(
+                () => {document.location.reload(true)
+                });
+        });
 }
 
 function validInput(inputString) {
@@ -129,9 +185,11 @@ function createRoom() {
 
 // When the user clicks anywhere outside of the createRoomWindow, close it
 window.onclick = function(event) {
-    var createRoomWindow = document.getElementById('createRoomWindow');
-    if (event.target == createRoomWindow) {
+    let createRoomWindow = document.getElementById('createRoomWindow');
+    let delConfirmWindow = document.getElementById('delConfirmWindow');
+    if (event.target == createRoomWindow || event.target == delConfirmWindow) {
         createRoomWindow.style.display = "none";
+        delConfirmWindow.style.display = "none";
     }
 }
 
