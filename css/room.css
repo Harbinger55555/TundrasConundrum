@@ -39,22 +39,6 @@ button:hover {
     padding: auto 10px;
 }
 
-#delText {
-    line-height: 100px;
-    height: 100px;
-}
-
-#delYes {
-    float: left;
-    background-color: lightgreen;
-    border-bottom-left-radius: 5px;
-}
-
-#delNo {
-    background-color: #fc8982;
-    border-bottom-right-radius: 5px;
-}
-
 .roomTitle {
     text-align: center;
 }
@@ -102,12 +86,12 @@ button:hover {
     padding: 16px;
 }
 
-.delContainer {
+.confirmContainer {
     position: relative;
     text-align: center;
 }
 
-.delModalContent {
+.confirmModalContent {
     background-color: white;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     width: 23%;
@@ -115,13 +99,29 @@ button:hover {
     border-radius: 5px;
 }
 
-.delConfirmChoices {
+.confirmChoices {
     width: 50%;
     height: 50px;
     line-height: 50px; /* To center align the text vertically */
     display: inline-block;
     cursor: pointer;
     color: white;
+}
+
+.confirmText {
+    line-height: 100px;
+    height: 100px;
+}
+
+.confirmYes {
+    float: left;
+    background-color: lightgreen;
+    border-bottom-left-radius: 5px;
+}
+
+.confirmNo {
+    background-color: #fc8982;
+    border-bottom-right-radius: 5px;
 }
 
 /* The Modal (background) */

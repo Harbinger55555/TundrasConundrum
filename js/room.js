@@ -4,7 +4,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 		window.location.href = "../html/home.html";
 
 		// Clean up sessionStorage if user is no longer signed in.
-        // TODO: May have to deal with this for other users who are not owners.
         localStorage.removeItem('roomName'); // Clear roomName from sessionStorage
         localStorage.removeItem('roomKey'); // Clear roomKey from sessionStorage
 
@@ -49,33 +48,7 @@ function createPuzzle() {
 				let newPuzzleKey = currRoomInUser.child('puzzles').push().key;
 				let puzzleQuestion = document.getElementById('question').value;
 
-                // Set question for puzzleId in 'rooms' database.
-                firebase.database().ref().child('rooms/' + roomKey + '/puzzles/' + newPuzzleKey).set({
-					question: puzzleQuestion
-				});
-
-				// Set question for puzzleId in 'puzzles' database.
-                firebase.database().ref().child('puzzles/' + newPuzzleKey).set({
-                    question: document.getElementById('question').value
-                });
-
-				let puzzleAnswers = firebase.database().ref().child('puzzles/' + newPuzzleKey + '/answers');
-				puzzleAnswers.set({
-					correct: document.getElementById('correctAnswer').value,
-					wrong1: document.getElementById('wrongAnswer1').value
-				});
-				// If optional fields are filled, update firebase RTDB.
-				let wrong2 = document.getElementById('wrongAnswer2').value;
-				if (wrong2 != "") puzzleAnswers.update({wrong2: wrong2});
-				let wrong3 = document.getElementById('wrongAnswer3').value
-				if (wrong3 != "") puzzleAnswers.update({wrong3: wrong3});
-				var puzzleHints = firebase.database().ref().child('puzzles/' + newPuzzleKey + '/hints');
-				let hint1 = document.getElementById('hint1').value
-				if (hint1 != "") puzzleHints.update({hint1: hint1});
-				let hint2 = document.getElementById('hint2').value
-				if (hint2 != "") puzzleHints.update({hint2: hint2});
-				let hint3 = document.getElementById('hint3').value
-				if (hint3 != "") puzzleHints.update({hint3: hint3});
+                updateDatabase(newPuzzleKey, puzzleQuestion);
 
 				document.getElementById('createPuzzleWindow').style.display = "none";
 
@@ -93,6 +66,36 @@ function createPuzzle() {
 			}
 		});
 	}
+}
+
+function updateDatabase(newPuzzleKey, puzzleQuestion) {
+    // Update question for puzzleId in 'rooms' database.
+    firebase.database().ref().child('rooms/' + roomKey + '/puzzles/' + newPuzzleKey).update({
+        question: puzzleQuestion
+    });
+
+    // Update question for puzzleId in 'puzzles' database.
+    firebase.database().ref().child('puzzles/' + newPuzzleKey).update({
+        question: puzzleQuestion
+    });
+
+    let puzzleAnswers = firebase.database().ref().child('puzzles/' + newPuzzleKey + '/answers');
+    puzzleAnswers.update({
+        correct: document.getElementById('correctAnswer').value,
+        wrong1: document.getElementById('wrongAnswer1').value
+    });
+    // If optional fields are filled, update firebase RTDB.
+    let wrong2 = document.getElementById('wrongAnswer2').value;
+    if (wrong2 != "") puzzleAnswers.update({wrong2: wrong2});
+    let wrong3 = document.getElementById('wrongAnswer3').value
+    if (wrong3 != "") puzzleAnswers.update({wrong3: wrong3});
+    var puzzleHints = firebase.database().ref().child('puzzles/' + newPuzzleKey + '/hints');
+    let hint1 = document.getElementById('hint1').value
+    if (hint1 != "") puzzleHints.update({hint1: hint1});
+    let hint2 = document.getElementById('hint2').value
+    if (hint2 != "") puzzleHints.update({hint2: hint2});
+    let hint3 = document.getElementById('hint3').value
+    if (hint3 != "") puzzleHints.update({hint3: hint3});
 }
 
 function openPuzzleWindow() {
@@ -119,6 +122,7 @@ function resetInputs(fieldid) {
 function appendPuzzle(puzzleQuestion) {
     let newPuzzleDiv = document.createElement('div');
     newPuzzleDiv.setAttribute("class", "puzzleDiv");
+    newPuzzleDiv.setAttribute("onclick", "puzzleDivOnCLick()");
     let puzzleDivText = document.createTextNode(puzzleQuestion);
     newPuzzleDiv.appendChild(puzzleDivText);
 
@@ -209,6 +213,8 @@ function delYesClicked() {
 
 // TODO: Make buttons of other puzzleDivs unclickable when a transitionMode is toggled on.
 // TODO: (Can make it by checking if leftTransitionModeToggled and comparing current div id with the one in storage.)
+// Left transition is taken when a user answers the puzzle incorrectly. So, if a user just explicitly wants a regular
+// left transition, they can fill out the wrong answer field with 'left'.
 function toggleLeftTransitionMode() {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
@@ -228,7 +234,6 @@ function toggleLeftTransitionMode() {
     // The first puzzleDiv has index of 3 thus the -3 to make it zero-based.
     for (var puzzleDivIndex=0; (currDiv=currDiv.previousSibling); puzzleDivIndex++);
     puzzleDivIndex -= 3;
-    console.log("left clicked puzzle = " + puzzleDivIndex);
 
     // If transitionToggledPuzzle exists in the Storage, check if it's the same one as being clicked on currently.
     let toggledPuzzleInStorage = sessionStorage.getItem('transitionToggledPuzzle');
@@ -256,6 +261,8 @@ function toggleLeftTransitionMode() {
     }
 }
 
+// Right transition is taken when a user answers the puzzle correctly. So, if a user just explicitly wants a regular
+// right transition, they can fill out the correct answer field with 'right'.
 function toggleRightTransitionMode() {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
@@ -275,7 +282,6 @@ function toggleRightTransitionMode() {
     // The first puzzleDiv has index of 3 thus the -3 to make it zero-based.
     for (var puzzleDivIndex=0; (currDiv=currDiv.previousSibling); puzzleDivIndex++);
     puzzleDivIndex -= 3;
-    console.log("right clicked puzzle = " + puzzleDivIndex);
 
     // If transitionToggledPuzzle exists in the Storage, check if it's the same one as being clicked on currently.
     let toggledPuzzleInStorage = sessionStorage.getItem('transitionToggledPuzzle');
@@ -303,6 +309,60 @@ function toggleRightTransitionMode() {
     }
 }
 
+// Opens confirmation box for respective transition if transition mode is on, else opens puzzle edit window.
+function puzzleDivOnCLick() {
+    if (leftTransitionModeToggled || rightTransitionModeToggled) {
+        // Get the clicked puzzleDiv object.
+        let clickedPuzzleDiv = event.target;
+
+        // At the end of the loop, puzzleDivIndex will contain the index.
+        // The first puzzleDiv has index of 3 thus the -3 to make it zero-based.
+        for (var puzzleDivIndex=0; (clickedPuzzleDiv=clickedPuzzleDiv.previousSibling); puzzleDivIndex++);
+        puzzleDivIndex -= 3;
+        let transitionToggledPuzzle = sessionStorage.getItem('transitionToggledPuzzle');
+
+        // Check if clicked puzzle is the same as the one whose transition mode is active.
+        if (puzzleDivIndex == transitionToggledPuzzle) {
+            window.alert('A puzzle cannot be a transition to itself');
+            return false;
+        } else {
+            // Open up transConfirmWindow with text informing the user's transition choice.
+            document.getElementById('transConfirmText').innerHTML = 'Are you sure you want to make this the ' +
+                (rightTransitionModeToggled ? 'right' : 'left') + ' transition?';
+            document.getElementById('transConfirmWindow').style.display = 'block';
+            sessionStorage.setItem('transitionClickedPuzzle', puzzleDivIndex);
+        }
+    } else {
+        // Open the create puzzle window but with fields filled with preexisting data as well as a 'Save Changes'
+        // button instead of a 'Create Puzzle' one.
+
+    }
+}
+
+function transYesClicked() {
+    // Update the RTDB accordingly.
+    // TODO: Create a tooltip that has the current transition state and is shown when arrows are hovered over.
+    let transitionToggledPuzzleIndex = sessionStorage.getItem('transitionToggledPuzzle');
+    let transitionToggledPuzzle = sessionStorage.getItem('puzzleKey' + transitionToggledPuzzleIndex);
+    let transitionClickedPuzzleIndex = sessionStorage.getItem('transitionClickedPuzzle');
+    let transitionClickedPuzzle = sessionStorage.getItem('puzzleKey' + transitionClickedPuzzleIndex);
+    if (rightTransitionModeToggled) {
+        firebase.database().ref().child('puzzles/' + transitionToggledPuzzle + '/transitions').update({
+            right: transitionClickedPuzzle
+        }).then(
+            // Reload the page to update the puzzles with changes.
+            () => {document.location.reload(true)}
+        );
+    } else {
+        firebase.database().ref().child('puzzles/' + transitionToggledPuzzle + '/transitions').update({
+            left: transitionClickedPuzzle
+        }).then(
+            // Reload the page to update the puzzles with changes.
+            () => {document.location.reload(true)}
+        );
+    }
+}
+
 function userInDiffRoom() {
     // Case when the user is in another room in another tab. This is to prevent inconsistency of data between tabs.
     // sessionStorage supposedly takes care of that but in the case when a user directly opens the page, the room data
@@ -321,13 +381,18 @@ var roomKey = localStorage['roomKey'];
 var leftTransitionModeToggled = false;
 var rightTransitionModeToggled = false;
 
-// When the user clicks anywhere outside of the createRoomWindow, close it
+// Remove transitionToggledPuzzle from sessionStorage on page load (to take care of page refreshes).
+sessionStorage.removeItem('transitionToggledPuzzle');
+
+// When the user clicks anywhere outside of any popup windows, close it
 window.onclick = function(event) {
-    var createPuzzleWindow = document.getElementById('createPuzzleWindow');
+    let createPuzzleWindow = document.getElementById('createPuzzleWindow');
     let delConfirmWindow = document.getElementById('delConfirmWindow');
-    if (event.target == createPuzzleWindow || event.target == delConfirmWindow) {
+    let transConfirmWindow = document.getElementById('transConfirmWindow');
+    if (event.target == createPuzzleWindow || event.target == delConfirmWindow || event.target == transConfirmWindow) {
         createPuzzleWindow.style.display = "none";
         delConfirmWindow.style.display = "none";
+        transConfirmWindow.style.display = "none";
     }
 }
 

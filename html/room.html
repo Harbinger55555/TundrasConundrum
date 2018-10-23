@@ -45,15 +45,26 @@
 	</div>
 
 	<div id="delConfirmWindow" class="modal">
-		<div class="delModalContent animate">
-			<div class="delContainer">
+		<div class="confirmModalContent animate">
+			<div class="confirmContainer">
 				<span onclick="document.getElementById('delConfirmWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
-				<div id="delText">Are you sure you want to delete the puzzle?</div>
-				<div id="delYes" class="delConfirmChoices" onclick="delYesClicked()">Yes</div>
-				<div id="delNo" class="delConfirmChoices" onclick="document.getElementById('delConfirmWindow').style.display='none'">No</div>
+				<div class="confirmText">Are you sure you want to delete the puzzle?</div>
+				<div class="confirmChoices confirmYes" onclick="delYesClicked()">Yes</div>
+				<div class="confirmChoices confirmNo" onclick="document.getElementById('delConfirmWindow').style.display='none'">No</div>
 			</div>
 		</div>
 	</div>
+
+    <div id="transConfirmWindow" class="modal">
+        <div class="confirmModalContent animate">
+            <div class="confirmContainer">
+                <span onclick="document.getElementById('transConfirmWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <div id="transConfirmText" class="confirmText"></div>
+                <div class="confirmChoices confirmYes" onclick="transYesClicked()">Yes</div>
+                <div class="confirmChoices confirmNo" onclick="document.getElementById('transConfirmWindow').style.display='none'">No</div>
+            </div>
+        </div>
+    </div>
 
 <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
 <script>
