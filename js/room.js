@@ -167,6 +167,11 @@ function openDelConfirmWindow() {
         return false;
     }
 
+    if (leftTransitionModeToggled || rightTransitionModeToggled) {
+        window.alert("Transition Mode is toggled on.");
+        return false;
+    }
+
     document.getElementById('delConfirmWindow').style.display = 'block';
     let delIconOfCurrDiv  = event.target;
     let puzzleIconsDiv = delIconOfCurrDiv.parentElement;
