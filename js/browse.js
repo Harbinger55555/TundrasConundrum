@@ -51,6 +51,10 @@ function tempAppendRoom() {
     appendRoom("./images/huh.png", "This is a room. What more does ye need to know?", "Blank Name");
 }
 
+function playUnity() {
+    window.location.href = "../html/play.html";
+}
+
 // TODO: Implement dynamic data load of 10 per overflow scroll.
 function loadAllRooms() {
     let allRooms = firebase.database().ref().child('rooms');
