@@ -64,6 +64,11 @@ button:hover {
     align-self: center;
     height: 80%;
     display: flex;
+    visibility: hidden;
+}
+
+.puzzleDiv:hover .puzzleIconsDiv {
+    visibility: visible !important; /* Important so that hover still works after visibility dynamically set to hidden */
 }
 
 /* Style for the icons */

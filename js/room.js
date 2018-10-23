@@ -253,10 +253,16 @@ function toggleLeftTransitionMode() {
     // Change the icon to toggled img and update transitionToggledPuzzle.
     if (leftTransitionModeToggled) {
         leftIconOfCurrDiv.setAttribute("src", "./images/arrow_left_toggled.png");
+
+        // As long as a transition mode is active, the icons div will be visible.
+        puzzleIconsDiv.style.visibility = 'visible';
         // TODO: Change the transitionToggledPuzzle from sessionStorage to global variable.
         sessionStorage.setItem('transitionToggledPuzzle', puzzleDivIndex);
     } else {
         leftIconOfCurrDiv.setAttribute("src", "./images/arrow_left_default.png");
+
+        // Turn icons div visibility off since transition mode is no longer active.
+        puzzleIconsDiv.style.visibility = 'hidden';
         sessionStorage.removeItem('transitionToggledPuzzle');
     }
 }
@@ -301,10 +307,16 @@ function toggleRightTransitionMode() {
     // Change the icon to toggled img and update transitionToggledPuzzle.
     if (rightTransitionModeToggled) {
         rightIconOfCurrDiv.setAttribute("src", "./images/arrow_right_toggled.png");
+
+        // As long as a transition mode is active, the icons div will be visible.
+        puzzleIconsDiv.style.visibility = 'visible';
         // TODO: Change the transitionToggledPuzzle from sessionStorage to global variable.
         sessionStorage.setItem('transitionToggledPuzzle', puzzleDivIndex);
     } else {
         rightIconOfCurrDiv.setAttribute("src", "./images/arrow_right_default.png");
+
+        // Turn icons div visibility off since transition mode is no longer active.
+        puzzleIconsDiv.style.visibility = 'hidden';
         sessionStorage.removeItem('transitionToggledPuzzle');
     }
 }
