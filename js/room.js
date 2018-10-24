@@ -294,7 +294,7 @@ function toggleLeftTransitionMode() {
 
     // Ask user to toggle off right transition mode if on.
     if (rightTransitionModeToggled) {
-        window.alert("Please turn off the 'right transition mode' first.");
+        window.alert("Please turn off the [right] transition mode first.");
         return false;
     }
 
@@ -348,7 +348,7 @@ function toggleRightTransitionMode() {
 
     // Ask user to toggle off left transition mode if on.
     if (leftTransitionModeToggled) {
-        window.alert("Please turn off the 'left transition mode' first.");
+        window.alert("Please turn off the [left] transition mode first.");
         return false;
     }
 
@@ -390,7 +390,7 @@ function puzzleDivOnCLick() {
         } else {
             // Open up transConfirmWindow with text informing the user's transition choice.
             document.getElementById('transConfirmText').innerHTML = 'Are you sure you want to make this the ' +
-                (rightTransitionModeToggled ? 'right' : 'left') + ' transition?';
+                (rightTransitionModeToggled ? "[right]" : "[left]") + ' transition?';
             document.getElementById('transConfirmWindow').style.display = 'block';
             sessionStorage.setItem('transitionClickedPuzzle', puzzleDivIndex);
         }
