@@ -148,6 +148,14 @@ function appendPuzzle(puzzleQuestion) {
     puzzleIconsDiv.appendChild(puzzleDivRightIcon);
 
     // TODO: Add alt.
+    // An icon to clear all transition states of a puzzle.
+    let puzzleDivClearTransIcon = document.createElement('img');
+    puzzleDivClearTransIcon.setAttribute("class", "puzzleDivIcons");
+    puzzleDivClearTransIcon.setAttribute("src", "./images/clear_trans.png");
+    puzzleDivClearTransIcon.setAttribute("onclick", "openClearConfirmWindow()");
+    puzzleIconsDiv.appendChild(puzzleDivClearTransIcon);
+
+    // TODO: Add alt.
     let puzzleDivDelIcon = document.createElement('img');
     puzzleDivDelIcon.setAttribute("class", "puzzleDivIcons");
     puzzleDivDelIcon.setAttribute("src", "./images/trash.png");
@@ -211,7 +219,49 @@ function delYesClicked() {
     );
 }
 
-// TODO: Make buttons of other puzzleDivs unclickable when a transitionMode is toggled on.
+// Opens confirmation window for clearing the transition states of the puzzle.
+function openClearConfirmWindow() {
+    // To prevent click event from bubbling to parent and triggering its onclick as well.
+    event.stopPropagation();
+
+    if (userInDiffRoom()) {
+        return false;
+    }
+
+    if (leftTransitionModeToggled || rightTransitionModeToggled) {
+        window.alert("Transition Mode is toggled on.");
+        return false;
+    }
+
+    document.getElementById('clearTransConfirmWindow').style.display = 'block';
+    let clearTransIconOfCurrDiv  = event.target;
+    let puzzleIconsDiv = clearTransIconOfCurrDiv.parentElement;
+    let currDiv = puzzleIconsDiv.parentElement;
+
+    // At the end of the loop, puzzleDivIndex will contain the index.
+    // The first puzzleDiv has index of 3 thus the -3 to make it zero-based.
+    for (var puzzleDivIndex=0; (currDiv=currDiv.previousSibling); puzzleDivIndex++);
+    puzzleDivIndex -= 3;
+
+    // TODO: Change the delClickPuzzle from sessionStorage to global variable.
+    sessionStorage.setItem('clearTransClickPuzzle', puzzleDivIndex);
+}
+
+// Delete both left and right transition states from the puzzle.
+function clearTransYesClicked() {
+    let clearTransClickPuzzle = sessionStorage['clearTransClickPuzzle'];
+    let puzzleKey = sessionStorage['puzzleKey' + clearTransClickPuzzle];
+
+    // Delete the transition states from the puzzle in the firebase RTDB and refresh the page to update the changes
+    // in the sessionStorage as well.
+    firebase.database().ref().child('puzzles/' + puzzleKey + '/transitions').set({
+        left: null,
+        right: null
+    }).then(
+        () => {document.location.reload(true)}
+    );
+}
+
 // TODO: (Can make it by checking if leftTransitionModeToggled and comparing current div id with the one in storage.)
 // Left transition is taken when a user answers the puzzle incorrectly. So, if a user just explicitly wants a regular
 // left transition, they can fill out the wrong answer field with 'left'.
@@ -401,10 +451,13 @@ window.onclick = function(event) {
     let createPuzzleWindow = document.getElementById('createPuzzleWindow');
     let delConfirmWindow = document.getElementById('delConfirmWindow');
     let transConfirmWindow = document.getElementById('transConfirmWindow');
-    if (event.target == createPuzzleWindow || event.target == delConfirmWindow || event.target == transConfirmWindow) {
+    let clearTransConfirmWindow = document.getElementById('clearTransConfirmWindow');
+    if (event.target == createPuzzleWindow || event.target == delConfirmWindow ||
+        event.target == transConfirmWindow || event.target == clearTransConfirmWindow) {
         createPuzzleWindow.style.display = "none";
         delConfirmWindow.style.display = "none";
         transConfirmWindow.style.display = "none";
+        clearTransConfirmWindow.style.display = "none";
     }
 }
 

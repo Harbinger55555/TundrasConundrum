@@ -114,8 +114,11 @@ button:hover {
 }
 
 .confirmText {
-    line-height: 100px;
     height: 100px;
+    width: 70%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
 }
 
 .confirmYes {
@@ -189,4 +192,5 @@ button:hover {
     .cancelbtn {
        width: 100%;
     }
+
 }

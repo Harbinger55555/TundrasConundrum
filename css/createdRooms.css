@@ -35,22 +35,6 @@ button:hover {
     width: 100%;
 }
 
-#delText {
-    line-height: 100px;
-    height: 100px;
-}
-
-#delYes {
-    float: left;
-    background-color: lightgreen;
-    border-bottom-left-radius: 5px;
-}
-
-#delNo {
-    background-color: #fc8982;
-    border-bottom-right-radius: 5px;
-}
-
 .title, .subTitle {
     background-color: #42ebf4;
     text-align: center;
@@ -119,6 +103,26 @@ button:hover {
     display: inline-block;
     cursor: pointer;
     color: white;
+}
+
+.delText {
+    height: 100px;
+    width: 70%;
+    border: 1px solid red;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.delYes {
+    float: left;
+    background-color: lightgreen;
+    border-bottom-left-radius: 5px;
+}
+
+.delNo {
+    background-color: #fc8982;
+    border-bottom-right-radius: 5px;
 }
 
 .delIcon {

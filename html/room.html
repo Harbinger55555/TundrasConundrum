@@ -66,6 +66,17 @@
         </div>
     </div>
 
+	<div id="clearTransConfirmWindow" class="modal">
+		<div class="confirmModalContent animate">
+			<div class="confirmContainer">
+				<span onclick="document.getElementById('clearTransConfirmWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<div class="confirmText">Are you sure you want to clear all transitions for the puzzle?</div>
+				<div class="confirmChoices confirmYes" onclick="clearTransYesClicked()">Yes</div>
+				<div class="confirmChoices confirmNo" onclick="document.getElementById('clearTransConfirmWindow').style.display='none'">No</div>
+			</div>
+		</div>
+	</div>
+
 <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
 <script>
   // Initialize Firebase
