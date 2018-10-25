@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/room.css">
 </head>
 <body>
-	<button onclick="openPuzzleWindow()" style="width:auto;">Create a Puzzle</button>
+	<button onclick="openPuzzleWindowCreateVer()" style="width:auto;">Create a Puzzle</button>
 	<div class="roomTitle">
 		<h1 id="roomName"></h1>
 	</div>
@@ -17,10 +17,10 @@
 
     <button onclick="tempAppendPuzzle()" style="width:auto;">Append Blank Puzzle</button>
 
-	<div id="createPuzzleWindow" class="modal">
+	<div id="puzzleWindow" class="modal">
  		<div class="modal-content animate">   
 	    	<div class="container" id="puzzleContainer">
-	      		<span onclick="document.getElementById('createPuzzleWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+	      		<span onclick="document.getElementById('puzzleWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
 	      		<label for="question"><b>Question</b></label>
 	      		<input type="text" id="question" placeholder="Enter Question" name="question">
 	      		<label for="correctAnswer"><b>Correct Answer</b></label>
@@ -39,7 +39,7 @@
 	      		<input type="text" id="hint3" placeholder="Enter Hint #3" name="hint3">
 	    	</div>
 	    	<div class="container" style="background-color:#f1f1f1">
-	      		<button id="createPuzzleButton" type="submit" onclick="createPuzzle()">Create Puzzle</button>
+	      		<button id="puzzleWindowButton"></button>
 	    	</div>
 	  	</div>
 	</div>

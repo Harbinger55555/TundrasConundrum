@@ -32,89 +32,180 @@ function requiredFieldsFilled() {
 }
 
 function createPuzzle() {
-	if (requiredFieldsFilled()) {
-		// To prevent multiple submissions to firebase.
-		document.getElementById("createPuzzleButton").disabled = true;
-		
-		// Get the currently logged in user.
-		var currUser = firebase.auth().currentUser.uid;
+    // To prevent click event from bubbling to parent and triggering its onclick as well.
+    event.stopPropagation();
 
-		// Checks if room belongs to the current User.
-		var currRoomInUser = firebase.database().ref().child('users/' + currUser + '/rooms/' + roomKey);
+    if (requiredFieldsFilled()) {
+        // To prevent multiple submissions to firebase.
+        document.getElementById("puzzleWindowButton").disabled = true;
 
-		// If the unique roomKey exists as a child under the current user, the user is the owner.
-		currRoomInUser.once('value', function(snapshot) {
-			if (snapshot.exists()){
-				let newPuzzleKey = currRoomInUser.child('puzzles').push().key;
-				let puzzleQuestion = document.getElementById('question').value;
+        // Get the currently logged in user.
+        var currUser = firebase.auth().currentUser.uid;
 
-                updateDatabase(newPuzzleKey, puzzleQuestion);
+        // Checks if room belongs to the current User.
+        var currRoomInUser = firebase.database().ref().child('users/' + currUser + '/rooms/' + roomKey);
 
-				document.getElementById('createPuzzleWindow').style.display = "none";
+        // If the unique roomKey exists as a child under the current user, the user is the owner.
+        currRoomInUser.once('value', function(snapshot) {
+            if (snapshot.exists()){
+                let newPuzzleKey = currRoomInUser.child('puzzles').push().key;
 
-				// Append the new Puzzle as a puzzleDiv into puzzleDivList.
-                appendPuzzle(puzzleQuestion);
+                // Only continue with the operations when the RTDB is updated since a person could refresh the page
+                // whilst the RTDB is being updated and could cause data inconsistencies.
+                updateDatabase(newPuzzleKey).then(
+                    () => {
+                        document.getElementById('puzzleWindow').style.display = "none";
 
-                // The first puzzleDiv creation appends two children to the puzzleDivList.
-                let currPuzzleDivIndex = document.getElementById('puzzleDivList').childElementCount - 2;
+                        // Append the new Puzzle as a puzzleDiv into puzzleDivList.
+                        appendPuzzle(document.getElementById('question').value);
 
-                // A map of puzzleDivs to their respective puzzle keys.
-                sessionStorage.setItem('puzzleKey' + currPuzzleDivIndex, newPuzzleKey);
-			}
-			else {
-				alert("Room does not belong to current User.");
-			}
-		});
-	}
+                        // The first puzzleDiv creation appends two children to the puzzleDivList.
+                        let currPuzzleDivIndex = document.getElementById('puzzleDivList').childElementCount - 2;
+
+                        // A map of puzzleDivs to their respective puzzle keys.
+                        sessionStorage.setItem('puzzleKey' + currPuzzleDivIndex, newPuzzleKey);
+
+                        console.log("I am inside the then log for create puzzle!");
+                    }
+                );
+            }
+            else {
+                alert("Room does not belong to current User.");
+            }
+        });
+    }
 }
 
-function updateDatabase(newPuzzleKey, puzzleQuestion) {
-    // Update question for puzzleId in 'rooms' database.
-    firebase.database().ref().child('rooms/' + roomKey + '/puzzles/' + newPuzzleKey).update({
-        question: puzzleQuestion
-    });
+function updateDatabase(newPuzzleKey) {
+    return new Promise(function(resolve, reject) {
+        let puzzleQuestion = document.getElementById('question').value;
+        // updates['/puzzles/' + puzzleId]
+        let updates = {};
 
-    // Update question for puzzleId in 'puzzles' database.
-    firebase.database().ref().child('puzzles/' + newPuzzleKey).update({
-        question: puzzleQuestion
-    });
+        // Update question for puzzleId in 'rooms' database.
+        updates['rooms/' + roomKey + '/puzzles/' + newPuzzleKey + '/question'] = puzzleQuestion;
 
-    let puzzleAnswers = firebase.database().ref().child('puzzles/' + newPuzzleKey + '/answers');
-    puzzleAnswers.update({
-        correct: document.getElementById('correctAnswer').value,
-        wrong1: document.getElementById('wrongAnswer1').value
+        // Update question for puzzleId in 'puzzles' database.
+        updates['puzzles/' + newPuzzleKey + '/question'] = puzzleQuestion;
+
+        // Update answers for puzzleId in 'puzzles' database.
+        updates['puzzles/' + newPuzzleKey + '/answers/correct'] = document.getElementById('correctAnswer').value;
+        updates['puzzles/' + newPuzzleKey + '/answers/wrong1'] = document.getElementById('wrongAnswer1').value;
+
+        // Check if the optional fields are filled and make necessary updates to the 'puzzles' database.
+        // Remove the reference from the RTDB if an edit with a blank is made for the fields.
+        let wrong2 = document.getElementById('wrongAnswer2').value;
+        if (wrong2 == "") {
+            updates['puzzles/' + newPuzzleKey + '/answers/wrong2'] = null;
+        } else {
+            updates['puzzles/' + newPuzzleKey + '/answers/wrong2'] = wrong2;
+        }
+        let wrong3 = document.getElementById('wrongAnswer3').value;
+        if (wrong3 == "") {
+            updates['puzzles/' + newPuzzleKey + '/answers/wrong3'] = null;
+        } else {
+            updates['puzzles/' + newPuzzleKey + '/answers/wrong3'] = wrong3;
+        }
+        let hint1 = document.getElementById('hint1').value;
+        if (hint1 == "") {
+            updates['puzzles/' + newPuzzleKey + '/hints/hint1'] = null;
+        } else {
+            updates['puzzles/' + newPuzzleKey + '/hints/hint1'] = hint1;
+        }
+        let hint2 = document.getElementById('hint2').value
+        if (hint2 == "") {
+            updates['puzzles/' + newPuzzleKey + '/hints/hint2'] = null;
+        } else {
+            updates['puzzles/' + newPuzzleKey + '/hints/hint2'] = hint2;
+        }
+        let hint3 = document.getElementById('hint3').value
+        if (hint3 == "") {
+            updates['puzzles/' + newPuzzleKey + '/hints/hint3'] = null;
+        } else {
+            updates['puzzles/' + newPuzzleKey + '/hints/hint3'] = hint3;
+        }
+
+        // Update the firebase RTDB and return the promise.
+        firebase.database().ref().update(updates).then(
+            () => {resolve('Update successful!')}
+        );
     });
-    // If optional fields are filled, update firebase RTDB.
-    let wrong2 = document.getElementById('wrongAnswer2').value;
-    if (wrong2 != "") puzzleAnswers.update({wrong2: wrong2});
-    let wrong3 = document.getElementById('wrongAnswer3').value
-    if (wrong3 != "") puzzleAnswers.update({wrong3: wrong3});
-    var puzzleHints = firebase.database().ref().child('puzzles/' + newPuzzleKey + '/hints');
-    let hint1 = document.getElementById('hint1').value
-    if (hint1 != "") puzzleHints.update({hint1: hint1});
-    let hint2 = document.getElementById('hint2').value
-    if (hint2 != "") puzzleHints.update({hint2: hint2});
-    let hint3 = document.getElementById('hint3').value
-    if (hint3 != "") puzzleHints.update({hint3: hint3});
 }
 
-function openPuzzleWindow() {
+// Opens the puzzle window with create functionality.
+function openPuzzleWindowCreateVer() {
     if (userInDiffRoom()) {
         return false;
     }
 
     resetInputs('puzzleContainer');
-	document.getElementById('createPuzzleWindow').style.display = 'block';
+    let puzzleWindowButton = document.getElementById('puzzleWindowButton');
+    puzzleWindowButton.innerHTML = 'Create Puzzle';
+    puzzleWindowButton.setAttribute("onclick", "createPuzzle()");
+	document.getElementById('puzzleWindow').style.display = 'block';
 	
 	// Button was disabled by previous puzzle creation, thus reenabling.
-	document.getElementById("createPuzzleButton").disabled = false;
+	document.getElementById("puzzleWindowButton").disabled = false;
 }
 
-function resetInputs(fieldid) {
-    var container = document.getElementById(fieldid);
+function resetInputs(fieldId) {
+    var container = document.getElementById(fieldId);
     var inputs = container.getElementsByTagName('input');
     for (var index = 0; index < inputs.length; ++index) {
         inputs[index].value = '';
+    }
+}
+
+// Opens the puzzle window with edit functionality.
+function openPuzzleWindowEditVer(puzzleDivIndex) {
+    if (userInDiffRoom()) {
+        return false;
+    }
+
+    let puzzleWindowButton = document.getElementById('puzzleWindowButton');
+    puzzleWindowButton.innerHTML = 'Save Changes';
+    puzzleWindowButton.setAttribute("onclick", "savePuzzleChanges()");
+
+    // Fill in the puzzle window fields with existing data for the puzzle.
+    let puzzleKey = sessionStorage['puzzleKey' + puzzleDivIndex];
+    sessionStorage.setItem('editClickedPuzzle', puzzleDivIndex);
+    let puzzleData = firebase.database().ref().child('puzzles/' + puzzleKey);
+    puzzleData.once('value', function(snapshot){
+        let dataValues = snapshot.val();
+        document.getElementById('question').value = dataValues.question;
+        document.getElementById('correctAnswer').value = dataValues.answers.correct;
+        document.getElementById('wrongAnswer1').value = dataValues.answers.wrong1;
+        document.getElementById('wrongAnswer2').value = snapshot.hasChild('answers/wrong2') ? dataValues.answers.wrong2 : "";
+        document.getElementById('wrongAnswer3').value = snapshot.hasChild('answers/wrong3') ? dataValues.answers.wrong3 : "";
+        document.getElementById('hint1').value = snapshot.hasChild('hints/hint1') ? dataValues.hints.hint1 : "";
+        document.getElementById('hint2').value = snapshot.hasChild('hints/hint2') ? dataValues.hints.hint2 : "";
+        document.getElementById('hint3').value = snapshot.hasChild('hints/hint3') ? dataValues.hints.hint3 : "";
+    }).then(
+        () => {
+            // Button was disabled by previous puzzle creation, thus reenabling.
+            document.getElementById("puzzleWindowButton").disabled = false;
+
+            document.getElementById('puzzleWindow').style.display = 'block';
+        });
+}
+
+function savePuzzleChanges() {
+    if (userInDiffRoom()) {
+        return false;
+    }
+
+    if (requiredFieldsFilled()) {
+        // To prevent multiple submissions to firebase.
+        document.getElementById("puzzleWindowButton").disabled = true;
+
+        // Update the firebase RTDB and refresh the page to update the changes in the sessionStorage as well.
+        let editClickedPuzzle = sessionStorage['editClickedPuzzle'];
+        let puzzleKey = sessionStorage['puzzleKey' + editClickedPuzzle];
+        updateDatabase(puzzleKey).then(
+            () => {
+                document.location.reload(true)
+            }
+        );
     }
 }
 
@@ -373,14 +464,15 @@ function toggleRightTransitionMode() {
 
 // Opens confirmation box for respective transition if transition mode is on, else opens puzzle edit window.
 function puzzleDivOnCLick() {
-    if (leftTransitionModeToggled || rightTransitionModeToggled) {
-        // Get the clicked puzzleDiv object.
-        let clickedPuzzleDiv = event.target;
+    // Get the clicked puzzleDiv object.
+    let clickedPuzzleDiv = event.target;
 
-        // At the end of the loop, puzzleDivIndex will contain the index.
-        // The first puzzleDiv has index of 3 thus the -3 to make it zero-based.
-        for (var puzzleDivIndex=0; (clickedPuzzleDiv=clickedPuzzleDiv.previousSibling); puzzleDivIndex++);
-        puzzleDivIndex -= 3;
+    // At the end of the loop, puzzleDivIndex will contain the index.
+    // The first puzzleDiv has index of 3 thus the -3 to make it zero-based.
+    for (var puzzleDivIndex=0; (clickedPuzzleDiv=clickedPuzzleDiv.previousSibling); puzzleDivIndex++);
+    puzzleDivIndex -= 3;
+
+    if (leftTransitionModeToggled || rightTransitionModeToggled) {
         let transitionToggledPuzzle = sessionStorage.getItem('transitionToggledPuzzle');
 
         // Check if clicked puzzle is the same as the one whose transition mode is active.
@@ -397,7 +489,7 @@ function puzzleDivOnCLick() {
     } else {
         // Open the create puzzle window but with fields filled with preexisting data as well as a 'Save Changes'
         // button instead of a 'Create Puzzle' one.
-
+        openPuzzleWindowEditVer(puzzleDivIndex);
     }
 }
 
@@ -448,13 +540,13 @@ sessionStorage.removeItem('transitionToggledPuzzle');
 
 // When the user clicks anywhere outside of any popup windows, close it
 window.onclick = function(event) {
-    let createPuzzleWindow = document.getElementById('createPuzzleWindow');
+    let puzzleWindow = document.getElementById('puzzleWindow');
     let delConfirmWindow = document.getElementById('delConfirmWindow');
     let transConfirmWindow = document.getElementById('transConfirmWindow');
     let clearTransConfirmWindow = document.getElementById('clearTransConfirmWindow');
-    if (event.target == createPuzzleWindow || event.target == delConfirmWindow ||
+    if (event.target == puzzleWindow || event.target == delConfirmWindow ||
         event.target == transConfirmWindow || event.target == clearTransConfirmWindow) {
-        createPuzzleWindow.style.display = "none";
+        puzzleWindow.style.display = "none";
         delConfirmWindow.style.display = "none";
         transConfirmWindow.style.display = "none";
         clearTransConfirmWindow.style.display = "none";
