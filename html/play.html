@@ -6,7 +6,7 @@
     <title>Unity WebGL Player | Tundra Conundrum</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>  
+    <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
         var gameInstance = UnityLoader.instantiate("gameContainer", "Build/GameBuilds.json", { onProgress: UnityProgress });
@@ -26,7 +26,7 @@
       </div>
       <script>
           setInterval(function () {
-              getRoomID("-LPS5xm7Z5EgxgxBneYy");
+              getRoomID(sessionStorage.getItem("playRoomKey"));
           }, 1000);
       </script>
   </body>

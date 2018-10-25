@@ -1,6 +1,7 @@
 firebase.auth().onAuthStateChanged(function(user) {
     if (!user) {
         // No user is signed in.
+        localStorage.removeItem('playRoomKey');
         window.location.href = "../html/home.html";
     } else {
         // User still signed in.
@@ -23,6 +24,7 @@ function appendRoom(roomImgUrl, roomDesc, roomName) {
     let roomImg = document.createElement('img');
     roomImg.setAttribute("class", "roomImg");
     roomImg.setAttribute("src", (roomImgUrl || "./images/huh.png"));
+    roomImg.setAttribute("onclick", "playUnity()");
     roomImgDiv.appendChild(roomImg);
 
     // Creates a div for the room description.
@@ -52,6 +54,7 @@ function tempAppendRoom() {
 }
 
 function playUnity() {
+    sessionStorage.setItem("playRoomKey", "-LPS5xm7Z5EgxgxBneYy");
     window.location.href = "../html/play.html";
 }
 
@@ -71,3 +74,7 @@ function loadAllRooms() {
         document.getElementById('loader').style.display = 'none';
     });
 }
+
+
+//let clickedRoom = firebase.database().ref().child('rooms/' + playRoomKey + '/name');
+//clickedRoom.once()
