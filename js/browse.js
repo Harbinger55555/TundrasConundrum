@@ -13,7 +13,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 // Appends the room as a roomDiv into roomDivList.
-function appendRoom(roomImgUrl, roomDesc, roomName) {
+function appendRoom(roomImgUrl, roomDesc, roomName, roomID) {
     // Creates a new div for the room (which will consists of a roomImgDiv, roomDescDiv, and roomNameDiv).
     let newRoomDiv = document.createElement('div');
     newRoomDiv.setAttribute("class", "roomDiv");
@@ -24,7 +24,9 @@ function appendRoom(roomImgUrl, roomDesc, roomName) {
     let roomImg = document.createElement('img');
     roomImg.setAttribute("class", "roomImg");
     roomImg.setAttribute("src", (roomImgUrl || "./images/huh.png"));
-    roomImg.setAttribute("onclick", "playUnity()");
+    roomImg.onclick = function() {
+    playUnity(roomID);
+    };
     roomImgDiv.appendChild(roomImg);
 
     // Creates a div for the room description.
@@ -53,8 +55,8 @@ function tempAppendRoom() {
     appendRoom("./images/huh.png", "This is a room. What more does ye need to know?", "Blank Name");
 }
 
-function playUnity() {
-    sessionStorage.setItem("playRoomKey", "-LPS5xm7Z5EgxgxBneYy");
+function playUnity(room) {
+    sessionStorage.setItem("playRoomKey", room);
     window.location.href = "../html/play.html";
 }
 
@@ -68,7 +70,8 @@ function loadAllRooms() {
             let roomImgUrl = roomSnapshot.child('imgUrl').val();
             let roomDesc = roomSnapshot.child('description').val();
             let roomName = roomSnapshot.child('name').val();
-            appendRoom(roomImgUrl, roomDesc, roomName);
+            let roomID = roomSnapshot.key;
+            appendRoom(roomImgUrl, roomDesc, roomName, roomID);
         })
         // Hide the loader.
         document.getElementById('loader').style.display = 'none';
