@@ -1,6 +1,6 @@
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
-		// User is signed in.
+		// user is signed in.
 		window.location.href = "../html/mainMenu.html";
 	} else {
 		// No user signed in.
@@ -107,7 +107,7 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 var uiConfig = {
 	callbacks: {
 	signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-	  // User successfully signed in.
+	  // user successfully signed in.
 	  // Return type determines whether we continue the redirect automatically
 	  // or whether we leave that to developer to handle.
 	  return true;

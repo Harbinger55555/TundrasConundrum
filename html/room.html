@@ -4,17 +4,18 @@
     <title>Tundras Conundrum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/room.css">
-	    <link rel="stylesheet" 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 			crossorigin="anonymous">
+	<link rel="stylesheet" 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 			crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Anton|Lobster|Notable|Playfair+Display" rel="stylesheet">
 </head>
 <body>
 	<div class="title"><h1>Tundra's Conundrum</h1></div>
     <div class="container-fluid">
-      <div class="row">
-        <a class="col-sm headerButton" href="mainMenu.html">Home</a>
-        <a class="col-sm headerButton" onclick="viewCreatedChallenges()">My Conundrums</a>
-        <a class="col-sm headerButton" href="Create.html">Create</a>
-        <a class="col-sm headerButton" onclick="viewAllChallenges()">Browse</a>
-      </div>
+	      <div class="row">
+	        <a class="col-sm headerButton" href="mainMenu.html">Home</a>
+	        <button class="col-sm headerButton" onclick="viewCreatedChallenges()">My Conundrums</button>
+	        <a class="col-sm headerButton" href="Create.html">Create</a>
+	        <button class="col-sm headerButton" onclick="viewAllChallenges()">Browse</button>
+	      </div>
     </div>
 	<button onclick="openPuzzleWindow()" style="width:auto;">Create a Puzzle</button>
 	<div class="roomTitle">
@@ -28,7 +29,7 @@
     <button onclick="tempAppendPuzzle()" style="width:auto;">Append Blank Puzzle</button>
 
 	<div id="createPuzzleWindow" class="modal">
- 		<div class="modal-content animate">   
+ 		<div class="modal-content animate">
 	    	<div class="container" id="puzzleContainer">
 	      		<span onclick="document.getElementById('createPuzzleWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
 	      		<label for="question"><b>Question</b></label>
@@ -53,21 +54,33 @@
 	    	</div>
 	  	</div>
 	</div>
-	
-	
-<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBJhwiYbWIz5OEVp59TvKqFpImqK2sDW8U",
-    authDomain: "tundrasconundrum-31ea5.firebaseapp.com",
-    databaseURL: "https://tundrasconundrum-31ea5.firebaseio.com",
-    projectId: "tundrasconundrum-31ea5",
-    storageBucket: "",
-    messagingSenderId: "690386417705"
-  };
-  firebase.initializeApp(config);
-</script>
+
+	<div id="delConfirmWindow" class="modal">
+		<div class="delModalContent animate">
+			<div class="delContainer">
+				<span onclick="document.getElementById('delConfirmWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<div id="delText">Are you sure you want to delete the puzzle?</div>
+				<div id="delYes" class="delConfirmChoices" onclick="delYesClicked()">Yes</div>
+				<div id="delNo" class="delConfirmChoices" onclick="document.getElementById('delConfirmWindow').style.display='none'">No</div>
+			</div>
+		</div>
+	</div>
+
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBejDVUScwZZdcgGOu8voy8NWEHNMWdwm8",
+      authDomain: "tundrasconundrum-6af20.firebaseapp.com",
+      databaseURL: "https://tundrasconundrum-6af20.firebaseio.com",
+      projectId: "tundrasconundrum-6af20",
+      storageBucket: "tundrasconundrum-6af20.appspot.com",
+      messagingSenderId: "51428296236"
+    };
+    firebase.initializeApp(config);
+  </script>
+
 <script src="../js/room.js"></script>
+<script src="../js/mainMenu.js"></script>
 </body>
 </html>

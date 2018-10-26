@@ -12,7 +12,7 @@ body {
 
 /* Full-width input fields */
 input[type=email], input[type=password] {
-	vertical-align: middle;   
+	vertical-align: middle;
     width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -78,7 +78,7 @@ button:hover {
     top: 0;
     right: 10px;
     color: #000;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: bold;
 }
 
@@ -230,14 +230,10 @@ h2 {
 
 .container-fluid {
   overflow: hidden;
-  margin-top: 30px;
-  margin-bottom: 30px;
 }
 
 .container {
   overflow: hidden;
-  margin-top: 30px;
-  margin-bottom: 30px;
   text-align: center;
 }
 

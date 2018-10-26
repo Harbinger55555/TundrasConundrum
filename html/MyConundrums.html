@@ -10,25 +10,13 @@
   <body>
 	<div class="title"><h1>Tundra's Conundrum</h1></div>
     <div class="container-fluid">
-      <div class="row">
-        <a class="col-sm headerButton" href="mainMenu.html">Home</a>
-        <a class="col-sm headerButton" onclick="viewCreatedChallenges()">My Conundrums</a>
-        <a class="col-sm headerButton" href="Create.html">Create</a>
-        <a class="col-sm headerButton" onclick="viewAllChallenges()">Browse</a>
-      </div>
+	      <div class="row">
+	        <a class="col-sm headerButton" href="mainMenu.html">Home</a>
+	        <button class="col-sm headerButton" onclick="viewCreatedChallenges()">My Conundrums</button>
+	        <a class="col-sm headerButton" href="Create.html">Create</a>
+	        <button class="col-sm headerButton" onclick="viewAllChallenges()">Browse</button>
+	      </div>
     </div>
-
-      <h1> My Conundrums: </h1>
-      <div class="room">
-        <button class="container-fluid userRooms"> Room1 </button>
-        <button class="container userChallenges" id="challenges" > Challenge1 </button>
-        <div class="container challengeDropDown" >
-          <button class="container answer" > Answer #1 </button>
-          <button class="container answer" > Answer #2 </button>
-          <button class="container answer" > Answer #3 </button>
-          <button class="container answer" > Answer #4 </button>
-        </div>
-      </div>
     
 	<script src="../js/mainMenu.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 		crossorigin="anonymous"></script>

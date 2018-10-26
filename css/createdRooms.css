@@ -35,6 +35,25 @@ button:hover {
     width: 100%;
 }
 
+#delText {
+    line-height: 100px;
+    height: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#delYes {
+    float: left;
+    background-color: lightgreen;
+    border-bottom-left-radius: 5px;
+}
+
+#delNo {
+    background-color: #fc8982;
+    border-bottom-right-radius: 5px;
+}
+
 .title, .subTitle {
     background-color: #42ebf4;
     text-align: center;
@@ -59,15 +78,28 @@ button:hover {
 
 .createdRoomDiv {
     background-color: #52adce;
-    overflow-y: scroll;
-    height: 30px;
+    overflow: scroll;
+    height: 50px;
     width: 90%;
     cursor: pointer;
     border-radius: 7px;
     margin: auto;
     margin-top: 7px;
     margin-bottom: 7px;
-    padding: 10px;
+    /* padding: 10px;
+    line-height: 30px; */
+    display: flex;
+
+}
+
+.roomDiv {
+  margin: 30px;
+}
+
+.roomNameText {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .containerDiv {
@@ -79,6 +111,36 @@ button:hover {
 .container {
     position: relative;
     padding: 16px;
+}
+
+.delContainer {
+    position: relative;
+    text-align: center;
+}
+
+.delModalContent {
+    background-color: white;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    width: 23%;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+.delConfirmChoices {
+    width: 50%;
+    height: 50px;
+    line-height: 50px; /* To center align the text vertically */
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+}
+
+.delIcon {
+    margin-left: auto;
+    align-self: center;
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
 }
 
 /* The Modal (background) */
@@ -101,7 +163,7 @@ button:hover {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 40%; /* Could be more or less, depending on screen size */
+    width: 30%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */
@@ -110,7 +172,7 @@ button:hover {
     top: 0;
     right: 10px;
     color: #000;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: bold;
 }
 
@@ -168,15 +230,6 @@ h2 {
 
 .container-fluid {
   overflow: hidden;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-.container {
-  overflow: hidden;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  text-align: center;
 }
 
 .headerButton {
@@ -194,6 +247,8 @@ h2 {
 
 .headerButton:hover {
   background-color: #395377;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .headerButton:active {

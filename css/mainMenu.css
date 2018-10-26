@@ -13,6 +13,12 @@ button:hover {
     opacity: 0.8;
 }
 
+.title, .subTitle {
+    background-color: #42ebf4;
+    text-align: center;
+    margin: auto;
+}
+
 .topThree {
   margin: 10px;
   float: left;
@@ -59,14 +65,10 @@ h2 {
 
 .container-fluid {
   overflow: hidden;
-  margin-top: 30px;
-  margin-bottom: 30px;
 }
 
 .container {
   overflow: hidden;
-  margin-top: 30px;
-  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -85,6 +87,8 @@ h2 {
 
 .headerButton:hover {
   background-color: #395377;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .headerButton:active {

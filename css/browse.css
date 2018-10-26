@@ -21,7 +21,7 @@ button:hover {
 }
 
 
-.title {
+.title, .subTitle {
     background-color: #42ebf4;
     text-align: center;
     margin: auto;
@@ -43,8 +43,14 @@ button:hover {
 }
 
 .roomDiv {
-    height: 45%;
-    padding: 20px 40px;
+    /* height: 55%; */
+    margin-bottom: 30px;
+    max-height: 400px;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: flex-end; */
+    align-items: center;
+    word-wrap: break-word;
 }
 
 .roomImgDiv {
@@ -75,6 +81,10 @@ button:hover {
     height: auto;
     width: 200px;
     font-size: 20px;
+}
+
+.roomNameAndImg {
+
 }
 
 li {
@@ -109,14 +119,10 @@ h2 {
 
 .container-fluid {
   overflow: hidden;
-  margin-top: 30px;
-  margin-bottom: 30px;
 }
 
 .container {
   overflow: hidden;
-  margin-top: 30px;
-  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -135,8 +141,10 @@ h2 {
 
 .headerButton:hover {
   background-color: #395377;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .headerButton:active {
   background-color: #395377;
-  }s
+  }

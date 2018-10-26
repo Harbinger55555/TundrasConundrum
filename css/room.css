@@ -39,6 +39,22 @@ button:hover {
     padding: auto 10px;
 }
 
+#delText {
+    line-height: 100px;
+    height: 100px;
+}
+
+#delYes {
+    float: left;
+    background-color: lightgreen;
+    border-bottom-left-radius: 5px;
+}
+
+#delNo {
+    background-color: #fc8982;
+    border-bottom-right-radius: 5px;
+}
+
 .roomTitle {
     text-align: center;
 }
@@ -54,6 +70,8 @@ button:hover {
     margin-top: 7px;
     margin-bottom: 7px;
     padding: 10px;
+    line-height: 40px;
+    display: flex;
 }
 
 /* Extra styles for the cancel button */
@@ -66,6 +84,35 @@ button:hover {
 .container {
 	position: relative;
     padding: 16px;
+}
+
+.delContainer {
+    position: relative;
+    text-align: center;
+}
+
+.delModalContent {
+    background-color: white;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    width: 23%;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+.delConfirmChoices {
+    width: 50%;
+    height: 50px;
+    line-height: 50px; /* To center align the text vertically */
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+}
+
+.delIcon {
+    margin-left: auto;
+    align-self: center;
+    width: 20px;
+    height: 20px;
 }
 
 /* The Modal (background) */
@@ -97,7 +144,7 @@ button:hover {
     top: 0;
     right: 10px;
     color: #000;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: bold;
 }
 
@@ -114,12 +161,12 @@ button:hover {
 }
 
 @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
+    from {-webkit-transform: scale(0)}
     to {-webkit-transform: scale(1)}
 }
-    
+
 @keyframes animatezoom {
-    from {transform: scale(0)} 
+    from {transform: scale(0)}
     to {transform: scale(1)}
 }
 
@@ -162,14 +209,10 @@ h2 {
 
 .container-fluid {
   overflow: hidden;
-  margin-top: 30px;
-  margin-bottom: 30px;
 }
 
 .container {
   overflow: hidden;
-  margin-top: 30px;
-  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -188,7 +231,12 @@ h2 {
 
 .headerButton:hover {
   background-color: #395377;
+  color: #ffffff;
+  text-decoration: none;
 }
 
-.headerButton:active {
-  
+.title, .subTitle {
+    background-color: #42ebf4;
+    text-align: center;
+    margin: auto;
+}
