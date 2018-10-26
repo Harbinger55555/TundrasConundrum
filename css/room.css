@@ -123,6 +123,35 @@ button:hover {
     height: 20px;
 }
 
+.delContainer {
+    position: relative;
+    text-align: center;
+}
+
+.delModalContent {
+    background-color: white;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    width: 23%;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+.delConfirmChoices {
+    width: 50%;
+    height: 50px;
+    line-height: 50px; /* To center align the text vertically */
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+}
+
+.delIcon {
+    margin-left: auto;
+    align-self: center;
+    width: 20px;
+    height: 20px;
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
