@@ -35,6 +35,10 @@ button:hover {
     width: 100%;
 }
 
+.roomPopUp {
+  padding: 15px;
+}
+
 #delText {
     line-height: 100px;
     height: 100px;

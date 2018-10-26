@@ -74,6 +74,14 @@ button:hover {
     display: flex;
 }
 
+#puzzleContainer {
+  overflow:scroll;
+}
+
+#createPuzzleWindow {
+  overflow-y: scroll;
+}
+
 /* Extra styles for the cancel button */
 .cancelbtn {
     width: auto;
@@ -83,7 +91,7 @@ button:hover {
 
 .container {
 	position: relative;
-    padding: 16px;
+  padding: 16px;
 }
 
 .delContainer {
@@ -136,6 +144,7 @@ button:hover {
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 40%; /* Could be more or less, depending on screen size */
+    overflow-y: scroll;
 }
 
 /* The Close Button (x) */

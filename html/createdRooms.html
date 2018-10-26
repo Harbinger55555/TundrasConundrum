@@ -43,14 +43,14 @@
     </div>
 
     <div id="createRoomWindow" class="modal">
-        <div class="modal-content animate">
-            <div class="container">
+        <div class="modal-content animate container">
+            <div class="roomPopUp">
                 <span onclick="document.getElementById('createRoomWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <label for="roomName"><b>Room Name</b></label>
                 <input type="text" id="roomName" placeholder="Enter Room Name" name="roomName">
             </div>
 
-            <div class="container" style="background-color:#f1f1f1">
+            <div class="roomPopUp" >
                 <button id="createRoomButton" type="submit" onclick="createRoom()">Create Room</button>
             </div>
         </div>
