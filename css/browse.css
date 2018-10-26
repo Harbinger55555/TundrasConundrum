@@ -24,7 +24,6 @@ button:hover {
 .title, .subTitle {
     background-color: #42ebf4;
     text-align: center;
-    margin: auto;
 }
 
 .navbar {
@@ -46,6 +45,7 @@ button:hover {
     /* height: 55%; */
     margin-bottom: 30px;
     max-height: 400px;
+    margin-top: 30px;
     display: flex;
     flex-direction: row;
     /* justify-content: flex-end; */
@@ -84,7 +84,7 @@ button:hover {
 }
 
 .roomNameAndImg {
-
+  padding-left: 30px;
 }
 
 li {
