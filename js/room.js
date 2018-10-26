@@ -31,7 +31,7 @@ function requiredFieldsFilled() {
 	return true;
 }
 
-function createPuzzle() {
+function createPuzzle(event) {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
 
@@ -141,7 +141,11 @@ function openPuzzleWindowCreateVer() {
     resetInputs('puzzleContainer');
     let puzzleWindowButton = document.getElementById('puzzleWindowButton');
     puzzleWindowButton.innerHTML = 'Create Puzzle';
-    puzzleWindowButton.setAttribute("onclick", "createPuzzle()");
+    // could simply use puzzleWindowButton.setAttribute("onclick", "createPuzzle()"); but event variable is not auto
+    // defined in browsers like firefox.
+    puzzleWindowButton.onclick = function(event) {
+        createPuzzle(event);
+    }
 	document.getElementById('puzzleWindow').style.display = 'block';
 	
 	// Button was disabled by previous puzzle creation, thus reenabling.
@@ -164,8 +168,9 @@ function openPuzzleWindowEditVer(puzzleDivIndex) {
 
     let puzzleWindowButton = document.getElementById('puzzleWindowButton');
     puzzleWindowButton.innerHTML = 'Save Changes';
-    puzzleWindowButton.setAttribute("onclick", "savePuzzleChanges()");
-
+    puzzleWindowButton.onclick = function(event) {
+        savePuzzleChanges(event);
+    }
     // Fill in the puzzle window fields with existing data for the puzzle.
     let puzzleKey = sessionStorage['puzzleKey' + puzzleDivIndex];
     sessionStorage.setItem('editClickedPuzzle', puzzleDivIndex);
@@ -213,7 +218,9 @@ function savePuzzleChanges() {
 function appendPuzzle(puzzleQuestion) {
     let newPuzzleDiv = document.createElement('div');
     newPuzzleDiv.setAttribute("class", "puzzleDiv");
-    newPuzzleDiv.setAttribute("onclick", "puzzleDivOnCLick()");
+    newPuzzleDiv.onclick = function(event) {
+        puzzleDivOnCLick(event);
+    }
     let puzzleDivText = document.createTextNode(puzzleQuestion);
     newPuzzleDiv.appendChild(puzzleDivText);
 
@@ -227,7 +234,9 @@ function appendPuzzle(puzzleQuestion) {
     let puzzleDivLeftIcon = document.createElement('img');
     puzzleDivLeftIcon.setAttribute("class", "puzzleDivIcons");
     puzzleDivLeftIcon.setAttribute("src", "./images/arrow_left_default.png");
-    puzzleDivLeftIcon.setAttribute("onclick", "toggleLeftTransitionMode()");
+    puzzleDivLeftIcon.onclick = function(event) {
+        toggleLeftTransitionMode(event);
+    }
     puzzleIconsDiv.appendChild(puzzleDivLeftIcon);
 
     // TODO: Add alt.
@@ -235,7 +244,9 @@ function appendPuzzle(puzzleQuestion) {
     let puzzleDivRightIcon = document.createElement('img');
     puzzleDivRightIcon.setAttribute("class", "puzzleDivIcons");
     puzzleDivRightIcon.setAttribute("src", "./images/arrow_right_default.png");
-    puzzleDivRightIcon.setAttribute("onclick", "toggleRightTransitionMode()");
+    puzzleDivRightIcon.onclick = function(event) {
+        toggleRightTransitionMode(event);
+    }
     puzzleIconsDiv.appendChild(puzzleDivRightIcon);
 
     // TODO: Add alt.
@@ -243,14 +254,18 @@ function appendPuzzle(puzzleQuestion) {
     let puzzleDivClearTransIcon = document.createElement('img');
     puzzleDivClearTransIcon.setAttribute("class", "puzzleDivIcons");
     puzzleDivClearTransIcon.setAttribute("src", "./images/clear_trans.png");
-    puzzleDivClearTransIcon.setAttribute("onclick", "openClearConfirmWindow()");
+    puzzleDivClearTransIcon.onclick = function(event) {
+        openClearConfirmWindow(event);
+    }
     puzzleIconsDiv.appendChild(puzzleDivClearTransIcon);
 
     // TODO: Add alt.
     let puzzleDivDelIcon = document.createElement('img');
     puzzleDivDelIcon.setAttribute("class", "puzzleDivIcons");
     puzzleDivDelIcon.setAttribute("src", "./images/trash.png");
-    puzzleDivDelIcon.setAttribute("onclick", "openDelConfirmWindow()");
+    puzzleDivDelIcon.onclick = function(event) {
+        openDelConfirmWindow(event);
+    }
     puzzleIconsDiv.appendChild(puzzleDivDelIcon);
 
     let puzzleDivList = document.getElementById('puzzleDivList');
@@ -262,7 +277,7 @@ function tempAppendPuzzle() {
     appendPuzzle("Blank");
 }
 
-function openDelConfirmWindow() {
+function openDelConfirmWindow(event) {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
 
@@ -311,7 +326,7 @@ function delYesClicked() {
 }
 
 // Opens confirmation window for clearing the transition states of the puzzle.
-function openClearConfirmWindow() {
+function openClearConfirmWindow(event) {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
 
@@ -356,7 +371,7 @@ function clearTransYesClicked() {
 // TODO: (Can make it by checking if leftTransitionModeToggled and comparing current div id with the one in storage.)
 // Left transition is taken when a user answers the puzzle incorrectly. So, if a user just explicitly wants a regular
 // left transition, they can fill out the wrong answer field with 'left'.
-function toggleLeftTransitionMode() {
+function toggleLeftTransitionMode(event) {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
 
@@ -410,7 +425,7 @@ function toggleLeftTransitionMode() {
 
 // Right transition is taken when a user answers the puzzle correctly. So, if a user just explicitly wants a regular
 // right transition, they can fill out the correct answer field with 'right'.
-function toggleRightTransitionMode() {
+function toggleRightTransitionMode(event) {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
 
@@ -463,7 +478,7 @@ function toggleRightTransitionMode() {
 }
 
 // Opens confirmation box for respective transition if transition mode is on, else opens puzzle edit window.
-function puzzleDivOnCLick() {
+function puzzleDivOnCLick(event) {
     // Get the clicked puzzleDiv object.
     let clickedPuzzleDiv = event.target;
 

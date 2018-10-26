@@ -15,7 +15,11 @@ firebase.auth().onAuthStateChanged(function(user) {
 function appendRoom(roomName) {
     let newRoomDiv = document.createElement('div');
     newRoomDiv.setAttribute("class", "createdRoomDiv");
-    newRoomDiv.setAttribute("onclick", "createdRoomDivOnClick()");
+    // could simply use newRoomDiv.setAttribute("onclick", "createdRoomDivOnClick()"); but event variable is not
+    // auto defined in browsers like firefox.
+    newRoomDiv.onclick = function(event) {
+        createdRoomDivOnClick(event);
+    };
     let roomDivText = document.createTextNode(roomName);
     newRoomDiv.appendChild(roomDivText);
 
@@ -23,7 +27,9 @@ function appendRoom(roomName) {
     let roomDivDelIcon = document.createElement('img');
     roomDivDelIcon.setAttribute("class", "delIcon");
     roomDivDelIcon.setAttribute("src", "./images/trash.png");
-    roomDivDelIcon.setAttribute("onclick", "openDelConfirmWindow()");
+    roomDivDelIcon.onclick = function(event) {
+        openDelConfirmWindow(event);
+    }
     newRoomDiv.appendChild(roomDivDelIcon);
 
     let createdRoomDivList = document.getElementById('createdRoomDivList');
@@ -61,7 +67,7 @@ function loadCreatedRooms(userId) {
 }
 
 // TODO: switch storing roomDiv and roomKey from sessionStorage to global variables in a namespace.
-function createdRoomDivOnClick() {
+function createdRoomDivOnClick(event) {
     let currDiv = event.target;
 
     // At the end of the loop, createdRoomDivIndex will contain the index.
@@ -84,7 +90,7 @@ function createdRoomDivOnClick() {
     window.location.href = "../html/room.html";
 }
 
-function openDelConfirmWindow() {
+function openDelConfirmWindow(event) {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
 
