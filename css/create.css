@@ -1,36 +1,8 @@
-/* Set a style for all buttons */
-button {
-    background-color: #2BABFF;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: auto;
-}
-
-button:hover {
-    opacity: 0.8;
-}
-
-.title, .subTitle {
-    background-color: #42ebf4;
-    text-align: center;
-    margin: auto;
-}
-
-.topThree {
-  margin: 10px;
-  float: left;
-  background-color: #000000;
-  float: left;
-  outline: none;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  transition: 0.3s;
-  font-family: 'Abril Fatface', cursive;
-  font-size: 20px;
-  color: #e8f0fc;
+@font-face {
+    font-family: 'IceFont';
+    src: url('images/CFGrandNord-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 li {
@@ -83,6 +55,7 @@ h2 {
   font-family: 'Abril Fatface', cursive;
   font-size: 20px;
   color: #ffffff;
+  border-color: black;
 }
 
 .headerButton:hover {
@@ -93,4 +66,10 @@ h2 {
 
 .headerButton:active {
   background-color: #395377;
+}
+
+.title, .subTitle {
+    background-color: #42ebf4;
+    text-align: center;
+    margin: auto;
 }
