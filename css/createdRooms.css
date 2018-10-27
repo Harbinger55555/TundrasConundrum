@@ -30,7 +30,6 @@ button:hover {
     opacity: 0.8;
 }
 
-
 #createRoomButton {
     width: 100%;
 }
@@ -69,8 +68,6 @@ button:hover {
     margin: auto;
     margin-top: 7px;
     margin-bottom: 7px;
-    /* padding: 10px;
-    line-height: 30px; */
     display: flex;
 
 }
@@ -138,9 +135,9 @@ button:hover {
 }
 
 .delIcon {
-    margin-left: auto;
+    position: absolute;
     align-self: center;
-    margin-right: 15px;
+    right: 8%;
     width: 20px;
     height: 20px;
     visibility: hidden;
@@ -220,6 +217,13 @@ button:hover {
     .delModalContent {
         margin: 10% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
         width: 250px;
+    }
+}
+
+/* Change styles for room div icons for screen widths less than 600px */
+@media screen and (max-width: 600px) {
+    .delIcon {
+        right: 10%;
     }
 }
 

@@ -23,9 +23,10 @@ function appendRoom(roomName) {
 
     //put the room text in a p element so that css could be added
     //to insure long text wouldn't push the delete icon out of the view
-    let  roomDivText = document.createElement('p');
-    roomDivText.innerHTML = roomName;
-    roomDivText.setAttribute("class", "roomNameText");
+    // let  roomDivText = document.createElement('p');
+    // roomDivText.innerHTML = roomName;
+    let roomDivText = document.createTextNode(roomName);
+    // roomDivText.setAttribute("class", "roomNameText");
     newRoomDiv.appendChild(roomDivText);
 
     // TODO: Add alt.
