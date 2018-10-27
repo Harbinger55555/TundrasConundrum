@@ -36,6 +36,8 @@ button:hover {
 }
 
 .title, .subTitle {
+    display: inline-block;
+    width: 100%;
     background-color: #42ebf4;
     text-align: center;
     margin: auto;
