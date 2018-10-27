@@ -18,6 +18,12 @@ function appendRoom(roomImgUrl, roomDesc, roomName, roomID) {
     let newRoomDiv = document.createElement('div');
     newRoomDiv.setAttribute("class", "roomDiv");
 
+    // Creates a div for the room description.
+    let roomDescDiv = document.createElement('div');
+    roomDescDiv.setAttribute("class", "roomDescDiv");
+    let roomDescText = document.createTextNode(roomDesc || "No Description... Bask in the mystery!");
+    roomDescDiv.appendChild(roomDescText);
+
     // Creates a div for the room image.
     let roomImgDiv = document.createElement('div');
     roomImgDiv.setAttribute("class", "roomImgDiv");
@@ -29,22 +35,21 @@ function appendRoom(roomImgUrl, roomDesc, roomName, roomID) {
     };
     roomImgDiv.appendChild(roomImg);
 
-    // Creates a div for the room description.
-    let roomDescDiv = document.createElement('div');
-    roomDescDiv.setAttribute("class", "roomDescDiv");
-    let roomDescText = document.createTextNode(roomDesc || "No Description... Bask in the mystery!");
-    roomDescDiv.appendChild(roomDescText);
-
     // Creates a div for the room name.
     let roomNameDiv = document.createElement('div');
     roomNameDiv.setAttribute("class", "roomNameDiv");
     let roomNameText = document.createTextNode(roomName);
     roomNameDiv.appendChild(roomNameText);
 
+    //wrap name and image into their own div for formatting purposes
+    let roomNameAndImgDiv = document.createElement('div');
+    roomNameAndImgDiv.appendChild(roomImgDiv);
+    roomNameAndImgDiv.appendChild(roomNameDiv);
+    roomNameAndImgDiv.setAttribute( "class", "roomNameAndImg" );
+
     // Append all three content divs into the newRoomDiv.
-    newRoomDiv.appendChild(roomImgDiv);
+    newRoomDiv.appendChild(roomNameAndImgDiv);
     newRoomDiv.appendChild(roomDescDiv);
-    newRoomDiv.appendChild(roomNameDiv);
 
     let roomDivList = document.getElementById('roomDivList');
     roomDivList.appendChild(newRoomDiv);
@@ -77,7 +82,3 @@ function loadAllRooms() {
         document.getElementById('loader').style.display = 'none';
     });
 }
-
-
-//let clickedRoom = firebase.database().ref().child('rooms/' + playRoomKey + '/name');
-//clickedRoom.once()
