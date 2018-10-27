@@ -15,18 +15,14 @@ firebase.auth().onAuthStateChanged(function(user) {
 function appendRoom(roomName) {
     let newRoomDiv = document.createElement('div');
     newRoomDiv.setAttribute("class", "createdRoomDiv");
+
     // could simply use newRoomDiv.setAttribute("onclick", "createdRoomDivOnClick()"); but event variable is not
     // auto defined in browsers like firefox.
     newRoomDiv.onclick = function(event) {
         createdRoomDivOnClick(event);
     };
 
-    //put the room text in a p element so that css could be added
-    //to insure long text wouldn't push the delete icon out of the view
-    // let  roomDivText = document.createElement('p');
-    // roomDivText.innerHTML = roomName;
     let roomDivText = document.createTextNode(roomName);
-    // roomDivText.setAttribute("class", "roomNameText");
     newRoomDiv.appendChild(roomDivText);
 
     // TODO: Add alt.

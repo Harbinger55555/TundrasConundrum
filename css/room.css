@@ -45,23 +45,23 @@ button:hover {
 
 .puzzleDiv {
     background-color: silver;
-    overflow-y: scroll;
-    height: 40px;
+    overflow: scroll;
+    height: 50px;
     width: 90%;
     cursor: pointer;
     border-radius: 7px;
     margin: auto;
     margin-top: 7px;
     margin-bottom: 7px;
-    padding: 10px;
-    line-height: 40px;
     display: flex;
 }
 
 /* Style for the div holding the icons */
 .puzzleIconsDiv {
     margin-left: auto;
+    position: absolute;
     align-self: center;
+    right: 8%;
     height: 80%;
     display: flex;
     visibility: hidden;
@@ -101,7 +101,7 @@ button:hover {
 
 .confirmModalContent {
     background-color: white;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 20% auto 15% auto; /* 20% from the top, 15% from the bottom and centered */
     width: 23%;
     font-size: 17px;
     border-radius: 5px;
@@ -204,8 +204,21 @@ button:hover {
         border-bottom-right-radius: 5px;
     }
     .confirmModalContent {
-        margin: 10% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
         width: 250px;
+    }
+}
+
+/* Change styles for confirmModalContent for screen widths less than 600px */
+@media screen and (max-width: 600px) {
+    .confirmModalContent {
+        margin: 50% auto 15% auto; /* 50% from the top, 15% from the bottom and centered */
+    }
+}
+
+/* Change styles for puzzle div icons for screen widths less than 600px */
+@media screen and (max-width: 600px) {
+    .puzzleIconsDiv {
+        right: 10%;
     }
 }
 

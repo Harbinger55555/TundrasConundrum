@@ -69,17 +69,10 @@ button:hover {
     margin-top: 7px;
     margin-bottom: 7px;
     display: flex;
-
 }
 
 .roomDiv {
   margin: 30px;
-}
-
-.roomNameText {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .containerDiv {
@@ -100,7 +93,7 @@ button:hover {
 
 .delModalContent {
     background-color: white;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 20% auto 15% auto; /* 20% from the top, 15% from the bottom and centered */
     width: 23%;
     font-size: 17px;
     border-radius: 5px;
@@ -215,8 +208,14 @@ button:hover {
         border-bottom-right-radius: 5px;
     }
     .delModalContent {
-        margin: 10% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
         width: 250px;
+    }
+}
+
+/* Change styles for delModalContent for screen widths less than 600px */
+@media screen and (max-width: 600px) {
+    .delModalContent {
+        margin: 50% auto 15% auto; /* 50% from the top, 15% from the bottom and centered */
     }
 }
 
