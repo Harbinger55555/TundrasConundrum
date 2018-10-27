@@ -20,7 +20,12 @@ function appendRoom(roomName) {
     newRoomDiv.onclick = function(event) {
         createdRoomDivOnClick(event);
     };
-    let roomDivText = document.createTextNode(roomName);
+
+    //put the room text in a p element so that css could be added
+    //to insure long text wouldn't push the delete icon out of the view
+    let  roomDivText = document.createElement('p');
+    roomDivText.innerHTML = roomName;
+    roomDivText.setAttribute("class", "roomNameText");
     newRoomDiv.appendChild(roomDivText);
 
     // TODO: Add alt.
@@ -199,4 +204,3 @@ window.onclick = function(event) {
         delConfirmWindow.style.display = "none";
     }
 }
-

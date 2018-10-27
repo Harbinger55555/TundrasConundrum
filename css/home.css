@@ -12,7 +12,7 @@ body {
 
 /* Full-width input fields */
 input[type=email], input[type=password] {
-	vertical-align: middle;   
+	vertical-align: middle;
     width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
