@@ -55,11 +55,6 @@ function appendRoom(roomImgUrl, roomDesc, roomName, roomID) {
     roomDivList.appendChild(newRoomDiv);
 }
 
-// TODO: Delete this function along with related stuff in html and css.
-function tempAppendRoom() {
-    appendRoom("./images/huh.png", "This is a room. What more does ye need to know?", "Blank Name");
-}
-
 function playUnity(room) {
     sessionStorage.setItem("playRoomKey", room);
     window.location.href = "../html/play.html";
@@ -72,7 +67,7 @@ function loadAllRooms() {
     // TODO: Dynamically keep roomDivList up to date with firebase RTDB changes (Could use .on() then remove and refill roomDivList).
     allRooms.once('value', function(snapshot){
         snapshot.forEach(function(roomSnapshot) {
-            let roomImgUrl = roomSnapshot.child('imgUrl').val();
+            let roomImgUrl = roomSnapshot.child('themeURL').val();
             let roomDesc = roomSnapshot.child('description').val();
             let roomName = roomSnapshot.child('name').val();
             let roomID = roomSnapshot.key;

@@ -38,17 +38,16 @@
     <div class="containerDiv">
   		<div class="row">
   	        <button class="col-sm" onclick="openCreateWindow()">Create Room</button>
-  	        <button class="col-sm" onclick="tempAppendRoom()">Append Blank Room</button>
   		</div>
       <div id="createdRoomDivList">
           <div id="loader">Loading...</div>
       </div>
     </div>
 
-    <div id="createRoomWindow" class="modal">
-        <div class="createRoomModalContent animate">
-            <div class="createRoomContainer">
-                <span onclick="document.getElementById('createRoomWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <div id="roomWindow" class="modal">
+        <div class="roomModalContent animate">
+            <div class="roomContainer">
+                <span onclick="document.getElementById('roomWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <div class="roomThemeDiv">
                     <input type="file" id="roomThemeInput"><br/>
                     <img id="roomTheme" alt="Room Theme" />
@@ -61,8 +60,8 @@
                 </div>
             </div>
 
-            <div class="createRoomContainer" >
-                <button id="createRoomButton" type="submit" onclick="createRoom()">Create Room</button>
+            <div class="roomContainer" >
+                <button id="roomWindowButton" type="submit"></button>
             </div>
         </div>
     </div>

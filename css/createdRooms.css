@@ -30,15 +30,15 @@ button:hover {
     opacity: 0.8;
 }
 
-#createRoomButton {
+#roomWindowButton {
     width: 100%;
 }
 
-#createRoomWindow {
+#roomWindow {
     overflow-y: scroll;
 }
 
-.createRoomContainer {
+.roomContainer {
     overflow:scroll;
     position: relative;
     padding: 16px;
@@ -137,17 +137,27 @@ button:hover {
     border-bottom-right-radius: 5px;
 }
 
-.delIcon {
+/* Style for the div holding the icons */
+.roomIconsDiv {
+    margin-left: auto;
     position: absolute;
     align-self: center;
     right: 8%;
-    width: 20px;
-    height: 20px;
+    height: 0px;
+    display: flex;
     visibility: hidden;
 }
 
-.createdRoomDiv:hover .delIcon {
-    visibility: visible;
+.createdRoomDiv:hover .roomIconsDiv {
+    visibility: visible !important; /* Important so that hover still works after visibility dynamically set to hidden */
+}
+
+/* Style for the icons */
+.roomDivIcons {
+    align-self: center;
+    width: 25px;
+    height: 25px;
+    padding: 3px;
 }
 
 /* The Modal (background) */
@@ -166,7 +176,7 @@ button:hover {
 }
 
 /* Modal Content/Box */
-.createRoomModalContent {
+.roomModalContent {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
@@ -231,7 +241,7 @@ button:hover {
 
 /* Change styles for room div icons for screen widths less than 600px */
 @media screen and (max-width: 600px) {
-    .delIcon {
+    .roomIconsDiv {
         right: 10%;
     }
 }
