@@ -6,7 +6,7 @@
 }
 
 /* Full-width input fields */
-input[type=text] {
+input[type=text], textarea {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -32,6 +32,16 @@ button:hover {
 
 #createRoomButton {
     width: 100%;
+}
+
+#createRoomWindow {
+    overflow-y: scroll;
+}
+
+.createRoomContainer {
+    overflow:scroll;
+    position: relative;
+    padding: 16px;
 }
 
 .title, .subTitle {
@@ -156,11 +166,11 @@ button:hover {
 }
 
 /* Modal Content/Box */
-.modal-content {
+.createRoomModalContent {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 30%; /* Could be more or less, depending on screen size */
+    width: 50%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */
@@ -281,4 +291,34 @@ h2 {
 
 .headerButton:active {
   background-color: #395377;
+}
+
+.roomThemeDiv {
+    margin: auto;
+    width: 350px;
+    height: 350px;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+}
+
+#roomTheme {
+    width: 100%;
+    height: 100%;
+}
+
+.roomNameDiv {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.roomDescDiv {
+    width: 80%;
+    height: 250px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+#roomDesc {
+    height: 100%;
 }

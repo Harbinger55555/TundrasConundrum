@@ -77,7 +77,6 @@ function createdRoomDivOnClick(event) {
     for (var createdRoomDivIndex=0; (currDiv=currDiv.previousSibling); createdRoomDivIndex++);
     createdRoomDivIndex -= 3;
 
-    // TODO: can roomName be obtained with this.innerHTML or this.textContent?
     // Prepare data of room to send to room.html
     let roomName = sessionStorage['roomDiv' + createdRoomDivIndex];
     let roomKey = sessionStorage['roomKey' + createdRoomDivIndex];
@@ -125,7 +124,7 @@ function delYesClicked() {
 
     // Delete all puzzles relating to the room from the firebase RTDB.
     let delClickRoomPuzzleData = firebase.database().ref().child('rooms/' + roomKey + '/puzzles');
-    delClickRoomPuzzleData.once('value', function(snapshot) {
+    delClickRoomPuzzleData.once('value', function (snapshot) {
         snapshot.forEach(function (puzzleSnapshot) {
             let puzzleId = puzzleSnapshot.key;
             updates['/puzzles/' + puzzleId] = null;
@@ -137,7 +136,23 @@ function delYesClicked() {
 
             // Update the firebase RTDB and refresh the page to update the changes in the sessionStorage as well.
             firebase.database().ref().update(updates).then(
-                () => {document.location.reload(true)
+                () => {
+                    // Create a reference to the room theme.
+                    var themeRef = firebase.storage().ref().child(roomKey + '/theme');
+
+                    // Delete the room theme from storage.
+                    themeRef.delete().then(
+                        () => {
+                            document.location.reload(true)
+                        }).catch(function(error){
+                            // If the theme does not exist, simply reload the page.
+                            if (error.code == "storage/object-not-found") {
+                                document.location.reload(true);
+                            } else {
+                                // If it is any other error, throw it again.
+                                throw(error);
+                            }
+                    });
                 });
         });
 }
@@ -161,9 +176,10 @@ function createRoom() {
         roomNameEle.focus();
         return false;
     }
+    var roomDesc = document.getElementById('roomDesc').value;
+
     // To prevent multiple submissions to firebase.
     document.getElementById("createRoomButton").disabled = true;
-
 
     // Get the currently logged in user.
     var currUser = firebase.auth().currentUser.uid;
@@ -172,32 +188,106 @@ function createRoom() {
     var newRoom = firebase.database().ref().child('users/' + currUser + '/rooms').push();
     var roomKey = newRoom.key;
 
+    if (uploadedTheme) {
+        // TODO: Check image size <= 5MB.
+        // Tries to upload selected room theme to firebase storage.
+        var storageRef = firebase.storage().ref().child(roomKey + '/theme');
+        var uploadTask = storageRef.put(uploadedTheme);
+
+        // Register three observers:
+        // 1. 'state_changed' observer, called any time the state changes
+        // 2. Error observer, called on failure
+        // 3. Completion observer, called on successful completion
+        uploadTask.on('state_changed', function (snapshot) {
+            // Observe state change events such as progress, pause, and resume
+            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+        }, function (error) {
+            // Handle unsuccessful uploads
+            // Reenabling createRoomButton.
+            document.getElementById('createRoomWindow').style.display='none';
+            resetInputs();
+            window.alert("Room Theme upload failed! Please open edit mode and upload again.");
+        }, function () {
+            // Handle successful uploads on complete
+            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                uploadRoomToRTDB(roomKey, roomName, roomDesc, downloadURL);
+            });
+        });
+    } else {
+        // Just update firebase RTDB without a theme upload to Storage.
+        uploadRoomToRTDB(roomKey, roomName, roomDesc);
+    }
+    return true;
+}
+
+// Upload room info to firebase RTDB.
+function uploadRoomToRTDB(roomKey, roomName, roomDesc, themeURL) {
+    // Get the currently logged in user.
+    var currUser = firebase.auth().currentUser.uid;
+
     // Prepare data of room to send to room.html
     localStorage.setItem('roomName', roomName);
     localStorage.setItem('roomKey', roomKey);
 
+    var updates = {};
+
     // Set roomName for roomId in 'users' database.
-    newRoom.set({
-        name: roomName
-    });
+    updates['/users/' + currUser + '/rooms/' + roomKey] = roomName;
 
     // Set roomName for roomId in 'rooms' database.
-    firebase.database().ref().child('rooms/' + roomKey).set({
-        name: roomName
-    }).then(
-        user => {
-            window.location.href = "../html/room.html"
-        });
+    updates['/rooms/' + roomKey + '/name'] = roomName;
 
-    return true;
+    // Set roomDesc for roomId in 'rooms' database if user had written a description.
+    if (roomDesc != "") updates['/rooms/' + roomKey + '/description'] = roomDesc;
+
+    // Set themeURL for roomId in 'rooms' database if user had uploaded a new theme.
+    if (themeURL) updates['/rooms/' + roomKey + '/themeURL'] = themeURL;
+
+    firebase.database().ref().update(updates).then(
+        user => {
+            window.location.href = "../html/room.html";
+        });
 }
 
-// When the user clicks anywhere outside of the createRoomWindow, close it
+function resetInputs() {
+    document.getElementById("createRoomButton").disabled = false;
+    document.getElementById('roomThemeInput').value = '';
+    document.getElementById('roomTheme').src = "./images/huh.png";
+    document.getElementById('roomName').value = '';
+    document.getElementById('roomDesc').value = '';
+    uploadedTheme = null;
+}
+
+function openCreateWindow() {
+    resetInputs();
+    document.getElementById('createRoomWindow').style.display = 'block';
+}
+
+// When the user clicks anywhere outside of the createRoomWindow, close it.
 window.onclick = function(event) {
     let createRoomWindow = document.getElementById('createRoomWindow');
     let delConfirmWindow = document.getElementById('delConfirmWindow');
     if (event.target == createRoomWindow || event.target == delConfirmWindow) {
         createRoomWindow.style.display = "none";
         delConfirmWindow.style.display = "none";
+    }
+}
+
+// Set the uploadTheme to null by default.
+var uploadedTheme = null;
+
+// When a user uploads a room theme while creating a room.
+document.getElementById('roomThemeInput').onchange = function(event) {
+    uploadedTheme = this.files[0];
+    let roomTheme = document.getElementById('roomTheme');
+
+    // If user uploads a theme.
+    if (uploadedTheme) {
+        roomTheme.src = window.URL.createObjectURL(uploadedTheme);
+    } else {
+        // If user clicks on cancel on the upload window.
+        roomTheme.src = "./images/huh.png";
     }
 }
