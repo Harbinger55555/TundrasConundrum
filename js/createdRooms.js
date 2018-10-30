@@ -209,6 +209,11 @@ function createRoom(event) {
         roomNameEle.focus();
         return false;
     }
+
+    if (uploadedTheme && !validSize(uploadedTheme)) {
+        return false;
+    }
+
     var roomDesc = document.getElementById('roomDesc').value;
 
     // To prevent multiple submissions to firebase.
@@ -227,7 +232,6 @@ function createRoom(event) {
 // Main firebase update function.
 function updateStorageAndRTDB(roomKey, roomName, roomDesc) {
     if (uploadedTheme) {
-        // TODO: Check image size <= 5MB.
         // Tries to upload selected room theme to firebase storage.
         var storageRef = firebase.storage().ref().child(roomKey + '/theme');
         var uploadTask = storageRef.put(uploadedTheme);
@@ -354,6 +358,11 @@ function saveRoomChanges(event) {
         roomNameEle.focus();
         return false;
     }
+
+    if (uploadedTheme && !validSize(uploadedTheme)) {
+        return false;
+    }
+
     // To prevent multiple submissions to firebase.
     document.getElementById("roomWindowButton").disabled = true;
 
@@ -420,6 +429,17 @@ window.onclick = function(event) {
     if (event.target == roomWindow || event.target == delConfirmWindow) {
         roomWindow.style.display = "none";
         delConfirmWindow.style.display = "none";
+    }
+}
+
+// To check the size of the theme uploads.
+function validSize(file) {
+    var fileSize = file.size / 1024 / 1024; // in MB
+    if (fileSize > 5) {
+        alert('File size exceeds 5 MB');
+        return false;
+    } else {
+        return true;
     }
 }
 
