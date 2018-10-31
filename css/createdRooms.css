@@ -58,13 +58,34 @@ button:hover {
     margin: auto;
 }
 
+.mainContainer {
+    border: 3px solid black;
+}
+
+.createRoomButton {
+    display: flex;
+    cursor: pointer;
+    background-color: #d9dde0;
+    opacity: 0.1;
+}
+
+#plusRoom {
+    width: 70px;
+    height: 70px;
+    align-self: center;
+    margin: auto;
+}
+
+.createRoomButton:hover {
+    opacity: 0.7;
+}
+
 #createdRoomDivList {
     overflow-y: scroll;
     position: relative;
     height: 300px;
     width: 100%;
     margin: auto;
-    border: 3px solid black;
     padding: auto 10px;
 }
 
@@ -86,9 +107,7 @@ button:hover {
 }
 
 .containerDiv {
-    margin: auto;
-    height: auto;
-    width: 40%;
+    min-height: 100vh;
 }
 
 .container {
@@ -331,4 +350,16 @@ h2 {
 
 #roomDesc {
     height: 100%;
+}
+
+.leftPagePanel {
+    background-color: grey;
+    text-align: center;
+    padding: 10px;
+    height: auto;
+}
+
+.panelButtons {
+    border-radius: 70px;
+    width: 70%;
 }
