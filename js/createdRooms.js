@@ -31,16 +31,6 @@ function appendRoom(roomName) {
     newRoomDiv.appendChild(roomIconsDiv);
 
     // TODO: Add alt.
-    // An icon to enter edit mode for a room.
-    let roomDivEditIcon = document.createElement('img');
-    roomDivEditIcon.setAttribute("class", "roomDivIcons");
-    roomDivEditIcon.setAttribute("src", "./images/edit_default.png");
-    roomDivEditIcon.onclick = function(event) {
-        // toggleEditMode(event);
-    }
-    roomIconsDiv.appendChild(roomDivEditIcon);
-
-    // TODO: Add alt.
     let roomDivDelIcon = document.createElement('img');
     roomDivDelIcon.setAttribute("class", "roomDivIcons");
     roomDivDelIcon.setAttribute("src", "./images/trash.png");
@@ -106,11 +96,6 @@ function createdRoomDivOnClick(event) {
 function openDelConfirmWindow(event) {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
-
-    if (editModeToggled) {
-        window.alert("Edit Mode is toggled on.");
-        return false;
-    }
 
     document.getElementById('delConfirmWindow').style.display = 'block';
     let delIconOfCurrDiv  = event.target;
