@@ -223,102 +223,14 @@ button:hover {
     animation: animatezoom 0.6s
 }
 
-@-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)}
-    to {-webkit-transform: scale(1)}
-}
-
-@keyframes animatezoom {
-    from {transform: scale(0)}
-    to {transform: scale(1)}
-}
-
-/* Change styles for confirmation windows for screen widths less than 1200px */
-@media screen and (max-width: 1200px) {
-    .delYes {
-        width: 100%;
-        float: unset;
-        border-bottom-left-radius: unset;
-    }
-    .delNo {
-        width: 100%;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-    }
-    .delModalContent {
-        width: 250px;
-    }
-}
-
-/* Change styles for delModalContent for screen widths less than 600px */
-@media screen and (max-width: 600px) {
-    .delModalContent {
-        margin: 50% auto 15% auto; /* 50% from the top, 15% from the bottom and centered */
-    }
-}
-
-/* Change styles for room div icons for screen widths less than 600px */
-@media screen and (max-width: 600px) {
-    .roomIconsDiv {
-        right: 10%;
-    }
-}
-
-li {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-p {
-  text-align: center;
-  padding: 15px;
-}
-
-a {
-  color: #000000;
-  text-align: center;
-}
-
-a:hover {
-  color: #000000;
-}
-
 h1 {
-  text-align: center;
-  padding: 30px;
+    text-align: center;
+    padding: 30px;
 }
 
 h2 {
-  text-align: center;
-  padding: 30px;
-}
-
-.container-fluid {
-  overflow: hidden;
-}
-
-.headerButton {
-  background-color: #000000;
-  float: left;
-  outline: none;
-  cursor: pointer;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  transition: 0.3s;
-  font-family: 'Abril Fatface', cursive;
-  font-size: 20px;
-  color: #ffffff;
-}
-
-.headerButton:hover {
-  background-color: #395377;
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.headerButton:active {
-  background-color: #395377;
+    text-align: center;
+    padding: 30px;
 }
 
 .roomThemeDiv {
@@ -358,11 +270,6 @@ h2 {
     height: auto;
 }
 
-.panelButtons {
-    border-radius: 70px;
-    width: 70%;
-}
-
 #editButton {
     padding: 14px 20px;
     margin: 8px 5%;
@@ -381,4 +288,45 @@ h2 {
 .toggledOn {
     background-color: lightgreen;
     color: white;
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* Change styles for confirmation windows for screen widths less than 1200px */
+@media screen and (max-width: 1200px) {
+    .delYes {
+        width: 100%;
+        float: unset;
+        border-bottom-left-radius: unset;
+    }
+    .delNo {
+        width: 100%;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    .delModalContent {
+        width: 250px;
+    }
+}
+
+/* Change styles for delModalContent for screen widths less than 600px */
+@media screen and (max-width: 600px) {
+    .delModalContent {
+        margin: 50% auto 15% auto; /* 50% from the top, 15% from the bottom and centered */
+    }
+}
+
+/* Change styles for room div icons for screen widths less than 600px */
+@media screen and (max-width: 600px) {
+    .roomIconsDiv {
+        right: 10%;
+    }
 }
