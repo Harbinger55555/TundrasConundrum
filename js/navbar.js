@@ -7,19 +7,18 @@ function logout() {
     });
 }
 
-// window.onscroll = function() {stickyNavbar()};
-//
-// function stickyNavbar() {
-//     var navbar = document.getElementById("navbar");
-//     var navWrapper = document.getElementById("navWrapper");
-//     var sticky = navWrapper.offsetTop;
-//     if (window.pageYOffset >= sticky) {
-//         navbar.classList.add("sticky")
-//     } else {
-//         navbar.classList.remove("sticky");
-//     }
-// }
+window.onscroll = function() {stickyNavbar()};
 
+function stickyNavbar() {
+    var topnav = document.getElementById("topnav");
+    var navWrapper = document.getElementById("navWrapper");
+    var sticky = navWrapper.offsetTop;
+    if (window.pageYOffset >= sticky) {
+        topnav.classList.add("sticky");
+    } else {
+        topnav.classList.remove("sticky");
+    }
+}
 
 function myFunction() {
     navbar_collapsed = !navbar_collapsed;
