@@ -367,6 +367,7 @@ h2 {
     padding: 14px 20px;
     margin: 8px 5%;
     float: right;
+    width: 170px;
     border-radius: 10px;
     outline: none;
 }
