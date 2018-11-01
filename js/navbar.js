@@ -7,14 +7,6 @@ function logout() {
     });
 }
 
-function viewAllChallenges() {
-    window.location.href = "../html/browse.html"
-}
-
-function viewCreatedChallenges() {
-    window.location.href = "../html/createdRooms.html"
-}
-
 window.onscroll = function() {stickyNavbar()};
 
 function stickyNavbar() {
