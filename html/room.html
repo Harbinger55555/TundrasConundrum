@@ -4,18 +4,21 @@
     <title>Tundras Conundrum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/room.css">
+	<link rel="stylesheet" href="../css/navbar.css">
 	<link rel="stylesheet" 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 			crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Anton|Lobster|Notable|Playfair+Display" rel="stylesheet">
 </head>
 <body>
 	<div class="title"><h1>Tundra's Conundrum</h1></div>
-    <div class="container-fluid">
-	      <div class="row">
-	        <a class="col-sm headerButton" href="mainMenu.html">Home</a>
-	        <button class="col-sm headerButton" onclick="viewCreatedChallenges()">My Conundrums</button>
-	        <button class="col-sm headerButton" onclick="viewAllChallenges()">Browse</button>
-          <button class="col-sm headerButton" onclick="logout()">Logout</button>
-	      </div>
+    <div class="navWrapper" id="navWrapper">
+        <div class="container-fluid" id="navbar">
+            <div class="row">
+                <a class="col-sm headerButton" href="mainMenu.html">Home</a>
+                <button class="col-sm headerButton" onclick="viewCreatedChallenges()">My Conundrums</button>
+                <button class="col-sm headerButton" onclick="viewAllChallenges()">Browse</button>
+                <button class="col-sm headerButton" onclick="logout()">Logout</button>
+            </div>
+        </div>
     </div>
 	<button onclick="openPuzzleWindowCreateVer()" style="width:auto;">Create a Puzzle</button>
 	<div class="roomTitle">

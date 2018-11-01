@@ -36,7 +36,7 @@ function appendRoom(roomName) {
     roomDivEditIcon.setAttribute("class", "roomDivIcons");
     roomDivEditIcon.setAttribute("src", "./images/edit_default.png");
     roomDivEditIcon.onclick = function(event) {
-        toggleEditMode(event);
+        // toggleEditMode(event);
     }
     roomIconsDiv.appendChild(roomDivEditIcon);
 
@@ -89,23 +89,11 @@ function createdRoomDivOnClick(event) {
     createdRoomDivIndex -= 3;
 
     if (editModeToggled) {
-        let editToggledRoom = sessionStorage['editToggledRoom'];
-
-        // TODO: make a general edit button to toggle edit mode and click on any room to edit them.
-        // Check if clicked room is different from the one whose edit mode is active.
-        if (createdRoomDivIndex != editToggledRoom) {
-            window.alert("Currently has another room's edit mode toggled... Please turn it off first.");
-            return false;
-        } else {
-            openEditWindow(createdRoomDivIndex);
-        }
+        openEditWindow(createdRoomDivIndex);
     } else {
         // Prepare data of room to send to room.html
         let roomName = sessionStorage['roomDiv' + createdRoomDivIndex];
         let roomKey = sessionStorage['roomKey' + createdRoomDivIndex];
-
-        // Clear all temporary roomDiv and roomKey data from sessionStorage before passing room data to room.html.
-        // sessionStorage.clear();
 
         // Prepare data of room to send to room.html
         localStorage.setItem('roomName', roomName);
@@ -321,7 +309,7 @@ function openCreateWindow() {
 
 function openEditWindow(createdRoomDivIndex) {
     let roomWindowButton = document.getElementById('roomWindowButton');
-    roomWindowButton.innerHTML = 'Create Room';
+    roomWindowButton.innerHTML = 'Save Changes';
     roomWindowButton.onclick = function(event) {
         saveRoomChanges(event);
     }
@@ -376,43 +364,17 @@ function saveRoomChanges(event) {
     updateStorageAndRTDB(roomKey, roomName, roomDesc);
 }
 
-function toggleEditMode(event) {
-    // To prevent click event from bubbling to parent and triggering its onclick as well.
-    event.stopPropagation();
-
-    // Get the clicked editIcon object and its parent puzzleDiv.
-    let editIconOfCurrDiv  = event.target;
-    let roomIconsDiv = editIconOfCurrDiv.parentElement;
-    let currDiv = roomIconsDiv.parentElement;
-
-    // At the end of the loop, roomDivIndex will contain the index.
-    // The first roomDiv has index of 3 thus the -3 to make it zero-based.
-    for (var roomDivIndex=0; (currDiv=currDiv.previousSibling); roomDivIndex++);
-    roomDivIndex -= 3;
-
-    // If editToggledRoom exists in the Storage, check if it's the same one as being clicked on currently.
-    let toggledRoomInStorage = sessionStorage.getItem('editToggledRoom');
-    if (toggledRoomInStorage && roomDivIndex != toggledRoomInStorage) {
-        window.alert("Currently has another room's edit mode toggled... Please turn it off first.");
-        return false;
-    }
-
+function toggleEditMode() {
     editModeToggled = !editModeToggled;
+    let editModeButton = document.getElementById('editButton');
 
-    // Change the icon to toggled img and update editToggledRoom.
+    // Change the button to toggled mode and update editToggledRoom.
     if (editModeToggled) {
-        editIconOfCurrDiv.setAttribute("src", "./images/edit_toggled.png");
-
-        // As long as edit mode is active, the icons div will be visible.
-        roomIconsDiv.style.visibility = 'visible';
-        // TODO: Change the editToggledRoom from sessionStorage to global variable.
-        sessionStorage.setItem('editToggledRoom', roomDivIndex);
+        editModeButton.setAttribute("class", "toggledOn");
+        editModeButton.innerHTML = "Edit Mode: ON";
     } else {
-        editIconOfCurrDiv.setAttribute("src", "./images/edit_default.png");
-
-        // Turn icons div visibility off since edit mode is no longer active.
-        roomIconsDiv.style.visibility = 'hidden';
-        sessionStorage.removeItem('editToggledRoom');
+        editModeButton.setAttribute("class", "toggledOff");
+        editModeButton.innerHTML = "Edit Mode: OFF";
     }
 }
 
@@ -457,5 +419,18 @@ document.getElementById('roomThemeInput').onchange = function(event) {
     } else {
         // If user clicks on cancel on the upload window.
         roomTheme.src = "./images/huh.png";
+    }
+}
+
+window.onscroll = function() {stickyNavbar()};
+
+function stickyNavbar() {
+    var navbar = document.getElementById("navbar");
+    var navWrapper = document.getElementById("navWrapper");
+    var sticky = navWrapper.offsetTop;
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+    } else {
+        navbar.classList.remove("sticky");
     }
 }

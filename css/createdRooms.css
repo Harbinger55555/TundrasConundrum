@@ -21,6 +21,7 @@ button {
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
+    outline: none;
     border: none;
     cursor: pointer;
     width: auto;
@@ -52,14 +53,12 @@ button:hover {
     margin: auto;
 }
 
-.navbar {
-    background-color: #00ffa1;
-    text-align: center;
-    margin: auto;
-}
-
 .mainContainer {
     border: 3px solid black;
+}
+
+.subContainer {
+    margin: auto;
 }
 
 .createRoomButton {
@@ -362,4 +361,22 @@ h2 {
 .panelButtons {
     border-radius: 70px;
     width: 70%;
+}
+
+#editButton {
+    padding: 14px 20px;
+    margin: 8px 0;
+    border-radius: 10px;
+    outline: none;
+}
+
+/* The default mode for buttons. */
+.toggledOff {
+    background-color: #2BABFF;
+    color: white;
+}
+
+.toggledOn {
+    background-color: lightgreen;
+    color: white;
 }
