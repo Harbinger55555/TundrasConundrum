@@ -365,7 +365,8 @@ h2 {
 
 #editButton {
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 8px 5%;
+    float: right;
     border-radius: 10px;
     outline: none;
 }
