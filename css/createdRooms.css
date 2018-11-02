@@ -17,6 +17,7 @@ input[type=text], textarea {
 
 body {
     background-image: url("../html/images/createdrooms_bg.png");
+    background-size: 110% 100%;
 }
 
 /* Set a style for all buttons */
@@ -54,13 +55,6 @@ button:hover {
     width: 100%;
     text-align: center;
     margin: auto;
-}
-
-.title {
-    background-color: #2BABFF;
-}
-
-.subTitle {
     color: white;
 }
 

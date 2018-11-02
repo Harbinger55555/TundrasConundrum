@@ -1,6 +1,6 @@
 /* navWrapper must always have the same height as topnav */
 .navWrapper {
-    height: 53px;
+    height: 58px;
 }
 
 .topnav {
@@ -8,6 +8,7 @@
     background-color: #333;
     z-index: 5;
     width: 100%;
+    text-align: center;
 }
 
 .sticky {
@@ -18,18 +19,18 @@
 
 .topnav a {
     position: relative;
-    float: left;
-    display: block;
+    display: inline-block;
+    margin: 0 -3px;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+    font-size: 20px;
     cursor: pointer;
 }
 
 .topnav a:hover {
     background-color: #ddd;
+    text-decoration: none;
     color: black;
 }
 
@@ -49,6 +50,7 @@
 }
 
 @media screen and (max-width: 600px) {
+    .topnav a:first-child {float:left;}
     .topnav a:not(:first-child) {display: none;}
     .topnav a.icon {
         float: right;
