@@ -37,24 +37,31 @@
 
     <div class="containerDiv">
   		<div class="row">
-  	        <button class="col-sm" onclick="document.getElementById('createRoomWindow').style.display='block'">Create Room</button>
-  	        <button class="col-sm" onclick="tempAppendRoom()">Append Blank Room</button>
+  	        <button class="col-sm" onclick="openCreateWindow()">Create Room</button>
   		</div>
       <div id="createdRoomDivList">
           <div id="loader">Loading...</div>
       </div>
     </div>
 
-    <div id="createRoomWindow" class="modal">
-        <div class="modal-content animate container">
-            <div class="roomPopUp">
-                <span onclick="document.getElementById('createRoomWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <label for="roomName"><b>Room Name</b></label>
-                <input type="text" id="roomName" placeholder="Enter Room Name" name="roomName">
+    <div id="roomWindow" class="modal">
+        <div class="roomModalContent animate">
+            <div class="roomContainer">
+                <span onclick="document.getElementById('roomWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <div class="roomThemeDiv">
+                    <input type="file" id="roomThemeInput"><br/>
+                    <img id="roomTheme" alt="Room Theme" />
+                </div>
+                <div class="roomNameDiv">
+                    <input type="text" id="roomName" placeholder="Enter Room Name" name="roomName">
+                </div>
+                <div class="roomDescDiv">
+                    <textarea id="roomDesc" placeholder="Enter Room Description" name="roomDesc" ></textarea>
+                </div>
             </div>
 
-            <div class="roomPopUp" >
-                <button id="createRoomButton" type="submit" onclick="createRoom()">Create Room</button>
+            <div class="roomContainer" >
+                <button id="roomWindowButton" type="submit"></button>
             </div>
         </div>
     </div>

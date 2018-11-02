@@ -188,7 +188,7 @@ function openPuzzleWindowEditVer(puzzleDivIndex) {
     }).then(
         () => {
             // Button was disabled by previous puzzle creation, thus reenabling.
-            document.getElementById("puzzleWindowButton").disabled = false;
+            puzzleWindowButton.disabled = false;
 
             document.getElementById('puzzleWindow').style.display = 'block';
         });
