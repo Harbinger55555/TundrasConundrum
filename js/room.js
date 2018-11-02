@@ -272,11 +272,6 @@ function appendPuzzle(puzzleQuestion) {
     puzzleDivList.appendChild(newPuzzleDiv);
 }
 
-// TODO: Delete this function along with related stuff in html and css.
-function tempAppendPuzzle() {
-    appendPuzzle("Blank");
-}
-
 function openDelConfirmWindow(event) {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();

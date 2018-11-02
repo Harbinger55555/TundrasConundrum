@@ -29,13 +29,39 @@ button:hover {
     opacity: 0.8;
 }
 
+.mainContainer {
+    background-color: white;
+    border: 3px solid black;
+}
+
+.subContainer {
+    margin: auto;
+}
+
+.createPuzzleButton {
+    display: flex;
+    cursor: pointer;
+    background-color: #d9dde0;
+    opacity: 0.1;
+}
+
+#plusRoom {
+    width: 70px;
+    height: 70px;
+    align-self: center;
+    margin: auto;
+}
+
+.createPuzzleButton:hover {
+    opacity: 0.7;
+}
+
 #puzzleDivList {
     overflow-y: scroll;
     position: relative;
-    height: 300px;
-    width: 40%;
+    height: 500px;
+    width: 100%;
     margin: auto;
-    border: 3px solid black;
     padding: auto 10px;
 }
 
@@ -211,6 +237,12 @@ h2 {
     background-color: #42ebf4;
     text-align: center;
     margin: auto;
+}
+
+.sidePagePanel {
+    text-align: center;
+    padding: 10px;
+    height: auto;
 }
 
 @-webkit-keyframes animatezoom {

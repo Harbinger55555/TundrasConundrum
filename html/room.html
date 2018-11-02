@@ -21,13 +21,25 @@
 		</div>
 	</div>
 	<div class="subTitle"><h2 id="roomName">Loading...</h2></div>
-	<button onclick="openPuzzleWindowCreateVer()" style="width:auto;">Create a Puzzle</button>
 
-    <div id="puzzleDivList">
-		<div id="loader">Loading...</div>
+	<div class="containerDiv">
+		<div class="row">
+			<div class="col-2 sidePagePanel"></div>
+			<div class="col-8 mainContainer">
+				<div class="row">
+					<div class="createPuzzleButton col-2" onclick="openPuzzleWindowCreateVer()">
+						<img id="plusRoom" alt="Create Room" src="./images/plus.png">
+					</div>
+					<div class="col-9 subContainer">
+                        <div id="puzzleDivList">
+                            <div id="loader">Loading...</div>
+                        </div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm sidePagePanel"></div>
+		</div>
 	</div>
-
-    <button onclick="tempAppendPuzzle()" style="width:auto;">Append Blank Puzzle</button>
 
 	<div id="puzzleWindow" class="modal">
  		<div class="modal-content animate container">
