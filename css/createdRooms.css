@@ -18,6 +18,7 @@ input[type=text], textarea {
 body {
     background-image: url("../html/images/createdrooms_bg.png");
     background-size: 110% 100%;
+    overflow-x: hidden;
 }
 
 /* Set a style for all buttons */
@@ -38,10 +39,6 @@ button:hover {
 
 #roomWindowButton {
     width: 100%;
-}
-
-#roomWindow {
-    overflow-y: scroll;
 }
 
 .roomContainer {
