@@ -15,6 +15,10 @@ input[type=text], textarea {
     box-sizing: border-box;
 }
 
+body {
+    background-image: url("../html/images/createdrooms_bg.png");
+}
+
 /* Set a style for all buttons */
 button {
     background-color: #2BABFF;
@@ -48,12 +52,20 @@ button:hover {
 .title, .subTitle {
     display: inline-block;
     width: 100%;
-    background-color: #42ebf4;
     text-align: center;
     margin: auto;
 }
 
+.title {
+    background-color: #2BABFF;
+}
+
+.subTitle {
+    color: white;
+}
+
 .mainContainer {
+    background-color: white;
     border: 3px solid black;
 }
 
@@ -82,7 +94,7 @@ button:hover {
 #createdRoomDivList {
     overflow-y: scroll;
     position: relative;
-    height: 300px;
+    height: 500px;
     width: 100%;
     margin: auto;
     padding: auto 10px;
@@ -190,7 +202,6 @@ button:hover {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
 }
 
 /* Modal Content/Box */
@@ -263,8 +274,7 @@ h2 {
     height: 100%;
 }
 
-.leftPagePanel {
-    background-color: grey;
+.sidePagePanel {
     text-align: center;
     padding: 10px;
     height: auto;
