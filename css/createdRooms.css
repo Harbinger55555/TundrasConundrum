@@ -12,11 +12,12 @@ input[type=text], textarea {
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
+    border-radius: 5px;
     box-sizing: border-box;
 }
 
 body {
-    background-image: url("../html/images/createdrooms_bg.png");
+    background-image: url("images/createdrooms_bg.png");
     background-size: 110% 100%;
     overflow-x: hidden;
 }
@@ -53,6 +54,12 @@ button:hover {
     text-align: center;
     margin: auto;
     color: white;
+}
+
+.title {
+    font-family: IceFont;
+    background-image: url("images/ice_title.png");
+    color: black;
 }
 
 .mainContainer {
@@ -197,7 +204,8 @@ button:hover {
 
 /* Modal Content/Box */
 .roomModalContent {
-    background-color: #fefefe;
+    background-image: url("images/scroll_bg.png");
+    background-size: 100% 100%;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
