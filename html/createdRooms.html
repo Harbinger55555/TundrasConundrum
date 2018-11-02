@@ -4,8 +4,8 @@
     <title>Tundras Conundrum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/createdRooms.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 			crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Anton|Lobster|Notable|Playfair+Display" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
@@ -25,23 +25,39 @@
 </head>
 <body>
     <div class="title"><h1>Tundra's Conundrum</h1></div>
-    <div class="container-fluid">
-	      <div class="row">
-	        <a class="col-sm headerButton" href="mainMenu.html">Home</a>
-	        <button class="col-sm headerButton" onclick="viewCreatedChallenges()">My Conundrums</button>
-	        <button class="col-sm headerButton" onclick="viewAllChallenges()">Browse</button>
-          <button class="col-sm headerButton" onclick="logout()">Logout</button>
-	      </div>
+
+    <div class="navWrapper" id="navWrapper">
+        <div class="topnav" id="topnav">
+            <a href="mainMenu.html" class="active">Home</a>
+            <a href="createdRooms.html">My Conundrums</a>
+            <a href="browse.html">Browse</a>
+            <a href="#" onclick="logout()">Logout</a>
+            <a class="icon" onclick="myFunction()">
+                <img class="collapse-icon" src="./images/collapse_icon.png">
+            </a>
+        </div>
     </div>
+
     <div class="subTitle"><h2>My Conundrums</h2></div>
 
     <div class="containerDiv">
   		<div class="row">
-  	        <button class="col-sm" onclick="openCreateWindow()">Create Room</button>
-  		</div>
-      <div id="createdRoomDivList">
-          <div id="loader">Loading...</div>
-      </div>
+            <div class="col-2 sidePagePanel"></div>
+            <div class="col-8 mainContainer">
+                <div class="row">
+                    <div class="createRoomButton col-2" onclick="openCreateWindow()">
+                        <img id="plusRoom" alt="Create Room" src="./images/plus.png">
+                    </div>
+                    <div class="col-9 subContainer">
+                        <div><button id="editButton" class="toggledOff" onclick="toggleEditMode()">Edit Mode: OFF</button></div>
+                        <div id="createdRoomDivList">
+                            <div id="loader">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm sidePagePanel"></div>
+        </div>
     </div>
 
     <div id="roomWindow" class="modal">
@@ -60,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="roomContainer" >
+            <div class="roomContainer">
                 <button id="roomWindowButton" type="submit"></button>
             </div>
         </div>

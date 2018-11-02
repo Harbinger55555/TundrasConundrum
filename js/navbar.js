@@ -7,10 +7,28 @@ function logout() {
     });
 }
 
-function viewAllChallenges() {
-    window.location.href = "../html/browse.html"
+window.onscroll = function() {stickyNavbar()};
+
+function stickyNavbar() {
+    var topnav = document.getElementById("topnav");
+    var navWrapper = document.getElementById("navWrapper");
+    var sticky = navWrapper.offsetTop;
+    if (window.pageYOffset >= sticky) {
+        topnav.classList.add("sticky");
+    } else {
+        topnav.classList.remove("sticky");
+    }
 }
 
-function viewCreatedChallenges() {
-    window.location.href = "../html/createdRooms.html"
+function myFunction() {
+    navbar_collapsed = !navbar_collapsed;
+    var topnav = document.getElementById("topnav");
+    if (!navbar_collapsed) {
+        topnav.classList.add("responsive");
+    } else {
+        topnav.classList.remove("responsive");
+    }
 }
+
+// Default value is true since when the collapse icon appears, the navbar items will be collapsed.
+var navbar_collapsed = true;
