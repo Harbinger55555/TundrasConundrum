@@ -30,35 +30,13 @@ button:hover {
     opacity: 0.8;
 }
 
-
 #createRoomButton {
     width: 100%;
 }
 
-.roomPopUp {
-  padding: 15px;
-}
-
-#delText {
-    line-height: 100px;
-    height: 100px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-#delYes {
-    float: left;
-    background-color: lightgreen;
-    border-bottom-left-radius: 5px;
-}
-
-#delNo {
-    background-color: #fc8982;
-    border-bottom-right-radius: 5px;
-}
-
 .title, .subTitle {
+    display: inline-block;
+    width: 100%;
     background-color: #42ebf4;
     text-align: center;
     margin: auto;
@@ -90,20 +68,11 @@ button:hover {
     margin: auto;
     margin-top: 7px;
     margin-bottom: 7px;
-    /* padding: 10px;
-    line-height: 30px; */
     display: flex;
-
 }
 
 .roomDiv {
   margin: 30px;
-}
-
-.roomNameText {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .containerDiv {
@@ -124,7 +93,7 @@ button:hover {
 
 .delModalContent {
     background-color: white;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 20% auto 15% auto; /* 20% from the top, 15% from the bottom and centered */
     width: 23%;
     font-size: 17px;
     border-radius: 5px;
@@ -139,12 +108,36 @@ button:hover {
     color: white;
 }
 
+.delText {
+    height: 100px;
+    width: 70%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.delYes {
+    float: left;
+    background-color: lightgreen;
+    border-bottom-left-radius: 5px;
+}
+
+.delNo {
+    background-color: #fc8982;
+    border-bottom-right-radius: 5px;
+}
+
 .delIcon {
-    margin-left: auto;
+    position: absolute;
     align-self: center;
-    margin-right: 15px;
+    right: 8%;
     width: 20px;
     height: 20px;
+    visibility: hidden;
+}
+
+.createdRoomDiv:hover .delIcon {
+    visibility: visible;
 }
 
 /* The Modal (background) */
@@ -200,6 +193,37 @@ button:hover {
 @keyframes animatezoom {
     from {transform: scale(0)}
     to {transform: scale(1)}
+}
+
+/* Change styles for confirmation windows for screen widths less than 1200px */
+@media screen and (max-width: 1200px) {
+    .delYes {
+        width: 100%;
+        float: unset;
+        border-bottom-left-radius: unset;
+    }
+    .delNo {
+        width: 100%;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    .delModalContent {
+        width: 250px;
+    }
+}
+
+/* Change styles for delModalContent for screen widths less than 600px */
+@media screen and (max-width: 600px) {
+    .delModalContent {
+        margin: 50% auto 15% auto; /* 50% from the top, 15% from the bottom and centered */
+    }
+}
+
+/* Change styles for room div icons for screen widths less than 600px */
+@media screen and (max-width: 600px) {
+    .delIcon {
+        right: 10%;
+    }
 }
 
 li {

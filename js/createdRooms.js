@@ -15,21 +15,23 @@ firebase.auth().onAuthStateChanged(function(user) {
 function appendRoom(roomName) {
     let newRoomDiv = document.createElement('div');
     newRoomDiv.setAttribute("class", "createdRoomDiv");
-    newRoomDiv.setAttribute("onclick", "createdRoomDivOnClick()");
 
-    //put the room text in a p element so that css could be added
-    //to insure long text wouldn't push the delete icon out of the view
-    let  roomDivText = document.createElement('p');
-    roomDivText.innerHTML = roomName;
-    roomDivText.setAttribute("class", "roomNameText");
+    // could simply use newRoomDiv.setAttribute("onclick", "createdRoomDivOnClick()"); but event variable is not
+    // auto defined in browsers like firefox.
+    newRoomDiv.onclick = function(event) {
+        createdRoomDivOnClick(event);
+    };
+
+    let roomDivText = document.createTextNode(roomName);
     newRoomDiv.appendChild(roomDivText);
-
 
     // TODO: Add alt.
     let roomDivDelIcon = document.createElement('img');
     roomDivDelIcon.setAttribute("class", "delIcon");
     roomDivDelIcon.setAttribute("src", "./images/trash.png");
-    roomDivDelIcon.setAttribute("onclick", "openDelConfirmWindow()");
+    roomDivDelIcon.onclick = function(event) {
+        openDelConfirmWindow(event);
+    }
     newRoomDiv.appendChild(roomDivDelIcon);
 
     let createdRoomDivList = document.getElementById('createdRoomDivList');
@@ -66,7 +68,8 @@ function loadCreatedRooms(userId) {
     });
 }
 
-function createdRoomDivOnClick() {
+// TODO: switch storing roomDiv and roomKey from sessionStorage to global variables in a namespace.
+function createdRoomDivOnClick(event) {
     let currDiv = event.target;
 
     // At the end of the loop, createdRoomDivIndex will contain the index.
@@ -89,7 +92,7 @@ function createdRoomDivOnClick() {
     window.location.href = "../html/room.html";
 }
 
-function openDelConfirmWindow() {
+function openDelConfirmWindow(event) {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
 

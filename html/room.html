@@ -14,10 +14,10 @@
 	        <a class="col-sm headerButton" href="mainMenu.html">Home</a>
 	        <button class="col-sm headerButton" onclick="viewCreatedChallenges()">My Conundrums</button>
 	        <button class="col-sm headerButton" onclick="viewAllChallenges()">Browse</button>
-          <button class="col-sm headerButton" onclick="logout()" style="width:auto;">Logout</button>
+          <button class="col-sm headerButton" onclick="logout()">Logout</button>
 	      </div>
     </div>
-	<button onclick="openPuzzleWindow()" style="width:auto;">Create a Puzzle</button>
+	<button onclick="openPuzzleWindowCreateVer()" style="width:auto;">Create a Puzzle</button>
 	<div class="roomTitle">
 		<h1 id="roomName"></h1>
 	</div>
@@ -28,12 +28,12 @@
 
     <button onclick="tempAppendPuzzle()" style="width:auto;">Append Blank Puzzle</button>
 
-	<div id="createPuzzleWindow" class="modal">
+	<div id="puzzleWindow" class="modal">
  		<div class="modal-content animate container">
-	    	<div id="puzzleContainer">
-	      		<span onclick="document.getElementById('createPuzzleWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+	    	<div class="puzzleContainer" id="puzzleContainer">
+	      		<span onclick="document.getElementById('puzzleWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
 	      		<label for="question"><b>Question</b></label>
-	      		<input type="text" id="question" placeholder="Enter Question" name="question">
+	      		<input type="text" id="question" placeholder="Enter Question" name="question" required>
 	      		<label for="correctAnswer"><b>Correct Answer</b></label>
 	      		<input type="text" id="correctAnswer" placeholder="Enter Correct Answer" name="correctAnswer" required>
 	      		<label for="wrongAnswer1"><b>Wrong Answer #1</b></label>
@@ -49,38 +49,62 @@
 	      		<label for="hint3"><b>Hint #3 (Optional)</b></label>
 	      		<input type="text" id="hint3" placeholder="Enter Hint #3" name="hint3">
 	    	</div>
-	    	<div style="background-color:#f1f1f1">
-	      		<button id="createPuzzleButton" type="submit" onclick="createPuzzle()">Create Puzzle</button>
+
+	    	<div class="container" style="background-color:#f1f1f1">
+	      		<button id="puzzleWindowButton"></button>
 	    	</div>
 	  	</div>
 	</div>
 
 	<div id="delConfirmWindow" class="modal">
-		<div class="delModalContent animate">
-			<div class="delContainer">
+		<div class="confirmModalContent animate">
+			<div class="confirmContainer">
 				<span onclick="document.getElementById('delConfirmWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
-				<div id="delText">Are you sure you want to delete the puzzle?</div>
-				<div id="delYes" class="delConfirmChoices" onclick="delYesClicked()">Yes</div>
-				<div id="delNo" class="delConfirmChoices" onclick="document.getElementById('delConfirmWindow').style.display='none'">No</div>
+				<div class="confirmText">Are you sure you want to delete the puzzle?</div>
+				<div class="confirmChoices confirmYes" onclick="delYesClicked()">Yes</div>
+				<div class="confirmChoices confirmNo" onclick="document.getElementById('delConfirmWindow').style.display='none'">No</div>
 			</div>
 		</div>
 	</div>
 
-  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
-  <script>
+    <div id="transConfirmWindow" class="modal">
+        <div class="confirmModalContent animate">
+            <div class="confirmContainer">
+                <span onclick="document.getElementById('transConfirmWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <div id="transConfirmText" class="confirmText"></div>
+                <div class="confirmChoices confirmYes" onclick="transYesClicked()">Yes</div>
+                <div class="confirmChoices confirmNo" onclick="document.getElementById('transConfirmWindow').style.display='none'">No</div>
+            </div>
+        </div>
+    </div>
+
+	<div id="clearTransConfirmWindow" class="modal">
+		<div class="confirmModalContent animate">
+			<div class="confirmContainer">
+				<span onclick="document.getElementById('clearTransConfirmWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<div class="confirmText">Are you sure you want to clear all transitions for the puzzle?</div>
+				<div class="confirmChoices confirmYes" onclick="clearTransYesClicked()">Yes</div>
+				<div class="confirmChoices confirmNo" onclick="document.getElementById('clearTransConfirmWindow').style.display='none'">No</div>
+			</div>
+		</div>
+	</div>
+
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+<script>
     // Initialize Firebase
     var config = {
-      apiKey: "AIzaSyBejDVUScwZZdcgGOu8voy8NWEHNMWdwm8",
-      authDomain: "tundrasconundrum-6af20.firebaseapp.com",
-      databaseURL: "https://tundrasconundrum-6af20.firebaseio.com",
-      projectId: "tundrasconundrum-6af20",
-      storageBucket: "tundrasconundrum-6af20.appspot.com",
-      messagingSenderId: "51428296236"
+        apiKey: "AIzaSyBejDVUScwZZdcgGOu8voy8NWEHNMWdwm8",
+        authDomain: "tundrasconundrum-6af20.firebaseapp.com",
+        databaseURL: "https://tundrasconundrum-6af20.firebaseio.com",
+        projectId: "tundrasconundrum-6af20",
+        storageBucket: "tundrasconundrum-6af20.appspot.com",
+        messagingSenderId: "51428296236"
     };
     firebase.initializeApp(config);
-  </script>
-
+</script>
 <script src="../js/room.js"></script>
-<script src="../js/mainMenu.js"></script>
+<script src="../js/navbar.js"></script>
 </body>
 </html>

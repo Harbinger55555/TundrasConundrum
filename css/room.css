@@ -39,47 +39,52 @@ button:hover {
     padding: auto 10px;
 }
 
-#delText {
-    line-height: 100px;
-    height: 100px;
-}
-
-#delYes {
-    float: left;
-    background-color: lightgreen;
-    border-bottom-left-radius: 5px;
-}
-
-#delNo {
-    background-color: #fc8982;
-    border-bottom-right-radius: 5px;
-}
-
 .roomTitle {
     text-align: center;
 }
 
 .puzzleDiv {
     background-color: silver;
-    overflow-y: scroll;
-    height: 40px;
+    overflow: scroll;
+    height: 50px;
     width: 90%;
     cursor: pointer;
     border-radius: 7px;
     margin: auto;
     margin-top: 7px;
     margin-bottom: 7px;
-    padding: 10px;
-    line-height: 40px;
     display: flex;
 }
 
-#puzzleContainer {
-  overflow:scroll;
+/* Style for the div holding the icons */
+.puzzleIconsDiv {
+    margin-left: auto;
+    position: absolute;
+    align-self: center;
+    right: 8%;
+    height: 80%;
+    display: flex;
+    visibility: hidden;
 }
 
-#createPuzzleWindow {
-  overflow-y: scroll;
+.puzzleDiv:hover .puzzleIconsDiv {
+    visibility: visible !important; /* Important so that hover still works after visibility dynamically set to hidden */
+}
+
+/* Style for the icons */
+.puzzleDivIcons {
+    align-self: center;
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+}
+
+#puzzleContainer {
+    overflow:scroll;
+}
+
+#puzzleWindow {
+    overflow-y: scroll;
 }
 
 /* Extra styles for the cancel button */
@@ -89,25 +94,20 @@ button:hover {
     background-color: #f44336;
 }
 
-.container {
-	position: relative;
-  padding: 16px;
-}
-
-.delContainer {
+.confirmContainer {
     position: relative;
     text-align: center;
 }
 
-.delModalContent {
+.confirmModalContent {
     background-color: white;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 20% auto 15% auto; /* 20% from the top, 15% from the bottom and centered */
     width: 23%;
     font-size: 17px;
     border-radius: 5px;
 }
 
-.delConfirmChoices {
+.confirmChoices {
     width: 50%;
     height: 50px;
     line-height: 50px; /* To center align the text vertically */
@@ -116,40 +116,23 @@ button:hover {
     color: white;
 }
 
-.delIcon {
-    margin-left: auto;
-    align-self: center;
-    width: 20px;
-    height: 20px;
-}
-
-.delContainer {
-    position: relative;
+.confirmText {
+    height: 100px;
+    width: 70%;
+    display: table-cell;
+    vertical-align: middle;
     text-align: center;
 }
 
-.delModalContent {
-    background-color: white;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    width: 23%;
-    font-size: 17px;
-    border-radius: 5px;
+.confirmYes {
+    float: left;
+    background-color: lightgreen;
+    border-bottom-left-radius: 5px;
 }
 
-.delConfirmChoices {
-    width: 50%;
-    height: 50px;
-    line-height: 50px; /* To center align the text vertically */
-    display: inline-block;
-    cursor: pointer;
-    color: white;
-}
-
-.delIcon {
-    margin-left: auto;
-    align-self: center;
-    width: 20px;
-    height: 20px;
+.confirmNo {
+    background-color: #fc8982;
+    border-bottom-right-radius: 5px;
 }
 
 /* The Modal (background) */
@@ -208,10 +191,34 @@ button:hover {
     to {transform: scale(1)}
 }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-    .cancelbtn {
-       width: 100%;
+/* Change styles for confirmation windows for screen widths less than 1200px */
+@media screen and (max-width: 1200px) {
+    .confirmYes {
+        width: 100%;
+        float: unset;
+        border-bottom-left-radius: unset;
+    }
+    .confirmNo {
+        width: 100%;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    .confirmModalContent {
+        width: 250px;
+    }
+}
+
+/* Change styles for confirmModalContent for screen widths less than 600px */
+@media screen and (max-width: 600px) {
+    .confirmModalContent {
+        margin: 50% auto 15% auto; /* 50% from the top, 15% from the bottom and centered */
+    }
+}
+
+/* Change styles for puzzle div icons for screen widths less than 600px */
+@media screen and (max-width: 600px) {
+    .puzzleIconsDiv {
+        right: 10%;
     }
 }
 
@@ -250,8 +257,10 @@ h2 {
 }
 
 .container {
-  overflow: hidden;
-  text-align: center;
+    overflow: hidden;
+    text-align: center;
+    padding: 16px;
+    position: relative;
 }
 
 .headerButton {
@@ -273,7 +282,9 @@ h2 {
   text-decoration: none;
 }
 
-.title, .subTitle {
+.title {
+    display: inline-block;
+    width: 100%;
     background-color: #42ebf4;
     text-align: center;
     margin: auto;
