@@ -138,6 +138,7 @@ function openPuzzleWindowCreateVer() {
         return false;
     }
 
+    uncollapseAllFields();
     resetInputs('puzzleContainer');
     let puzzleWindowButton = document.getElementById('puzzleWindowButton');
     puzzleWindowButton.innerHTML = 'Create Puzzle';
@@ -166,6 +167,7 @@ function openPuzzleWindowEditVer(puzzleDivIndex) {
         return false;
     }
 
+    uncollapseAllFields();
     let puzzleWindowButton = document.getElementById('puzzleWindowButton');
     puzzleWindowButton.innerHTML = 'Save Changes';
     puzzleWindowButton.onclick = function(event) {
@@ -583,4 +585,37 @@ function loadPuzzles() {
         // Hide the loader.
         document.getElementById('loader').style.display = 'none';
     });
+}
+
+function collapseQuestionField() {
+    var questionField = document.getElementById("questionField");
+
+    // getComputedStyle for modern browsers, currentStyle for IE
+    var style = window.getComputedStyle ? getComputedStyle(questionField, null) : questionField.currentStyle;
+
+    questionField.style.display = (style.display == "block") ? "none" : "block";
+}
+
+function collapseAnswerFields() {
+    var answerFields = document.getElementById("answerFields");
+
+    // getComputedStyle for modern browsers, currentStyle for IE
+    var style = window.getComputedStyle ? getComputedStyle(answerFields, null) : answerFields.currentStyle;
+
+    answerFields.style.display = (style.display == "block") ? "none" : "block";
+}
+
+function collapseHintFields() {
+    var hintFields = document.getElementById("hintFields");
+
+    // getComputedStyle for modern browsers, currentStyle for IE
+    var style = window.getComputedStyle ? getComputedStyle(hintFields, null) : hintFields.currentStyle;
+
+    hintFields.style.display = (style.display == "block") ? "none" : "block";
+}
+
+function uncollapseAllFields() {
+    document.getElementById("questionField").style.display = "block";
+    document.getElementById("answerFields").style.display = "block";
+    document.getElementById("hintFields").style.display = "block";
 }

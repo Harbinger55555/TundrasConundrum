@@ -45,22 +45,23 @@
  		<div class="puzzleModalContent animate container">
             <span onclick="document.getElementById('puzzleWindow').style.display='none'" class="close puzzleWindowClose" title="Close Modal">&times;</span>
             <div class="puzzleContainer" id="puzzleContainer">
-	      		<label for="question"><b>Question</b></label>
-	      		<input type="text" id="question" placeholder="Enter Question" name="question" required>
-	      		<label for="correctAnswer"><b>Correct Answer</b></label>
-	      		<input type="text" id="correctAnswer" placeholder="Enter Correct Answer" name="correctAnswer" required>
-	      		<label for="wrongAnswer1"><b>Wrong Answer #1</b></label>
-	      		<input type="text" id="wrongAnswer1" placeholder="Enter Wrong Answer #1" name="wrongAnswer1" required>
-	      		<label for="wrongAnswer2"><b>Wrong Answer #2 (Optional)</b></label>
-	      		<input type="text" id="wrongAnswer2" placeholder="Enter Wrong Answer #2" name="wrongAnswer2">
-	      		<label for="wrongAnswer3"><b>Wrong Answer #3 (Optional)</b></label>
-	      		<input type="text" id="wrongAnswer3" placeholder="Enter Wrong Answer #3" name="wrongAnswer3">
-	      		<label for="hint1"><b>Hint #1 (Optional)</b></label>
-	      		<input type="text" id="hint1" placeholder="Enter Hint #1" name="hint1">
-	      		<label for="hint2"><b>Hint #2 (Optional)</b></label>
-	      		<input type="text" id="hint2" placeholder="Enter Hint #2" name="hint2">
-	      		<label for="hint3"><b>Hint #3 (Optional)</b></label>
-	      		<input type="text" id="hint3" placeholder="Enter Hint #3" name="hint3">
+	      		<label id="questionFieldToggle" class="fieldToggle" onclick="collapseQuestionField()"><b>Question &#x25BC</b></label><br/>
+                <div id="questionField" style="animation-delay: 1s">
+	      		    <input type="text" id="question" placeholder="Enter Question" required>
+                </div>
+	      		<label id="answerFieldsToggle" class="fieldToggle" onclick="collapseAnswerFields()"><b>Answers &#x25BC</b></label><br/>
+                <div id="answerFields">
+                    <input type="text" id="correctAnswer" placeholder="Enter Correct Answer" name="correctAnswer" required>
+                    <input type="text" id="wrongAnswer1" placeholder="Enter Wrong Answer #1" name="wrongAnswer1" required>
+                    <input type="text" id="wrongAnswer2" placeholder="Enter Wrong Answer #2 (Optional)" name="wrongAnswer2">
+                    <input type="text" id="wrongAnswer3" placeholder="Enter Wrong Answer #3 (Optional)" name="wrongAnswer3">
+                </div>
+	      		<label id="hintFieldsToggle" class="fieldToggle" onclick="collapseHintFields()"><b>Hints &#x25BC</b></label><br/>
+                <div id="hintFields">
+                    <input type="text" id="hint1" placeholder="Enter Hint #1 (Optional)" name="hint1">
+                    <input type="text" id="hint2" placeholder="Enter Hint #2 (Optional)" name="hint2">
+                    <input type="text" id="hint3" placeholder="Enter Hint #3 (Optional)" name="hint3">
+                </div>
 	    	</div>
 
 	    	<div class="puzzleContainer">
