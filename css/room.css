@@ -4,8 +4,13 @@
     font-weight: normal;
     font-style: normal;
 }
+
+body {
+    overflow-x: hidden;
+}
+
 /* Full-width input fields */
-input[type=text] {
+input[type=text], textarea {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -102,7 +107,7 @@ button:hover {
 }
 
 #puzzleContainer {
-    height: 60vh;
+    height: 68vh;
     overflow-y:scroll;
 }
 
@@ -244,6 +249,15 @@ h2 {
 
 .fieldToggle {
     cursor: pointer;
+}
+
+#questionField {
+    height: 200px;
+    margin-bottom: 8px;
+}
+
+#question {
+    height: 100%;
 }
 
 @-webkit-keyframes animatezoom {

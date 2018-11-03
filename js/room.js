@@ -159,6 +159,7 @@ function resetInputs(fieldId) {
     for (var index = 0; index < inputs.length; ++index) {
         inputs[index].value = '';
     }
+    document.getElementById("question").value = '';
 }
 
 // Opens the puzzle window with edit functionality.

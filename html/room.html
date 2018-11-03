@@ -46,8 +46,8 @@
             <span onclick="document.getElementById('puzzleWindow').style.display='none'" class="close puzzleWindowClose" title="Close Modal">&times;</span>
             <div class="puzzleContainer" id="puzzleContainer">
 	      		<label id="questionFieldToggle" class="fieldToggle" onclick="collapseQuestionField()"><b>Question &#x25BC</b></label><br/>
-                <div id="questionField" style="animation-delay: 1s">
-	      		    <input type="text" id="question" placeholder="Enter Question" required>
+                <div id="questionField">
+                    <textarea id="question" placeholder="Enter Question" required></textarea>
                 </div>
 	      		<label id="answerFieldsToggle" class="fieldToggle" onclick="collapseAnswerFields()"><b>Answers &#x25BC</b></label><br/>
                 <div id="answerFields">
