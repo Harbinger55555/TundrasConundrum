@@ -1,0 +1,12 @@
+.pageTitle, .pageSubTitle {
+    display: inline-block;
+    width: 100%;
+    background-color: #42ebf4;
+    text-align: center;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    padding: 30px;
+}

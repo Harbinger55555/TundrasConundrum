@@ -29,12 +29,6 @@ button:hover {
     margin: auto;
 }
 
-.navbar {
-    background-color: #00ffa1;
-    text-align: center;
-    margin: auto;
-}
-
 #roomDivList {
     overflow-y: scroll;
     position: relative;
