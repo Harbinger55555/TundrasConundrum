@@ -1,56 +1,117 @@
-/* Set a style for all buttons */
-button {
-    background-color: #2BABFF;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: auto;
+@font-face {
+    font-family: 'IceFont';
+    src: url('images/CFGrandNord-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-button:hover {
-    opacity: 0.8;
+body {
+    background: url("images/mainmenu_bg.png") center no-repeat;
+    background-size: 100% 100%;
+    overflow-x: hidden;
 }
 
 .title, .subTitle {
     display: inline-block;
     width: 100%;
-    background-color: #42ebf4;
     text-align: center;
     margin: auto;
+    color: white;
+}
+
+.title {
+    font-family: IceFont;
+    background-image: url("images/ice_title.png");
+    opacity: 0.8;
+    color: black;
 }
 
 .topThree {
-  margin: 10px;
-  float: left;
-  background-color: #000000;
-  float: left;
-  outline: none;
+    margin: 10px;
+    float: left;
+    background-color: black;
+    outline: none;
     padding: 25px;
-  transition: 0.3s;
-  font-family: 'Abril Fatface', cursive;
-  font-size: 20px;
-  color: #e8f0fc;
+    transition: 0.3s;
+    font-size: 20px;
+    color: #e8f0fc;
+    border: groove 8px grey;
 }
 
 li {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 p {
-  text-align: center;
-  padding: 15px;
+    text-align: center;
+    padding: 15px;
 }
 
 h1, h2 {
-  text-align: center;
-  padding: 30px;
+    text-align: center;
+    padding: 30px;
 }
 
-.container {
-  overflow: hidden;
-  text-align: center;
+.greeting {
+    overflow: hidden;
+    text-align: center;
+}
+
+.row {
+    text-align: center;
+}
+
+.containerDiv {
+    min-height: 100vh;
+}
+
+.storyContainer {
+    margin-top: 30px;
+    border: 8px double black;
+    border-radius: 3px;
+    text-align: center;
+    width: 100%;
+}
+
+.storyDiv {
+    background-color: black;
+    word-wrap: break-word;
+    color: white;
+    padding: 10px 30px;
+    opacity: 0.5;
+    height: 50vh;
+    font-size: 20px;
+    font-family: cursive;
+    overflow-y: scroll;
+}
+
+.storyDiv:hover {
+    opacity: 0.85;
+}
+
+.buttonDiv {
+    margin-top: 30px;
+    padding: 0;
+}
+
+.takeOnButton {
+    background-color: #333;
+    color: #e8f0fc;
+    display: inline-block;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    float: right;
+    outline: none;
+    font-size: 15px;
+}
+
+.takeOnButton:hover {
+    opacity: 0.8;
+    text-decoration: none;
+    color: #e8f0fc;
 }

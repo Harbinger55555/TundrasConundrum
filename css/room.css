@@ -6,6 +6,8 @@
 }
 
 body {
+    background-image: url("images/createdrooms_bg.png");
+    background-size: 110% 100%;
     overflow-x: hidden;
 }
 
@@ -15,8 +17,7 @@ input[type=text], textarea {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 3px inset #ccc;
     box-sizing: border-box;
 }
 
@@ -218,14 +219,13 @@ li {
     padding: 0;
 }
 
-h1 {
+h1, h2 {
     text-align: center;
     padding: 30px;
 }
 
-h2 {
-    text-align: center;
-    padding: 30px;
+.containerDiv {
+    min-height: 100vh;
 }
 
 .puzzleContainer {
@@ -237,9 +237,13 @@ h2 {
 .title, .subTitle {
     display: inline-block;
     width: 100%;
-    background-color: #42ebf4;
     text-align: center;
     margin: auto;
+    color: white;
+}
+
+.title {
+    font-family: IceFont;
 }
 
 .sidePagePanel {

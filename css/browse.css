@@ -39,13 +39,11 @@ button:hover {
 }
 
 .roomDiv {
-    /* height: 55%; */
     margin-bottom: 30px;
     max-height: 400px;
     margin-top: 30px;
     display: flex;
     flex-direction: row;
-    /* justify-content: flex-end; */
     align-items: center;
     word-wrap: break-word;
 }
@@ -62,6 +60,7 @@ button:hover {
 .roomImg {
     height: 100%;
     width: 100%;
+    border: groove 5px grey;
 }
 
 .roomDescDiv {
