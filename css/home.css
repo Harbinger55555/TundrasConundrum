@@ -45,7 +45,7 @@ button:hover {
     background-color: #f44336;
 }
 
-.container {
+.popUpContainer {
 	position: relative;
     padding-top: 20%;
     padding-bottom: 20%;
@@ -53,7 +53,7 @@ button:hover {
 }
 
 /* The Modal (background) */
-.modal {
+.popUpModal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -65,7 +65,7 @@ button:hover {
 }
 
 /* Modal Content/Box */
-.modal-content {
+.popUpModalContent {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;

@@ -26,11 +26,11 @@
     <button onclick="login()" style="width:auto;">Login</button>
     <button onclick="signUp()" style="width:auto;">Sign Up</button>
 
-    <div id="signUpWindow" class="modal">
+    <div id="signUpWindow" class="popUpModal">
 
-        <div class="modal-content animate" style="background-image: url(../css/images/placeholder.jpg);">
+        <div class="popUpModalContent animate" style="background-image: url(../css/images/placeholder.jpg);">
 
-            <div class="container">
+            <div class="popUpContainer">
                 <span onclick="document.getElementById('signUpWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <label id="titleSignUp"> Tundra's Conundrum <br/> Sign Up <br/></label>
                 <label id="signInEmail"><b>Email</b></label><br/>
@@ -45,11 +45,11 @@
         </div>
     </div>
 
-    <div id="forgetPwdWindow" class="modal">
+    <div id="forgetPwdWindow" class="popUpModal">
 
-        <div class="modal-content animate" style="background-image: url(../css/images/placeholder.jpg);">
+        <div class="popUpModalContent animate" style="background-image: url(../css/images/placeholder.jpg);">
 
-            <div class="container">
+            <div class="popUpContainer">
                 <span onclick="document.getElementById('forgetPwdWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <label id="forgetPwdEmail"><b>Password Reset Email</b></label><br/>
                 <input type="email" placeholder="Enter Email" name="emailForget" id="forgetPwdEmailField" required><br/>
