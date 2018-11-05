@@ -28,7 +28,7 @@
 
     <div id="signUpWindow" class="modal">
 
-        <div class="modal-content animate" style="background-image: url(../css/images/placeholder.jpg);">
+        <div class="modal-content animate" id="snowImage" style="background-image: url(../css/images/snowing.gif);">
 
             <div class="container">
                 <span onclick="document.getElementById('signUpWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -40,14 +40,14 @@
                 <input type="password" placeholder="Enter Password" name="password" id="newPwdField" required><br/>
 
                 <button type="submit" id="signUpButton" onclick="signUpSubmit()">Sign Up</button> <br/>
-                <button type="button" onclick="document.getElementById('signUpWindow').style.display='none'" class="cancelbtn">Cancel</button>
+                <button type="button" id="cancelButton" onclick="document.getElementById('signUpWindow').style.display='none'" class="cancelbtn">Cancel</button>
             </div>
         </div>
     </div>
 
     <div id="forgetPwdWindow" class="modal">
 
-        <div class="modal-content animate" style="background-image: url(../css/images/placeholder.jpg);">
+        <div class="modal-content animate" id="snowImage" style="background-image: url(../css/images/snowing.gif);">
 
             <div class="container">
                 <span onclick="document.getElementById('forgetPwdWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -55,7 +55,7 @@
                 <input type="email" placeholder="Enter Email" name="emailForget" id="forgetPwdEmailField" required><br/>
 
                 <button type="submit" id="forgetPwdSubmitButton" onclick="forgetPwdSubmit()">Submit</button> <br/>
-                <button type="button" onclick="document.getElementById('forgetPwdWindow').style.display='none'" class="cancelbtn">Cancel</button>
+                <button type="button" id="forgetPwdCancelButton" onclick="document.getElementById('forgetPwdWindow').style.display='none'" class="cancelbtn">Cancel</button>
             </div>
         </div>
     </div>
