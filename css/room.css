@@ -256,8 +256,8 @@ h1, h2 {
     cursor: pointer;
 }
 
-#questionField {
-    height: 200px;
+#questionField, #leftTransition, #rightTransition {
+    height: 150px;
     margin-bottom: 8px;
 }
 

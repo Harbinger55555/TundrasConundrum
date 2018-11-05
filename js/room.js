@@ -147,6 +147,7 @@ function openPuzzleWindowCreateVer() {
     puzzleWindowButton.onclick = function(event) {
         createPuzzle(event);
     }
+    document.getElementById('transitionFields').style.display = 'none';
 	document.getElementById('puzzleWindow').style.display = 'block';
 	
 	// Button was disabled by previous puzzle creation, thus reenabling.
@@ -188,11 +189,31 @@ function openPuzzleWindowEditVer(puzzleDivIndex) {
         document.getElementById('hint1').value = snapshot.hasChild('hints/hint1') ? dataValues.hints.hint1 : "";
         document.getElementById('hint2').value = snapshot.hasChild('hints/hint2') ? dataValues.hints.hint2 : "";
         document.getElementById('hint3').value = snapshot.hasChild('hints/hint3') ? dataValues.hints.hint3 : "";
+
+        // Fill in the respective transition fields.
+        if (snapshot.hasChild('transitions/left')) {
+            let leftPuzzleKey = dataValues.transitions.left;
+            let leftPuzzleData = firebase.database().ref().child('puzzles/' + leftPuzzleKey);
+            leftPuzzleData.once('value', function(snapshot) {
+                document.getElementById('leftTransition').value = snapshot.val().question;
+            })
+        } else {
+            document.getElementById('leftTransition').value = "";
+        }
+        if (snapshot.hasChild('transitions/right')) {
+            let rightPuzzleKey = dataValues.transitions.right;
+            let rightPuzzleData = firebase.database().ref().child('puzzles/' + rightPuzzleKey);
+            rightPuzzleData.once('value', function(snapshot) {
+                document.getElementById('rightTransition').value = snapshot.val().question;
+            })
+        } else {
+            document.getElementById('rightTransition').value = "";
+        }
     }).then(
         () => {
             // Button was disabled by previous puzzle creation, thus reenabling.
             puzzleWindowButton.disabled = false;
-
+            document.getElementById('transitionFields').style.display = 'block';
             document.getElementById('puzzleWindow').style.display = 'block';
         });
 }
@@ -615,8 +636,28 @@ function collapseHintFields() {
     hintFields.style.display = (style.display == "block") ? "none" : "block";
 }
 
+function collapseLeftTransitionField() {
+    var leftTransitionField = document.getElementById("leftTransition");
+
+    // getComputedStyle for modern browsers, currentStyle for IE
+    var style = window.getComputedStyle ? getComputedStyle(leftTransitionField, null) : leftTransitionField.currentStyle;
+
+    leftTransitionField.style.display = (style.display == "block") ? "none" : "block";
+}
+
+function collapseRightTransitionField() {
+    var rightTransitionField = document.getElementById("rightTransition");
+
+    // getComputedStyle for modern browsers, currentStyle for IE
+    var style = window.getComputedStyle ? getComputedStyle(rightTransitionField, null) : rightTransitionField.currentStyle;
+
+    rightTransitionField.style.display = (style.display == "block") ? "none" : "block";
+}
+
 function uncollapseAllFields() {
     document.getElementById("questionField").style.display = "block";
     document.getElementById("answerFields").style.display = "block";
     document.getElementById("hintFields").style.display = "block";
+    document.getElementById("leftTransition").style.display = "block";
+    document.getElementById("rightTransition").style.display = "block";
 }
