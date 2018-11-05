@@ -23,39 +23,36 @@
         <p class="forgetPwd" onclick="forgetPwd()">Forget Password?</p>
     </div>
     <input type="password" name="userPwd" placeholder="Enter Password" id="pwdField" /><br/>
-    <button onclick="login()" style="width:auto;">Login</button>
-    <button onclick="signUp()" style="width:auto;">Sign Up</button>
+    <button onclick="login()">Login</button>
+    <button onclick="signUp()">Sign Up</button>
 
     <div id="signUpWindow" class="popUpModal">
-
-        <div class="popUpModalContent animate" style="background-image: url(../css/images/placeholder.jpg);">
-
+        <div class="popUpModalContent animate">
             <div class="popUpContainer">
                 <span onclick="document.getElementById('signUpWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <label id="titleSignUp"> Tundra's Conundrum <br/> Sign Up <br/></label>
-                <label id="signInEmail"><b>Email</b></label><br/>
-                <input type="email" placeholder="Enter Email" name="email" id="newEmailField" required><br/>
-
-                <label id="signInPassword"><b>Password</b></label><br/>
-                <input type="password" placeholder="Enter Password" name="password" id="newPwdField" required><br/>
-
-                <button type="submit" id="signUpButton" onclick="signUpSubmit()">Sign Up</button> <br/>
-                <button type="button" onclick="document.getElementById('signUpWindow').style.display='none'" class="cancelbtn">Cancel</button>
+                <input type="email" placeholder="Enter Email" id="newEmailField" required>
+                <input type="password" placeholder="Enter Password" id="newPwdField" required>
+                <input type="text" placeholder="Enter Username" id="newUserNameField">
+                <div class="popUpButtonsDiv">
+                    <button id="signUpButton" onclick="signUpSubmit()">Sign Up</button>
+                    <button id="cancelButton" onclick="document.getElementById('signUpWindow').style.display='none'">Cancel</button>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="forgetPwdWindow" class="popUpModal">
-
-        <div class="popUpModalContent animate" style="background-image: url(../css/images/placeholder.jpg);">
-
+        <div class="popUpModalContent animate">
             <div class="popUpContainer">
                 <span onclick="document.getElementById('forgetPwdWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <label id="forgetPwdEmail"><b>Password Reset Email</b></label><br/>
+                <label id="forgetPwdEmail">Reset Thy Password</label>
                 <input type="email" placeholder="Enter Email" name="emailForget" id="forgetPwdEmailField" required><br/>
 
-                <button type="submit" id="forgetPwdSubmitButton" onclick="forgetPwdSubmit()">Submit</button> <br/>
-                <button type="button" onclick="document.getElementById('forgetPwdWindow').style.display='none'" class="cancelbtn">Cancel</button>
+                <div class="popUpButtonsDiv">
+                    <button id="forgetPwdSubmitButton" onclick="forgetPwdSubmit()">Submit</button>
+                    <button id="forgetPwdCancelButton" onclick="document.getElementById('forgetPwdWindow').style.display='none'">Cancel</button>
+                </div>
             </div>
         </div>
     </div>

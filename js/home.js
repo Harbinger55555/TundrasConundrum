@@ -31,7 +31,7 @@ function resetInputs(fieldid) {
 
 function signUp() {
     resetInputs('signUpWindow');
-    document.getElementById('signUpWindow').style.display='block';
+    document.getElementById('signUpWindow').style.display='flex';
 }
 
 function signUpSubmit() {
@@ -66,7 +66,7 @@ function validInput(inputString) {
 
 function forgetPwd() {
     resetInputs('forgetPwdWindow');
-    document.getElementById('forgetPwdWindow').style.display='block';
+    document.getElementById('forgetPwdWindow').style.display='flex';
 }
 
 function forgetPwdSubmit() {
