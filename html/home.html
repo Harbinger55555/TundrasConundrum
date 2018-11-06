@@ -9,75 +9,84 @@
 	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 </head>
 <body>
+    <div class="mainDiv">
+        <div id="loginDiv">
+            <label id="titleText">Tundra's<br/>Conundrum</label><br/>
+            <div class="labelDiv">
+                <label id= "loginEmail"><b>Email Address</b></label>
+            </div>
+            <input type="email" name="userEmail" id="emailField" /><br/>
+            <div class="labelDiv">
+                <label id= "loginPwd"><b>Password</b></label>
+            </div>
+            <input type="password" name="userPwd" id="pwdField" /><br/>
+            <div class="mainButtonsDiv">
+                <button onclick="login()">Login</button>
+                <button onclick="signUp()">Sign Up</button>
+            </div>
+            <div class="forgetPwdDiv">
+                <p class="forgetPwd" onclick="forgetPwd()"><b>Forgot Password?</b></p>
+            </div>
 
-<div id="loginDiv">
-    <div style = "margin:0">
-        <label id="titleText"> Tundra's Conundrum <br/> Log-In <br/></label>
-    </div>
-    <div class="labelDiv">
-        <label id= "loginEmail">Email Address </label>
-    </div>
-    <input type="email" name="userEmail" placeholder="Enter Email Address" id="emailField" /><br/>
-    <div class="labelDiv">
-        <label id= "loginPwd">Password</label>
-        <p class="forgetPwd" onclick="forgetPwd()">Forget Password?</p>
-    </div>
-    <input type="password" name="userPwd" placeholder="Enter Password" id="pwdField" /><br/>
-    <button onclick="login()">Login</button>
-    <button onclick="signUp()">Sign Up</button>
-
-    <div id="signUpWindow" class="popUpModal">
-        <div class="popUpModalContent animate">
-            <div class="popUpContainer">
-                <span onclick="document.getElementById('signUpWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <label id="titleSignUp"> Tundra's Conundrum <br/> Sign Up <br/></label>
-                <input type="email" placeholder="Enter Email Address" id="newEmailField" required>
-                <input type="password" placeholder="Enter Password" id="newPwdField" required>
-                <input type="text" placeholder="Enter Username" id="newUserNameField" required>
-                <div class="popUpButtonsDiv">
-                    <button id="signUpButton" class="popUpButton" onclick="signUpSubmit()">Sign Up</button>
-                    <button class="popUpButton cancelButton" onclick="document.getElementById('signUpWindow').style.display='none'">Cancel</button>
+            <div id="signUpWindow" class="popUpModal">
+                <div class="popUpModalContent animate">
+                    <div class="popUpContainer">
+                        <span onclick="document.getElementById('signUpWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <div class="logoDiv">
+                            <img class="logo" src="./images/logo.png" alt="Tundra's Conundrum logo">
+                        </div>
+                        <label id="titleSignUp">Create An Account</label>
+                        <input type="email" placeholder="Enter Email Address" id="newEmailField" required>
+                        <input type="password" placeholder="Enter Password" id="newPwdField" required>
+                        <input type="text" placeholder="Enter Username" id="newUserNameField" required>
+                        <div class="popUpButtonsDiv">
+                            <button id="signUpButton" class="popUpButton" onclick="signUpSubmit()">Sign Up</button>
+                            <button class="popUpButton cancelButton" onclick="document.getElementById('signUpWindow').style.display='none'">Cancel</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div id="forgetPwdWindow" class="popUpModal">
+                <div class="popUpModalContent animate">
+                    <div class="popUpContainer">
+                        <span onclick="document.getElementById('forgetPwdWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <div class="logoDiv">
+                            <img class="logo" src="./images/logo.png" alt="Tundra's Conundrum logo">
+                        </div>
+                        <label id="forgetPwdEmail">Reset Thy Password</label>
+                        <input type="email" placeholder="Enter Email Address" name="emailForget" id="forgetPwdEmailField" required><br/>
+
+                        <div class="popUpButtonsDiv">
+                            <button id="forgetPwdSubmitButton" class="popUpButton" onclick="forgetPwdSubmit()">Submit</button>
+                            <button class="popUpButton cancelButton" onclick="document.getElementById('forgetPwdWindow').style.display='none'">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The surrounding HTML is left untouched by FirebaseUI.
+             Your app may use that space for branding, controls and other customizations.-->
+            <div id="firebaseui-auth-container"></div>
+            <div id="loader">Loading...</div>
         </div>
     </div>
 
-    <div id="forgetPwdWindow" class="popUpModal">
-        <div class="popUpModalContent animate">
-            <div class="popUpContainer">
-                <span onclick="document.getElementById('forgetPwdWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <label id="forgetPwdEmail">Reset Thy Password</label>
-                <input type="email" placeholder="Enter Email Address" name="emailForget" id="forgetPwdEmailField" required><br/>
-
-                <div class="popUpButtonsDiv">
-                    <button id="forgetPwdSubmitButton" class="popUpButton" onclick="forgetPwdSubmit()">Submit</button>
-                    <button class="popUpButton cancelButton" onclick="document.getElementById('forgetPwdWindow').style.display='none'">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- The surrounding HTML is left untouched by FirebaseUI.
-     Your app may use that space for branding, controls and other customizations.-->
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
-</div>
-
-<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
-<script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyBejDVUScwZZdcgGOu8voy8NWEHNMWdwm8",
-        authDomain: "tundrasconundrum-6af20.firebaseapp.com",
-        databaseURL: "https://tundrasconundrum-6af20.firebaseio.com",
-        projectId: "tundrasconundrum-6af20",
-        storageBucket: "tundrasconundrum-6af20.appspot.com",
-        messagingSenderId: "51428296236"
-    };
-    firebase.initializeApp(config);
-</script>
-<script src="../js/home.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBejDVUScwZZdcgGOu8voy8NWEHNMWdwm8",
+            authDomain: "tundrasconundrum-6af20.firebaseapp.com",
+            databaseURL: "https://tundrasconundrum-6af20.firebaseio.com",
+            projectId: "tundrasconundrum-6af20",
+            storageBucket: "tundrasconundrum-6af20.appspot.com",
+            messagingSenderId: "51428296236"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="../js/home.js"></script>
 </body>
 </html>
