@@ -95,6 +95,12 @@ button:hover {
     width: 50%;
 }
 
+#snowImage{
+  background-repeat: round;
+  background-size:cover;
+  /* background-size: auto; */
+}
+
 /* The whole shabang together */
 #loginDiv {
     text-align: center;
@@ -149,6 +155,10 @@ button:hover {
     width: auto;
 }
 
+#cancelButton{
+    width: auto;
+}
+
 #forgetPwdEmail {
     color:Blue;
     font-family: fantasy;
@@ -156,6 +166,10 @@ button:hover {
 }
 
 #forgetPwdSubmitButton {
+    width: auto;
+}
+
+#forgetPwdCancelButton{
     width: auto;
 }
 
