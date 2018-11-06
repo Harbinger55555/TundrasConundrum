@@ -1,11 +1,19 @@
-firebase.auth().onAuthStateChanged(function(user) {
-	if (user) {
-		// user is signed in.
-		window.location.href = "../html/mainMenu.html";
-	} else {
-		// No user signed in.
-		
-	}
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        if (signUpSubmitted) {
+            var username = document.getElementById("newUserNameField").value;
+            firebase.database().ref().child('users/' + user.uid).update({
+                name: username
+            }).then(
+                () => {
+                    window.location.href = "../html/mainMenu.html";
+                }
+            );
+        } else {
+            // user is signed in.
+            window.location.href = "../html/mainMenu.html";
+        }
+    }
 });
 
 function login() {
@@ -37,6 +45,7 @@ function signUp() {
 function signUpSubmit() {
 	var email = document.getElementById("newEmailField").value;
 	var password = document.getElementById("newPwdField").value;
+	var username = document.getElementById("newUserNameField").value;
 	var signUpButton = document.getElementById("signUpButton");
 	// Prevent multiple submissions to firebase.
 	signUpButton.disabled = true;
@@ -46,13 +55,22 @@ function signUpSubmit() {
         signUpButton.disabled = false;
         return false;
     }
-	
-	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-	  // Handle Errors here.
-		window.alert(error);
-	  // If an error occurred, allow user to sign up again.
+
+    if (username == "") {
+	    alert('Please fill in your Username');
         signUpButton.disabled = false;
-	});
+        return false;
+    }
+	
+	firebase.auth().createUserWithEmailAndPassword(email, password).then(
+        () => {
+            signUpSubmitted = true;
+        }).catch(function(error) {
+            // Handle Errors here.
+            window.alert(error);
+	        // If an error occurred, allow user to sign up again.
+            signUpButton.disabled = false;
+        });
 }
 
 function validInput(inputString) {
@@ -100,6 +118,10 @@ window.onclick = function(event) {
         forgetPwdWindow.style.display = "none";
     }
 }
+
+// Boolean used to track when signUp button is clicked so that onAuthStateChanged waits for RTDB to be
+// updated with the username.
+var signUpSubmitted = false;
 
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());

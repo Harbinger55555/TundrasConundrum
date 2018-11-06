@@ -5,7 +5,14 @@ firebase.auth().onAuthStateChanged(function(user) {
 	} else {
 		// User still signed in.
 		if (user) {
-			document.getElementById("greeting").innerHTML = "Welcome " + user.email;
+		    greetUser(user.uid);
 		}
 	}
 });
+
+function greetUser(userId) {
+    let userName = firebase.database().ref().child('users/' + userId + '/name');
+    userName.once('value', function (snapshot) {
+        document.getElementById("greeting").innerHTML = "Welcome " + snapshot.val();
+    })
+}

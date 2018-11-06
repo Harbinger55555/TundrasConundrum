@@ -119,6 +119,8 @@ button:hover {
 }
 
 .forgetPwd {
+    width: auto;
+    border: 1px solid red;
     position:absolute;
     bottom:0;
     right:2%;
@@ -140,7 +142,7 @@ button:hover {
     display: inline-block;
 }
 
-#signUpButton, #cancelButton, #forgetPwdSubmitButton, #forgetPwdCancelButton {
+.popUpButton {
     white-space: nowrap;
     width: 65%;
     height: 50px;
@@ -150,7 +152,7 @@ button:hover {
     border: outset 3px #5a6e7a;
 }
 
-#cancelButton, #forgetPwdCancelButton {
+.cancelButton {
     background-color: #f44336;
 }
 

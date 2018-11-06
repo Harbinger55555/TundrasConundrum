@@ -31,12 +31,12 @@
             <div class="popUpContainer">
                 <span onclick="document.getElementById('signUpWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <label id="titleSignUp"> Tundra's Conundrum <br/> Sign Up <br/></label>
-                <input type="email" placeholder="Enter Email" id="newEmailField" required>
+                <input type="email" placeholder="Enter Email Address" id="newEmailField" required>
                 <input type="password" placeholder="Enter Password" id="newPwdField" required>
-                <input type="text" placeholder="Enter Username" id="newUserNameField">
+                <input type="text" placeholder="Enter Username" id="newUserNameField" required>
                 <div class="popUpButtonsDiv">
-                    <button id="signUpButton" onclick="signUpSubmit()">Sign Up</button>
-                    <button id="cancelButton" onclick="document.getElementById('signUpWindow').style.display='none'">Cancel</button>
+                    <button id="signUpButton" class="popUpButton" onclick="signUpSubmit()">Sign Up</button>
+                    <button class="popUpButton cancelButton" onclick="document.getElementById('signUpWindow').style.display='none'">Cancel</button>
                 </div>
             </div>
         </div>
@@ -47,11 +47,11 @@
             <div class="popUpContainer">
                 <span onclick="document.getElementById('forgetPwdWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <label id="forgetPwdEmail">Reset Thy Password</label>
-                <input type="email" placeholder="Enter Email" name="emailForget" id="forgetPwdEmailField" required><br/>
+                <input type="email" placeholder="Enter Email Address" name="emailForget" id="forgetPwdEmailField" required><br/>
 
                 <div class="popUpButtonsDiv">
-                    <button id="forgetPwdSubmitButton" onclick="forgetPwdSubmit()">Submit</button>
-                    <button id="forgetPwdCancelButton" onclick="document.getElementById('forgetPwdWindow').style.display='none'">Cancel</button>
+                    <button id="forgetPwdSubmitButton" class="popUpButton" onclick="forgetPwdSubmit()">Submit</button>
+                    <button class="popUpButton cancelButton" onclick="document.getElementById('forgetPwdWindow').style.display='none'">Cancel</button>
                 </div>
             </div>
         </div>
@@ -65,6 +65,7 @@
 
 <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
 <script>
     // Initialize Firebase
     var config = {
