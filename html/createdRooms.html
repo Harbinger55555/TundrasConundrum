@@ -45,8 +45,8 @@
             <div class="col-2 sidePagePanel"></div>
             <div class="col-8 mainContainer">
                 <div class="row">
-                    <div class="createRoomButton col-2" onclick="openCreateWindow()">
-                        <img id="plusRoom" alt="Create Room" src="./images/plus.png">
+                    <div class="createRoomButtonCol col-2" onclick="openCreateWindow()">
+                        <img class="plusRoom" alt="Create Room" src="./images/plus.png">
                     </div>
                     <div class="col-9 subContainer">
                         <div><button id="editButton" class="toggledOff" onclick="toggleEditMode()">Edit Mode: OFF</button></div>
@@ -54,6 +54,9 @@
                             <div id="loader">Loading...</div>
                         </div>
                     </div>
+                </div>
+                <div id="createRoomButtonRow" class="row" onclick="openCreateWindow()">
+                    <img class="plusRoom" alt="Create Room" src="./images/plus.png">
                 </div>
             </div>
             <div class="col-sm sidePagePanel"></div>

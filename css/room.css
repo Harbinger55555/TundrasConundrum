@@ -46,21 +46,31 @@ button:hover {
     margin: auto;
 }
 
-.createPuzzleButton {
+.createPuzzleButtonCol, #createPuzzleButtonRow {
     display: flex;
     cursor: pointer;
     background-color: #d9dde0;
     opacity: 0.1;
+    justify-content: center;
+    align-items: center;
 }
 
-#plusRoom {
-    width: 70px;
-    height: 70px;
-    align-self: center;
-    margin: auto;
+/* Hidden by default for non-mobile screens. */
+/* An id instead of class to override display attribute from 'row' class, since even !important does not work */
+#createPuzzleButtonRow {
+    display: none;
 }
 
-.createPuzzleButton:hover {
+.plusRoom {
+    width: 75px;
+    height: auto;
+}
+
+.createPuzzleButtonCol:hover {
+    opacity: 0.7;
+}
+
+#createPuzzleButtonRow:hover {
     opacity: 0.7;
 }
 
@@ -307,5 +317,20 @@ h1, h2 {
 @media screen and (min-width: 601px) and (max-width: 900px){
     .puzzleModalContent {
         width: 550px;
+    }
+}
+
+/* Change styles for plus icon div for screen widths less than 1000px */
+@media screen and (max-width: 1000px) {
+    #createPuzzleButtonRow {
+        display: flex;
+    }
+
+    .createPuzzleButtonCol {
+        display: none;
+    }
+
+    .plusRoom {
+        margin: 20px auto;
     }
 }

@@ -69,21 +69,31 @@ button:hover {
     margin: auto;
 }
 
-.createRoomButton {
+.createRoomButtonCol, #createRoomButtonRow {
     display: flex;
     cursor: pointer;
     background-color: #d9dde0;
     opacity: 0.1;
+    justify-content: center;
+    align-items: center;
 }
 
-#plusRoom {
-    width: 70px;
-    height: 70px;
-    align-self: center;
-    margin: auto;
+/* Hidden by default for non-mobile screens. */
+/* An id instead of class to override display attribute from 'row' class, since even !important does not work */
+#createRoomButtonRow {
+    display: none;
 }
 
-.createRoomButton:hover {
+.plusRoom {
+    width: 75px;
+    height: auto;
+}
+
+.createRoomButtonCol:hover {
+    opacity: 0.7;
+}
+
+#createRoomButtonRow:hover {
     opacity: 0.7;
 }
 
@@ -335,6 +345,21 @@ h1, h2 {
 
     .roomNameDiv, .roomDescDiv {
         width: 280px;
+    }
+}
+
+/* Change styles for plus icon div for screen widths less than 1000px */
+@media screen and (max-width: 1000px) {
+    #createRoomButtonRow {
+        display: flex;
+    }
+
+    .createRoomButtonCol {
+        display: none;
+    }
+
+    .plusRoom {
+        margin: 20px auto;
     }
 }
 
