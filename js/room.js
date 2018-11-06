@@ -148,7 +148,7 @@ function openPuzzleWindowCreateVer() {
         createPuzzle(event);
     }
     document.getElementById('transitionFields').style.display = 'none';
-	document.getElementById('puzzleWindow').style.display = 'block';
+	document.getElementById('puzzleWindow').style.display = 'flex';
 	
 	// Button was disabled by previous puzzle creation, thus reenabling.
 	document.getElementById("puzzleWindowButton").disabled = false;
@@ -214,7 +214,7 @@ function openPuzzleWindowEditVer(puzzleDivIndex) {
             // Button was disabled by previous puzzle creation, thus reenabling.
             puzzleWindowButton.disabled = false;
             document.getElementById('transitionFields').style.display = 'block';
-            document.getElementById('puzzleWindow').style.display = 'block';
+            document.getElementById('puzzleWindow').style.display = 'flex';
         });
 }
 
@@ -309,7 +309,7 @@ function openDelConfirmWindow(event) {
         return false;
     }
 
-    document.getElementById('delConfirmWindow').style.display = 'block';
+    document.getElementById('delConfirmWindow').style.display = 'flex';
     let delIconOfCurrDiv  = event.target;
     let puzzleIconsDiv = delIconOfCurrDiv.parentElement;
     let currDiv = puzzleIconsDiv.parentElement;
@@ -358,7 +358,7 @@ function openClearConfirmWindow(event) {
         return false;
     }
 
-    document.getElementById('clearTransConfirmWindow').style.display = 'block';
+    document.getElementById('clearTransConfirmWindow').style.display = 'flex';
     let clearTransIconOfCurrDiv  = event.target;
     let puzzleIconsDiv = clearTransIconOfCurrDiv.parentElement;
     let currDiv = puzzleIconsDiv.parentElement;
@@ -517,7 +517,7 @@ function puzzleDivOnCLick(event) {
             // Open up transConfirmWindow with text informing the user's transition choice.
             document.getElementById('transConfirmText').innerHTML = 'Are you sure you want to make this the ' +
                 (rightTransitionModeToggled ? "[right]" : "[left]") + ' transition?';
-            document.getElementById('transConfirmWindow').style.display = 'block';
+            document.getElementById('transConfirmWindow').style.display = 'flex';
             sessionStorage.setItem('transitionClickedPuzzle', puzzleDivIndex);
         }
     } else {

@@ -30,6 +30,7 @@ button {
     border: none;
     cursor: pointer;
     width: 100%;
+    border: outset 3px #add6ff;
 }
 
 button:hover {
@@ -127,7 +128,6 @@ button:hover {
 
 .confirmModalContent {
     background-color: white;
-    margin: 20% auto 15% auto; /* 20% from the top, 15% from the bottom and centered */
     width: 23%;
     font-size: 17px;
     border-radius: 5px;
@@ -170,19 +170,18 @@ button:hover {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    align-items: center;
+    justify-content: center;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
 }
 
 /* Modal Content/Box */
 .puzzleModalContent {
     background-image: url("images/scroll_bg.png");
     background-size: 100% 100%;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 50%; /* Could be more or less, depending on screen size */
+    width: 800px;
 }
 
 /* The Close Button (x) */
@@ -198,7 +197,7 @@ button:hover {
 .puzzleWindowClose {
     position: relative;
     float: right;
-    right: 0px;
+    z-index: 1;
 }
 
 .close:hover,
@@ -229,6 +228,7 @@ h1, h2 {
 }
 
 .puzzleContainer {
+    border: 1px red solid;
     overflow:scroll;
     position: relative;
     padding: 16px;
@@ -292,16 +292,20 @@ h1, h2 {
     }
 }
 
-/* Change styles for confirmModalContent for screen widths less than 600px */
-@media screen and (max-width: 600px) {
-    .confirmModalContent {
-        margin: 50% auto 15% auto; /* 50% from the top, 15% from the bottom and centered */
-    }
-}
-
 /* Change styles for puzzle div icons for screen widths less than 600px */
 @media screen and (max-width: 600px) {
     .puzzleIconsDiv {
         right: 10%;
+    }
+
+    .puzzleModalContent {
+        width: 350px;
+    }
+}
+
+/* Change styles for create/edit window for screen widths between 601px and 900px */
+@media screen and (min-width: 601px) and (max-width: 900px){
+    .puzzleModalContent {
+        width: 550px;
     }
 }

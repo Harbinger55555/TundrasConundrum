@@ -111,7 +111,7 @@ h1, h2 {
 }
 
 .takeOnButton:hover {
-    opacity: 0.8;
     text-decoration: none;
-    color: #e8f0fc;
+    background-color: black;
+    color: white;
 }

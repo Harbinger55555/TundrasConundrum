@@ -31,6 +31,7 @@ button {
     border: none;
     cursor: pointer;
     width: auto;
+    border: outset 3px #add6ff;
 }
 
 button:hover {
@@ -128,7 +129,6 @@ button:hover {
 
 .delModalContent {
     background-color: white;
-    margin: 20% auto 15% auto; /* 20% from the top, 15% from the bottom and centered */
     width: 23%;
     font-size: 17px;
     border-radius: 5px;
@@ -194,7 +194,8 @@ button:hover {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    align-items: center;
+    justify-content: center;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
@@ -203,9 +204,8 @@ button:hover {
 .roomModalContent {
     background-image: url("images/scroll_bg.png");
     background-size: 100% 100%;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 50%; /* Could be more or less, depending on screen size */
+    width: 645px;
 }
 
 /* The Close Button (x) */
@@ -237,8 +237,8 @@ h1, h2 {
 
 .roomThemeDiv {
     margin: auto;
-    width: 350px;
-    height: 350px;
+    width: 280px;
+    height: 280px;
     margin-bottom: 20px;
     padding-bottom: 30px;
 }
@@ -288,6 +288,7 @@ h1, h2 {
 }
 
 .toggledOn {
+    border: outset 3px #adffbe;
     background-color: lightgreen;
     color: white;
 }
@@ -319,16 +320,23 @@ h1, h2 {
     }
 }
 
-/* Change styles for delModalContent for screen widths less than 600px */
-@media screen and (max-width: 600px) {
-    .delModalContent {
-        margin: 50% auto 15% auto; /* 50% from the top, 15% from the bottom and centered */
-    }
-}
-
 /* Change styles for room div icons for screen widths less than 600px */
 @media screen and (max-width: 600px) {
     .roomIconsDiv {
         right: 10%;
     }
 }
+
+/* Change styles for create/edit window for screen widths less than 780px */
+@media screen and (max-width: 780px) {
+    .roomModalContent {
+        width: 350px;
+    }
+
+    .roomNameDiv, .roomDescDiv {
+        width: 280px;
+    }
+}
+
+
+

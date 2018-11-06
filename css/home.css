@@ -31,10 +31,9 @@ button {
     background-color: #2BABFF;
     color: white;
     padding: 14px 50px;
-    border: none;
+    border: outset 3px #add6ff;
     cursor: pointer;
     width: auto;
-	border-radius: 15px;
 }
 
 button:hover {
@@ -168,11 +167,12 @@ button:hover {
     display: inline-block;
     margin-bottom: 20px;
     padding: 0px;
-    border: outset 3px #5a6e7a;
+    border: outset 3px #add6ff;
 }
 
 .cancelButton {
     background-color: #f44336;
+    border: outset 3px #ffadad;
 }
 
 #forgetPwdEmail {
@@ -216,7 +216,7 @@ button:hover {
         width: 375px;
     }
 
-    input[type=email], input[type=password], input[type=text] {
+    input[type=email], input[type=password], input[type=text], .popUpButtonsDiv {
         width: 350px;
     }
 }

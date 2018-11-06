@@ -97,7 +97,7 @@ function openDelConfirmWindow(event) {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
 
-    document.getElementById('delConfirmWindow').style.display = 'block';
+    document.getElementById('delConfirmWindow').style.display = 'flex';
     let delIconOfCurrDiv  = event.target;
     let roomIconsDiv = delIconOfCurrDiv.parentElement;
     let currDiv = roomIconsDiv.parentElement;
@@ -289,7 +289,7 @@ function openCreateWindow() {
     roomWindowButton.onclick = function(event) {
         createRoom(event);
     }
-    document.getElementById('roomWindow').style.display = 'block';
+    document.getElementById('roomWindow').style.display = 'flex';
 }
 
 function openEditWindow(createdRoomDivIndex) {
@@ -314,7 +314,7 @@ function openEditWindow(createdRoomDivIndex) {
             roomWindowButton.disabled = false;
             document.getElementById('roomThemeInput').value = '';
             uploadedTheme = null;
-            document.getElementById('roomWindow').style.display = 'block';
+            document.getElementById('roomWindow').style.display = 'flex';
         });
 }
 
