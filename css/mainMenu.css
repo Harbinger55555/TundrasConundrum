@@ -110,8 +110,7 @@ body {
     color: #e8f0fc;
     display: inline-block;
     padding: 14px 20px;
-    border: none;
-    border-radius: 5px;
+    border: outset 3px #add6ff;
     cursor: pointer;
     width: auto;
     float: right;

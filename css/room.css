@@ -227,7 +227,6 @@ button:hover {
 }
 
 .puzzleContainer {
-    border: 1px red solid;
     overflow:scroll;
     position: relative;
     padding: 16px;
