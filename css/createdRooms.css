@@ -49,8 +49,6 @@ button:hover {
 }
 
 .title, .subTitle {
-    display: inline-block;
-    width: 100%;
     text-align: center;
     margin: auto;
     color: white;
@@ -58,6 +56,24 @@ button:hover {
 
 .title {
     font-family: IceFont;
+    font-size: 50px;
+    padding: 30px;
+}
+
+.logoDiv {
+    margin: 30px auto 20px auto;
+    width: 120px;
+    height: 120px;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+}
+
+.subTitle {
+    font-size: 33px;
+    margin-bottom: 30px;
 }
 
 .mainContainer {
@@ -125,11 +141,6 @@ button:hover {
 
 .containerDiv {
     min-height: 100vh;
-}
-
-.container {
-    position: relative;
-    padding: 16px;
 }
 
 .delContainer {
@@ -238,11 +249,6 @@ button:hover {
 .animate {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
-}
-
-h1, h2 {
-    text-align: center;
-    padding: 30px;
 }
 
 .roomThemeDiv {

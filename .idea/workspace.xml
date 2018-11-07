@@ -11,41 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="createdRooms.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/createdRooms.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="57" column="58" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="room.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/room.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
-              <folding>
-                <element signature="e#1800#1807#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="room.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/room.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="267" lean-forward="true" selection-start-line="267" selection-end-line="267" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createdRooms.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/createdRooms.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="350" selection-start-line="350" selection-end-line="363" selection-end-column="1" />
+            <state relative-caret-position="-793">
+              <caret line="242" column="25" lean-forward="true" selection-start-line="242" selection-start-column="25" selection-end-line="242" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -62,16 +32,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>confirmModalContent</find>
-      <find>ModalContent</find>
-      <find>modalcontent</find>
-      <find>puzzleWindow').style.display</find>
-      <find>delConfirmWindow</find>
-      <find>transConfirmWindow</find>
-      <find>clearTransConfirmWindow</find>
-      <find>transconfirmwindow</find>
-      <find>transconfirmwindow')</find>
-      <find>puzzleWindow</find>
       <find>transconfirmwindow').style</find>
       <find>modal</find>
       <find>del</find>
@@ -92,6 +52,16 @@
       <find>plus</find>
       <find>row</find>
       <find>createpuzzle</find>
+      <find>logo</find>
+      <find>greeting</find>
+      <find>subTitle</find>
+      <find>storyContainer</find>
+      <find>roomImg</find>
+      <find>title</find>
+      <find>roomname</find>
+      <find>subtitle</find>
+      <find>containerDiv</find>
+      <find>container</find>
     </findStrings>
     <replaceStrings>
       <replace>sessionStorage</replace>
@@ -107,25 +77,25 @@
       <list>
         <option value="$PROJECT_DIR$/js/createdRoom.js" />
         <option value="$PROJECT_DIR$/js/navbar.js" />
-        <option value="$PROJECT_DIR$/html/browse.html" />
         <option value="$PROJECT_DIR$/css/navbar.css" />
         <option value="$PROJECT_DIR$/js/browse.js" />
         <option value="$PROJECT_DIR$/html/GameData/TemplateData/style.css" />
-        <option value="$PROJECT_DIR$/html/play.html" />
-        <option value="$PROJECT_DIR$/css/play.css" />
-        <option value="$PROJECT_DIR$/css/browse.css" />
         <option value="$PROJECT_DIR$/js/home.js" />
-        <option value="$PROJECT_DIR$/html/mainMenu.html" />
         <option value="$PROJECT_DIR$/html/home.html" />
-        <option value="$PROJECT_DIR$/js/mainMenu.js" />
-        <option value="$PROJECT_DIR$/css/mainMenu.css" />
-        <option value="$PROJECT_DIR$/js/room.js" />
         <option value="$PROJECT_DIR$/js/createdRooms.js" />
         <option value="$PROJECT_DIR$/css/home.css" />
-        <option value="$PROJECT_DIR$/css/createdRooms.css" />
+        <option value="$PROJECT_DIR$/js/mainMenu.js" />
+        <option value="$PROJECT_DIR$/html/mainMenu.html" />
         <option value="$PROJECT_DIR$/html/createdRooms.html" />
-        <option value="$PROJECT_DIR$/html/room.html" />
+        <option value="$PROJECT_DIR$/css/mainMenu.css" />
         <option value="$PROJECT_DIR$/css/room.css" />
+        <option value="$PROJECT_DIR$/js/room.js" />
+        <option value="$PROJECT_DIR$/html/room.html" />
+        <option value="$PROJECT_DIR$/html/browse.html" />
+        <option value="$PROJECT_DIR$/css/browse.css" />
+        <option value="$PROJECT_DIR$/css/play.css" />
+        <option value="$PROJECT_DIR$/html/play.html" />
+        <option value="$PROJECT_DIR$/css/createdRooms.css" />
       </list>
     </option>
   </component>
@@ -145,8 +115,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="563" />
-    <option name="y" value="94" />
+    <option name="x" value="360" />
+    <option name="y" value="64" />
     <option name="width" value="1117" />
     <option name="height" value="911" />
   </component>
@@ -155,7 +125,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -176,12 +145,6 @@
             <path>
               <item name="puzzles_design" type="b2602c69:ProjectViewProjectNode" />
               <item name="puzzles_design" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
-              <item name="GameData" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="puzzles_design" type="b2602c69:ProjectViewProjectNode" />
-              <item name="puzzles_design" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -190,6 +153,7 @@
       </pane>
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -323,14 +287,15 @@
       <workItem from="1541476901836" duration="5754000" />
       <workItem from="1541484495470" duration="1841000" />
       <workItem from="1541487382388" duration="11866000" />
+      <workItem from="1541568032847" duration="7431000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="289017000" />
+    <option name="totallyTimeSpent" value="296448000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="563" y="94" width="1117" height="911" extended-state="0" />
+    <frame x="360" y="64" width="1117" height="911" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -346,7 +311,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31348836" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31906977" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -569,27 +534,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/play.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/play.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="53" lean-forward="true" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/browse.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/GameData/TemplateData/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -611,56 +555,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/mainMenu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="40" column="28" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/browse.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="39" lean-forward="true" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/mainMenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+        <state relative-caret-position="441">
+          <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="36" selection-end-column="30" />
           <folding>
             <element signature="e#1757#1764#1" expanded="true" />
-            <element signature="e#3053#3060#1" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/mainMenu.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="28" lean-forward="true" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/home.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="33" column="30" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="30" />
+        <state relative-caret-position="247">
+          <caret line="145" selection-start-line="145" selection-end-line="154" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/room.js">
+    <entry file="file://$PROJECT_DIR$/js/mainMenu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="76" column="1" lean-forward="true" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
+        <state relative-caret-position="225">
+          <caret line="15" column="64" lean-forward="true" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/mainMenu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="38" column="49" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -671,34 +596,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/createdRooms.html">
+    <entry file="file://$PROJECT_DIR$/js/room.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="57" column="58" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="58" />
+        <state relative-caret-position="711">
+          <caret line="76" column="1" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/createdRooms.css">
+    <entry file="file://$PROJECT_DIR$/html/browse.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="350" selection-start-line="350" selection-end-line="363" selection-end-column="1" />
+        <state relative-caret-position="617">
+          <caret line="49" column="10" selection-start-line="49" selection-start-column="10" selection-end-line="49" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/play.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="43" column="10" lean-forward="true" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/play.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/browse.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="90" column="18" lean-forward="true" selection-start-line="90" selection-start-column="18" selection-end-line="90" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html/room.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
-          <folding>
-            <element signature="e#1800#1807#1" expanded="true" />
-          </folding>
+        <state relative-caret-position="267">
+          <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="24" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/createdRooms.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-42">
+          <caret line="143" column="1" selection-start-line="143" selection-start-column="1" selection-end-line="143" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/createdRooms.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="53" column="50" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/mainMenu.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-658">
+          <caret line="44" column="17" lean-forward="true" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/room.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="267" lean-forward="true" selection-start-line="267" selection-end-line="267" />
+        <state relative-caret-position="-793">
+          <caret line="242" column="25" lean-forward="true" selection-start-line="242" selection-start-column="25" selection-end-line="242" selection-end-column="25" />
         </state>
       </provider>
     </entry>

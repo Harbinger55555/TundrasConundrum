@@ -11,52 +11,61 @@ body {
     overflow-x: hidden;
 }
 
-.title, .subTitle {
-    display: inline-block;
-    width: 100%;
+.title, #greeting, .subTitle {
     text-align: center;
     margin: auto;
-    color: white;
 }
 
 .title {
     font-family: IceFont;
+    font-size: 50px;
     background-image: url("images/ice_title.png");
     opacity: 0.8;
     color: black;
+    padding: 30px;
 }
 
-.topThree {
-    margin: 10px;
-    float: left;
+.logoDiv {
+    margin: 30px auto 20px auto;
+    width: 120px;
+    height: 120px;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+}
+
+#greeting {
+    font-family: IceFont;
+    font-size: 35px;
+}
+
+.subTitle {
+    font-size: 30px;
+    display: inline-block;
+    width: 100%;
+}
+
+.popularRoomsDiv {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+.roomImgDiv {
+    height: 250px;
+    width: 250px;
+    margin: 20px;
     background-color: black;
     outline: none;
-    padding: 25px;
-    transition: 0.3s;
-    font-size: 20px;
     color: #e8f0fc;
     border: groove 8px grey;
 }
 
-li {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-p {
-    text-align: center;
-    padding: 15px;
-}
-
-h1, h2 {
-    text-align: center;
-    padding: 30px;
-}
-
-.greeting {
-    overflow: hidden;
-    text-align: center;
+.roomImg {
+    height: 100%;
+    width: 100%;
 }
 
 .row {
@@ -68,22 +77,22 @@ h1, h2 {
 }
 
 .storyContainer {
-    margin-top: 30px;
-    border: 8px double black;
-    border-radius: 3px;
-    text-align: center;
-    width: 100%;
+    margin: 30px auto 300px auto;
+    width: 70%;
 }
 
 .storyDiv {
     background-color: black;
     word-wrap: break-word;
+    text-align: center;
     color: white;
     padding: 10px 30px;
     opacity: 0.5;
     height: 50vh;
     font-size: 20px;
     font-family: cursive;
+    border: 8px double black;
+    border-radius: 3px;
     overflow-y: scroll;
 }
 
@@ -92,7 +101,7 @@ h1, h2 {
 }
 
 .buttonDiv {
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 0;
 }
 
@@ -114,4 +123,11 @@ h1, h2 {
     text-decoration: none;
     background-color: black;
     color: white;
+}
+
+/* Change styles for storyDiv for screen widths less than 1200px */
+@media screen and (min-width: 601px) and (max-width: 1200px){
+    .storyContainer {
+        width: 90%;
+    }
 }

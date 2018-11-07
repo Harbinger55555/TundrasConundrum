@@ -13,6 +13,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 function greetUser(userId) {
     let userName = firebase.database().ref().child('users/' + userId + '/name');
     userName.once('value', function (snapshot) {
-        document.getElementById("greeting").innerHTML = "Welcome " + (snapshot.val() || "Anonymous User");
+        document.getElementById("greeting").innerHTML = "Welcome" + "<br />" + (snapshot.val() || "Anonymous User");
     })
 }
