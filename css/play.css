@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'IceFont';
+    src: url('images/CFGrandNord-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.pageTitle, .pageSubTitle {
+    font-family: IceFont;
+    font-size: 50px;
+    padding: 30px;
+    display: inline-block;
+    width: 100%;
+    background-color: #42ebf4;
+    text-align: center;
+    margin: auto;
+}

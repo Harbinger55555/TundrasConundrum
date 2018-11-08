@@ -20,19 +20,37 @@ button:hover {
     opacity: 0.8;
 }
 
-
 .title, .subTitle {
-    display: inline-block;
-    width: 100%;
-    background-color: #42ebf4;
     text-align: center;
     margin: auto;
+    color: black;
 }
 
-.navbar {
-    background-color: #00ffa1;
-    text-align: center;
-    margin: auto;
+.title {
+    font-family: IceFont;
+    font-size: 50px;
+    padding: 30px;
+    background-color: #42ebf4;
+}
+
+.logoDiv {
+    margin: 30px auto 20px auto;
+    width: 120px;
+    height: 120px;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+}
+
+.subTitle {
+    font-size: 33px;
+    margin-bottom: 30px;
+}
+
+.containerDiv {
+    min-height: 100vh;
 }
 
 #roomDivList {
@@ -45,13 +63,11 @@ button:hover {
 }
 
 .roomDiv {
-    /* height: 55%; */
     margin-bottom: 30px;
     max-height: 400px;
     margin-top: 30px;
     display: flex;
     flex-direction: row;
-    /* justify-content: flex-end; */
     align-items: center;
     word-wrap: break-word;
 }
@@ -68,6 +84,7 @@ button:hover {
 .roomImg {
     height: 100%;
     width: 100%;
+    border: groove 5px grey;
 }
 
 .roomDescDiv {
@@ -88,27 +105,6 @@ button:hover {
 
 .roomNameAndImg {
   padding-left: 30px;
-}
-
-li {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-p {
-  text-align: center;
-  padding: 15px;
-}
-
-h1 {
-  text-align: center;
-  padding: 30px;
-}
-
-h2 {
-  text-align: center;
-  padding: 30px;
 }
 
 .container {

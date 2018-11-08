@@ -11,49 +11,45 @@ body {
 }
 
 /* Full-width input fields */
-input[type=email], input[type=password] {
+input[type=email], input[type=password], input[type=text] {
 	vertical-align: middle;
-    width: 50%;
+    width: 500px;
     padding: 12px 20px;
     margin: 8px 0;
-    border: 1px solid #0025fc;
+    border: 1px inset #ccc;
     background-color: Black;
     color: White;
     box-sizing: border-box;
 }
 
+.popUpContainer input {
+    width: 75%;
+}
+
 /* Set a style for all buttons */
 button {
-    background-color: #0025fc;
+    background-color: #2BABFF;
     color: white;
     padding: 14px 50px;
-    margin: 8px 75px;
-    border: none;
+    border: outset 3px #add6ff;
     cursor: pointer;
-    width: 100%;
-	border-radius: 15px;
+    width: auto;
 }
 
 button:hover {
     opacity: 0.8;
 }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  	width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-}
-
-.container {
+.popUpContainer {
 	position: relative;
-    padding-top: 20%;
-    padding-bottom: 20%;
+    padding-top: 8%;
+    padding-bottom: 10%;
     text-align: center;
+    height: auto;
 }
 
 /* The Modal (background) */
-.modal {
+.popUpModal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -61,15 +57,20 @@ button:hover {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+.popUpModalContent {
+    background-size: 100% 100%;
+    background-image: url(images/snowing.gif);
     border: 1px solid #888;
-    width: 40%; /* Could be more or less, depending on screen size */
+    width: 590px; /* Could be more or less, depending on screen size */
+    height: auto;
+    text-align: center;
 }
 
 /* The Close Button (x) */
@@ -89,25 +90,25 @@ button:hover {
 }
 
 .labelDiv {
-	height: 80px;
+	height: 60px;
 	position: relative;
     margin: auto;
-    width: 50%;
-}
-
-#snowImage{
-  background-repeat: round;
-  background-size:cover;
-  /* background-size: auto; */
+    width: 350px;
 }
 
 /* The whole shabang together */
+.mainDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
 #loginDiv {
     text-align: center;
-    padding-top: 10%;
 }
 
-#loginEmail {
+#loginEmail, #loginPwd {
     font-family: fantasy;
     font-size: 20px;
     color: White;
@@ -115,22 +116,25 @@ button:hover {
     top: 40%;
 }
 
-#loginPwd {
-    font-family: fantasy;
-    font-size: 20px;
-    color: White;
+.mainButtonsDiv {
+    display: inline-block;
+    margin: 20px auto;
+    width: 100%;
+}
+
+.forgetPwdDiv {
+    display: inline-block;
     position: relative;
-    top: 40%;
+    margin: auto;
+    margin-bottom: -10px;
+    width: auto;
+    height: auto;
 }
 
 .forgetPwd {
-    position:absolute;
-    bottom:0;
-    right:2%;
-    margin: 0;
     font-family: fantasy;
     font-size: 17px;
-    color: #d1d1e0;
+    color: white;
 }
 
 .forgetPwd:hover {
@@ -139,24 +143,36 @@ button:hover {
     cursor: pointer;
 }
 
-#signInEmail{
-    color:Blue;
-    font-family: fantasy;
-    font-size: 30px;
+.logoDiv {
+    margin: auto;
+    width: 150px;
+    height: 150px;
 }
 
-#signInPassword{
-    color:Blue;
-    font-family: fantasy;
-    font-size: 30px;
+.logo {
+    width: 100%;
+    height: 100%;
 }
 
-#signUpButton{
-    width: auto;
+.popUpButtonsDiv {
+    margin-top: 30px;
+    width: 75%;
+    display: inline-block;
 }
 
-#cancelButton{
-    width: auto;
+.popUpButton {
+    white-space: nowrap;
+    width: 100%;
+    height: 50px;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 0px;
+    border: outset 3px #add6ff;
+}
+
+.cancelButton {
+    background-color: #f44336;
+    border: outset 3px #ffadad;
 }
 
 #forgetPwdEmail {
@@ -165,24 +181,17 @@ button:hover {
     font-size: 30px;
 }
 
-#forgetPwdSubmitButton {
-    width: auto;
-}
-
-#forgetPwdCancelButton{
-    width: auto;
-}
-
 #titleText{
     font-family: IceFont;
     font-size: 60px;
-    color: White;
+    color: white;
 }
 
-#titleSignUp {
+#titleSignUp, #forgetPwdEmail {
     font-family: IceFont;
     font-size: 50px;
-    color: Blue;
+    color: #2a8ddd;
+    margin-bottom: 40px;
 }
 
 /* Add Zoom Animation */
@@ -201,13 +210,13 @@ button:hover {
     to {transform: scale(1)}
 }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 900px) {
-    .cancelbtn {
-        width: 100%;
+/* Change styles for pop up windows on screen sizes of 700px */
+@media screen and (max-width: 700px) {
+    .popUpModalContent {
+        width: 375px;
     }
-    .forgetPwd {
-        right: 0;
-        left: 0;
+
+    input[type=email], input[type=password], input[type=text], .popUpButtonsDiv {
+        width: 350px;
     }
 }
