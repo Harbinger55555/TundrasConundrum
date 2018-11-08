@@ -138,6 +138,7 @@ function openPuzzleWindowCreateVer() {
         return false;
     }
 
+    uncollapseAllFields();
     resetInputs('puzzleContainer');
     let puzzleWindowButton = document.getElementById('puzzleWindowButton');
     puzzleWindowButton.innerHTML = 'Create Puzzle';
@@ -146,7 +147,8 @@ function openPuzzleWindowCreateVer() {
     puzzleWindowButton.onclick = function(event) {
         createPuzzle(event);
     }
-	document.getElementById('puzzleWindow').style.display = 'block';
+    document.getElementById('transitionFields').style.display = 'none';
+	document.getElementById('puzzleWindow').style.display = 'flex';
 	
 	// Button was disabled by previous puzzle creation, thus reenabling.
 	document.getElementById("puzzleWindowButton").disabled = false;
@@ -158,6 +160,7 @@ function resetInputs(fieldId) {
     for (var index = 0; index < inputs.length; ++index) {
         inputs[index].value = '';
     }
+    document.getElementById("question").value = '';
 }
 
 // Opens the puzzle window with edit functionality.
@@ -166,6 +169,7 @@ function openPuzzleWindowEditVer(puzzleDivIndex) {
         return false;
     }
 
+    uncollapseAllFields();
     let puzzleWindowButton = document.getElementById('puzzleWindowButton');
     puzzleWindowButton.innerHTML = 'Save Changes';
     puzzleWindowButton.onclick = function(event) {
@@ -185,12 +189,32 @@ function openPuzzleWindowEditVer(puzzleDivIndex) {
         document.getElementById('hint1').value = snapshot.hasChild('hints/hint1') ? dataValues.hints.hint1 : "";
         document.getElementById('hint2').value = snapshot.hasChild('hints/hint2') ? dataValues.hints.hint2 : "";
         document.getElementById('hint3').value = snapshot.hasChild('hints/hint3') ? dataValues.hints.hint3 : "";
+
+        // Fill in the respective transition fields.
+        if (snapshot.hasChild('transitions/left')) {
+            let leftPuzzleKey = dataValues.transitions.left;
+            let leftPuzzleData = firebase.database().ref().child('puzzles/' + leftPuzzleKey);
+            leftPuzzleData.once('value', function(snapshot) {
+                document.getElementById('leftTransition').value = snapshot.val().question;
+            })
+        } else {
+            document.getElementById('leftTransition').value = "";
+        }
+        if (snapshot.hasChild('transitions/right')) {
+            let rightPuzzleKey = dataValues.transitions.right;
+            let rightPuzzleData = firebase.database().ref().child('puzzles/' + rightPuzzleKey);
+            rightPuzzleData.once('value', function(snapshot) {
+                document.getElementById('rightTransition').value = snapshot.val().question;
+            })
+        } else {
+            document.getElementById('rightTransition').value = "";
+        }
     }).then(
         () => {
             // Button was disabled by previous puzzle creation, thus reenabling.
             puzzleWindowButton.disabled = false;
-
-            document.getElementById('puzzleWindow').style.display = 'block';
+            document.getElementById('transitionFields').style.display = 'block';
+            document.getElementById('puzzleWindow').style.display = 'flex';
         });
 }
 
@@ -272,11 +296,6 @@ function appendPuzzle(puzzleQuestion) {
     puzzleDivList.appendChild(newPuzzleDiv);
 }
 
-// TODO: Delete this function along with related stuff in html and css.
-function tempAppendPuzzle() {
-    appendPuzzle("Blank");
-}
-
 function openDelConfirmWindow(event) {
     // To prevent click event from bubbling to parent and triggering its onclick as well.
     event.stopPropagation();
@@ -290,7 +309,7 @@ function openDelConfirmWindow(event) {
         return false;
     }
 
-    document.getElementById('delConfirmWindow').style.display = 'block';
+    document.getElementById('delConfirmWindow').style.display = 'flex';
     let delIconOfCurrDiv  = event.target;
     let puzzleIconsDiv = delIconOfCurrDiv.parentElement;
     let currDiv = puzzleIconsDiv.parentElement;
@@ -339,7 +358,7 @@ function openClearConfirmWindow(event) {
         return false;
     }
 
-    document.getElementById('clearTransConfirmWindow').style.display = 'block';
+    document.getElementById('clearTransConfirmWindow').style.display = 'flex';
     let clearTransIconOfCurrDiv  = event.target;
     let puzzleIconsDiv = clearTransIconOfCurrDiv.parentElement;
     let currDiv = puzzleIconsDiv.parentElement;
@@ -498,7 +517,7 @@ function puzzleDivOnCLick(event) {
             // Open up transConfirmWindow with text informing the user's transition choice.
             document.getElementById('transConfirmText').innerHTML = 'Are you sure you want to make this the ' +
                 (rightTransitionModeToggled ? "[right]" : "[left]") + ' transition?';
-            document.getElementById('transConfirmWindow').style.display = 'block';
+            document.getElementById('transConfirmWindow').style.display = 'flex';
             sessionStorage.setItem('transitionClickedPuzzle', puzzleDivIndex);
         }
     } else {
@@ -588,4 +607,57 @@ function loadPuzzles() {
         // Hide the loader.
         document.getElementById('loader').style.display = 'none';
     });
+}
+
+function collapseQuestionField() {
+    var questionField = document.getElementById("questionField");
+
+    // getComputedStyle for modern browsers, currentStyle for IE
+    var style = window.getComputedStyle ? getComputedStyle(questionField, null) : questionField.currentStyle;
+
+    questionField.style.display = (style.display == "block") ? "none" : "block";
+}
+
+function collapseAnswerFields() {
+    var answerFields = document.getElementById("answerFields");
+
+    // getComputedStyle for modern browsers, currentStyle for IE
+    var style = window.getComputedStyle ? getComputedStyle(answerFields, null) : answerFields.currentStyle;
+
+    answerFields.style.display = (style.display == "block") ? "none" : "block";
+}
+
+function collapseHintFields() {
+    var hintFields = document.getElementById("hintFields");
+
+    // getComputedStyle for modern browsers, currentStyle for IE
+    var style = window.getComputedStyle ? getComputedStyle(hintFields, null) : hintFields.currentStyle;
+
+    hintFields.style.display = (style.display == "block") ? "none" : "block";
+}
+
+function collapseLeftTransitionField() {
+    var leftTransitionField = document.getElementById("leftTransition");
+
+    // getComputedStyle for modern browsers, currentStyle for IE
+    var style = window.getComputedStyle ? getComputedStyle(leftTransitionField, null) : leftTransitionField.currentStyle;
+
+    leftTransitionField.style.display = (style.display == "block") ? "none" : "block";
+}
+
+function collapseRightTransitionField() {
+    var rightTransitionField = document.getElementById("rightTransition");
+
+    // getComputedStyle for modern browsers, currentStyle for IE
+    var style = window.getComputedStyle ? getComputedStyle(rightTransitionField, null) : rightTransitionField.currentStyle;
+
+    rightTransitionField.style.display = (style.display == "block") ? "none" : "block";
+}
+
+function uncollapseAllFields() {
+    document.getElementById("questionField").style.display = "block";
+    document.getElementById("answerFields").style.display = "block";
+    document.getElementById("hintFields").style.display = "block";
+    document.getElementById("leftTransition").style.display = "block";
+    document.getElementById("rightTransition").style.display = "block";
 }

@@ -4,13 +4,20 @@
     font-weight: normal;
     font-style: normal;
 }
+
+body {
+    background-image: url("images/createdrooms_bg.png");
+    background-size: 110% 100%;
+    overflow-x: hidden;
+}
+
 /* Full-width input fields */
-input[type=text] {
+input[type=text], textarea {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 3px inset #ccc;
     box-sizing: border-box;
 }
 
@@ -23,19 +30,56 @@ button {
     border: none;
     cursor: pointer;
     width: 100%;
+    border: outset 3px #add6ff;
 }
 
 button:hover {
     opacity: 0.8;
 }
 
+.mainContainer {
+    background-color: white;
+    border: 3px solid black;
+}
+
+.subContainer {
+    margin: auto;
+}
+
+.createPuzzleButtonCol, #createPuzzleButtonRow {
+    display: flex;
+    cursor: pointer;
+    background-color: #d9dde0;
+    opacity: 0.1;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hidden by default for non-mobile screens. */
+/* An id instead of class to override display attribute from 'row' class, since even !important does not work */
+#createPuzzleButtonRow {
+    display: none;
+}
+
+.plusRoom {
+    width: 75px;
+    height: auto;
+}
+
+.createPuzzleButtonCol:hover {
+    opacity: 0.7;
+}
+
+#createPuzzleButtonRow:hover {
+    opacity: 0.7;
+}
+
 #puzzleDivList {
     overflow-y: scroll;
     position: relative;
-    height: 300px;
-    width: 40%;
+    height: 500px;
+    width: 100%;
     margin: auto;
-    border: 3px solid black;
     padding: auto 10px;
 }
 
@@ -76,11 +120,8 @@ button:hover {
 }
 
 #puzzleContainer {
-    overflow:scroll;
-}
-
-#puzzleWindow {
-    overflow-y: scroll;
+    height: 68vh;
+    overflow-y:scroll;
 }
 
 /* Extra styles for the cancel button */
@@ -97,7 +138,6 @@ button:hover {
 
 .confirmModalContent {
     background-color: white;
-    margin: 20% auto 15% auto; /* 20% from the top, 15% from the bottom and centered */
     width: 23%;
     font-size: 17px;
     border-radius: 5px;
@@ -140,19 +180,18 @@ button:hover {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    align-items: center;
+    justify-content: center;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
 }
 
 /* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+.puzzleModalContent {
+    background-image: url("images/scroll_bg.png");
+    background-size: 100% 100%;
     border: 1px solid #888;
-    width: 40%; /* Could be more or less, depending on screen size */
-    overflow-y: scroll;
+    width: 800px;
 }
 
 /* The Close Button (x) */
@@ -163,6 +202,12 @@ button:hover {
     color: #000;
     font-size: 25px;
     font-weight: bold;
+}
+
+.puzzleWindowClose {
+    position: relative;
+    float: right;
+    z-index: 1;
 }
 
 .close:hover,
@@ -177,40 +222,61 @@ button:hover {
     animation: animatezoom 0.6s
 }
 
-li {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.containerDiv {
+    min-height: 100vh;
 }
 
-p {
-    text-align: center;
-    padding: 15px;
-}
-
-h1 {
-    text-align: center;
-    padding: 30px;
-}
-
-h2 {
-    text-align: center;
-    padding: 30px;
-}
-
-.container {
-    overflow: hidden;
-    text-align: center;
-    padding: 16px;
+.puzzleContainer {
+    overflow:scroll;
     position: relative;
+    padding: 16px;
 }
 
 .title, .subTitle {
-    display: inline-block;
-    width: 100%;
-    background-color: #42ebf4;
     text-align: center;
     margin: auto;
+    color: white;
+}
+
+.title {
+    font-family: IceFont;
+    font-size: 50px;
+    padding: 30px;
+}
+
+.logoDiv {
+    margin: 30px auto 20px auto;
+    width: 120px;
+    height: 120px;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+}
+
+.subTitle {
+    font-size: 33px;
+    margin-bottom: 30px;
+}
+
+.sidePagePanel {
+    text-align: center;
+    padding: 10px;
+    height: auto;
+}
+
+.fieldToggle {
+    cursor: pointer;
+}
+
+#questionField, #leftTransition, #rightTransition {
+    height: 150px;
+    margin-bottom: 8px;
+}
+
+#question {
+    height: 100%;
 }
 
 @-webkit-keyframes animatezoom {
@@ -240,16 +306,35 @@ h2 {
     }
 }
 
-/* Change styles for confirmModalContent for screen widths less than 600px */
-@media screen and (max-width: 600px) {
-    .confirmModalContent {
-        margin: 50% auto 15% auto; /* 50% from the top, 15% from the bottom and centered */
-    }
-}
-
 /* Change styles for puzzle div icons for screen widths less than 600px */
 @media screen and (max-width: 600px) {
     .puzzleIconsDiv {
         right: 10%;
+    }
+
+    .puzzleModalContent {
+        width: 350px;
+    }
+}
+
+/* Change styles for create/edit window for screen widths between 601px and 900px */
+@media screen and (min-width: 601px) and (max-width: 900px){
+    .puzzleModalContent {
+        width: 550px;
+    }
+}
+
+/* Change styles for plus icon div for screen widths less than 1000px */
+@media screen and (max-width: 1000px) {
+    #createPuzzleButtonRow {
+        display: flex;
+    }
+
+    .createPuzzleButtonCol {
+        display: none;
+    }
+
+    .plusRoom {
+        margin: 20px auto;
     }
 }
