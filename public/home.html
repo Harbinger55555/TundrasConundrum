@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tundras Conundrum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 			crossorigin="anonymous">
+	<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+	<script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBejDVUScwZZdcgGOu8voy8NWEHNMWdwm8",
+            authDomain: "tundrasconundrum-6af20.firebaseapp.com",
+            databaseURL: "https://tundrasconundrum-6af20.firebaseio.com",
+            projectId: "tundrasconundrum-6af20",
+            storageBucket: "tundrasconundrum-6af20.appspot.com",
+            messagingSenderId: "51428296236"
+        };
+        firebase.initializeApp(config);
+	</script>
+</head>
+<body>
+	<div class="title">Tundra's Conundrum</div>
+    <div class="navWrapper" id="navWrapper">
+        <div class="topnav" id="topnav">
+            <a href="home.html" class="active">Home</a>
+            <a href="createdRooms.html">My Conundrums</a>
+            <a href="browse.html">Browse</a>
+            <a href="#" onclick="logout()">Logout</a>
+            <a class="icon" onclick="myFunction()">
+                <img class="collapse-icon" src="./images/collapse_icon.png">
+            </a>
+        </div>
+    </div>
+    <div class="containerDiv">
+        <div class="firstContainerDiv">
+            <div class="logoDiv">
+                <img class="logo" src="./images/logo_dark.png" alt="Tundra's Conundrum logo">
+            </div>
+            <div id="greeting">Loading... </div>
+        </div>
+
+        <div class="mainContainer">
+            <div class="secondContainerDiv">
+                <div class="subTitle"><b>Most Popular Rooms:</b></div>
+                <div class="roomImgDiv"><img class="roomImg" src="./images/huh.png" alt="Most Popular Room One"></div>
+                <div class="roomImgDiv"><img class="roomImg" src="./images/huh.png" alt="Most Popular Room Two"></div>
+                <div class="roomImgDiv"><img class="roomImg" src="./images/huh.png" alt="Most Popular Room Three"></div>
+            </div>
+            <div class="thirdContainerDiv">
+                <div class="storyContainer ">
+                    <div class="storyDiv">
+                        <span style="font-size: 30px">Lore</span> aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    </div>
+                    <div class="buttonDiv">
+                        <a class="takeOnButton" href="browse.html">Take on the Conundrums!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="home.js"></script>
+<script src="navbar.js"></script>
+</body>
+</html>

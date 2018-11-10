@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tundras Conundrum</title>
+    <link rel="shortcut icon" href="GameData/TemplateData/favicon.ico">
+    <link rel="stylesheet" href="GameData/TemplateData/style.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="play.css">
+    <link rel="stylesheet" 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 			crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-functions.js"></script>
+    <script src="GameData/TemplateData/UnityProgress.js"></script>
+    <script src="GameData/Build/UnityLoader.js"></script>
+    <script>
+        var gameInstance = UnityLoader.instantiate("gameContainer", "GameData/Build/GameBuilds.json", { onProgress: UnityProgress });
+
+        function getFirebaseID(firebase) {
+            gameInstance.SendMessage("Game", "SetFirebase", firebase);
+        }
+
+        function getRoomID(room) {
+            gameInstance.SendMessage("Game", "SetRoomID", room);
+        }
+    </script>
+</head>
+<body>
+    <div class="pageTitle">Tundra's Conundrum</div>
+    <div class="navWrapper" id="navWrapper">
+        <div class="topnav" id="topnav">
+            <a href="home.html">Home</a>
+            <a href="createdRooms.html">My Conundrums</a>
+            <a href="browse.html" class="active">Browse</a>
+            <a href="#" onclick="logout()">Logout</a>
+            <a class="icon" onclick="myFunction()">
+                <img class="collapse-icon" src="./images/collapse_icon.png">
+            </a>
+        </div>
+    </div>
+    <div class="webgl-content">
+        <div id="gameContainer" style="width: 960px; height: 600px"></div>
+        <div class="footer">
+            <div class="webgl-logo"></div>
+            <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+            <div class="title">Tundra Conundrum</div>
+        </div>
+    </div>
+    <script>
+        setInterval(function () {
+            getFirebaseID("https://tundrasconundrum-6af20.firebaseio.com");
+            getRoomID(sessionStorage.getItem("playRoomKey"));
+        }, 1000);
+    </script>
+    <script src="navbar.js"></script>
+</body>
+</html>
