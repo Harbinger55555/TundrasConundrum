@@ -69,9 +69,10 @@
                     <input type="text" id="hint3" placeholder="Enter Hint #3 (Optional)" name="hint3">
                 </div>
 				<div id="transitionFields">
-					<label id="leftTransitionFieldToggle" class="fieldToggle" onclick="collapseLeftTransitionField()"><b>Left Transition Question &#x25BC</b></label><br/>
+					<!--The left transition field is the transition taken when a user enters a wrong answer.-->
+					<label id="leftTransitionFieldToggle" class="fieldToggle" onclick="collapseLeftTransitionField()"><b>Wrong Answer Transition Question &#x25BC</b></label><br/>
 					<textarea id="leftTransition" placeholder="None" disabled></textarea>
-                    <label id="rightTransitionFieldToggle" class="fieldToggle" onclick="collapseRightTransitionField()"><b>Right Transition Question &#x25BC</b></label><br/>
+                    <label id="rightTransitionFieldToggle" class="fieldToggle" onclick="collapseRightTransitionField()"><b>Right Answer Transition Question &#x25BC</b></label><br/>
                     <textarea id="rightTransition" placeholder="None" disabled></textarea>
 				</div>
 	    	</div>
