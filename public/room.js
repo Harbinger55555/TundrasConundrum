@@ -1,7 +1,7 @@
 firebase.auth().onAuthStateChanged(function(user) {
 	if (!user) {
 		// No user is signed in.
-		window.location.href = "../html/index.html";
+		window.location.href = "index.html";
 
 		// Clean up sessionStorage if user is no longer signed in.
         localStorage.removeItem('roomName'); // Clear roomName from sessionStorage
@@ -419,7 +419,7 @@ function toggleLeftTransitionMode(event) {
 
     // Ask user to toggle off right transition mode if on.
     if (rightTransitionModeToggled) {
-        window.alert("Please turn off the [right] transition mode first.");
+        window.alert("Please turn off the [right answer] transition mode first.");
         return false;
     }
 
@@ -473,7 +473,7 @@ function toggleRightTransitionMode(event) {
 
     // Ask user to toggle off left transition mode if on.
     if (leftTransitionModeToggled) {
-        window.alert("Please turn off the [left] transition mode first.");
+        window.alert("Please turn off the [wrong answer] transition mode first.");
         return false;
     }
 
@@ -516,7 +516,7 @@ function puzzleDivOnCLick(event) {
         } else {
             // Open up transConfirmWindow with text informing the user's transition choice.
             document.getElementById('transConfirmText').innerHTML = 'Are you sure you want to make this the ' +
-                (rightTransitionModeToggled ? "[right]" : "[left]") + ' transition?';
+                (rightTransitionModeToggled ? "[right answer] transition?" : "[wrong answer] transition?");
             document.getElementById('transConfirmWindow').style.display = 'flex';
             sessionStorage.setItem('transitionClickedPuzzle', puzzleDivIndex);
         }
