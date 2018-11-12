@@ -7,14 +7,26 @@
     <title>Tundras Conundrum</title>
     <link rel="shortcut icon" href="GameData/TemplateData/favicon.ico">
     <link rel="stylesheet" href="GameData/TemplateData/style.css">
-    <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/play.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="play.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-functions.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBejDVUScwZZdcgGOu8voy8NWEHNMWdwm8",
+            authDomain: "tundrasconundrum-6af20.firebaseapp.com",
+            databaseURL: "https://tundrasconundrum-6af20.firebaseio.com",
+            projectId: "tundrasconundrum-6af20",
+            storageBucket: "tundrasconundrum-6af20.appspot.com",
+            messagingSenderId: "51428296236"
+        };
+        firebase.initializeApp(config);
+    </script>
     <script src="GameData/TemplateData/UnityProgress.js"></script>
     <script src="GameData/Build/UnityLoader.js"></script>
     <script>
@@ -50,12 +62,13 @@
             <div class="title">Tundra Conundrum</div>
         </div>
     </div>
+    <script src="play.js"></script>
+    <script src="navbar.js"></script>
     <script>
         setInterval(function () {
             getFirebaseID("https://tundrasconundrum-6af20.firebaseio.com");
             getRoomID(sessionStorage.getItem("playRoomKey"));
         }, 1000);
     </script>
-    <script src="../js/navbar.js"></script>
 </body>
 </html>
