@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tundras Conundrum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="createdRooms.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 			crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-storage.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBejDVUScwZZdcgGOu8voy8NWEHNMWdwm8",
+            authDomain: "tundrasconundrum-6af20.firebaseapp.com",
+            databaseURL: "https://tundrasconundrum-6af20.firebaseio.com",
+            projectId: "tundrasconundrum-6af20",
+            storageBucket: "tundrasconundrum-6af20.appspot.com",
+            messagingSenderId: "51428296236"
+        };
+        firebase.initializeApp(config);
+    </script>
+</head>
+<body>
+    <div class="title">Tundra's Conundrum</div>
+
+    <div class="navWrapper" id="navWrapper">
+        <div class="topnav" id="topnav">
+            <a href="home.html">Home</a>
+            <a href="createdRooms.html" class="active">My Conundrums</a>
+            <a href="browse.html">Browse</a>
+            <a href="#" onclick="logout()">Logout</a>
+            <a class="icon" onclick="myFunction()">
+                <img class="collapse-icon" src="./images/collapse_icon.png">
+            </a>
+        </div>
+    </div>
+
+    <div class="logoDiv">
+        <img class="logo" src="./images/logo_light.png" alt="Tundra's Conundrum logo">
+    </div>
+    <div class="subTitle">My Conundrums</div>
+
+    <div class="containerDiv">
+  		<div class="row">
+            <div class="col-2 sidePagePanel"></div>
+            <div class="col-8 mainContainer">
+                <div class="row">
+                    <div class="createRoomButtonCol col-2" onclick="openCreateWindow()">
+                        <img class="plusRoom" alt="Create Room" src="./images/plus.png">
+                    </div>
+                    <div class="col-9 subContainer">
+                        <div><button id="editButton" class="toggledOff" onclick="toggleEditMode()">Edit Mode: OFF</button></div>
+                        <div id="createdRoomDivList">
+                            <div id="loader">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="createRoomButtonRow" class="row" onclick="openCreateWindow()">
+                    <img class="plusRoom" alt="Create Room" src="./images/plus.png">
+                </div>
+            </div>
+            <div class="col-sm sidePagePanel"></div>
+        </div>
+    </div>
+
+    <div id="roomWindow" class="modal">
+        <div class="roomModalContent animate">
+            <div class="roomContainer">
+                <span onclick="document.getElementById('roomWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <div class="roomThemeDiv">
+                    <input type="file" id="roomThemeInput"><br/>
+                    <img id="roomTheme" alt="Room Theme" />
+                </div>
+                <div class="roomNameDiv">
+                    <input type="text" id="roomName" placeholder="Enter Room Name" name="roomName">
+                </div>
+                <div class="roomDescDiv">
+                    <textarea id="roomDesc" placeholder="Enter Room Description" name="roomDesc" ></textarea>
+                </div>
+            </div>
+
+            <div class="roomContainer">
+                <button id="roomWindowButton" type="submit"></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="delConfirmWindow" class="modal">
+        <div class="delModalContent animate">
+            <div class="delContainer">
+                <span onclick="document.getElementById('delConfirmWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <div class="delText">Are you sure you want to delete the room?</div>
+                <div class="delConfirmChoices delYes" onclick="delYesClicked()">Yes</div>
+                <div class="delConfirmChoices delNo" onclick="document.getElementById('delConfirmWindow').style.display='none'">No</div>
+            </div>
+        </div>
+    </div>
+
+<script src="createdRooms.js"></script>
+<script src="navbar.js"></script>
+</body>
+</html>
