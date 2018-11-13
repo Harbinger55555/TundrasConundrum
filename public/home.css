@@ -69,9 +69,9 @@ body {
 }
 
 .roomSlot {
-    border: 1px solid blue;
     display: flex;
     justify-content: center;
+    align-items: unset;
     flex-wrap: wrap;
     height: 490px;
     width: 290px;
@@ -101,7 +101,6 @@ body {
 }
 
 .roomInfoContainer {
-    border: 1px solid red;
     width: 250px;
     height: 75px;
     word-wrap: break-word;
@@ -179,13 +178,55 @@ body {
 @media screen and (max-width: 1200px){
     .storyContainer {
         width: 90%;
+        height: 300px;
     }
 }
 
-/* Change styles for roomImgDiv for screen widths less than 579px */
-@media screen and (max-width: 579px){
+/* Change styles for roomSlot for screen widths less than 869px */
+@media screen and (max-width: 869px){
+    .roomPrizeImgDiv {
+        margin: 0px 15px 0px 15px;
+        padding-bottom: 50px;
+        height: 200px;
+    }
+    .roomSlot {
+        height: 325px;
+        width: 430px;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+}
+
+/* Change styles for roomSlot and its contents for screen widths less than 859px */
+@media screen and (max-width: 859px){
+    .roomPrizeImgDiv {
+        height: 150px;
+        width: 100px;
+    }
     .roomImgDiv {
         height: 200px;
         width: 200px;
+    }
+    .roomInfoContainer {
+        width: 200px;
+        height: 75px;
+    }
+    .roomSlot {
+        height: 275px;
+        width: 330px;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+}
+
+/* Change styles for roomInfoContainer and secondContainerDiv for screen widths less than 659px */
+@media screen and (max-width: 659px){
+    .roomInfoContainer {
+        width: 200px;
+        height: 50px;
+    }
+
+    .secondContainerDiv {
+        height: 870px;
     }
 }
