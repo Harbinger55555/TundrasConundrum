@@ -41,7 +41,6 @@ function loadPopularRooms() {
                 let roomName = roomVal.name;
                 let roomFinishCount = roomVal.finishCount;
                 let roomImgUrl = roomVal.themeURL;
-                // TODO: create a roomName div and fill in the roomName.
                 let roomImgElement = document.getElementById('room' + ROOM_NUM);
                 roomImgElement.setAttribute("src", (roomImgUrl || "./images/huh.png"));
                 roomImgElement.onclick = function() {
