@@ -36,9 +36,11 @@ function loadPopularRooms() {
             mostPopularRoomsArr.reverse();
             for (var room of mostPopularRoomsArr) {
                 ROOM_NUM += 1;
+                let roomVal = room.val();
                 let roomID = room.key;
-                let roomName = room.val().name;
-                let roomImgUrl = room.val().themeURL;
+                let roomName = roomVal.name;
+                let roomFinishCount = roomVal.finishCount;
+                let roomImgUrl = roomVal.themeURL;
                 // TODO: create a roomName div and fill in the roomName.
                 let roomImgElement = document.getElementById('room' + ROOM_NUM);
                 roomImgElement.setAttribute("src", (roomImgUrl || "./images/huh.png"));
@@ -46,6 +48,8 @@ function loadPopularRooms() {
                     playUnity(roomID);
                 };
                 roomImgElement.style.cursor = "pointer";
+                document.getElementById('roomName' + ROOM_NUM).innerHTML = roomName;
+                document.getElementById('roomCount' + ROOM_NUM).innerHTML = "Finished Count: " + roomFinishCount;
             }
         }
     );
