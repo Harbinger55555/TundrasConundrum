@@ -60,10 +60,13 @@ body {
     height: 800px;
     width: 100%;
     background-color: rgba(0, 255, 255, 1);
+    background: url("images/valley-of-light-salat.jpg") center no-repeat;
+    background-size: cover;
 }
 
 .subTitle {
     font-size: 30px;
+    color: white;
     display: inline-block;
     width: 100%;
 }
@@ -95,6 +98,8 @@ body {
     height: 800px;
     width: 100%;
     background-color: rgba(123, 0, 123, 1);
+    background: url("images/iceCastle.jpg") center no-repeat;
+    background-size: cover;
 }
 
 .storyContainer {
