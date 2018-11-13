@@ -73,8 +73,16 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    height: 340px;
+    height: 490px;
     width: 290px;
+}
+
+.roomPrizeImgDiv {
+    display: inline-block;
+    height: 150px;
+    width: 150px;
+    outline: none;
+    margin-bottom: 15px;
 }
 
 .roomImgDiv {
@@ -87,7 +95,7 @@ body {
     border: groove 8px grey;
 }
 
-.roomImg {
+.roomImg, .roomPrizeImg {
     height: 100%;
     width: 100%;
 }
