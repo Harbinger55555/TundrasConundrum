@@ -18,6 +18,8 @@ button {
 
 body{
   background-image: url("images/browse_bg.png");
+  background-size: 110% 100%;
+  overflow-x: hidden;
 }
 
 button:hover {
@@ -37,7 +39,7 @@ button:hover {
     padding: 30px;
     color: white;
     opacity: 1.0;
-    background: rgba(148, 154, 163, .8);
+    background: rgba(148, 154, 163, .9);
 }
 
 .logoDiv {
