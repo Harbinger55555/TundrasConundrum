@@ -16,21 +16,30 @@ button {
     width: 100%;
 }
 
+body{
+  background-image: url("images/browse_bg.png");
+  background-size: 110% 100%;
+  overflow-x: hidden;
+}
+
 button:hover {
     opacity: 0.8;
 }
 
-.title, .subTitle {
+.subTitle {
     text-align: center;
     margin: auto;
-    color: black;
+    color: white;
 }
 
-.title {
+.title{
     font-family: IceFont;
+    text-align: center;
     font-size: 50px;
     padding: 30px;
-    background-color: #42ebf4;
+    color: white;
+    opacity: 1.0;
+    background: rgba(148, 154, 163, .9);
 }
 
 .logoDiv {
@@ -42,6 +51,27 @@ button:hover {
 .logo {
     width: 100%;
     height: 100%;
+}
+
+#oval {
+  width: 200px;
+  height: 150px;
+  background: #d9dde2;
+  border-radius: 500px / 150px;
+}
+
+.logoCircle{
+  display: flex;
+  align-items: center;
+}
+
+.logoContainerDiv{
+  margin-top: 30px;
+  text-align: center;
+}
+
+.logoBG{
+  display: inline-block;
 }
 
 .subTitle {
@@ -62,20 +92,19 @@ button:hover {
     height: 500px;
     width: 70%;
     margin: auto;
-    border: 3px solid white;
-    background-color: black;
+    border: 3px solid black;
+    background-color: white;
 }
 
 .roomDiv {
-    margin-bottom: 30px;
     max-height: 400px;
     margin-top: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
     word-wrap: break-word;
-    background-color: black;
-
+    background-color: white;
+    border-bottom: 1px solid grey;
 }
 
 .roomImgDiv {
@@ -94,13 +123,16 @@ button:hover {
 }
 
 .roomDescDiv {
-    height: 160px;
-    width: 600px;
+    height: 200px;
+    width: 65%;
     font-size: 20px;
     padding: 20px;
+    margin-right: 30px;
+    margin-bottom: 20px;
     display: inline-block;
     overflow-y: scroll;
-    color: white;
+    border: 3px solid black;
+    background: #e3e7ed;
 }
 
 .roomNameDiv {
@@ -108,7 +140,7 @@ button:hover {
     height: auto;
     width: 200px;
     font-size: 20px;
-    color: white;
+    color: black;
 }
 
 .roomNameAndImg {
