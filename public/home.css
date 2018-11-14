@@ -17,7 +17,7 @@ body {
 .title {
     font-family: IceFont;
     font-size: 50px;
-    background-image: url("images/ice_title.png");
+    background-image: url("images/ice_title.jp2");
     opacity: 0.8;
     color: black;
     padding: 30px;
@@ -30,7 +30,7 @@ body {
     height: 300px;
     width: 100%;
     /*background-color: rgba(255, 255, 255, 1);*/
-    background: url("images/home_cont1_bg.png") center no-repeat;
+    background: url("images/home_cont1_bg.jp2") center no-repeat;
     background-size: cover;
 }
 

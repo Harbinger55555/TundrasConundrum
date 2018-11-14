@@ -29,7 +29,7 @@ function appendRoom(roomImgUrl, roomDesc, roomName, roomID) {
     roomImgDiv.setAttribute("class", "roomImgDiv");
     let roomImg = document.createElement('img');
     roomImg.setAttribute("class", "roomImg");
-    roomImg.setAttribute("src", (roomImgUrl || "./images/huh.png"));
+    roomImg.setAttribute("src", (roomImgUrl || "./images/huh.jp2"));
     roomImg.onclick = function() {
     playUnity(roomID);
     };

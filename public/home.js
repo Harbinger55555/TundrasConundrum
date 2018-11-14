@@ -42,7 +42,7 @@ function loadPopularRooms() {
                 let roomFinishCount = roomVal.finishCount;
                 let roomImgUrl = roomVal.themeURL;
                 let roomImgElement = document.getElementById('room' + ROOM_NUM);
-                roomImgElement.setAttribute("src", (roomImgUrl || "./images/huh.png"));
+                roomImgElement.setAttribute("src", (roomImgUrl || "./images/huh.jp2"));
                 roomImgElement.onclick = function() {
                     playUnity(roomID);
                 };

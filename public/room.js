@@ -257,7 +257,7 @@ function appendPuzzle(puzzleQuestion) {
     // Left transition is also used as the "wrong answer" transition.
     let puzzleDivLeftIcon = document.createElement('img');
     puzzleDivLeftIcon.setAttribute("class", "puzzleDivIcons");
-    puzzleDivLeftIcon.setAttribute("src", "./images/arrow_left_default.png");
+    puzzleDivLeftIcon.setAttribute("src", "./images/arrow_left_default.jp2");
     puzzleDivLeftIcon.onclick = function(event) {
         toggleLeftTransitionMode(event);
     }
@@ -267,7 +267,7 @@ function appendPuzzle(puzzleQuestion) {
     // Right transition is also used as the "right answer" transition.
     let puzzleDivRightIcon = document.createElement('img');
     puzzleDivRightIcon.setAttribute("class", "puzzleDivIcons");
-    puzzleDivRightIcon.setAttribute("src", "./images/arrow_right_default.png");
+    puzzleDivRightIcon.setAttribute("src", "./images/arrow_right_default.jp2");
     puzzleDivRightIcon.onclick = function(event) {
         toggleRightTransitionMode(event);
     }
@@ -277,7 +277,7 @@ function appendPuzzle(puzzleQuestion) {
     // An icon to clear all transition states of a puzzle.
     let puzzleDivClearTransIcon = document.createElement('img');
     puzzleDivClearTransIcon.setAttribute("class", "puzzleDivIcons");
-    puzzleDivClearTransIcon.setAttribute("src", "./images/clear_trans.png");
+    puzzleDivClearTransIcon.setAttribute("src", "./images/clear_trans.jp2");
     puzzleDivClearTransIcon.onclick = function(event) {
         openClearConfirmWindow(event);
     }
@@ -286,7 +286,7 @@ function appendPuzzle(puzzleQuestion) {
     // TODO: Add alt.
     let puzzleDivDelIcon = document.createElement('img');
     puzzleDivDelIcon.setAttribute("class", "puzzleDivIcons");
-    puzzleDivDelIcon.setAttribute("src", "./images/trash.png");
+    puzzleDivDelIcon.setAttribute("src", "./images/trash.jp2");
     puzzleDivDelIcon.onclick = function(event) {
         openDelConfirmWindow(event);
     }
@@ -427,14 +427,14 @@ function toggleLeftTransitionMode(event) {
 
     // Change the icon to toggled img and update transitionToggledPuzzle.
     if (leftTransitionModeToggled) {
-        leftIconOfCurrDiv.setAttribute("src", "./images/arrow_left_toggled.png");
+        leftIconOfCurrDiv.setAttribute("src", "./images/arrow_left_toggled.jp2");
 
         // As long as a transition mode is active, the icons div will be visible.
         puzzleIconsDiv.style.visibility = 'visible';
         // TODO: Change the transitionToggledPuzzle from sessionStorage to global variable.
         sessionStorage.setItem('transitionToggledPuzzle', puzzleDivIndex);
     } else {
-        leftIconOfCurrDiv.setAttribute("src", "./images/arrow_left_default.png");
+        leftIconOfCurrDiv.setAttribute("src", "./images/arrow_left_default.jp2");
 
         // Turn icons div visibility off since transition mode is no longer active.
         puzzleIconsDiv.style.visibility = 'hidden';
@@ -481,14 +481,14 @@ function toggleRightTransitionMode(event) {
 
     // Change the icon to toggled img and update transitionToggledPuzzle.
     if (rightTransitionModeToggled) {
-        rightIconOfCurrDiv.setAttribute("src", "./images/arrow_right_toggled.png");
+        rightIconOfCurrDiv.setAttribute("src", "./images/arrow_right_toggled.jp2");
 
         // As long as a transition mode is active, the icons div will be visible.
         puzzleIconsDiv.style.visibility = 'visible';
         // TODO: Change the transitionToggledPuzzle from sessionStorage to global variable.
         sessionStorage.setItem('transitionToggledPuzzle', puzzleDivIndex);
     } else {
-        rightIconOfCurrDiv.setAttribute("src", "./images/arrow_right_default.png");
+        rightIconOfCurrDiv.setAttribute("src", "./images/arrow_right_default.jp2");
 
         // Turn icons div visibility off since transition mode is no longer active.
         puzzleIconsDiv.style.visibility = 'hidden';
