@@ -47,6 +47,7 @@ button:hover {
 .subTitle {
     font-size: 33px;
     margin-bottom: 30px;
+    color: white;
 }
 
 .containerDiv {
@@ -61,7 +62,7 @@ button:hover {
     height: 500px;
     width: 70%;
     margin: auto;
-    border: 3px solid black;
+    border: 3px solid white;
     background-color: black;
 }
 
