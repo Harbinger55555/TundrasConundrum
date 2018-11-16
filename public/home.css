@@ -77,13 +77,13 @@ body {
 }
 
 .roomImgDiv {
-    height: 250px;
-    width: 250px;
-    margin: 20px;
-    background-color: black;
-    outline: none;
-    color: #e8f0fc;
-    border: groove 8px grey;
+  display: inline-block;
+  height: 250px;
+  width: 250px;
+  background-color: black;
+  outline: none;
+  color: #e8f0fc;
+  border: groove 8px grey;
 }
 
 .roomImg {
