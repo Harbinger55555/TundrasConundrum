@@ -69,11 +69,21 @@ body {
   font-weight: bold;
 }
 
+
 .subTitle {
     font-size: 30px;
     color: white;
     display: inline-block;
     width: 100%;
+}
+
+.roomSlot {
+    display: flex;
+    justify-content: center;
+    align-items: unset;
+    flex-wrap: wrap;
+    height: 490px;
+    width: 290px;
 }
 
 .roomImgDiv {
@@ -86,9 +96,20 @@ body {
   border: groove 8px grey;
 }
 
-.roomImg {
+.roomImg, .roomPrizeImg {
     height: 100%;
     width: 100%;
+}
+
+.roomInfoContainer {
+    width: 250px;
+    height: 75px;
+    word-wrap: break-word;
+    table-layout: fixed;
+}
+
+.roomInfo {
+    text-align: center;
 }
 
 .containerDiv {
