@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'IceFont';
+    src: url('images/CFGrandNord-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Full-width input fields */
+input[type=email], input[type=password], input[type=text] {
+    vertical-align: middle;
+    width: 49%;
+    padding: 12px 20px;
+    border: 1px inset #ccc;
+    background-color: Black;
+    color: White;
+    box-sizing: border-box;
+}
+
+label {
+    display: inline-block;
+    font-size: 20px;
+    width: 100%;
+}
+
+.title{
+    font-family: IceFont;
+    text-align: center;
+    font-size: 50px;
+    padding: 30px;
+    color: white;
+    opacity: 1.0;
+    background: rgba(148, 154, 163, .9);
+}
+
+.logoDiv {
+    margin: 30px auto 20px auto;
+    width: 120px;
+    height: 120px;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+}
+
+.logoContainerDiv{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.containerDiv {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.containerContent {
+    height: 600px;
+    width: 40%;
+    border: 3px solid black;
+    background-color: white;
+}
+
+#titleSignUp {
+    font-family: IceFont;
+    font-size: 50px;
+    color: #2a8ddd;
+    width: 100%;
+    text-align: center;
+    border: 1px solid blue;
+}
+
+.contentField {
+    padding: 10px 8%;
+    width: 100%;
+    border: 1px solid green;
+}
+
+.fieldsContainer {
+    border: 2px solid red;
+}

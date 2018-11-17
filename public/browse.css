@@ -5,31 +5,10 @@
     font-style: normal;
 }
 
-/* Set a style for all buttons */
-button {
-    background-color: #2BABFF;
-    color: #000000;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
 body{
   background-image: url("images/browse_bg.jp2");
   background-size: 110% 100%;
   overflow-x: hidden;
-}
-
-button:hover {
-    opacity: 0.8;
-}
-
-.subTitle {
-    text-align: center;
-    margin: auto;
-    color: white;
 }
 
 .title{
@@ -61,6 +40,8 @@ button:hover {
 .subTitle {
     font-size: 33px;
     margin-bottom: 30px;
+    text-align: center;
+    color: white;
 }
 
 .containerDiv {
@@ -70,7 +51,7 @@ button:hover {
 #roomDivList {
     overflow-y: scroll;
     position: relative;
-    height: 500px;
+    height: 600px;
     width: 70%;
     margin: auto;
     border: 3px solid black;
