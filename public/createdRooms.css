@@ -16,7 +16,7 @@ input[type=text], textarea {
 }
 
 body {
-    background-image: url("images/createdrooms_bg.png");
+    background-image: url("images/createdrooms_bg.jp2");
     background-size: 110% 100%;
     overflow-x: hidden;
 }
@@ -223,7 +223,7 @@ button:hover {
 
 /* Modal Content/Box */
 .roomModalContent {
-    background-image: url("images/scroll_bg.png");
+    background-image: url("images/scroll_bg.jp2");
     background-size: 100% 100%;
     border: 1px solid #888;
     width: 645px;

@@ -33,7 +33,7 @@ function appendRoom(roomName) {
     // TODO: Add alt.
     let roomDivDelIcon = document.createElement('img');
     roomDivDelIcon.setAttribute("class", "roomDivIcons");
-    roomDivDelIcon.setAttribute("src", "./images/trash.png");
+    roomDivDelIcon.setAttribute("src", "./images/trash.jp2");
     roomDivDelIcon.onclick = function(event) {
         openDelConfirmWindow(event);
     }
@@ -276,7 +276,7 @@ function uploadRoomToRTDB(roomKey, roomName, roomDesc, themeURL) {
 function resetInputs() {
     document.getElementById("roomWindowButton").disabled = false;
     document.getElementById('roomThemeInput').value = '';
-    document.getElementById('roomTheme').src = "./images/huh.png";
+    document.getElementById('roomTheme').src = "./images/huh.jp2";
     document.getElementById('roomName').value = '';
     document.getElementById('roomDesc').value = '';
     uploadedTheme = null;
@@ -305,7 +305,7 @@ function openEditWindow(createdRoomDivIndex) {
     let roomData = firebase.database().ref().child('rooms/' + roomKey);
     roomData.once('value', function(snapshot){
         let dataValues = snapshot.val();
-        document.getElementById('roomTheme').src = snapshot.hasChild('themeURL') ? dataValues.themeURL : "./images/huh.png";
+        document.getElementById('roomTheme').src = snapshot.hasChild('themeURL') ? dataValues.themeURL : "./images/huh.jp2";
         document.getElementById('roomName').value = dataValues.name;
         document.getElementById('roomDesc').value = snapshot.hasChild('description') ? dataValues.description : '';
     }).then(
@@ -403,6 +403,6 @@ document.getElementById('roomThemeInput').onchange = function(event) {
         roomTheme.src = window.URL.createObjectURL(uploadedTheme);
     } else {
         // If user clicks on cancel on the upload window.
-        roomTheme.src = "./images/huh.png";
+        roomTheme.src = "./images/huh.jp2";
     }
 }

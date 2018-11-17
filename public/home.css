@@ -17,7 +17,7 @@ body {
 .title {
     font-family: IceFont;
     font-size: 50px;
-    background-image: url("images/ice_title.png");
+    background-image: url("images/ice_title.jp2");
     opacity: 0.8;
     color: black;
     padding: 30px;
@@ -29,8 +29,7 @@ body {
     flex-wrap: wrap;
     height: 300px;
     width: 100%;
-    /*background-color: rgba(255, 255, 255, 1);*/
-    background: url("images/home_cont1_bg.png") center no-repeat;
+    background: url("images/home_cont1_bg.jp2") center no-repeat;
     background-size: cover;
 }
 
@@ -60,7 +59,7 @@ body {
     height: 800px;
     width: 100%;
     background-color: rgba(0, 255, 255, 1);
-    background: url("images/valley-of-light-salat.jpg") center no-repeat;
+    background: url("images/home_cont2_bg.jp2") center no-repeat;
     background-size: cover;
 }
 
@@ -68,7 +67,6 @@ body {
   color: white;
   font-weight: bold;
 }
-
 
 .subTitle {
     font-size: 30px;
@@ -84,6 +82,14 @@ body {
     flex-wrap: wrap;
     height: 490px;
     width: 290px;
+}
+
+.roomPrizeImgDiv {
+    display: inline-block;
+    height: 150px;
+    width: 150px;
+    outline: none;
+    margin-bottom: 15px;
 }
 
 .roomImgDiv {
@@ -124,7 +130,7 @@ body {
     height: 800px;
     width: 100%;
     background-color: rgba(123, 0, 123, 1);
-    background: url("images/iceCastle.jpg") center no-repeat;
+    background: url("images/iceCastle.jp2") center no-repeat;
     background-size: cover;
 }
 
@@ -177,17 +183,50 @@ body {
     color: white;
 }
 
-/* Change styles for storyDiv for screen widths less than 1200px */
-@media screen and (max-width: 1200px){
-    .storyContainer {
-        width: 90%;
+/* Change styles for roomSlot for screen widths less than 869px */
+@media screen and (max-width: 869px){
+    .roomPrizeImgDiv {
+        margin: 0px 15px 0px 15px;
+        padding-bottom: 50px;
+        height: 200px;
+    }
+    .roomSlot {
+        height: 325px;
+        width: 430px;
+        align-items: center;
+        flex-wrap: nowrap;
     }
 }
 
-/* Change styles for roomImgDiv for screen widths less than 579px */
-@media screen and (max-width: 579px){
+/* Change styles for roomSlot and its contents for screen widths less than 859px */
+@media screen and (max-width: 859px){
+    .roomPrizeImgDiv {
+        height: 150px;
+        width: 100px;
+    }
     .roomImgDiv {
         height: 200px;
         width: 200px;
+    }
+    .roomInfoContainer {
+        width: 200px;
+        height: 75px;
+    }
+    .roomSlot {
+        height: 275px;
+        width: 330px;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+}
+
+/* Change styles for roomInfoContainer and secondContainerDiv for screen widths less than 659px */
+@media screen and (max-width: 659px){
+    .roomInfoContainer {
+        width: 200px;
+        height: 50px;
+    }
+    .secondContainerDiv {
+        height: 870px;
     }
 }
