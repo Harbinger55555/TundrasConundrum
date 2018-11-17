@@ -29,7 +29,6 @@ body {
     flex-wrap: wrap;
     height: 300px;
     width: 100%;
-    /*background-color: rgba(255, 255, 255, 1);*/
     background: url("images/home_cont1_bg.jp2") center no-repeat;
     background-size: cover;
 }
@@ -60,10 +59,18 @@ body {
     height: 800px;
     width: 100%;
     background-color: rgba(0, 255, 255, 1);
+    background: url("images/home_cont2_bg.jp2") center no-repeat;
+    background-size: cover;
+}
+
+.roomInfo{
+  color: white;
+  font-weight: bold;
 }
 
 .subTitle {
     font-size: 30px;
+    color: white;
     display: inline-block;
     width: 100%;
 }
@@ -86,13 +93,13 @@ body {
 }
 
 .roomImgDiv {
-    display: inline-block;
-    height: 250px;
-    width: 250px;
-    background-color: black;
-    outline: none;
-    color: #e8f0fc;
-    border: groove 8px grey;
+  display: inline-block;
+  height: 250px;
+  width: 250px;
+  background-color: black;
+  outline: none;
+  color: #e8f0fc;
+  border: groove 8px grey;
 }
 
 .roomImg, .roomPrizeImg {
@@ -123,6 +130,8 @@ body {
     height: 800px;
     width: 100%;
     background-color: rgba(123, 0, 123, 1);
+    background: url("images/iceCastle.jp2") center no-repeat;
+    background-size: cover;
 }
 
 .storyContainer {
@@ -174,14 +183,6 @@ body {
     color: white;
 }
 
-/* Change styles for storyDiv for screen widths less than 1200px */
-@media screen and (max-width: 1200px){
-    .storyContainer {
-        width: 90%;
-        height: 300px;
-    }
-}
-
 /* Change styles for roomSlot for screen widths less than 869px */
 @media screen and (max-width: 869px){
     .roomPrizeImgDiv {
@@ -225,7 +226,6 @@ body {
         width: 200px;
         height: 50px;
     }
-
     .secondContainerDiv {
         height: 870px;
     }
