@@ -42,7 +42,7 @@
     </script>
 </head>
 <body>
-    <style> 
+    <style>
         body{
             background-color:black;
         }
@@ -70,10 +70,10 @@
     <script src="play.js"></script>
     <script src="navbar.js"></script>
     <script>
-        setInterval(function () {
+        setTimeout(function () {
             getFirebaseID("https://tundrasconundrum-6af20.firebaseio.com");
             getRoomID(sessionStorage.getItem("playRoomKey"));
-        }, 1000);
+        }, 2500);
     </script>
 </body>
 </html>
