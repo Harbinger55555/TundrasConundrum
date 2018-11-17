@@ -77,10 +77,13 @@ button:hover {
 .subTitle {
     font-size: 33px;
     margin-bottom: 30px;
+    color: white;
 }
 
 .containerDiv {
     min-height: 100vh;
+    /*background: url("images/GodsIce.jpg") center no-repeat;
+    background-size: cover;*/
 }
 
 #roomDivList {
@@ -100,6 +103,7 @@ button:hover {
     flex-direction: row;
     align-items: center;
     word-wrap: break-word;
+    background-color: white;
     border-bottom: 1px solid grey;
 }
 
@@ -136,6 +140,7 @@ button:hover {
     height: auto;
     width: 200px;
     font-size: 20px;
+    color: black;
 }
 
 .roomNameAndImg {

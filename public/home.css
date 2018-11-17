@@ -60,10 +60,19 @@ body {
     height: 800px;
     width: 100%;
     background-color: rgba(0, 255, 255, 1);
+    background: url("images/valley-of-light-salat.jpg") center no-repeat;
+    background-size: cover;
 }
+
+.roomInfo{
+  color: white;
+  font-weight: bold;
+}
+
 
 .subTitle {
     font-size: 30px;
+    color: white;
     display: inline-block;
     width: 100%;
 }
@@ -77,22 +86,14 @@ body {
     width: 290px;
 }
 
-.roomPrizeImgDiv {
-    display: inline-block;
-    height: 150px;
-    width: 150px;
-    outline: none;
-    margin-bottom: 15px;
-}
-
 .roomImgDiv {
-    display: inline-block;
-    height: 250px;
-    width: 250px;
-    background-color: black;
-    outline: none;
-    color: #e8f0fc;
-    border: groove 8px grey;
+  display: inline-block;
+  height: 250px;
+  width: 250px;
+  background-color: black;
+  outline: none;
+  color: #e8f0fc;
+  border: groove 8px grey;
 }
 
 .roomImg, .roomPrizeImg {
@@ -123,6 +124,8 @@ body {
     height: 800px;
     width: 100%;
     background-color: rgba(123, 0, 123, 1);
+    background: url("images/iceCastle.jpg") center no-repeat;
+    background-size: cover;
 }
 
 .storyContainer {
@@ -178,55 +181,13 @@ body {
 @media screen and (max-width: 1200px){
     .storyContainer {
         width: 90%;
-        height: 300px;
     }
 }
 
-/* Change styles for roomSlot for screen widths less than 869px */
-@media screen and (max-width: 869px){
-    .roomPrizeImgDiv {
-        margin: 0px 15px 0px 15px;
-        padding-bottom: 50px;
-        height: 200px;
-    }
-    .roomSlot {
-        height: 325px;
-        width: 430px;
-        align-items: center;
-        flex-wrap: nowrap;
-    }
-}
-
-/* Change styles for roomSlot and its contents for screen widths less than 859px */
-@media screen and (max-width: 859px){
-    .roomPrizeImgDiv {
-        height: 150px;
-        width: 100px;
-    }
+/* Change styles for roomImgDiv for screen widths less than 579px */
+@media screen and (max-width: 579px){
     .roomImgDiv {
         height: 200px;
         width: 200px;
-    }
-    .roomInfoContainer {
-        width: 200px;
-        height: 75px;
-    }
-    .roomSlot {
-        height: 275px;
-        width: 330px;
-        align-items: center;
-        flex-wrap: nowrap;
-    }
-}
-
-/* Change styles for roomInfoContainer and secondContainerDiv for screen widths less than 659px */
-@media screen and (max-width: 659px){
-    .roomInfoContainer {
-        width: 200px;
-        height: 50px;
-    }
-
-    .secondContainerDiv {
-        height: 870px;
     }
 }
