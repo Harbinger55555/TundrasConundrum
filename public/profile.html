@@ -11,6 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-storage.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -45,24 +46,83 @@
 
     <div class="containerDiv">
         <div class="containerContent">
-            <label id="titleSignUp">Account Details</label>
+            <label id="containerContentTitle">Account Details</label>
             <div class="fieldsContainer">
                 <div class="contentField">
-                    <label>Username</label>
-                    <input type="text" placeholder="Current Username">
-                    <input type="text" placeholder="Enter New Username" id="newUserNameField" required>
+                    <label>Username [<span class="editFieldLink" onclick="newUsername()">Edit</span>]</label>
+                    <div id="currentUsername" class="currentField">Loading...</div>
                 </div>
                 <div class="contentField">
-                    <label>Email Address</label>
-                    <input type="email" placeholder="Enter Email Address" id="newEmailField" required>
+                    <label>Email Address [<span class="editFieldLink" onclick="newEmail()">Edit</span>]</label>
+                    <div id="currentEmail" class="currentField">Loading...</div>
                 </div>
                 <div class="contentField">
-                    <label>Password</label>
-                    <input type="password" placeholder="Enter Password" id="newPwdField" required>
+                    <label class="editFieldLink" onclick="newPwd()">Change Password?</label>
+                </div>
+                <div class="contentField">
+                    <label class="editFieldLink" onclick="document.getElementById('delConfirmWindow').style.display = 'flex'">Delete Account?</label>
                 </div>
             </div>
         </div>
     </div>
+
+    <div id="newUsernameWindow" class="popUpModal">
+        <div class="popUpModalContent animate">
+            <div class="popUpContainer">
+                <span onclick="document.getElementById('newUsernameWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <label class="fieldLabels">Change Username</label>
+                <input id="newUsernameField" type="text" placeholder="Enter New Username" required><br/>
+                <input id="newUsernamePwd" type="password" placeholder="Enter Current Password" required><br/>
+                <div class="popUpButtonsDiv">
+                    <button id="usernameSubmitButton" class="popUpButton" onclick="newUsernameSubmit()">Submit</button>
+                    <button class="popUpButton cancelButton" onclick="document.getElementById('newUsernameWindow').style.display='none'">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="newEmailWindow" class="popUpModal">
+        <div class="popUpModalContent animate">
+            <div class="popUpContainer">
+                <span onclick="document.getElementById('newEmailWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <label class="fieldLabels">Change Email</label>
+                <input id="newEmailField" type="email" placeholder="Enter New Email" required><br/>
+                <input id="newEmailPwd" type="password" placeholder="Enter Current Password" required><br/>
+                <div class="popUpButtonsDiv">
+                    <button id="emailSubmitButton" class="popUpButton" onclick="newEmailSubmit()">Submit</button>
+                    <button class="popUpButton cancelButton" onclick="document.getElementById('newEmailWindow').style.display='none'">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="newPwdWindow" class="popUpModal">
+        <div class="popUpModalContent animate">
+            <div class="popUpContainer">
+                <span onclick="document.getElementById('newPwdWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <label class="fieldLabels">Change Password</label>
+                <input id="newPwdField" type="password" placeholder="Enter New Password" required><br/>
+                <input id="newPwdFieldReenter" type="password" placeholder="Re-enter New Password" required><br/>
+                <input id="newPwdCurrPwd" type="password" placeholder="Enter Current Password" required><br/>
+                <div class="popUpButtonsDiv">
+                    <button id="pwdSubmitButton" class="popUpButton" onclick="newPwdSubmit()">Submit</button>
+                    <button class="popUpButton cancelButton" onclick="document.getElementById('newPwdWindow').style.display='none'">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="delConfirmWindow" class="popUpModal">
+        <div class="delModalContent animate">
+            <div class="delContainer">
+                <span onclick="document.getElementById('delConfirmWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <div class="delText">Are you sure you want to delete your account?</div>
+                <div class="delConfirmChoices delYes" onclick="delYesClicked()">Yes</div>
+                <div class="delConfirmChoices delNo" onclick="document.getElementById('delConfirmWindow').style.display='none'">No</div>
+            </div>
+        </div>
+    </div>
+
 <script src="profile.js"></script>
 <script src="navbar.js"></script>
 </body>
