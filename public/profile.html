@@ -95,6 +95,22 @@
         </div>
     </div>
 
+    <div id="newPwdWindow" class="popUpModal">
+        <div class="popUpModalContent animate">
+            <div class="popUpContainer">
+                <span onclick="document.getElementById('newPwdWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <label class="fieldLabels">Change Password</label>
+                <input id="newPwdField" type="password" placeholder="Enter New Password" required><br/>
+                <input id="newPwdFieldReenter" type="password" placeholder="Re-enter New Password" required><br/>
+                <input id="newPwdCurrPwd" type="password" placeholder="Enter Current Password" required><br/>
+                <div class="popUpButtonsDiv">
+                    <button id="pwdSubmitButton" class="popUpButton" onclick="newPwdSubmit()">Submit</button>
+                    <button class="popUpButton cancelButton" onclick="document.getElementById('newPwdWindow').style.display='none'">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <script src="profile.js"></script>
 <script src="navbar.js"></script>
 </body>

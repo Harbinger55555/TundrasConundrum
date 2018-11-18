@@ -58,7 +58,7 @@ function newUsernameSubmit() {
             usernameSubmitButton.disabled = false;
             if (error.code == "auth/wrong-password") {
                 // If the user entered the wrong password, alert the user.
-                window.alert("Wrong password entered, please retry...");
+                alert("Wrong password entered, please retry...");
                 return;
             } else {
                 // If it is any other error, throw it again.
@@ -117,8 +117,72 @@ function newEmailSubmit() {
 }
 
 function newPwd() {
-    resetInputs('signUpWindow');
-    document.getElementById('signUpWindow').style.display='flex';
+    resetInputs('newPwdWindow');
+    document.getElementById('pwdSubmitButton').disabled = false;
+    document.getElementById('newPwdWindow').style.display='flex';
+}
+
+function validInput(inputString) {
+    // Range six to twenty characters, at least one uppercase letter, one lowercase letter and one number.
+    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!$%@#£^€*?&()]{6,20}$/;
+    if (regex.test(inputString)) {
+        return true;
+    }
+    return false;
+}
+
+function newPwdSubmit() {
+    var newPwd = document.getElementById("newPwdField").value;
+    var newPwdReenter = document.getElementById("newPwdFieldReenter").value;
+    var currPwd = document.getElementById('newPwdCurrPwd').value;
+    var pwdSubmitButton = document.getElementById('pwdSubmitButton');
+    // Prevent multiple submissions to firebase.
+    pwdSubmitButton.disabled = true;
+
+    if (!validInput(newPwd)) {
+        alert('Password must have at least one uppercase, one lowercase, one number, and be between 6 to 20 characters!');
+        pwdSubmitButton.disabled = false;
+        return false;
+    }
+
+    if (newPwd != newPwdReenter) {
+        alert('Passwords do not match!');
+        pwdSubmitButton.disabled = false;
+        return false;
+    }
+
+    var currUser = firebase.auth().currentUser;
+    currUser.reauthenticateAndRetrieveDataWithCredential(
+        firebase.auth.EmailAuthProvider.credential(
+            currUser.email,
+            currPwd
+        )
+    ).then(
+        () => {
+            // Alert the user that same password cannot be reused.
+            if (newPwd == currPwd) {
+                alert('New password cannot be same as the current password!');
+                pwdSubmitButton.disabled = false;
+                return false;
+            }
+
+            // Update the user password, then refresh the page.
+            currUser.updatePassword(newPwd).then(
+                () => {
+                    document.location.reload(true)
+                })
+        }).catch(function(error){
+            // Reenable the submit button if any error occurred.
+            pwdSubmitButton.disabled = false;
+            if (error.code == "auth/wrong-password") {
+                // If the user entered the wrong password, alert the user.
+                alert("Wrong password entered, please retry...");
+                return;
+            } else {
+                // If it is any other error, throw it again.
+                throw(error);
+            }
+        });
 }
 
 // When the user clicks anywhere outside of the pop up windows, close it.
