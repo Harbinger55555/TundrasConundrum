@@ -30,42 +30,90 @@ function resetInputs(fieldid) {
 
 function newUsername() {
     resetInputs('newUsernameWindow');
+    document.getElementById('usernameSubmitButton').disabled = false;
     document.getElementById('newUsernameWindow').style.display='flex';
 }
 
 function newUsernameSubmit() {
-    firebase.auth().currentUser.reauthenticateAndRetrieveDataWithCredential(
+    var usernameSubmitButton = document.getElementById('usernameSubmitButton');
+    // Prevent multiple submissions to firebase.
+    usernameSubmitButton.disabled = true;
+    var currUser = firebase.auth().currentUser;
+    currUser.reauthenticateAndRetrieveDataWithCredential(
         firebase.auth.EmailAuthProvider.credential(
-            firebase.auth().currentUser.email,
+            currUser.email,
             document.getElementById("newUsernamePwd").value
         )
     ).then(
         () => {
             // Update the username in the RTDB, then refresh the page.
             var updates = {};
-            updates['/users/' + firebase.auth().currentUser.uid + '/name'] = document.getElementById('newUsernameField').value;
+            updates['/users/' + currUser.uid + '/name'] = document.getElementById('newUsernameField').value;
             firebase.database().ref().update(updates).then(
                 () => {
                     document.location.reload(true)
                 })
         }).catch(function(error){
-        // If the user entered the wrong password, alert the user that new data is not updated.
-        if (error.code == "auth/wrong-password") {
-            window.alert("Wrong password entered, please retry...");
-            return;
-        } else {
-            // If it is any other error, throw it again.
-            throw(error);
-        }});
+            // Reenable the submit button if any error occurred.
+            usernameSubmitButton.disabled = false;
+            if (error.code == "auth/wrong-password") {
+                // If the user entered the wrong password, alert the user.
+                window.alert("Wrong password entered, please retry...");
+                return;
+            } else {
+                // If it is any other error, throw it again.
+                throw(error);
+            }
+        });
 }
 
 function newEmail() {
     resetInputs('newEmailWindow');
+    document.getElementById('emailSubmitButton').disabled = false;
     document.getElementById('newEmailWindow').style.display='flex';
 }
 
 function newEmailSubmit() {
-    
+    var emailSubmitButton = document.getElementById('emailSubmitButton');
+    // Prevent multiple submissions to firebase.
+    emailSubmitButton.disabled = true;
+    var currUser = firebase.auth().currentUser;
+    currUser.reauthenticateAndRetrieveDataWithCredential(
+        firebase.auth.EmailAuthProvider.credential(
+            currUser.email,
+            document.getElementById("newEmailPwd").value
+        )
+    ).then(
+        () => {
+            // Update the user email, then refresh the page.
+            currUser.updateEmail(document.getElementById("newEmailField").value).then(
+                () => {
+                    // Update successful.
+                    document.location.reload(true)
+                }).catch(function(error){
+                    // Reenable the submit button if any error occurred.
+                    emailSubmitButton.disabled = false;
+                    if (error.code = "auth/invalid-email") {
+                        // If the user entered an invalid-email, alert the user.
+                        window.alert("Invalid email format, please retry...");
+                        return;
+                    } else {
+                        // If it is any other error, throw it again.
+                        throw(error);
+                    }
+                })
+        }).catch(function(error){
+            // Reenable the submit button if any error occurred.
+            emailSubmitButton.disabled = false;
+            if (error.code == "auth/wrong-password") {
+                // If the user entered the wrong password, alert the user.
+                window.alert("Wrong password entered, please retry...");
+                return;
+            } else {
+                // If it is any other error, throw it again.
+                throw(error);
+            }
+        });
 }
 
 function newPwd() {

@@ -58,6 +58,9 @@
                 <div class="contentField">
                     <label class="editFieldLink" onclick="newPwd()">Change Password?</label>
                 </div>
+                <div class="contentField">
+                    <label class="editFieldLink" onclick="delUser()">Delete Account?</label>
+                </div>
             </div>
         </div>
     </div>
@@ -70,7 +73,7 @@
                 <input id="newUsernameField" type="text" placeholder="Enter New Username" required><br/>
                 <input id="newUsernamePwd" type="password" placeholder="Enter Current Password" required><br/>
                 <div class="popUpButtonsDiv">
-                    <button class="popUpButton" onclick="newUsernameSubmit()">Submit</button>
+                    <button id="usernameSubmitButton" class="popUpButton" onclick="newUsernameSubmit()">Submit</button>
                     <button class="popUpButton cancelButton" onclick="document.getElementById('newUsernameWindow').style.display='none'">Cancel</button>
                 </div>
             </div>
@@ -85,7 +88,7 @@
                 <input id="newEmailField" type="email" placeholder="Enter New Email" required><br/>
                 <input id="newEmailPwd" type="password" placeholder="Enter Current Password" required><br/>
                 <div class="popUpButtonsDiv">
-                    <button class="popUpButton" onclick="newEmailSubmit()">Submit</button>
+                    <button id="emailSubmitButton" class="popUpButton" onclick="newEmailSubmit()">Submit</button>
                     <button class="popUpButton cancelButton" onclick="document.getElementById('newEmailWindow').style.display='none'">Cancel</button>
                 </div>
             </div>
