@@ -11,6 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-storage.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -59,7 +60,7 @@
                     <label class="editFieldLink" onclick="newPwd()">Change Password?</label>
                 </div>
                 <div class="contentField">
-                    <label class="editFieldLink" onclick="delUser()">Delete Account?</label>
+                    <label class="editFieldLink" onclick="document.getElementById('delConfirmWindow').style.display = 'flex'">Delete Account?</label>
                 </div>
             </div>
         </div>
@@ -107,6 +108,17 @@
                     <button id="pwdSubmitButton" class="popUpButton" onclick="newPwdSubmit()">Submit</button>
                     <button class="popUpButton cancelButton" onclick="document.getElementById('newPwdWindow').style.display='none'">Cancel</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="delConfirmWindow" class="popUpModal">
+        <div class="delModalContent animate">
+            <div class="delContainer">
+                <span onclick="document.getElementById('delConfirmWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <div class="delText">Are you sure you want to delete your account?</div>
+                <div class="delConfirmChoices delYes" onclick="delYesClicked()">Yes</div>
+                <div class="delConfirmChoices delNo" onclick="document.getElementById('delConfirmWindow').style.display='none'">No</div>
             </div>
         </div>
     </div>

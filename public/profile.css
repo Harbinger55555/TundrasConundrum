@@ -182,6 +182,46 @@ button:hover {
     border: outset 3px #ffadad;
 }
 
+.delContainer {
+    position: relative;
+    text-align: center;
+}
+
+.delModalContent {
+    background-color: white;
+    width: 23%;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+.delConfirmChoices {
+    width: 50%;
+    height: 50px;
+    line-height: 50px; /* To center align the text vertically */
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+}
+
+.delText {
+    height: 100px;
+    width: 70%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.delYes {
+    float: left;
+    background-color: lightgreen;
+    border-bottom-left-radius: 5px;
+}
+
+.delNo {
+    background-color: #fc8982;
+    border-bottom-right-radius: 5px;
+}
+
 /* Add Zoom Animation */
 .animate {
     -webkit-animation: animatezoom 0.6s;
@@ -196,4 +236,21 @@ button:hover {
 @keyframes animatezoom {
     from {transform: scale(0)}
     to {transform: scale(1)}
+}
+
+/* Change styles for confirmation windows for screen widths less than 1200px */
+@media screen and (max-width: 1200px) {
+    .delYes {
+        width: 100%;
+        float: unset;
+        border-bottom-left-radius: unset;
+    }
+    .delNo {
+        width: 100%;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    .delModalContent {
+        width: 250px;
+    }
 }

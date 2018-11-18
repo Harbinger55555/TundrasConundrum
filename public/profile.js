@@ -185,14 +185,102 @@ function newPwdSubmit() {
         });
 }
 
+function delYesClicked() {
+    // Delete all rooms/puzzles related to the user then delete the user from Auth Db.
+    // The delete order should be as follows:
+    // 1). Delete the rooms under the user and the puzzles under each room.
+    // 2). Delete the user info from the RTDB.
+    // 3). Delete the user from Auth Db.
+    // After making the necessary deletions, logout the user.
+
+    alert("Please wait until all data related is being deleted.");
+    // Get the currently logged in user.
+    var currUser = firebase.auth().currentUser;
+    var userId = firebase.auth().currentUser.uid;
+
+    let ownedRooms = firebase.database().ref().child('users/' + userId + '/rooms');
+    ownedRooms.once('value', function (snapshot) {
+        snapshot.forEach(function (room) {
+            delRoomAndItsPuzzles(room.key);
+        })
+    }).then(function() {
+            var updates = {};
+            updates['/users/' + userId] = null;
+            firebase.database().ref().update(updates).then(function() {
+                    currUser.delete().then(function() {
+                        // User deleted.
+                        firebase.auth().signOut().then(function() {
+                            // Sign-out successful.
+                            window.location.href = "index.html";
+                        }).catch(function(error) {
+                            // An error happened.
+                        });
+                    }).catch(function(error) {
+                        // An error happened.
+                    });
+                }
+            );
+        }
+    )
+}
+
+function delRoomAndItsPuzzles(roomKey) {
+    var updates = {};
+
+    // Get the currently logged in user.
+    var currUser = firebase.auth().currentUser.uid;
+
+    // Delete room data under user database.
+    updates['/users/' + currUser + '/rooms/' + roomKey] = null;
+
+    // Delete all puzzles relating to the room from the firebase RTDB.
+    let delClickRoomPuzzleData = firebase.database().ref().child('rooms/' + roomKey + '/puzzles');
+    delClickRoomPuzzleData.once('value', function (snapshot) {
+        snapshot.forEach(function (puzzleSnapshot) {
+            let puzzleId = puzzleSnapshot.key;
+            updates['/puzzles/' + puzzleId] = null;
+        })
+    }).then(
+        () => {
+            // Delete the room under room database.
+            updates['/rooms/' + roomKey] = null
+
+            // Update the firebase RTDB.
+            firebase.database().ref().update(updates).then(
+                () => {
+                    // Create a reference to the room theme.
+                    var themeRef = firebase.storage().ref().child(roomKey + '/theme');
+
+                    // Delete the room theme from storage.
+                    themeRef.delete().then(
+                        () => {
+                            return;
+                        }).catch(function (error) {
+                        // If the theme does not exist, simply return the function call.
+                        if (error.code == "storage/object-not-found") {
+                            return;
+                        } else {
+                            // If it is any other error, throw it again.
+                            throw(error);
+                        }
+                    });
+                });
+        });
+}
+
+
+
 // When the user clicks anywhere outside of the pop up windows, close it.
 window.onclick = function(event) {
     let newUsernameWindow = document.getElementById('newUsernameWindow');
     let newEmailWindow = document.getElementById('newEmailWindow');
     let newPwdWindow = document.getElementById('newPwdWindow');
-    if (event.target == newUsernameWindow || event.target == newEmailWindow || event.target == newPwdWindow) {
+    let delConfirmWindow = document.getElementById('delConfirmWindow');
+    if (event.target == newUsernameWindow || event.target == newEmailWindow ||
+        event.target == newPwdWindow || event.target == delConfirmWindow) {
         newUsernameWindow.style.display = "none";
         newEmailWindow.style.display = "none";
         newPwdWindow.style.display = "none";
+        delConfirmWindow.style.display = "none";
     }
 }
