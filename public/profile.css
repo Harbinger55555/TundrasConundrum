@@ -8,18 +8,27 @@
 /* Full-width input fields */
 input[type=email], input[type=password], input[type=text] {
     vertical-align: middle;
-    width: 49%;
+    width: 75%;
     padding: 12px 20px;
+    margin: 8px 0;
     border: 1px inset #ccc;
     background-color: Black;
     color: White;
     box-sizing: border-box;
 }
 
-label {
-    display: inline-block;
-    font-size: 20px;
-    width: 100%;
+/* Set a style for all buttons */
+button {
+    background-color: #2BABFF;
+    color: white;
+    padding: 14px 50px;
+    border: outset 3px #add6ff;
+    cursor: pointer;
+    width: auto;
+}
+
+button:hover {
+    opacity: 0.8;
 }
 
 .title{
@@ -57,25 +66,134 @@ label {
 .containerContent {
     height: 600px;
     width: 40%;
-    border: 3px solid black;
-    background-color: white;
+    border: 3px solid black;;
 }
 
-#titleSignUp {
+#containerContentTitle {
     font-family: IceFont;
     font-size: 50px;
     color: #2a8ddd;
     width: 100%;
     text-align: center;
-    border: 1px solid blue;
+    margin: 15px 0px;
 }
 
 .contentField {
     padding: 10px 8%;
     width: 100%;
-    border: 1px solid green;
 }
 
 .fieldsContainer {
-    border: 2px solid red;
+    margin: 15px 0px;
+}
+
+.editFieldLink {
+    cursor: pointer;
+}
+
+.editFieldLink:hover {
+    color: #2d77ef;
+    text-decoration: underline;
+}
+
+.currentField {
+    vertical-align: middle;
+    height: 50px;
+    width: 70%;
+    color: black;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+
+.popUpContainer {
+    position: relative;
+    padding-top: 8%;
+    padding-bottom: 10%;
+    text-align: center;
+    height: auto;
+}
+
+/* The Modal (background) */
+.popUpModal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.popUpModalContent {
+    background-size: 100% 100%;
+    background-image: url(images/snowing.gif);
+    border: 1px solid #888;
+    width: 590px; /* Could be more or less, depending on screen size */
+    height: auto;
+    text-align: center;
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    color: #000;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+.fieldLabels {
+    font-family: IceFont;
+    font-size: 50px;
+    color: #2a8ddd;
+    margin-bottom: 40px;
+}
+
+.popUpButtonsDiv {
+    margin-top: 30px;
+    width: 75%;
+    display: inline-block;
+}
+
+.popUpButton {
+    white-space: nowrap;
+    width: 100%;
+    height: 50px;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 0px;
+    border: outset 3px #add6ff;
+}
+
+.cancelButton {
+    background-color: #f44336;
+    border: outset 3px #ffadad;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
 }

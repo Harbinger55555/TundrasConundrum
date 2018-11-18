@@ -45,24 +45,53 @@
 
     <div class="containerDiv">
         <div class="containerContent">
-            <label id="titleSignUp">Account Details</label>
+            <label id="containerContentTitle">Account Details</label>
             <div class="fieldsContainer">
                 <div class="contentField">
-                    <label>Username</label>
-                    <input type="text" placeholder="Current Username">
-                    <input type="text" placeholder="Enter New Username" id="newUserNameField" required>
+                    <label>Username [<span class="editFieldLink" onclick="newUsername()">Edit</span>]</label>
+                    <div id="currentUsername" class="currentField">Loading...</div>
                 </div>
                 <div class="contentField">
-                    <label>Email Address</label>
-                    <input type="email" placeholder="Enter Email Address" id="newEmailField" required>
+                    <label>Email Address [<span class="editFieldLink" onclick="newEmail()">Edit</span>]</label>
+                    <div id="currentEmail" class="currentField">Loading...</div>
                 </div>
                 <div class="contentField">
-                    <label>Password</label>
-                    <input type="password" placeholder="Enter Password" id="newPwdField" required>
+                    <label class="editFieldLink" onclick="newPwd()">Change Password?</label>
                 </div>
             </div>
         </div>
     </div>
+
+    <div id="newUsernameWindow" class="popUpModal">
+        <div class="popUpModalContent animate">
+            <div class="popUpContainer">
+                <span onclick="document.getElementById('newUsernameWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <label class="fieldLabels">Change Username</label>
+                <input id="newUsernameField" type="text" placeholder="Enter New Username" required><br/>
+                <input id="newUsernamePwd" type="password" placeholder="Enter Current Password" required><br/>
+                <div class="popUpButtonsDiv">
+                    <button class="popUpButton" onclick="newUsernameSubmit()">Submit</button>
+                    <button class="popUpButton cancelButton" onclick="document.getElementById('newUsernameWindow').style.display='none'">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="newEmailWindow" class="popUpModal">
+        <div class="popUpModalContent animate">
+            <div class="popUpContainer">
+                <span onclick="document.getElementById('newEmailWindow').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <label class="fieldLabels">Change Email</label>
+                <input id="newEmailField" type="email" placeholder="Enter New Email" required><br/>
+                <input id="newEmailPwd" type="password" placeholder="Enter Current Password" required><br/>
+                <div class="popUpButtonsDiv">
+                    <button class="popUpButton" onclick="newEmailSubmit()">Submit</button>
+                    <button class="popUpButton cancelButton" onclick="document.getElementById('newEmailWindow').style.display='none'">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <script src="profile.js"></script>
 <script src="navbar.js"></script>
 </body>

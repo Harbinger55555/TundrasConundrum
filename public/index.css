@@ -175,12 +175,6 @@ button:hover {
     border: outset 3px #ffadad;
 }
 
-#forgetPwdEmail {
-    color:Blue;
-    font-family: fantasy;
-    font-size: 30px;
-}
-
 #titleText{
     font-family: IceFont;
     font-size: 60px;
