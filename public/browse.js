@@ -60,19 +60,25 @@ function playUnity(room) {
     window.location.href = "play.html";
 }
 
-// TODO: Implement dynamic data load of 10 per overflow scroll.
 function loadAllRooms() {
-    let allRooms = firebase.database().ref().child('rooms');
+    // orderByChild orders in ascending order.
+    let allRooms = firebase.database().ref().child('rooms').orderByChild('finishCount');
+    var allRoomsArr = [];
 
-    // TODO: Dynamically keep roomDivList up to date with firebase RTDB changes (Could use .on() then remove and refill roomDivList).
     allRooms.once('value', function(snapshot){
         snapshot.forEach(function(roomSnapshot) {
+            allRoomsArr.push(roomSnapshot);
+        })
+    }).then(function() {
+        allRoomsArr.reverse();
+        for (var roomSnapshot of allRoomsArr) {
             let roomImgUrl = roomSnapshot.child('themeURL').val();
             let roomDesc = roomSnapshot.child('description').val();
             let roomName = roomSnapshot.child('name').val();
             let roomID = roomSnapshot.key;
             appendRoom(roomImgUrl, roomDesc, roomName, roomID);
-        })
+        }
+
         // Hide the loader.
         document.getElementById('loader').style.display = 'none';
     });
