@@ -103,13 +103,15 @@ body{
     width: 200px;
     font-size: 20px;
     color: black;
+    overflow-x: hidden;
+    border: 1px red solid;
 }
 
 .roomNameAndImg {
-  padding-left: 30px;
+    padding-left: 30px;
 }
 
 .container {
-  overflow: hidden;
-  text-align: center;
+    overflow: hidden;
+    text-align: center;
 }
