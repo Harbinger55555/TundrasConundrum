@@ -59,6 +59,7 @@ body{
 }
 
 .roomDiv {
+    position: relative;
     max-height: 400px;
     padding: 30px 0px 15px 30px;
     display: flex;
@@ -87,7 +88,7 @@ body{
 
 .roomDescDiv {
     height: 200px;
-    width: 90%;
+    min-width: 90%;
     font-size: 20px;
     padding: 20px;
     display: inline-block;
@@ -112,8 +113,9 @@ body{
 }
 
 .roomSizeDiv {
+    display: inline-block;
     height: auto;
-    width: 90%;
+    min-width: 90%;
     overflow-x: hidden;
 }
 
@@ -128,9 +130,45 @@ body{
     text-align: center;
 }
 
+/* Hidden by default for non-mobile screens. */
+.expandDescDiv {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    background-color: #d9dde0;
+    height: 100%;
+    width: 12%;
+    outline: none;
+    opacity: 0.2;
+    justify-content: center;
+    align-items: center;
+}
+
+.expandDescIcon {
+    width: 100%;
+    height: 200px;
+}
+
+.expandDescDiv:hover {
+    opacity: 0.7;
+}
+
 /* Change styles for roomDescAndRoomSizeDiv for screen widths less than 1300px. */
 @media screen and (max-width: 1300px) {
     .roomDescAndRoomSizeDiv {
         min-width: 670px;
+    }
+}
+
+/* Change styles for expandDescDiv and roomDescAndRoomSizeDiv for screen widths less than 600px. */
+@media screen and (max-width: 600px) {
+    .roomDescAndRoomSizeDiv {
+        display: none;
+    }
+
+    .expandDescDiv {
+        display: flex;
     }
 }

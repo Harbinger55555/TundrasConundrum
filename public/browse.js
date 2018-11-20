@@ -29,16 +29,7 @@ function appendRoom(roomImgUrl, roomDesc, roomName, roomID, puzzleCount) {
     roomSizeDiv.setAttribute("class", "roomSizeDiv");
 
     // Identify room size according to its puzzleCount.
-    var roomSizeText;
-    if (puzzleCount <= 5) {
-        roomSizeText = document.createTextNode("Room Size: Small");
-    } else if (puzzleCount <= 15) {
-        roomSizeText = document.createTextNode("Room Size: Moderate");
-    } else if (puzzleCount <= 30) {
-        roomSizeText = document.createTextNode("Room Size: Large");
-    } else {
-        roomSizeText = document.createTextNode("Room Size: Enormous");
-    }
+    var roomSizeText = roomSize(puzzleCount);
     roomSizeDiv.appendChild(roomSizeText);
 
     // Wrap description and room size divs into their own div for formatting purposes.
@@ -70,9 +61,24 @@ function appendRoom(roomImgUrl, roomDesc, roomName, roomID, puzzleCount) {
     roomNameAndImgDiv.appendChild(roomNameDiv);
     roomNameAndImgDiv.setAttribute("class", "roomNameAndImg");
 
+    // Create the div for expand description icon for small screens.
+    let expandDescDiv = document.createElement('div');
+    expandDescDiv.setAttribute("class", "expandDescDiv");
+    expandDescDiv.onclick = function() {
+        // expandDescDiv.style.display = "none";
+        expandDescDiv.style.display = "none";
+        roomDescAndRoomSizeDiv.style.display = "block";
+        newRoomDiv.scroll(200, 0);
+    }
+    let expandDescIcon = document.createElement('img');
+    expandDescIcon.setAttribute("class", "expandDescIcon");
+    expandDescIcon.setAttribute("src", "./images/expand_desc_icon.jp2");
+    expandDescDiv.appendChild(expandDescIcon);
+
     // Append all three content divs into the newRoomDiv.
     newRoomDiv.appendChild(roomNameAndImgDiv);
     newRoomDiv.appendChild(roomDescAndRoomSizeDiv);
+    newRoomDiv.appendChild(expandDescDiv);
 
     let roomDivList = document.getElementById('roomDivList');
     roomDivList.appendChild(newRoomDiv);
@@ -110,4 +116,16 @@ function loadAllRooms() {
         // Hide the loader.
         document.getElementById('loader').style.display = 'none';
     });
+}
+
+function roomSize(puzzleCount) {
+    if (puzzleCount <= 5) {
+        return document.createTextNode("Room Size: Small");
+    } else if (puzzleCount <= 15) {
+        return document.createTextNode("Room Size: Moderate");
+    } else if (puzzleCount <= 30) {
+        return document.createTextNode("Room Size: Large");
+    } else {
+        return document.createTextNode("Room Size: Enormous");
+    }
 }
