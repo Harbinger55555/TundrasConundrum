@@ -24,23 +24,28 @@ function appendRoom(roomImgUrl, roomDesc, roomName, roomID, puzzleCount) {
     let roomDescText = document.createTextNode(roomDesc || "No Description... Bask in the mystery!");
     roomDescDiv.appendChild(roomDescText);
 
-    // Wrap description and puzzleCount divs into their own div for formatting purposes.
-    let roomDescAndPuzzleCountDiv = document.createElement('div');
-    roomDescAndPuzzleCountDiv.appendChild(roomDescDiv);
+    // Creates a div for the room size.
+    let roomSizeDiv = document.createElement('div');
+    roomSizeDiv.setAttribute("class", "roomSizeDiv");
 
     // Identify room size according to its puzzleCount.
-    var puzzleCountText;
+    var roomSizeText;
     if (puzzleCount <= 5) {
-        puzzleCountText = document.createTextNode("Room Size: Small");
+        roomSizeText = document.createTextNode("Room Size: Small");
     } else if (puzzleCount <= 15) {
-        puzzleCountText = document.createTextNode("Room Size: Moderate");
+        roomSizeText = document.createTextNode("Room Size: Moderate");
     } else if (puzzleCount <= 30) {
-        puzzleCountText = document.createTextNode("Room Size: Large");
+        roomSizeText = document.createTextNode("Room Size: Large");
     } else {
-        puzzleCountText = document.createTextNode("Room Size: Enormous");
+        roomSizeText = document.createTextNode("Room Size: Enormous");
     }
-    roomDescAndPuzzleCountDiv.appendChild(puzzleCountText);
-    roomDescAndPuzzleCountDiv.setAttribute("class", "roomDescAndPuzzleCountDiv");
+    roomSizeDiv.appendChild(roomSizeText);
+
+    // Wrap description and room size divs into their own div for formatting purposes.
+    let roomDescAndRoomSizeDiv = document.createElement('div');
+    roomDescAndRoomSizeDiv.appendChild(roomDescDiv);
+    roomDescAndRoomSizeDiv.appendChild(roomSizeDiv);
+    roomDescAndRoomSizeDiv.setAttribute("class", "roomDescAndRoomSizeDiv");
 
     // Creates a div for the room image.
     let roomImgDiv = document.createElement('div');
@@ -49,7 +54,7 @@ function appendRoom(roomImgUrl, roomDesc, roomName, roomID, puzzleCount) {
     roomImg.setAttribute("class", "roomImg");
     roomImg.setAttribute("src", (roomImgUrl || "./images/huh.jp2"));
     roomImg.onclick = function() {
-    playUnity(roomID);
+        playUnity(roomID);
     };
     roomImgDiv.appendChild(roomImg);
 
@@ -67,7 +72,7 @@ function appendRoom(roomImgUrl, roomDesc, roomName, roomID, puzzleCount) {
 
     // Append all three content divs into the newRoomDiv.
     newRoomDiv.appendChild(roomNameAndImgDiv);
-    newRoomDiv.appendChild(roomDescAndPuzzleCountDiv);
+    newRoomDiv.appendChild(roomDescAndRoomSizeDiv);
 
     let roomDivList = document.getElementById('roomDivList');
     roomDivList.appendChild(newRoomDiv);

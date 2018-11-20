@@ -86,7 +86,7 @@ body{
 
 .roomDescDiv {
     height: 200px;
-    width: 100%;
+    width: 90%;
     font-size: 20px;
     padding: 20px;
     display: inline-block;
@@ -105,12 +105,20 @@ body{
 }
 
 .roomNameAndImg {
-    width: 310px;
-    padding-left: 30px;
+    width: 200px;
+    overflow-x: hidden;
 }
 
-.roomDescAndPuzzleCountDiv {
-    width: 65%;
+.roomSizeDiv {
+    height: auto;
+    width: 90%;
+    overflow-x: hidden;
+}
+
+.roomDescAndRoomSizeDiv {
+    width: calc(100% - 200px);
+    padding-left: 10%;
+    overflow-x: hidden;
 }
 
 .container {
