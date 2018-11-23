@@ -119,10 +119,17 @@ function roomSize(puzzleCount) {
     }
 }
 
-// Ascending.
 function sortByName(room1, room2) {
+    // Ascending by default.
     var name1 = room1.val().name.toUpperCase(); // ignore upper and lowercase
     var name2 = room2.val().name.toUpperCase(); // ignore upper and lowercase
+
+    // Flip the names if order is descending.
+    if (sortOrder == "2") {
+        var temp = name1;
+        name1 = name2;
+        name2 = temp;
+    }
     if (name1 < name2) {
         return -1;
     }
@@ -134,13 +141,16 @@ function sortByName(room1, room2) {
     return 0;
 }
 
-// Descending.
 function sortByFinishCount(room1, room2) {
+    // Ascending by default.
     var room1FinishCount = room1.val().finishCount;
     var room2FinishCount = room2.val().finishCount;
     var val1 = room1FinishCount ? room1FinishCount : 0;
     var val2 = room2FinishCount ? room2FinishCount : 0;
-    var res = val2 - val1;
+    var res = val1 - val2;
+
+    // Flip the result if order is descending.
+    if (sortOrder == "2") res = -res;
 
     // Break ties with name.
     return res !== 0 ? res : sortByName(room1, room2);
@@ -157,6 +167,9 @@ function sortBySize(room1, room2) {
 
     var res = puzzleCount1 - puzzleCount2;
 
+    // Flip the result if order is descending.
+    if (sortOrder == "2") res = -res;
+
     // Break ties with name.
     return res !== 0 ? res : sortByName(room1, room2);
 }
@@ -164,6 +177,7 @@ function sortBySize(room1, room2) {
 function sortBySelection() {
     // Sort allRoomsArr accordingly first, then clear roomDivList, and then append all roomDivs again.
     var sortSelection = document.getElementById("sortBySelect").value;
+    sortOrder = document.getElementById("sortOrder").value;
     switch(sortSelection) {
         case '1':
             // Sort by Finish Count.
@@ -213,3 +227,4 @@ function clearChildren(container) {
 
 // Used for rendering all rooms from the RTDB according to sort selection.
 var allRoomsArr = [];
+var sortOrder = document.getElementById('sortOrder').value;
