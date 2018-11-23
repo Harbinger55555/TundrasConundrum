@@ -1,0 +1,56 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #212121;
+    color: white;
+    height: 230px;
+}
+
+.footerContent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+}
+
+.siteIconsBar {
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+}
+
+.siteIconDiv {
+    width: 40px;
+}
+
+.siteIcon {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.footerLinksBar {
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 20px;
+    width: 90%;
+    margin-top: 50px;
+}
+
+/* Change styles for siteIcons for screen widths less than 650px. */
+@media screen and (max-width: 650px) {
+    .siteIconsBar {
+        height: 30px;
+        width: 70%;
+    }
+
+    .siteIconDiv {
+        width: 30px;
+    }
+
+}

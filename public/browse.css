@@ -16,9 +16,8 @@ body{
     text-align: center;
     font-size: 50px;
     padding: 30px;
+    background-color: #212121;
     color: white;
-    opacity: 1.0;
-    background: rgba(148, 154, 163, .9);
 }
 
 .logoDiv {
