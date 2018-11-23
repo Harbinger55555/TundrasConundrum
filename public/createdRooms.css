@@ -64,6 +64,7 @@ button:hover {
     font-family: IceFont;
     font-size: 50px;
     padding: 30px;
+    background-color: #212121;
 }
 
 .logoDiv {
