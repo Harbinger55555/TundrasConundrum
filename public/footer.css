@@ -41,3 +41,16 @@
     width: 90%;
     margin-top: 50px;
 }
+
+/* Change styles for siteIcons for screen widths less than 650px. */
+@media screen and (max-width: 650px) {
+    .siteIconsBar {
+        height: 30px;
+        width: 70%;
+    }
+
+    .siteIconDiv {
+        width: 30px;
+    }
+
+}
