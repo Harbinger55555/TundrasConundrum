@@ -148,14 +148,13 @@ function sortByFinishCount(room1, room2) {
 
 // Ascending.
 function sortBySize(room1, room2) {
-    let puzzleCount1 = 0;
-    let puzzleCount2 = 0;
-    for (var _ in room1.val().puzzles) {
-        puzzleCount1++;
-    }
-    for (var _ in room2.val().puzzles) {
-        puzzleCount2++;
-    }
+    let puzzleCount1 = room1.val().puzzleCount;
+    let puzzleCount2 = room2.val().puzzleCount;
+
+    // To take care of undefined puzzleCounts.
+    puzzleCount1 = puzzleCount1 ? puzzleCount1 : 0;
+    puzzleCount2 = puzzleCount2 ? puzzleCount2 : 0;
+
     var res = puzzleCount1 - puzzleCount2;
 
     // Break ties with name.
@@ -196,10 +195,10 @@ function reloadAllRooms(allRoomsArr) {
         let roomDesc = roomSnapshot.child('description').val();
         let roomName = roomSnapshot.child('name').val();
         let roomID = roomSnapshot.key;
-        let puzzleCount = 0;
-        for (var _ in roomSnapshot.child('puzzles').val()) {
-            puzzleCount++;
-        }
+        let puzzleCount = roomSnapshot.child('puzzleCount').val();
+
+        // To take care of undefined value.
+        puzzleCount = puzzleCount ? puzzleCount : 0;
 
         appendRoom(roomImgUrl, roomDesc, roomName, roomID, puzzleCount);
     }

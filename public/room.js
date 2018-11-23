@@ -64,8 +64,6 @@ function createPuzzle(event) {
 
                         // A map of puzzleDivs to their respective puzzle keys.
                         sessionStorage.setItem('puzzleKey' + currPuzzleDivIndex, newPuzzleKey);
-
-                        console.log("I am inside the then log for create puzzle!");
                     }
                 );
             }
@@ -79,7 +77,6 @@ function createPuzzle(event) {
 function updateDatabase(newPuzzleKey) {
     return new Promise(function(resolve, reject) {
         let puzzleQuestion = document.getElementById('question').value;
-        // updates['/puzzles/' + puzzleId]
         let updates = {};
 
         // Update question for puzzleId in 'rooms' database.
@@ -125,10 +122,19 @@ function updateDatabase(newPuzzleKey) {
             updates['puzzles/' + newPuzzleKey + '/hints/hint3'] = hint3;
         }
 
-        // Update the firebase RTDB and return the promise.
-        firebase.database().ref().update(updates).then(
-            () => {resolve('Update successful!')}
-        );
+        // Update the puzzleCount of the room.
+        var roomPuzzleCount = firebase.database().ref().child('rooms/' + roomKey + '/puzzleCount');
+        roomPuzzleCount.once('value', function(snapshot) {
+            roomPuzzleCount = snapshot.val();
+        }).then(
+            () => {
+                updates['rooms/' + roomKey + '/puzzleCount'] = roomPuzzleCount ? roomPuzzleCount + 1 : 1;
+
+                // Update the firebase RTDB and return the promise.
+                firebase.database().ref().update(updates).then(
+                    () => {resolve('Update successful!')}
+                );
+            });
     });
 }
 
@@ -338,10 +344,22 @@ function delYesClicked() {
     // Delete the puzzle from puzzles.
     updates['/puzzles/' + puzzleKey] = null;
 
-    // Update the firebase RTDB and refresh the page to update the changes in the sessionStorage as well.
-    firebase.database().ref().update(updates).then(
-        () => {document.location.reload(true)}
-    );
+    // Update the puzzleCount of the room.
+    var roomPuzzleCount = firebase.database().ref().child('rooms/' + roomKey + '/puzzleCount');
+    roomPuzzleCount.once('value', function(snapshot) {
+        // Deleting a puzzle must decrement the count by 1.
+        roomPuzzleCount = snapshot.val() - 1;
+    }).then(
+        () => {
+            updates['rooms/' + roomKey + '/puzzleCount'] = roomPuzzleCount == 0 ? null : roomPuzzleCount;
+
+            // Update the firebase RTDB and refresh the page to update the changes in the sessionStorage as well.
+            firebase.database().ref().update(updates).then(
+                () => {
+                    document.location.reload(true)
+                }
+            );
+        });
 }
 
 // Opens confirmation window for clearing the transition states of the puzzle.
