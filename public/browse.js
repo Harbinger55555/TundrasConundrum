@@ -90,8 +90,8 @@ function playUnity(room) {
 }
 
 function loadAllRooms() {
-    // orderByChild orders in ascending order.
-    let allRooms = firebase.database().ref().child('rooms').orderByChild('finishCount');
+    // Get all rooms from the RTDB.
+    let allRooms = firebase.database().ref().child('rooms');
     var allRoomsArr = [];
 
     allRooms.once('value', function(snapshot){
@@ -99,7 +99,14 @@ function loadAllRooms() {
             allRoomsArr.push(roomSnapshot);
         })
     }).then(function() {
-        allRoomsArr.reverse();
+        // Sort rooms in descending order of finishCount.
+        allRoomsArr.sort(function(room1, room2) {
+            var room1FinishCount = room1.val().finishCount;
+            var room2FinishCount = room2.val().finishCount;
+            var val1 = room1FinishCount ? room1FinishCount : 0;
+            var val2 = room2FinishCount ? room2FinishCount : 0;
+            return val2 - val1;
+        });
         for (var roomSnapshot of allRoomsArr) {
             let roomImgUrl = roomSnapshot.child('themeURL').val();
             let roomDesc = roomSnapshot.child('description').val();
