@@ -254,3 +254,10 @@ button:hover {
         width: 250px;
     }
 }
+
+/* Change styles for containerContent for screen widths less than 1025px. */
+@media screen and (max-width: 1025px) {
+    .containerContent {
+        width: 350px;
+    }
+}

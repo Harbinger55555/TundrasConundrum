@@ -11,29 +11,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/home.html">
+      <file leaf-file-name="profile.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/profile.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+            <state relative-caret-position="396">
+              <caret line="239" lean-forward="true" selection-start-line="239" selection-end-line="239" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="browse.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/browse.js">
+      <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="106" column="24" lean-forward="true" selection-start-line="106" selection-start-column="24" selection-end-line="106" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/home.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="33" column="61" lean-forward="true" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="61" />
+            <state relative-caret-position="338">
+              <caret line="47" column="36" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -51,8 +42,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>disabled</find>
-      <find>window</find>
       <find>currPwd</find>
       <find>delmodalcontent</find>
       <find>delConfirmWindow</find>
@@ -63,7 +52,6 @@
       <find>modal</find>
       <find>console</find>
       <find>roomNameDiv</find>
-      <find>containerDiv</find>
       <find>loadAllRooms</find>
       <find>roomDescDiv</find>
       <find>roomnameand</find>
@@ -81,6 +69,9 @@
       <find>visibility</find>
       <find>puzzle</find>
       <find>puzzleCon</find>
+      <find>mainContainer</find>
+      <find>containerDiv</find>
+      <find>containerContent</find>
     </findStrings>
     <replaceStrings>
       <replace>jp2</replace>
@@ -102,7 +93,6 @@
         <option value="$PROJECT_DIR$/public/home.css" />
         <option value="$PROJECT_DIR$/public/index.css" />
         <option value="$PROJECT_DIR$/public/createdRooms.js" />
-        <option value="$PROJECT_DIR$/public/profile.css" />
         <option value="$PROJECT_DIR$/public/profile.html" />
         <option value="$PROJECT_DIR$/public/profile.js" />
         <option value="$PROJECT_DIR$/public/room.css" />
@@ -111,6 +101,7 @@
         <option value="$PROJECT_DIR$/public/createdRooms.css" />
         <option value="$PROJECT_DIR$/public/home.js" />
         <option value="$PROJECT_DIR$/public/browse.js" />
+        <option value="$PROJECT_DIR$/public/profile.css" />
       </list>
     </option>
   </component>
@@ -253,12 +244,12 @@
       <workItem from="1542660440340" duration="52000" />
       <workItem from="1542661229486" duration="10724000" />
       <workItem from="1542692033851" duration="5850000" />
-      <workItem from="1542931198398" duration="2629000" />
+      <workItem from="1542931198398" duration="3129000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63530000" />
+    <option name="totallyTimeSpent" value="64030000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="222" y="74" width="1117" height="911" extended-state="0" />
@@ -551,20 +542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/profile.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="737">
-          <caret line="130" column="8" selection-start-line="130" selection-start-column="3" selection-end-line="130" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/profile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="737">
@@ -614,17 +591,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/createdRooms.html">
+    <entry file="file://$PROJECT_DIR$/public/browse.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="74" column="56" selection-start-line="74" selection-start-column="56" selection-end-line="74" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/createdRooms.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="53" column="22" lean-forward="true" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+        <state relative-caret-position="119">
+          <caret line="96" column="43" selection-start-line="96" selection-start-column="43" selection-end-line="96" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -642,10 +612,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/browse.js">
+    <entry file="file://$PROJECT_DIR$/public/createdRooms.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="106" column="24" lean-forward="true" selection-start-line="106" selection-start-column="24" selection-end-line="106" selection-end-column="24" />
+        <state relative-caret-position="271">
+          <caret line="51" column="43" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/createdRooms.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="84" column="14" selection-start-line="84" selection-start-column="1" selection-end-line="84" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="47" column="36" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/profile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="239" lean-forward="true" selection-start-line="239" selection-end-line="239" />
         </state>
       </provider>
     </entry>
