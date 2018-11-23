@@ -92,7 +92,6 @@ function playUnity(room) {
 function loadAllRooms() {
     // Get all rooms from the RTDB.
     let allRooms = firebase.database().ref().child('rooms');
-    var allRoomsArr = [];
 
     allRooms.once('value', function(snapshot){
         snapshot.forEach(function(roomSnapshot) {
@@ -100,25 +99,8 @@ function loadAllRooms() {
         })
     }).then(function() {
         // Sort rooms in descending order of finishCount.
-        allRoomsArr.sort(function(room1, room2) {
-            var room1FinishCount = room1.val().finishCount;
-            var room2FinishCount = room2.val().finishCount;
-            var val1 = room1FinishCount ? room1FinishCount : 0;
-            var val2 = room2FinishCount ? room2FinishCount : 0;
-            return val2 - val1;
-        });
-        for (var roomSnapshot of allRoomsArr) {
-            let roomImgUrl = roomSnapshot.child('themeURL').val();
-            let roomDesc = roomSnapshot.child('description').val();
-            let roomName = roomSnapshot.child('name').val();
-            let roomID = roomSnapshot.key;
-            let puzzleCount = 0;
-            for (var _ in roomSnapshot.child('puzzles').val()) {
-                puzzleCount++;
-            }
-
-            appendRoom(roomImgUrl, roomDesc, roomName, roomID, puzzleCount);
-        }
+        allRoomsArr.sort(sortByFinishCount);
+        reloadAllRooms(allRoomsArr);
 
         // Hide the loader.
         document.getElementById('loader').style.display = 'none';
@@ -136,3 +118,99 @@ function roomSize(puzzleCount) {
         return document.createTextNode("Room Size: Enormous");
     }
 }
+
+// Ascending.
+function sortByName(room1, room2) {
+    var name1 = room1.val().name.toUpperCase(); // ignore upper and lowercase
+    var name2 = room2.val().name.toUpperCase(); // ignore upper and lowercase
+    if (name1 < name2) {
+        return -1;
+    }
+    if (name1 > name2) {
+        return 1;
+    }
+
+    // names must be equal
+    return 0;
+}
+
+// Descending.
+function sortByFinishCount(room1, room2) {
+    var room1FinishCount = room1.val().finishCount;
+    var room2FinishCount = room2.val().finishCount;
+    var val1 = room1FinishCount ? room1FinishCount : 0;
+    var val2 = room2FinishCount ? room2FinishCount : 0;
+    var res = val2 - val1;
+
+    // Break ties with name.
+    return res !== 0 ? res : sortByName(room1, room2);
+}
+
+// Ascending.
+function sortBySize(room1, room2) {
+    let puzzleCount1 = 0;
+    let puzzleCount2 = 0;
+    for (var _ in room1.val().puzzles) {
+        puzzleCount1++;
+    }
+    for (var _ in room2.val().puzzles) {
+        puzzleCount2++;
+    }
+    var res = puzzleCount1 - puzzleCount2;
+
+    // Break ties with name.
+    return res !== 0 ? res : sortByName(room1, room2);
+}
+
+function sortBySelection() {
+    // Sort allRoomsArr accordingly first, then clear roomDivList, and then append all roomDivs again.
+    var sortSelection = document.getElementById("sortBySelect").value;
+    switch(sortSelection) {
+        case '1':
+            // Sort by Finish Count.
+            allRoomsArr.sort(sortByFinishCount);
+            break;
+        case '2':
+            // Sort by Name.
+            allRoomsArr.sort(sortByName);
+            break;
+        case '3':
+            // Sort by Size.
+            allRoomsArr.sort(sortBySize);
+            break;
+        default:
+            // By default, sort by Finish Count.
+            allRoomsArr.sort(sortByFinishCount);
+            break;
+    }
+
+    let roomDivList = document.getElementById('roomDivList');
+    clearChildren(roomDivList);
+
+    reloadAllRooms(allRoomsArr);
+}
+
+function reloadAllRooms(allRoomsArr) {
+    for (var roomSnapshot of allRoomsArr) {
+        let roomImgUrl = roomSnapshot.child('themeURL').val();
+        let roomDesc = roomSnapshot.child('description').val();
+        let roomName = roomSnapshot.child('name').val();
+        let roomID = roomSnapshot.key;
+        let puzzleCount = 0;
+        for (var _ in roomSnapshot.child('puzzles').val()) {
+            puzzleCount++;
+        }
+
+        appendRoom(roomImgUrl, roomDesc, roomName, roomID, puzzleCount);
+    }
+}
+
+function clearChildren(container) {
+    // Clears all children of the given container.
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
+
+// Used for rendering all rooms from the RTDB according to sort selection.
+var allRoomsArr = [];

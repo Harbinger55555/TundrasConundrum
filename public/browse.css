@@ -48,13 +48,37 @@ body{
     min-height: 100vh;
 }
 
+.containerCenterDiv {
+    border: 5px inset #536684;
+    width: 70%;
+    position: relative;
+    margin: auto;
+}
+
+.containerHeader {
+    display: flex;
+    position: relative;
+    height: 50px;
+    background-color: #242d3a;
+    border: 5px inset #536684;
+    align-items: center;
+}
+
+.sortDiv {
+    position: absolute;
+    right: 5%;
+    color: white;
+}
+
+#sortBySelect {
+    margin-left: 5px;
+    outline: none;
+}
+
 #roomDivList {
     overflow: scroll;
-    position: relative;
     height: 600px;
-    width: 70%;
-    margin: auto;
-    border: 3px solid black;
+    width: 100%;
     background-color: white;
 }
 

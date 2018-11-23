@@ -48,8 +48,20 @@
     <div class="subTitle">Browse</div>
 
     <div class="containerDiv">
-        <div id="roomDivList">
-            <div id="loader">Loading...</div>
+        <div class="containerCenterDiv">
+            <div class="containerHeader">
+                <div class="sortDiv">
+                    Sort By:
+                    <select id="sortBySelect" onchange="sortBySelection()">
+                        <option value="1">Finish Count
+                        <option value="2">Name
+                        <option value="3">Size
+                    </select>
+                </div>
+            </div>
+            <div id="roomDivList">
+                <div id="loader">Loading...</div>
+            </div>
         </div>
     </div>
 <script src="browse.js"></script>
