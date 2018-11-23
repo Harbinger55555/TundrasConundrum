@@ -19,9 +19,8 @@ function greetUser(userId) {
 }
 
 function loadPopularRooms() {
-    // Get the 3 most popular rooms from the RTDB.
-    // limitToLast(3) because orderByChild orders in ascending order.
-    var mostPopularRooms = firebase.database().ref('rooms').orderByChild('finishCount').limitToLast(3);
+    // Get all rooms from the RTDB.
+    var mostPopularRooms = firebase.database().ref('rooms');
     var mostPopularRoomsArr = [];
 
     // ROOM_NUM is used to reference the respective roomImg DOM elements.
@@ -32,9 +31,16 @@ function loadPopularRooms() {
         });
     }).then(
         () => {
-            // reverse() because roomImg DOM elements need to be filled in descending order.
-            mostPopularRoomsArr.reverse();
-            for (var room of mostPopularRoomsArr) {
+            // Sort rooms in descending order of finishCount.
+            mostPopularRoomsArr.sort(function(room1, room2) {
+                var room1FinishCount = room1.val().finishCount;
+                var room2FinishCount = room2.val().finishCount;
+                var val1 = room1FinishCount ? room1FinishCount : 0;
+                var val2 = room2FinishCount ? room2FinishCount : 0;
+                return val2 - val1;
+            });
+            for (var i = 0; i < 3; ++i) {
+                let room = mostPopularRoomsArr[i];
                 ROOM_NUM += 1;
                 let roomVal = room.val();
                 let roomID = room.key;

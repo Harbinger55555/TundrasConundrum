@@ -223,6 +223,7 @@ button:hover {
 }
 
 .containerDiv {
+    overflow-x: hidden;
     min-height: 100vh;
 }
 

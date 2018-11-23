@@ -130,7 +130,7 @@ body {
     height: 800px;
     width: 100%;
     background-color: rgba(123, 0, 123, 1);
-    background: url("images/iceCastle.jp2") center no-repeat;
+    background: url("images/IceCastle.jp2") center no-repeat;
     background-size: cover;
 }
 
@@ -228,5 +228,13 @@ body {
     }
     .secondContainerDiv {
         height: 870px;
+    }
+}
+
+/* Change styles for storyContainer for screen widths less than 600px. */
+@media screen and (max-width: 600px) {
+    .storyContainer {
+        margin: 70px 0px 70px 0px;
+        width: 350px;
     }
 }

@@ -42,10 +42,16 @@ button:hover {
     width: 100%;
 }
 
+#roomContainer {
+    height: 75vh;
+    overflow-y:scroll;
+}
+
 .roomContainer {
     overflow:scroll;
     position: relative;
     padding: 16px;
+    overflow-x: hidden;
 }
 
 .title, .subTitle {
@@ -140,6 +146,7 @@ button:hover {
 }
 
 .containerDiv {
+    overflow-x: hidden;
     min-height: 100vh;
 }
 
@@ -237,6 +244,12 @@ button:hover {
     color: #000;
     font-size: 25px;
     font-weight: bold;
+}
+
+.roomWindowClose {
+    position: relative;
+    float: right;
+    z-index: 1;
 }
 
 .close:hover,
