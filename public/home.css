@@ -230,3 +230,11 @@ body {
         height: 870px;
     }
 }
+
+/* Change styles for storyContainer for screen widths less than 600px. */
+@media screen and (max-width: 600px) {
+    .storyContainer {
+        margin: 70px 0px 70px 0px;
+        width: 350px;
+    }
+}

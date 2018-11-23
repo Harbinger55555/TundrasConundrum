@@ -11,11 +11,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="profile.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="profile.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/profile.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="239" lean-forward="true" selection-start-line="239" selection-end-line="239" />
+            <state relative-caret-position="576">
+              <caret line="257" lean-forward="true" selection-start-line="257" selection-end-line="262" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/home.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="366">
+              <caret line="221" lean-forward="true" selection-start-line="221" selection-end-line="221" />
             </state>
           </provider>
         </entry>
@@ -90,7 +99,6 @@
         <option value="$PROJECT_DIR$/public/play.html" />
         <option value="$PROJECT_DIR$/public/room.html" />
         <option value="$PROJECT_DIR$/public/browse.html" />
-        <option value="$PROJECT_DIR$/public/home.css" />
         <option value="$PROJECT_DIR$/public/index.css" />
         <option value="$PROJECT_DIR$/public/createdRooms.js" />
         <option value="$PROJECT_DIR$/public/profile.html" />
@@ -102,6 +110,7 @@
         <option value="$PROJECT_DIR$/public/home.js" />
         <option value="$PROJECT_DIR$/public/browse.js" />
         <option value="$PROJECT_DIR$/public/profile.css" />
+        <option value="$PROJECT_DIR$/public/home.css" />
       </list>
     </option>
   </component>
@@ -120,7 +129,7 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="222" />
+    <option name="x" value="478" />
     <option name="y" value="74" />
     <option name="width" value="1117" />
     <option name="height" value="911" />
@@ -244,15 +253,15 @@
       <workItem from="1542660440340" duration="52000" />
       <workItem from="1542661229486" duration="10724000" />
       <workItem from="1542692033851" duration="5850000" />
-      <workItem from="1542931198398" duration="3129000" />
+      <workItem from="1542931198398" duration="3444000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64030000" />
+    <option name="totallyTimeSpent" value="64345000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="222" y="74" width="1117" height="911" extended-state="0" />
+    <frame x="478" y="74" width="1117" height="911" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -507,13 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/home.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="41" column="7" lean-forward="true" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -635,8 +637,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/profile.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="239" lean-forward="true" selection-start-line="239" selection-end-line="239" />
+        <state relative-caret-position="576">
+          <caret line="257" lean-forward="true" selection-start-line="257" selection-end-line="262" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="221" lean-forward="true" selection-start-line="221" selection-end-line="221" />
         </state>
       </provider>
     </entry>
