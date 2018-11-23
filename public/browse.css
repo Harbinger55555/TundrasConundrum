@@ -67,7 +67,12 @@ body{
 .sortDiv {
     position: absolute;
     right: 5%;
+    left: unset;
     color: white;
+}
+
+.sortLabel {
+    display: inline-block;
 }
 
 #sortBySelect {
@@ -195,4 +200,22 @@ body{
     .expandDescDiv {
         display: flex;
     }
+}
+
+/* Change styles for sortDiv for screen widths less than 500px. */
+@media screen and (max-width: 500px) {
+    .sortDiv {
+        right: unset;
+        left: 5%;
+    }
+
+    .containerHeader {
+        height: 75px;
+    }
+
+    .sortLabel {
+        display: block;
+        padding-left: 5px;
+    }
+
 }
