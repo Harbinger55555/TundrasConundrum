@@ -65,7 +65,7 @@ button:hover {
 .containerContent {
     height: 600px;
     width: 40%;
-    border: 3px solid black;;
+    border: 5px inset #536684;
 }
 
 #containerContentTitle {
