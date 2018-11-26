@@ -5,13 +5,15 @@
     font-style: normal;
 }
 
-.pageTitle, .pageSubTitle {
+.pageTitle {
     font-family: IceFont;
+    text-align: center;
     font-size: 50px;
     padding: 30px;
-    display: inline-block;
-    width: 100%;
-    background-color: #42ebf4;
-    text-align: center;
-    margin: auto;
+    background-color: #212121;
+    color: white;
+}
+
+.containerDiv {
+    min-height: 70vh;
 }
