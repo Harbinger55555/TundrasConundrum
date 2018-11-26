@@ -225,6 +225,15 @@ function searchRooms() {
     sortBySelection();
 }
 
+function submitSearch(e){
+    if(e.keyCode === 13){
+        // If enter was pressed, perform search.
+        searchRooms();
+    }
+
+    return false;
+}
+
 function reloadAllRooms(filteredRoomsArr) {
     for (var roomSnapshot of filteredRoomsArr) {
         let roomImgUrl = roomSnapshot.child('themeURL').val();
