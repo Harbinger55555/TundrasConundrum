@@ -63,6 +63,33 @@ body{
     align-items: center;
 }
 
+.searchDiv {
+    position: absolute;
+    left: 2%;
+    right: unset;
+    color: white;
+}
+
+.searchLabel {
+    display: inline-block;
+}
+
+#searchBar {
+    margin-left: 5px;
+}
+
+.searchIconDiv {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.searchIcon {
+    width: 100%;
+    height: 100%;
+}
+
 .sortDiv {
     position: absolute;
     right: 5%;

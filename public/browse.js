@@ -99,8 +99,10 @@ function loadAllRooms() {
         })
     }).then(function() {
         // Sort rooms in descending order of finishCount.
-        allRoomsArr.sort(sortByFinishCount);
-        reloadAllRooms(allRoomsArr);
+        // Deep copy allRoomsArr to filterRoomsArr.
+        filteredRoomsArr = allRoomsArr.slice();
+        filteredRoomsArr.sort(sortByFinishCount);
+        reloadAllRooms(filteredRoomsArr);
 
         // Hide the loader.
         document.getElementById('loader').style.display = 'none';
@@ -181,30 +183,50 @@ function sortBySelection() {
     switch(sortSelection) {
         case '1':
             // Sort by Finish Count.
-            allRoomsArr.sort(sortByFinishCount);
+            filteredRoomsArr.sort(sortByFinishCount);
             break;
         case '2':
             // Sort by Name.
-            allRoomsArr.sort(sortByName);
+            filteredRoomsArr.sort(sortByName);
             break;
         case '3':
             // Sort by Size.
-            allRoomsArr.sort(sortBySize);
+            filteredRoomsArr.sort(sortBySize);
             break;
         default:
             // By default, sort by Finish Count.
-            allRoomsArr.sort(sortByFinishCount);
+            filteredRoomsArr.sort(sortByFinishCount);
             break;
     }
 
     let roomDivList = document.getElementById('roomDivList');
     clearChildren(roomDivList);
 
-    reloadAllRooms(allRoomsArr);
+    reloadAllRooms(filteredRoomsArr);
 }
 
-function reloadAllRooms(allRoomsArr) {
-    for (var roomSnapshot of allRoomsArr) {
+function searchRooms() {
+    // Reset and refill the filterRoomsArr.
+    filteredRoomsArr = [];
+
+    var searchedName = document.getElementById('searchBar').value.toLowerCase();
+
+    // If search was empty, reset the filterRoomsArr to hold allRoomsArr again.
+    if (searchedName == "") {
+        filteredRoomsArr = allRoomsArr.slice();
+    } else {
+        for (var roomSnapshot of allRoomsArr) {
+            let roomName = roomSnapshot.child('name').val();
+            if (searchedName == roomName.toLowerCase()) filteredRoomsArr.push(roomSnapshot);
+        }
+    }
+
+    // This is to reload all rooms as well as preserve the current sort selection.
+    sortBySelection();
+}
+
+function reloadAllRooms(filteredRoomsArr) {
+    for (var roomSnapshot of filteredRoomsArr) {
         let roomImgUrl = roomSnapshot.child('themeURL').val();
         let roomDesc = roomSnapshot.child('description').val();
         let roomName = roomSnapshot.child('name').val();
@@ -228,3 +250,4 @@ function clearChildren(container) {
 // Used for rendering all rooms from the RTDB according to sort selection.
 var allRoomsArr = [];
 var sortOrder = document.getElementById('sortOrder').value;
+var filteredRoomsArr = [];
