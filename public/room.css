@@ -26,7 +26,6 @@ button {
     background-color: #2BABFF;
     color: white;
     padding: 14px 20px;
-    margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 100%;
@@ -37,9 +36,27 @@ button:hover {
     opacity: 0.8;
 }
 
-.mainContainer {
+.puzzleUtilities {
     background-color: white;
     border: 5px inset #536684;
+}
+
+.buttonDiv {
+    margin-top: 20px;
+    padding: 0;
+}
+
+.gotoRoomButton {
+    background-color: #333;
+    color: #e8f0fc;
+    display: inline-block;
+    padding: 14px 20px;
+    border: outset 3px #add6ff;
+    cursor: pointer;
+    width: 200px;
+    float: right;
+    outline: none;
+    font-size: 15px;
 }
 
 .subContainer {

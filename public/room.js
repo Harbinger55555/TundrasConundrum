@@ -605,11 +605,14 @@ window.onclick = function(event) {
     }
 }
 
-// TODO: Implement dynamic data load of 10 per overflow scroll.
+function playUnity() {
+    sessionStorage.setItem("playRoomKey", roomKey);
+    window.location.href = "play.html";
+}
+
 function loadPuzzles() {
     let currRoomPuzzles = firebase.database().ref().child('rooms/' + roomKey + '/puzzles');
 
-    // TODO: Dynamically keep puzzleDivList up to date with firebase RTDB changes (Could use .on() then remove and refill puzzleDivList).
     currRoomPuzzles.once('value', function(snapshot){
         snapshot.forEach(function(puzzleSnapshot) {
             let puzzleId = puzzleSnapshot.key;

@@ -33,19 +33,24 @@
 		<div class="row">
 			<div class="col-2 sidePagePanel"></div>
 			<div class="col-8 mainContainer">
-				<div class="row">
-					<div class="createPuzzleButtonCol col-2" onclick="openPuzzleWindowCreateVer()">
-						<img class="plusRoom" alt="Create Room" src="./images/plus.jp2">
-					</div>
-					<div class="col-9 subContainer">
-                        <div id="puzzleDivList">
-                            <div id="loader">Loading...</div>
+                <div class="col-12 puzzleUtilities">
+                    <div class="row">
+                        <div class="createPuzzleButtonCol col-2" onclick="openPuzzleWindowCreateVer()">
+                            <img class="plusRoom" alt="Create Room" src="./images/plus.jp2">
                         </div>
-					</div>
-				</div>
-				<div id="createPuzzleButtonRow" class="row" onclick="openPuzzleWindowCreateVer()">
-					<img class="plusRoom" alt="Create Room" src="./images/plus.jp2">
-				</div>
+                        <div class="col-9 subContainer">
+                            <div id="puzzleDivList">
+                                <div id="loader">Loading...</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="createPuzzleButtonRow" class="row" onclick="openPuzzleWindowCreateVer()">
+                        <img class="plusRoom" alt="Create Room" src="./images/plus.jp2">
+                    </div>
+                </div>
+                <div class="buttonDiv">
+				    <button class="gotoRoomButton" onclick="playUnity()">Go to Room</button>
+                </div>
 			</div>
 			<div class="col-sm sidePagePanel"></div>
 		</div>
