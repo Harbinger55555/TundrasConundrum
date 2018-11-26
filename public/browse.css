@@ -51,7 +51,7 @@ body{
     border: 5px inset #536684;
     width: 70%;
     position: relative;
-    margin: auto;
+    margin: auto auto 40px auto;
 }
 
 .containerHeader {

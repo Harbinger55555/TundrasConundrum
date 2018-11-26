@@ -14,26 +14,35 @@
       <file leaf-file-name="browse.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/browse.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+            <state relative-caret-position="178">
+              <caret line="51" column="38" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="browse.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="browse.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/browse.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="47" selection-end-column="1" />
+            <state relative-caret-position="307">
+              <caret line="53" column="23" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="play.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/play.html">
+      <file leaf-file-name="createdRooms.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/createdRooms.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+            <state relative-caret-position="333">
+              <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createdRooms.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/createdRooms.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="85" column="14" selection-start-line="85" selection-start-column="1" selection-end-line="85" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -51,7 +60,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>console</find>
       <find>loader</find>
       <find>create</find>
       <find>roomkey</find>
@@ -68,7 +76,6 @@
       <find>main</find>
       <find>containercon</find>
       <find>puzzlediv</find>
-      <find>mainContainer</find>
       <find>subContainer</find>
       <find>puzzleDivList</find>
       <find>maincon</find>
@@ -80,7 +87,9 @@
       <find>filteredRoomsArr =</find>
       <find>sort</find>
       <find>searchdiv</find>
+      <find>containerCenterDiv</find>
       <find>containerDiv</find>
+      <find>mainContainer</find>
     </findStrings>
     <replaceStrings>
       <replace>jp2</replace>
@@ -107,13 +116,13 @@
         <option value="$PROJECT_DIR$/public/room.css" />
         <option value="$PROJECT_DIR$/public/room.js" />
         <option value="$PROJECT_DIR$/public/room.html" />
-        <option value="$PROJECT_DIR$/public/browse.css" />
         <option value="$PROJECT_DIR$/public/browse.html" />
         <option value="$PROJECT_DIR$/public/browse.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/index.js" />
         <option value="$PROJECT_DIR$/public/play.html" />
         <option value="$PROJECT_DIR$/public/play.css" />
+        <option value="$PROJECT_DIR$/public/browse.css" />
       </list>
     </option>
   </component>
@@ -261,12 +270,12 @@
       <workItem from="1542953778881" duration="4741000" />
       <workItem from="1543212576002" duration="190000" />
       <workItem from="1543260055098" duration="5277000" />
-      <workItem from="1543266555389" duration="1923000" />
+      <workItem from="1543266555389" duration="2362000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86708000" />
+    <option name="totallyTimeSpent" value="87147000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="378" y="23" width="1117" height="911" extended-state="0" />
@@ -559,20 +568,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/createdRooms.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="126" column="16" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/createdRooms.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="52" column="43" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/room.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -629,20 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/browse.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="47" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/browse.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/play.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -650,10 +631,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/browse.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="51" column="38" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/play.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+        <state relative-caret-position="302">
+          <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/createdRooms.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="85" column="14" selection-start-line="85" selection-start-column="1" selection-end-line="85" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/createdRooms.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/browse.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="53" column="23" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
         </state>
       </provider>
     </entry>
