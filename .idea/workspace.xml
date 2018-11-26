@@ -11,29 +11,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="browse.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/browse.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="230" selection-start-line="230" selection-end-line="230" />
+            <state relative-caret-position="236">
+              <caret line="19" column="63" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="browse.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/browse.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="55" column="67" selection-start-line="55" selection-start-column="67" selection-end-line="55" selection-end-column="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="browse.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/browse.css">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="393">
-              <caret line="224" column="16" selection-start-line="224" selection-start-column="8" selection-end-line="224" selection-end-column="16" />
+              <caret line="131" column="50" selection-start-line="131" selection-start-column="50" selection-end-line="131" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -93,7 +84,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/firebase.json" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/index.css" />
         <option value="$PROJECT_DIR$/public/createdRooms.js" />
         <option value="$PROJECT_DIR$/public/profile.js" />
@@ -112,6 +102,8 @@
         <option value="$PROJECT_DIR$/public/browse.css" />
         <option value="$PROJECT_DIR$/public/browse.html" />
         <option value="$PROJECT_DIR$/public/browse.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/index.js" />
       </list>
     </option>
   </component>
@@ -259,12 +251,12 @@
       <workItem from="1542953778881" duration="4741000" />
       <workItem from="1543212576002" duration="190000" />
       <workItem from="1543260055098" duration="5277000" />
-      <workItem from="1543266555389" duration="1152000" />
+      <workItem from="1543266555389" duration="1500000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85937000" />
+    <option name="totallyTimeSpent" value="86285000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="378" y="23" width="1117" height="911" extended-state="0" />
@@ -498,13 +490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="46" column="64" lean-forward="true" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/createdRooms.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -545,13 +530,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/404.html">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="65" column="26" lean-forward="true" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/profile.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -639,15 +617,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/browse.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="55" column="67" selection-start-line="55" selection-start-column="67" selection-end-line="55" selection-end-column="67" />
+        <state relative-caret-position="133">
+          <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/browse.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="230" selection-start-line="230" selection-end-line="230" />
+        <state relative-caret-position="381">
+          <caret line="227" lean-forward="true" selection-start-line="227" selection-end-line="234" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="19" column="63" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="131" column="50" selection-start-line="131" selection-start-column="50" selection-end-line="131" selection-end-column="50" />
         </state>
       </provider>
     </entry>

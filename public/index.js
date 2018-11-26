@@ -107,6 +107,15 @@ function forgetPwdSubmit() {
     });
 }
 
+function submitLogin(e){
+    if(e.keyCode === 13){
+        // If enter was pressed, perform login.
+        login();
+    }
+
+    return false;
+}
+
 // When the user clicks anywhere outside of the signUpWindow or forgetPwdWindow, close it
 window.onclick = function(event) {
 	// Get the signUpWindow
@@ -117,6 +126,10 @@ window.onclick = function(event) {
         signUpWindow.style.display = "none";
         forgetPwdWindow.style.display = "none";
     }
+}
+
+window.onload = function() {
+    document.getElementById('emailField').focus();
 }
 
 // Boolean used to track when signUp button is clicked so that onAuthStateChanged waits for RTDB to be
