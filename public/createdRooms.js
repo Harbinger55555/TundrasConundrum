@@ -162,7 +162,7 @@ function delYesClicked() {
 
 function validInput(inputString) {
     // Range one to fifty characters, at least one uppercase letter, one lowercase letter or one number.
-    var regex = /^(?=.*[a-zA-Z\d])[a-zA-Z\d\s!$%@#£^€*?&()]{1,50}$/;
+    var regex = /^(?=.*[a-zA-Z\d])[a-zA-Z\d\s!$%@#'£^€*?&()]{1,50}$/;
     if (regex.test(inputString)) {
         return true;
     }

@@ -263,7 +263,7 @@ function appendPuzzle(puzzleQuestion) {
     // Left transition is also used as the "wrong answer" transition.
     let puzzleDivLeftIcon = document.createElement('img');
     puzzleDivLeftIcon.setAttribute("class", "puzzleDivIcons");
-    puzzleDivLeftIcon.setAttribute("src", "./images/arrow_left_default.jp2");
+    puzzleDivLeftIcon.setAttribute("src", "./images/wrong_icon_default.jp2");
     puzzleDivLeftIcon.onclick = function(event) {
         toggleLeftTransitionMode(event);
     }
@@ -273,7 +273,7 @@ function appendPuzzle(puzzleQuestion) {
     // Right transition is also used as the "right answer" transition.
     let puzzleDivRightIcon = document.createElement('img');
     puzzleDivRightIcon.setAttribute("class", "puzzleDivIcons");
-    puzzleDivRightIcon.setAttribute("src", "./images/arrow_right_default.jp2");
+    puzzleDivRightIcon.setAttribute("src", "./images/right_icon_default.jp2");
     puzzleDivRightIcon.onclick = function(event) {
         toggleRightTransitionMode(event);
     }
@@ -445,14 +445,14 @@ function toggleLeftTransitionMode(event) {
 
     // Change the icon to toggled img and update transitionToggledPuzzle.
     if (leftTransitionModeToggled) {
-        leftIconOfCurrDiv.setAttribute("src", "./images/arrow_left_toggled.jp2");
+        leftIconOfCurrDiv.setAttribute("src", "./images/wrong_icon_toggled.jp2");
 
         // As long as a transition mode is active, the icons div will be visible.
         puzzleIconsDiv.style.visibility = 'visible';
         // TODO: Change the transitionToggledPuzzle from sessionStorage to global variable.
         sessionStorage.setItem('transitionToggledPuzzle', puzzleDivIndex);
     } else {
-        leftIconOfCurrDiv.setAttribute("src", "./images/arrow_left_default.jp2");
+        leftIconOfCurrDiv.setAttribute("src", "./images/wrong_icon_default.jp2");
 
         // Turn icons div visibility off since transition mode is no longer active.
         puzzleIconsDiv.style.visibility = 'hidden';
@@ -499,14 +499,14 @@ function toggleRightTransitionMode(event) {
 
     // Change the icon to toggled img and update transitionToggledPuzzle.
     if (rightTransitionModeToggled) {
-        rightIconOfCurrDiv.setAttribute("src", "./images/arrow_right_toggled.jp2");
+        rightIconOfCurrDiv.setAttribute("src", "./images/right_icon_toggled.jp2");
 
         // As long as a transition mode is active, the icons div will be visible.
         puzzleIconsDiv.style.visibility = 'visible';
         // TODO: Change the transitionToggledPuzzle from sessionStorage to global variable.
         sessionStorage.setItem('transitionToggledPuzzle', puzzleDivIndex);
     } else {
-        rightIconOfCurrDiv.setAttribute("src", "./images/arrow_right_default.jp2");
+        rightIconOfCurrDiv.setAttribute("src", "./images/right_icon_default.jp2");
 
         // Turn icons div visibility off since transition mode is no longer active.
         puzzleIconsDiv.style.visibility = 'hidden';
@@ -547,7 +547,6 @@ function puzzleDivOnCLick(event) {
 
 function transYesClicked() {
     // Update the RTDB accordingly.
-    // TODO: Create a tooltip that has the current transition state and is shown when arrows are hovered over.
     let transitionToggledPuzzleIndex = sessionStorage.getItem('transitionToggledPuzzle');
     let transitionToggledPuzzle = sessionStorage.getItem('puzzleKey' + transitionToggledPuzzleIndex);
     let transitionClickedPuzzleIndex = sessionStorage.getItem('transitionClickedPuzzle');
