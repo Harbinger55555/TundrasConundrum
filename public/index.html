@@ -17,11 +17,11 @@
             <div class="labelDiv">
                 <label id= "loginEmail"><b>Email Address</b></label>
             </div>
-            <input type="email" name="userEmail" id="emailField" /><br/>
+            <input type="email" name="userEmail" id="emailField" onkeypress="submitLogin(event)"/><br/>
             <div class="labelDiv">
                 <label id= "loginPwd"><b>Password</b></label>
             </div>
-            <input type="password" name="userPwd" id="pwdField" /><br/>
+            <input type="password" name="userPwd" id="pwdField" onkeypress="submitLogin(event)"/><br/>
             <div class="mainButtonsDiv">
                 <button onclick="login()">Login</button>
                 <button onclick="signUp()">Sign Up</button>

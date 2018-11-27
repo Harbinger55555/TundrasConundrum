@@ -51,7 +51,7 @@ body{
     border: 5px inset #536684;
     width: 70%;
     position: relative;
-    margin: auto;
+    margin: auto auto 40px auto;
 }
 
 .containerHeader {
@@ -63,10 +63,39 @@ body{
     align-items: center;
 }
 
+.searchDiv {
+    position: absolute;
+    top: unset;
+    left: 2%;
+    right: unset;
+    color: white;
+}
+
+.searchLabel {
+    display: inline-block;
+}
+
+#searchBar {
+    margin-left: 5px;
+}
+
+.searchIconDiv {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.searchIcon {
+    width: 100%;
+    height: 100%;
+}
+
 .sortDiv {
     position: absolute;
-    right: 5%;
+    right: 2%;
     left: unset;
+    bottom: unset;
     color: white;
 }
 
@@ -190,6 +219,23 @@ body{
     }
 }
 
+/* Change styles for containerHeader and its contents for screen widths less than 900px. */
+@media screen and (max-width: 900px) {
+    .searchDiv {
+        top: 5%;
+    }
+
+    .sortDiv {
+        right: unset;
+        left: 2%;
+        bottom: 5%;
+    }
+
+    .containerHeader {
+        height: 80px;
+    }
+}
+
 /* Change styles for expandDescDiv and roomDescAndRoomSizeDiv for screen widths less than 600px. */
 @media screen and (max-width: 600px) {
     .roomDescAndRoomSizeDiv {
@@ -203,18 +249,16 @@ body{
 
 /* Change styles for sortDiv for screen widths less than 500px. */
 @media screen and (max-width: 500px) {
-    .sortDiv {
-        right: unset;
-        left: 5%;
-    }
-
     .containerHeader {
-        height: 75px;
+        height: 120px;
     }
 
-    .sortLabel {
+    .searchDiv {
+        top: 0;
+    }
+
+    .sortLabel, .searchLabel {
         display: block;
         padding-left: 5px;
     }
-
 }
