@@ -217,7 +217,7 @@ function searchRooms() {
     } else {
         for (var roomSnapshot of allRoomsArr) {
             let roomName = roomSnapshot.child('name').val();
-            if (searchedName == roomName.toLowerCase()) filteredRoomsArr.push(roomSnapshot);
+            if (roomName.toLowerCase().includes(searchedName)) filteredRoomsArr.push(roomSnapshot);
         }
     }
 
