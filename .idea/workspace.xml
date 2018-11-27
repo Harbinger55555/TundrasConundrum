@@ -10,21 +10,21 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="room.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/room.css">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="room.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/room.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="196" column="33" lean-forward="true" selection-start-line="196" selection-start-column="33" selection-end-line="196" selection-end-column="33" />
+            <state relative-caret-position="306">
+              <caret line="387" column="1" lean-forward="true" selection-start-line="387" selection-start-column="1" selection-end-line="387" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createdRooms.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/createdRooms.js">
+      <file leaf-file-name="room.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/room.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="164" column="51" selection-start-line="164" selection-start-column="51" selection-end-line="164" selection-end-column="51" />
+            <state relative-caret-position="292">
+              <caret line="38" column="66" selection-start-line="38" selection-start-column="66" selection-end-line="38" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -42,12 +42,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>create</find>
-      <find>roomkey</find>
-      <find>del</find>
-      <find>openDelConfirmWindow</find>
-      <find>for</find>
-      <find>for (</find>
       <find>puzzleCount</find>
       <find>containerdiv</find>
       <find>footer</find>
@@ -72,6 +66,12 @@
       <find>containerDiv</find>
       <find>mainContainer</find>
       <find>arrow</find>
+      <find>delete</find>
+      <find>del</find>
+      <find>currRoomPuzzles</find>
+      <find>delyesclicked</find>
+      <find>delyes</find>
+      <find>promise</find>
     </findStrings>
     <replaceStrings>
       <replace>jp2</replace>
@@ -104,8 +104,8 @@
         <option value="$PROJECT_DIR$/public/browse.js" />
         <option value="$PROJECT_DIR$/public/play.html" />
         <option value="$PROJECT_DIR$/public/GameData/TemplateData/style.css" />
-        <option value="$PROJECT_DIR$/public/room.js" />
         <option value="$PROJECT_DIR$/public/createdRooms.js" />
+        <option value="$PROJECT_DIR$/public/room.js" />
       </list>
     </option>
   </component>
@@ -156,9 +156,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -264,11 +264,12 @@
       <workItem from="1543294083193" duration="1308000" />
       <workItem from="1543339771924" duration="160000" />
       <workItem from="1543339976775" duration="505000" />
+      <workItem from="1543345323167" duration="4477000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89581000" />
+    <option name="totallyTimeSpent" value="94058000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="378" y="23" width="1117" height="911" extended-state="0" />
@@ -282,19 +283,19 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27534884" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -526,13 +527,6 @@
     <entry file="file://$PROJECT_DIR$/public/404.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="48" column="36" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/profile.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
@@ -631,6 +625,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="58" column="22" lean-forward="true" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/room.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="196" column="33" selection-start-line="196" selection-start-column="33" selection-end-line="196" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/createdRooms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="164" column="14" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/room.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
@@ -640,22 +655,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/room.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="559" column="10" lean-forward="true" selection-start-line="559" selection-start-column="10" selection-end-line="559" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/room.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="196" column="33" lean-forward="true" selection-start-line="196" selection-start-column="33" selection-end-line="196" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/createdRooms.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="164" column="51" selection-start-line="164" selection-start-column="51" selection-end-line="164" selection-end-column="51" />
+        <state relative-caret-position="306">
+          <caret line="387" column="1" lean-forward="true" selection-start-line="387" selection-start-column="1" selection-end-line="387" selection-end-column="1" />
         </state>
       </provider>
     </entry>
