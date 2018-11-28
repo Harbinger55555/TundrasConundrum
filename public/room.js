@@ -344,7 +344,8 @@ function delYesClicked() {
     // Delete the puzzle from puzzles.
     updates['/puzzles/' + puzzleKey] = null;
 
-    // Update the puzzleCount of the room.
+    // Update the puzzleCount of the room, and also delete transitions of puzzles having the deleted puzzle as their
+    // transitions.
     var roomPuzzleCount = firebase.database().ref().child('rooms/' + roomKey + '/puzzleCount');
     roomPuzzleCount.once('value', function(snapshot) {
         // Deleting a puzzle must decrement the count by 1.
@@ -353,13 +354,52 @@ function delYesClicked() {
         () => {
             updates['rooms/' + roomKey + '/puzzleCount'] = roomPuzzleCount == 0 ? null : roomPuzzleCount;
 
-            // Update the firebase RTDB and refresh the page to update the changes in the sessionStorage as well.
-            firebase.database().ref().update(updates).then(
+            delYesClickedUpdateTransitions(puzzleKey, roomKey, updates).then(
                 () => {
-                    document.location.reload(true)
-                }
-            );
+                    // Update the firebase RTDB and refresh the page to update the changes in the sessionStorage as well.
+                    firebase.database().ref().update(updates).then(
+                        () => {
+                            document.location.reload(true)
+                        }
+                    );
+                });
         });
+}
+
+function delYesClickedUpdateTransitions(puzzleKey, roomKey, updates) {
+    return new Promise(function(resolve, reject) {
+        let currRoomPuzzles = firebase.database().ref().child('rooms/' + roomKey + '/puzzles');
+        let currRoomPuzzlesIds = [];
+
+        currRoomPuzzles.once('value', function (snapshot) {
+            snapshot.forEach(function (puzzleSnapshot) {
+                let puzzleId = puzzleSnapshot.key;
+                currRoomPuzzlesIds.push(puzzleId);
+            })
+        }).then(
+            () => {
+                let promises = [];
+                for (var puzzleId of currRoomPuzzlesIds) {
+                    promises.push(delYesClickedUpdateTransitionsWork(puzzleId, puzzleKey, updates));
+                }
+                Promise.all(promises).then(() => {resolve('Update successful!')});
+            });
+    });
+}
+
+function delYesClickedUpdateTransitionsWork(puzzleId, puzzleKey, updates) {
+    return new Promise(function(resolve, reject) {
+        let puzzleInPuzzles = firebase.database().ref().child('puzzles/' + puzzleId);
+        puzzleInPuzzles.once('value', function (puzzleSnapshot) {
+            var puzzleSnapshotVal = puzzleSnapshot.val();
+            if (puzzleSnapshotVal.transitions && puzzleSnapshotVal.transitions.left == puzzleKey)
+                updates['puzzles/' + puzzleId + '/transitions/left'] = null;
+            if (puzzleSnapshotVal.transitions && puzzleSnapshotVal.transitions.right == puzzleKey)
+                updates['puzzles/' + puzzleId + '/transitions/right'] = null;
+        }).then(
+            () => resolve('Update successful!')
+        )
+    });
 }
 
 // Opens confirmation window for clearing the transition states of the puzzle.
