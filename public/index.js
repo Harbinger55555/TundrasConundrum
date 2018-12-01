@@ -56,8 +56,8 @@ function signUpSubmit() {
         return false;
     }
 
-    if (username == "") {
-	    alert('Please fill in your Username');
+    if (!validUsername(username)) {
+	    alert('Username must have max 20 characters, at least one uppercase letter, one lowercase letter or one number');
         signUpButton.disabled = false;
         return false;
     }
@@ -77,6 +77,17 @@ function validInput(inputString) {
     // Range six to twenty characters, at least one uppercase letter, one lowercase letter and one number.
     var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!$%@#£^€*?&()]{6,20}$/;
     if (regex.test(inputString)) {
+        return true;
+    }
+    return false;
+}
+
+function validUsername(userName) {
+    // Username can be empty.
+    // If not empty, max 20 characters, at least one uppercase letter, one lowercase letter or one number.
+    if (userName == "") return true;
+    var regex = /^(?=.*[a-zA-Z\d])[a-zA-Z\d\s!$%@#'£^€*?&()]{1,20}$/;
+    if (regex.test(userName)) {
         return true;
     }
     return false;
