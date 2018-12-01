@@ -14,10 +14,10 @@ function loadUserDetails(user) {
     var userId = user.uid;
     let userName = firebase.database().ref().child('users/' + userId + '/name');
     userName.once('value', function (snapshot) {
-        document.getElementById("currentUsername").innerHTML = (snapshot.val() || "Anonymous User");
+        document.getElementById("currentUsername").value = (snapshot.val() || "Anonymous User");
     })
 
-    document.getElementById("currentEmail").innerHTML = user.email;
+    document.getElementById("currentEmail").value = user.email;
 }
 
 function resetInputs(fieldid) {

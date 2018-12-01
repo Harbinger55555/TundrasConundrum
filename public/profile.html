@@ -51,12 +51,12 @@
             <label id="containerContentTitle">Account Details</label>
             <div class="fieldsContainer">
                 <div class="contentField">
-                    <label>Username [<span class="editFieldLink" onclick="newUsername()">Edit</span>]</label>
-                    <div id="currentUsername" class="currentField">Loading...</div>
+                    <label class="currentLabel">Username [<span class="editFieldLink" onclick="newUsername()">Edit</span>]</label>
+                    <input type="text" id="currentUsername" value="Loading..." disabled />
                 </div>
                 <div class="contentField">
-                    <label>Email Address [<span class="editFieldLink" onclick="newEmail()">Edit</span>]</label>
-                    <div id="currentEmail" class="currentField">Loading...</div>
+                    <label class="currentLabel">Email Address [<span class="editFieldLink" onclick="newEmail()">Edit</span>]</label>
+                    <input type="text" id="currentEmail" value="Loading..." disabled />
                 </div>
                 <div class="contentField">
                     <label class="editFieldLink" onclick="newPwd()">Change Password?</label>

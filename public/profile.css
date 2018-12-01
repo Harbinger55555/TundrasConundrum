@@ -85,6 +85,8 @@ button:hover {
 }
 
 .contentField {
+    display: flex;
+    flex-wrap: wrap;
     padding: 10px 8%;
     width: 100%;
 }
@@ -94,21 +96,34 @@ button:hover {
 }
 
 .editFieldLink {
+    color: #2d77ef;
     cursor: pointer;
 }
 
 .editFieldLink:hover {
-    color: #2d77ef;
+    color: black;
     text-decoration: underline;
 }
 
-.currentField {
+.currentLabel {
+    display: block;
+    width: 100%;
+}
+
+/* Ids instead of a common class because input tag has precedence over class. */
+#currentUsername, #currentEmail {
+    display: block;
     vertical-align: middle;
     height: 50px;
-    width: 70%;
-    color: black;
-    font-size: 20px;
+    width: 60%;
+    color: #6f7277;
+    background-color: white;
+    font-size: 18px;
+    padding: 0;
+    border: none;
+    border-bottom: 1px inset #ccc;
     box-sizing: border-box;
+
 }
 
 .popUpContainer {
