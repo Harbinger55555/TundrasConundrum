@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="profile.css">
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="footer.css">
+    <link rel="icon" href="./images/logo_dark.jp2">
     <link rel="stylesheet" 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 			crossorigin="anonymous">
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
@@ -50,12 +51,12 @@
             <label id="containerContentTitle">Account Details</label>
             <div class="fieldsContainer">
                 <div class="contentField">
-                    <label>Username [<span class="editFieldLink" onclick="newUsername()">Edit</span>]</label>
-                    <div id="currentUsername" class="currentField">Loading...</div>
+                    <label class="currentLabel">Username [<span class="editFieldLink" onclick="newUsername()">Edit</span>]</label>
+                    <input type="text" id="currentUsername" value="Loading..." disabled />
                 </div>
                 <div class="contentField">
-                    <label>Email Address [<span class="editFieldLink" onclick="newEmail()">Edit</span>]</label>
-                    <div id="currentEmail" class="currentField">Loading...</div>
+                    <label class="currentLabel">Email Address [<span class="editFieldLink" onclick="newEmail()">Edit</span>]</label>
+                    <input type="text" id="currentEmail" value="Loading..." disabled />
                 </div>
                 <div class="contentField">
                     <label class="editFieldLink" onclick="newPwd()">Change Password?</label>

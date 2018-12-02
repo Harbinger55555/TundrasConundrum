@@ -14,10 +14,10 @@ function loadUserDetails(user) {
     var userId = user.uid;
     let userName = firebase.database().ref().child('users/' + userId + '/name');
     userName.once('value', function (snapshot) {
-        document.getElementById("currentUsername").innerHTML = (snapshot.val() || "Anonymous User");
+        document.getElementById("currentUsername").value = (snapshot.val() || "Anonymous User");
     })
 
-    document.getElementById("currentEmail").innerHTML = user.email;
+    document.getElementById("currentEmail").value = user.email;
 }
 
 function resetInputs(fieldid) {
@@ -38,6 +38,15 @@ function newUsernameSubmit() {
     var usernameSubmitButton = document.getElementById('usernameSubmitButton');
     // Prevent multiple submissions to firebase.
     usernameSubmitButton.disabled = true;
+    var username = document.getElementById("newUsernameField").value;
+
+    // Check if newUsername is valid first.
+    if (!validUsername(username)) {
+        alert('Username must have max 20 characters, at least one uppercase letter, one lowercase letter or one number');
+        usernameSubmitButton.disabled = false;
+        return false;
+    }
+
     var currUser = firebase.auth().currentUser;
     currUser.reauthenticateAndRetrieveDataWithCredential(
         firebase.auth.EmailAuthProvider.credential(
@@ -48,7 +57,7 @@ function newUsernameSubmit() {
         () => {
             // Update the username in the RTDB, then refresh the page.
             var updates = {};
-            updates['/users/' + currUser.uid + '/name'] = document.getElementById('newUsernameField').value;
+            updates['/users/' + currUser.uid + '/name'] = username;
             firebase.database().ref().update(updates).then(
                 () => {
                     document.location.reload(true)
@@ -126,6 +135,17 @@ function validInput(inputString) {
     // Range six to twenty characters, at least one uppercase letter, one lowercase letter and one number.
     var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!$%@#£^€*?&()]{6,20}$/;
     if (regex.test(inputString)) {
+        return true;
+    }
+    return false;
+}
+
+function validUsername(userName) {
+    // Username can be empty.
+    // If not empty, max 20 characters, at least one uppercase letter, one lowercase letter or one number.
+    if (userName == "") return true;
+    var regex = /^(?=.*[a-zA-Z\d])[a-zA-Z\d\s!$%@#'£^€*?&()]{0,20}$/;
+    if (regex.test(userName)) {
         return true;
     }
     return false;
