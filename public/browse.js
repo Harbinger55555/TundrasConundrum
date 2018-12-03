@@ -110,7 +110,9 @@ function loadAllRooms() {
 }
 
 function roomSize(puzzleCount) {
-    if (puzzleCount <= 5) {
+    if (puzzleCount == 0) {
+        return document.createTextNode("Room Size: Empty");
+    } else if (puzzleCount <= 5) {
         return document.createTextNode("Room Size: Small");
     } else if (puzzleCount <= 15) {
         return document.createTextNode("Room Size: Moderate");
